@@ -36,4 +36,8 @@
   <loc>http://blog.joonro.net/en/posts/emacs.html</loc>
   <lastmod>2015-05-03</lastmod>
  </url>
+ <url>
+  <loc>http://blog.joonro.net/en/posts/test-post.html</loc>
+  <lastmod>2015-05-03</lastmod>
+ </url>
 </urlset>
