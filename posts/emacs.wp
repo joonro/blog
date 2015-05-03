@@ -1,0 +1,78 @@
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgheadline1">1. hunspell 설치</a></li>
+<li><a href="#orgheadline2">2. init</a></li>
+</ul>
+</div>
+</div>
+<p>
+Windows 관련된 부분 포함
+</p>
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="orgheadline1"><span class="section-number-2">1</span> hunspell 설치</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+가장 편한 방법은 Windows Package Manager인 <a href="https://chocolatey.org/">Chocolatey</a> 를 사용하는 것입니다:
+</p>
+
+<div class="org-src-container">
+
+
+<pre><code class="lang-posh">&gt; choco install hunspell.portable
+</code></pre>
+
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline2" class="outline-2">
+<h2 id="orgheadline2"><span class="section-number-2">2</span> init</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Emacs의 <a href="http://www.emacswiki.org/emacs/InitFile">init file</a> 에 다음을 추가합니다:
+</p>
+
+<div class="org-src-container">
+
+
+<pre><code class="lang-emacs">(require 'ispell)
+
+(cond ((eq system-type 'gnu/linux) 
+    (progn
+      (setq ispell-program-name "hunspell")
+     ) 
+  ((eq system-type 'windows-nt)
+    (progn
+       (add-to-list 'exec-path "C:/ProgramData/Chocolatey/bin/")
+       (setq ispell-program-name (locate-file "hunspell"
+                                              exec-path exec-suffixes 'file-executable-p))
+     ))))
+
+(setq ispell-really-hunspell t)
+
+(add-to-list 'ispell-dictionary-alist '("en_US"
+                                        "[[:alpha:]]"
+                                        "[^[:alpha:]]"
+                                        "[']"
+                                        t
+                                        ("-d" "en_US")
+                                        nil
+                                        utf-8))
+(add-to-list 'ispell-dictionary-alist '("korean"
+                                        "[&#44032;-&#55203;]"
+                                        "[^&#44032;-&#55203;]"
+                                        "[0-9a-zA-Z]"
+                                        nil
+                                        ("-d" "ko_KR")
+                                        nil
+                                        utf-8))
+
+;; &#54620;&#44397;&#50612;&#47484; &#44592;&#48376; &#49324;&#51204;&#51004;&#47196; &#51648;&#51221;
+(setq ispell-dictionary "korean")
+; (setq ispell-dictionary "en_US")
+</code></pre>
+
+</div>
+</div>
+</div>
