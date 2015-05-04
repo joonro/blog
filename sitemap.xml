@@ -6,11 +6,11 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
   <loc>http://blog.joonro.net/en/2015/index.html</loc>
-  <lastmod>2015-05-03</lastmod>
+  <lastmod>2015-05-04</lastmod>
  </url>
  <url>
   <loc>http://blog.joonro.net/en/archive.html</loc>
-  <lastmod>2015-05-03</lastmod>
+  <lastmod>2015-05-04</lastmod>
  </url>
  <url>
   <loc>http://blog.joonro.net/en/categories/blogging.html</loc>
@@ -22,7 +22,7 @@
  </url>
  <url>
   <loc>http://blog.joonro.net/en/categories/index.html</loc>
-  <lastmod>2015-05-03</lastmod>
+  <lastmod>2015-05-04</lastmod>
  </url>
  <url>
   <loc>http://blog.joonro.net/en/categories/nikola.html</loc>
@@ -34,7 +34,7 @@
  </url>
  <url>
   <loc>http://blog.joonro.net/en/galleries/index.html</loc>
-  <lastmod>2015-05-03</lastmod>
+  <lastmod>2015-05-04</lastmod>
  </url>
  <url>
   <loc>http://blog.joonro.net/en/index.html</loc>
@@ -42,7 +42,7 @@
  </url>
  <url>
   <loc>http://blog.joonro.net/en/listings/index.html</loc>
-  <lastmod>2015-05-03</lastmod>
+  <lastmod>2015-05-04</lastmod>
  </url>
  <url>
   <loc>http://blog.joonro.net/en/posts/changed-the-blog-engine-to-nikola.html</loc>
@@ -50,6 +50,6 @@
  </url>
  <url>
   <loc>http://blog.joonro.net/en/posts/test-post.html</loc>
-  <lastmod>2015-05-03</lastmod>
+  <lastmod>2015-05-04</lastmod>
  </url>
 </urlset>
