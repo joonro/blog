@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>Joon's Blog</title><link>http://blog.joonro.net/en/</link><description>Joon's Blog</description><atom:link href="http://blog.joonro.net/en/rss.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><lastBuildDate>Mon, 04 May 2015 00:03:30 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Changed the blog engine to nikola</title><link>http://blog.joonro.net/en/posts/changed-the-blog-engine-to-nikola.html</link><dc:creator>Joon Ro</dc:creator><description>&lt;div&gt;&lt;div id="table-of-contents"&gt;
+<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>Joon's Blog</title><link>http://blog.joonro.net/en/</link><description>Joon's Blog</description><atom:link href="http://blog.joonro.net/en/rss.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><lastBuildDate>Mon, 04 May 2015 05:58:46 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Changed the blog engine to nikola</title><link>http://blog.joonro.net/en/posts/changed-the-blog-engine-to-nikola.html</link><dc:creator>Joon Ro</dc:creator><description>&lt;div&gt;&lt;div id="table-of-contents"&gt;
 &lt;h3&gt;Table of Contents&lt;/h3&gt;
 &lt;div id="text-table-of-contents"&gt;
 &lt;ul&gt;
@@ -16,7 +16,7 @@
 &lt;/div&gt;
 
 &lt;p&gt;
-It has been while since the last time I updated my blog. I changed my blogging
+It has been a while since the last time I updated my blog. I changed my blogging
 engine to &lt;a href="http://getnikola.com/"&gt;nikola&lt;/a&gt;. Now my tool chain for writing is more streamlined, hopefully
 I post more frequently.
 &lt;/p&gt;
@@ -189,6 +189,6 @@ as a nikola post. It will ask you where is the root directory for your nikola
 blog. It seems it just uses the top level heading.
 &lt;/p&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;/div&gt;</description><guid>http://blog.joonro.net/en/posts/changed-the-blog-engine-to-nikola.html</guid><pubDate>Sun, 03 May 2015 04:49:55 GMT</pubDate></item><item><title>Test Post</title><link>http://blog.joonro.net/en/posts/test-post.html</link><dc:creator>Joon Ro</dc:creator><description>&lt;p&gt;
+&lt;/div&gt;&lt;/div&gt;</description><category>blogging</category><category>emacs</category><category>nikola</category><category>org</category><guid>http://blog.joonro.net/en/posts/changed-the-blog-engine-to-nikola.html</guid><pubDate>Sun, 03 May 2015 04:49:55 GMT</pubDate></item><item><title>Test Post</title><link>http://blog.joonro.net/en/posts/test-post.html</link><dc:creator>Joon Ro</dc:creator><description>&lt;p&gt;
 This is a test
 &lt;/p&gt;</description><guid>http://blog.joonro.net/en/posts/test-post.html</guid><pubDate>Sun, 03 May 2015 04:45:20 GMT</pubDate></item></channel></rss>

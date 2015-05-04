@@ -6,19 +6,19 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <sitemap>
   <loc>http://blog.joonro.net/en/categories/blogging.xml</loc>
-  <lastmod>2015-05-03</lastmod>
+  <lastmod>2015-05-04</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://blog.joonro.net/en/categories/emacs.xml</loc>
-  <lastmod>2015-05-03</lastmod>
+  <lastmod>2015-05-04</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://blog.joonro.net/en/categories/nikola.xml</loc>
-  <lastmod>2015-05-03</lastmod>
+  <lastmod>2015-05-04</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://blog.joonro.net/en/categories/org.xml</loc>
-  <lastmod>2015-05-03</lastmod>
+  <lastmod>2015-05-04</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://blog.joonro.net/en/galleries/rss.xml</loc>
@@ -26,10 +26,10 @@
  </sitemap>
  <sitemap>
   <loc>http://blog.joonro.net/en/rss.xml</loc>
-  <lastmod>2015-05-03</lastmod>
+  <lastmod>2015-05-04</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://blog.joonro.net/en/sitemap.xml</loc>
-  <lastmod>2015-05-03</lastmod>
+  <lastmod>2015-05-04</lastmod>
  </sitemap>
 </sitemapindex>
