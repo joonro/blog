@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>Joon's Blog (posh)</title><link>http://blog.joonro.net/en/</link><description></description><atom:link href="http://blog.joonro.net/en/categories/posh.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><lastBuildDate>Sun, 10 May 2015 15:54:48 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>org-mode Google calendar sync in Windows</title><link>http://blog.joonro.net/en/posts/org-mode-google-calendar-sync-in-windows.html</link><dc:creator>Joon Ro</dc:creator><description>&lt;div&gt;&lt;div id="table-of-contents"&gt;
+&lt;h3&gt;Table of Contents&lt;/h3&gt;
+&lt;div id="text-table-of-contents"&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://blog.joonro.net/en/posts/org-mode-google-calendar-sync-in-windows.html#orgheadline3"&gt;1. Dependencies&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://blog.joonro.net/en/posts/org-mode-google-calendar-sync-in-windows.html#orgheadline1"&gt;1.1. &lt;code&gt;ical2org.py&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://blog.joonro.net/en/posts/org-mode-google-calendar-sync-in-windows.html#orgheadline2"&gt;1.2. Find your private URL for your calendar&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://blog.joonro.net/en/posts/org-mode-google-calendar-sync-in-windows.html#orgheadline4"&gt;2. PowerShell script&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://blog.joonro.net/en/posts/org-mode-google-calendar-sync-in-windows.html#orgheadline5"&gt;3. Install cron&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;
+The &lt;a href="http://orgmode.org/worg/org-tutorials/org-google-sync.html"&gt;instructions&lt;/a&gt; at Org-mode does not cover the Windows case. I explain how
+you can get the sync between Google calendar and org-mode in Windows.
+&lt;/p&gt;
+
+&lt;div id="outline-container-orgheadline3" class="outline-2"&gt;
+&lt;h3 id="orgheadline3"&gt;&lt;span class="section-number-2"&gt;1&lt;/span&gt; Dependencies&lt;/h3&gt;
+&lt;div class="outline-text-2" id="text-1"&gt;
+&lt;/div&gt;&lt;div id="outline-container-orgheadline1" class="outline-3"&gt;
+&lt;h4 id="orgheadline1"&gt;&lt;span class="section-number-3"&gt;1.1&lt;/span&gt; &lt;code&gt;ical2org.py&lt;/code&gt;&lt;/h4&gt;
+&lt;div class="outline-text-3" id="text-1-1"&gt;
+&lt;p&gt;
+Get the &lt;code&gt;ical2org.py&lt;/code&gt; script from &lt;a href="https://github.com/asoroa/ical2org.py"&gt;https://github.com/asoroa/ical2org.py&lt;/a&gt;. You
+have to have Python installed, and also need to install &lt;code&gt;icalendar&lt;/code&gt; and &lt;code&gt;pytz&lt;/code&gt;:
+&lt;/p&gt;
+
+&lt;div class="org-src-container"&gt;
+
+
+&lt;pre&gt;&lt;code class="lang-sh"&gt;&amp;gt; pip install icalendar
+&amp;gt; pip install pytz
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id="outline-container-orgheadline2" class="outline-3"&gt;
+&lt;h4 id="orgheadline2"&gt;&lt;span class="section-number-3"&gt;1.2&lt;/span&gt; Find your private URL for your calendar&lt;/h4&gt;
+&lt;div class="outline-text-3" id="text-1-2"&gt;
+&lt;p&gt;
+Follow step 2 in this &lt;a href="http://orgmode.org/worg/org-tutorials/org-google-sync.html"&gt;instruction&lt;/a&gt; to get the private URL for your calendar.
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;div id="outline-container-orgheadline4" class="outline-2"&gt;
+&lt;h3 id="orgheadline4"&gt;&lt;span class="section-number-2"&gt;2&lt;/span&gt; PowerShell script&lt;/h3&gt;
+&lt;div class="outline-text-2" id="text-2"&gt;
+&lt;p&gt;
+First check if you can download your calendar with &lt;code&gt;Invoke-WebRequest&lt;/code&gt;:
+&lt;/p&gt;
+
+&lt;div class="org-src-container"&gt;
+
+
+&lt;pre&gt;&lt;code class="lang-posh"&gt;&amp;gt; Invoke-WebRequest -URI &amp;lt;url to your private Google calendar&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;
+If it works, make a PowerShell script file,  &lt;code&gt;convert-gcal-to-org.ps1&lt;/code&gt;:
+&lt;/p&gt;
+
+&lt;div class="org-src-container"&gt;
+
+&lt;pre&gt;&lt;code class="lang-posh"&gt;# customize these
+$ICS2ORG = "&amp;lt;path to ical2org.py&amp;gt;"
+$ICSFILE = "&amp;lt;path for icsfile&amp;gt;"
+$ORGFILE = "&amp;lt;path to orgfile&amp;gt;"
+$URL = "&amp;lt;url to your private Google calendar&amp;gt;"
+
+# no customization needed below
+$Content = (Invoke-WebRequest -URI $URL).Content
+[System.IO.File]::WriteAllLines($ICSFILE, $Content)
+
+python $ICS2ORG $ICSFILE $ORGFILE
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;
+for example:
+&lt;/p&gt;
+
+&lt;div class="org-src-container"&gt;
+
+&lt;pre&gt;&lt;code class="lang-posh"&gt;# customize these    
+$ICS2ORG = "~/bin/ical2org.py"
+$ICSFILE = "~/bin/gcal-shared.ical"
+$ORGFILE = "~/gcal.org"
+$URL = "https://www.google.com/calendar/ical/...../basic.ics"
+
+# no customization needed below
+$Content = (Invoke-WebRequest -URI $URL).Content
+[System.IO.File]::WriteAllLines($ICSFILE, $Content) 
+
+python $ICS2ORG $ICSFILE $ORGFILE
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;
+Now try the script and see if it works:
+&lt;/p&gt;
+
+&lt;div class="org-src-container"&gt;
+
+&lt;pre&gt;&lt;code class="lang-posh"&gt;&amp;gt; convert-gcal-to-org.ps1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;
+If you have the output &lt;code&gt;org&lt;/code&gt; file in your &lt;code&gt;org-agenda-files&lt;/code&gt; list, you will
+see the entries from Google calendar when you update your agenda in Emacs.
+&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id="outline-container-orgheadline5" class="outline-2"&gt;
+&lt;h3 id="orgheadline5"&gt;&lt;span class="section-number-2"&gt;3&lt;/span&gt; Install cron&lt;/h3&gt;
+&lt;div class="outline-text-2" id="text-3"&gt;
+&lt;p&gt;
+You can install &lt;a href="http://www.intelliadmin.com/index.php/2012/05/free-utility-a-simple-task-scheduler-for-windows/"&gt;IntelliAdmin Cron&lt;/a&gt; to periodically run the script and sync your
+calendars with &lt;code&gt;org-mode&lt;/code&gt;. &lt;a href="http://thecrumb.com/2013/03/24/new-cron-for-windows/"&gt;Here&lt;/a&gt; is a blog post about this specific cron utility.
+&lt;/p&gt;
+
+&lt;p&gt;
+Then, use the following to set up the cronjob, with appropriate schedule settings:
+&lt;/p&gt;
+
+&lt;dl class="org-dl"&gt;
+&lt;dt&gt;EXE File&lt;/dt&gt;&lt;dd&gt;&lt;code&gt;C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe&lt;/code&gt;&lt;/dd&gt;
+&lt;dt&gt;Arguments&lt;/dt&gt;&lt;dd&gt;&lt;code&gt;-file C:\PATH\TO\convert-gcal-to-org.ps1&lt;/code&gt;&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;p&gt;
+For example:
+&lt;/p&gt;
+
+
+&lt;div class="figure"&gt;
+&lt;p&gt;&lt;img src="http://blog.joonro.net/en/wp-content/Capture-crontab-org-mode-google-sync.png" alt="Capture-crontab-org-mode-google-sync.png"&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;&lt;/div&gt;</description><category>emacs</category><category>org</category><category>posh</category><category>windows</category><guid>http://blog.joonro.net/en/posts/org-mode-google-calendar-sync-in-windows.html</guid><pubDate>Sat, 09 May 2015 20:27:18 GMT</pubDate></item></channel></rss>
