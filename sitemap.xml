@@ -6,62 +6,82 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
   <loc>http://blog.joonro.net/en/2015/index.html</loc>
-  <lastmod>2015-05-10</lastmod>
+  <lastmod>2015-05-27</lastmod>
  </url>
  <url>
   <loc>http://blog.joonro.net/en/archive.html</loc>
-  <lastmod>2015-05-10</lastmod>
+  <lastmod>2015-05-27</lastmod>
  </url>
  <url>
   <loc>http://blog.joonro.net/en/categories/blogging.html</loc>
-  <lastmod>2015-05-10</lastmod>
+  <lastmod>2015-05-27</lastmod>
+ </url>
+ <url>
+  <loc>http://blog.joonro.net/en/categories/cython.html</loc>
+  <lastmod>2015-05-27</lastmod>
  </url>
  <url>
   <loc>http://blog.joonro.net/en/categories/emacs.html</loc>
-  <lastmod>2015-05-10</lastmod>
+  <lastmod>2015-05-27</lastmod>
+ </url>
+ <url>
+  <loc>http://blog.joonro.net/en/categories/gsl.html</loc>
+  <lastmod>2015-05-27</lastmod>
  </url>
  <url>
   <loc>http://blog.joonro.net/en/categories/index.html</loc>
-  <lastmod>2015-05-10</lastmod>
+  <lastmod>2015-05-27</lastmod>
  </url>
  <url>
   <loc>http://blog.joonro.net/en/categories/nikola.html</loc>
-  <lastmod>2015-05-10</lastmod>
+  <lastmod>2015-05-27</lastmod>
  </url>
  <url>
   <loc>http://blog.joonro.net/en/categories/org.html</loc>
-  <lastmod>2015-05-10</lastmod>
+  <lastmod>2015-05-27</lastmod>
  </url>
  <url>
   <loc>http://blog.joonro.net/en/categories/posh.html</loc>
-  <lastmod>2015-05-10</lastmod>
+  <lastmod>2015-05-27</lastmod>
+ </url>
+ <url>
+  <loc>http://blog.joonro.net/en/categories/python.html</loc>
+  <lastmod>2015-05-27</lastmod>
  </url>
  <url>
   <loc>http://blog.joonro.net/en/categories/windows.html</loc>
-  <lastmod>2015-05-10</lastmod>
+  <lastmod>2015-05-27</lastmod>
  </url>
  <url>
   <loc>http://blog.joonro.net/en/galleries/index.html</loc>
-  <lastmod>2015-05-10</lastmod>
+  <lastmod>2015-05-27</lastmod>
  </url>
  <url>
   <loc>http://blog.joonro.net/en/index.html</loc>
-  <lastmod>2015-05-10</lastmod>
+  <lastmod>2015-05-27</lastmod>
+ </url>
+ <url>
+  <loc>http://blog.joonro.net/en/listings/.dropbox.attr.html</loc>
+  <lastmod>2015-05-27</lastmod>
  </url>
  <url>
   <loc>http://blog.joonro.net/en/listings/index.html</loc>
-  <lastmod>2015-05-10</lastmod>
+  <lastmod>2015-05-27</lastmod>
  </url>
  <url>
   <loc>http://blog.joonro.net/en/posts/changed-the-blog-engine-to-nikola.html</loc>
-  <lastmod>2015-05-10</lastmod>
+  <lastmod>2015-05-27</lastmod>
+ </url>
+ <url>
+  <loc>http://blog.joonro.net/en/posts/installing-gsl-and-cythongsl-in-windows.html</loc>
+  <lastmod>2015-05-27</lastmod>
  </url>
  <url>
   <loc>http://blog.joonro.net/en/posts/org-mode-google-calendar-sync-in-windows.html</loc>
-  <lastmod>2015-05-10</lastmod>
+  <lastmod>2015-05-27</lastmod>
  </url>
  <url>
   <loc>http://blog.joonro.net/en/posts/test-post.html</loc>
-  <lastmod>2015-05-10</lastmod>
+  <lastmod>2015-05-27</lastmod>
  </url>
 </urlset>
