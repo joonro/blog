@@ -1,32 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>Joon's Blog</title><link>http://joonro.github.io/blog/</link><description>Joon's Blog</description><atom:link rel="self" href="http://joonro.github.io/blog/rss.xml" type="application/rss+xml"></atom:link><language>en</language><lastBuildDate>Sun, 11 Oct 2015 02:57:26 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Awesome inverse search for LyX in Windows with SumatraPDF and AutoHotkey</title><link>http://joonro.github.io/blog/posts/Awesome-inverse-search-for-LyX-in-Windows-with-SumatraPDF-and-AutoHotkey.html</link><dc:creator>Joon RoI describe how to setup inverse search between LyX and SumatraPDF and/or</dc:creator><description>&lt;div&gt;&lt;div class="section" id="lyx-settings"&gt;
+<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>Joon's Blog</title><link>http://joonro.github.io/blog/</link><description>Joon's Blog</description><atom:link rel="self" type="application/rss+xml" href="http://joonro.github.io/blog/rss.xml"></atom:link><language>en</language><lastBuildDate>Sun, 11 Oct 2015 03:05:39 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Awesome inverse search for LyX in Windows with SumatraPDF and AutoHotkey</title><link>http://joonro.github.io/blog/posts/Awesome-inverse-search-for-LyX-in-Windows-with-SumatraPDF-and-AutoHotkey.html</link><dc:creator>Joon Ro</dc:creator><description>&lt;div&gt;&lt;p&gt;I describe how to setup inverse search between LyX and SumatraPDF and/or
+Okular. Most of the instructions overlap with the ones at
+&lt;a class="reference external" href="http://wiki.lyx.org/LyX/SyncTeX#toc3"&gt;http://wiki.lyx.org/LyX/SyncTeX#toc3&lt;/a&gt;.&lt;/p&gt;
+&lt;div class="section" id="lyx-settings"&gt;
 &lt;h2&gt;LyX Settings&lt;/h2&gt;
 &lt;ol class="arabic"&gt;
 &lt;li&gt;&lt;p class="first"&gt;Set &lt;tt class="docutils literal"&gt;Tools&lt;/tt&gt; &amp;gt; &lt;tt class="docutils literal"&gt;Preferences&lt;/tt&gt; &amp;gt; &lt;tt class="docutils literal"&gt;Paths&lt;/tt&gt; &amp;gt; &lt;tt class="docutils literal"&gt;LyxServer pipe&lt;/tt&gt; to
 &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;\\.\pipe\lyxpipe&lt;/span&gt;&lt;/tt&gt;.&lt;/p&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;dl class="first docutils"&gt;
-&lt;dt&gt;In &lt;tt class="docutils literal"&gt;Document&lt;/tt&gt; &amp;gt; &lt;tt class="docutils literal"&gt;Settings&lt;/tt&gt; &amp;gt; &lt;tt class="docutils literal"&gt;Output&lt;/tt&gt;, check &lt;a href="http://joonro.github.io/blog/posts/Awesome-inverse-search-for-LyX-in-Windows-with-SumatraPDF-and-AutoHotkey.html#id1"&gt;&lt;span class="problematic" id="id2"&gt;``&lt;/span&gt;&lt;/a&gt;Synchronize with&lt;/dt&gt;
-&lt;dd&gt;&lt;div class="first system-message" id="id1"&gt;
-&lt;p class="system-message-title"&gt;System Message: WARNING/2 (&lt;tt class="docutils"&gt;&amp;lt;string&amp;gt;&lt;/tt&gt;, line 8); &lt;em&gt;&lt;a href="http://joonro.github.io/blog/posts/Awesome-inverse-search-for-LyX-in-Windows-with-SumatraPDF-and-AutoHotkey.html#id2"&gt;backlink&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;Inline literal start-string without end-string.&lt;/p&gt;
-&lt;/div&gt;
-&lt;p class="last"&gt;output``. (checked by default)&lt;/p&gt;
-&lt;/dd&gt;
-&lt;/dl&gt;
+&lt;li&gt;&lt;p class="first"&gt;In &lt;tt class="docutils literal"&gt;Document&lt;/tt&gt; &amp;gt; &lt;tt class="docutils literal"&gt;Settings&lt;/tt&gt; &amp;gt; &lt;tt class="docutils literal"&gt;Output&lt;/tt&gt;, check &lt;tt class="docutils literal"&gt;Synchronize with output&lt;/tt&gt;. (checked by default)&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p class="first"&gt;Create a batch-file named &lt;tt class="docutils literal"&gt;lyxeditor.cmd&lt;/tt&gt; with the following contents and
 save it to one of the locations in your &lt;tt class="docutils literal"&gt;PATH&lt;/tt&gt; Windows environmental
 variable, so the pdf editor can call it:&lt;/p&gt;
-&lt;pre class="code bat"&gt;&lt;a name="rest_code_2e4bbdd0f5f5488f81bd84e07e481969-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;@&lt;/span&gt;&lt;span class="k"&gt;echo&lt;/span&gt; &lt;span class="k"&gt;off&lt;/span&gt;
-&lt;a name="rest_code_2e4bbdd0f5f5488f81bd84e07e481969-2"&gt;&lt;/a&gt;&lt;span class="k"&gt;SETLOCAL&lt;/span&gt; enabledelayedexpansion
-&lt;a name="rest_code_2e4bbdd0f5f5488f81bd84e07e481969-3"&gt;&lt;/a&gt;&lt;span class="k"&gt;set&lt;/span&gt; &lt;span class="nv"&gt;file&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;%1&lt;/span&gt;
-&lt;a name="rest_code_2e4bbdd0f5f5488f81bd84e07e481969-4"&gt;&lt;/a&gt;&lt;span class="k"&gt;set&lt;/span&gt; &lt;span class="nv"&gt;row&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;%2&lt;/span&gt;
-&lt;a name="rest_code_2e4bbdd0f5f5488f81bd84e07e481969-5"&gt;&lt;/a&gt;&lt;span class="c"&gt;REM remove quotes from variables&lt;/span&gt;
-&lt;a name="rest_code_2e4bbdd0f5f5488f81bd84e07e481969-6"&gt;&lt;/a&gt;&lt;span class="k"&gt;set&lt;/span&gt; &lt;span class="nv"&gt;file&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;!file:"&lt;span class="o"&gt;=&lt;/span&gt;!
-&lt;a name="rest_code_2e4bbdd0f5f5488f81bd84e07e481969-7"&gt;&lt;/a&gt;&lt;span class="k"&gt;set&lt;/span&gt; &lt;span class="nv"&gt;row&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;!row:"&lt;span class="o"&gt;=&lt;/span&gt;!
-&lt;a name="rest_code_2e4bbdd0f5f5488f81bd84e07e481969-8"&gt;&lt;/a&gt;&lt;span class="nv"&gt;%comspec%&lt;/span&gt; &lt;span class="n"&gt;/q&lt;/span&gt; &lt;span class="n"&gt;/c&lt;/span&gt; (@&lt;span class="k"&gt;echo&lt;/span&gt; LYXCMD:revdvi&lt;span class="nl"&gt;:server&lt;/span&gt;-&lt;span class="k"&gt;goto&lt;/span&gt;-file-row:&lt;span class="nv"&gt;%file%&lt;/span&gt; &lt;span class="nv"&gt;%row%&lt;/span&gt;)&amp;gt; \\.\pipe\lyxpipe.in&amp;amp;&amp;amp;type \\.\pipe\lyxpipe.out
-&lt;a name="rest_code_2e4bbdd0f5f5488f81bd84e07e481969-9"&gt;&lt;/a&gt;&lt;span class="k"&gt;endlocal&lt;/span&gt;
+&lt;pre class="code bat"&gt;&lt;a name="rest_code_90d1205ba7aa4f3db514ffd840d87e4f-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;@&lt;/span&gt;&lt;span class="k"&gt;echo&lt;/span&gt; &lt;span class="k"&gt;off&lt;/span&gt;
+&lt;a name="rest_code_90d1205ba7aa4f3db514ffd840d87e4f-2"&gt;&lt;/a&gt;&lt;span class="k"&gt;SETLOCAL&lt;/span&gt; enabledelayedexpansion
+&lt;a name="rest_code_90d1205ba7aa4f3db514ffd840d87e4f-3"&gt;&lt;/a&gt;&lt;span class="k"&gt;set&lt;/span&gt; &lt;span class="nv"&gt;file&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;%1&lt;/span&gt;
+&lt;a name="rest_code_90d1205ba7aa4f3db514ffd840d87e4f-4"&gt;&lt;/a&gt;&lt;span class="k"&gt;set&lt;/span&gt; &lt;span class="nv"&gt;row&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;%2&lt;/span&gt;
+&lt;a name="rest_code_90d1205ba7aa4f3db514ffd840d87e4f-5"&gt;&lt;/a&gt;&lt;span class="c"&gt;REM remove quotes from variables&lt;/span&gt;
+&lt;a name="rest_code_90d1205ba7aa4f3db514ffd840d87e4f-6"&gt;&lt;/a&gt;&lt;span class="k"&gt;set&lt;/span&gt; &lt;span class="nv"&gt;file&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;!file:"&lt;span class="o"&gt;=&lt;/span&gt;!
+&lt;a name="rest_code_90d1205ba7aa4f3db514ffd840d87e4f-7"&gt;&lt;/a&gt;&lt;span class="k"&gt;set&lt;/span&gt; &lt;span class="nv"&gt;row&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;!row:"&lt;span class="o"&gt;=&lt;/span&gt;!
+&lt;a name="rest_code_90d1205ba7aa4f3db514ffd840d87e4f-8"&gt;&lt;/a&gt;&lt;span class="nv"&gt;%comspec%&lt;/span&gt; &lt;span class="n"&gt;/q&lt;/span&gt; &lt;span class="n"&gt;/c&lt;/span&gt; (@&lt;span class="k"&gt;echo&lt;/span&gt; LYXCMD:revdvi&lt;span class="nl"&gt;:server&lt;/span&gt;-&lt;span class="k"&gt;goto&lt;/span&gt;-file-row:&lt;span class="nv"&gt;%file%&lt;/span&gt; &lt;span class="nv"&gt;%row%&lt;/span&gt;)&amp;gt; \\.\pipe\lyxpipe.in&amp;amp;&amp;amp;type \\.\pipe\lyxpipe.out
+&lt;a name="rest_code_90d1205ba7aa4f3db514ffd840d87e4f-9"&gt;&lt;/a&gt;&lt;span class="k"&gt;endlocal&lt;/span&gt;
 &lt;/pre&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/div&gt;
@@ -39,9 +34,9 @@ search.&lt;/p&gt;
 &lt;p&gt;Create a AutoHotkey script named &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;lyx-inverse-search.ahk&lt;/span&gt;&lt;/tt&gt; with the following
 code and save it to the same location to &lt;tt class="docutils literal"&gt;lyxeditor.cmd&lt;/tt&gt; and compile it with
 AutoHotkey to generate &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;lyx-inverse-search.exe&lt;/span&gt;&lt;/tt&gt;:&lt;/p&gt;
-&lt;pre class="code ahk"&gt;&lt;a name="rest_code_c213e4d506274d26827ec4ccf03856d5-1"&gt;&lt;/a&gt;&lt;span class="nb"&gt;SetTitleMatchMode&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;RegEx&lt;/span&gt;
-&lt;a name="rest_code_c213e4d506274d26827ec4ccf03856d5-2"&gt;&lt;/a&gt;&lt;span class="nb"&gt;Run&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;lyxeditor&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cmd&lt;/span&gt; &lt;span class="s"&gt;"%1%"&lt;/span&gt; &lt;span class="s"&gt;"%2%"&lt;/span&gt;&lt;span class="p"&gt;,,&lt;/span&gt; &lt;span class="n"&gt;Hide&lt;/span&gt;
-&lt;a name="rest_code_c213e4d506274d26827ec4ccf03856d5-3"&gt;&lt;/a&gt;&lt;span class="nb"&gt;WinActivate&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;^&lt;/span&gt;&lt;span class="n"&gt;LyX&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="p"&gt;,,,&lt;/span&gt;
+&lt;pre class="code ahk"&gt;&lt;a name="rest_code_003e52bde9274b268ec9f43479448993-1"&gt;&lt;/a&gt;&lt;span class="nb"&gt;SetTitleMatchMode&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;RegEx&lt;/span&gt;
+&lt;a name="rest_code_003e52bde9274b268ec9f43479448993-2"&gt;&lt;/a&gt;&lt;span class="nb"&gt;Run&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;lyxeditor&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cmd&lt;/span&gt; &lt;span class="s"&gt;"%1%"&lt;/span&gt; &lt;span class="s"&gt;"%2%"&lt;/span&gt;&lt;span class="p"&gt;,,&lt;/span&gt; &lt;span class="n"&gt;Hide&lt;/span&gt;
+&lt;a name="rest_code_003e52bde9274b268ec9f43479448993-3"&gt;&lt;/a&gt;&lt;span class="nb"&gt;WinActivate&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;^&lt;/span&gt;&lt;span class="n"&gt;LyX&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="p"&gt;,,,&lt;/span&gt;
 &lt;/pre&gt;&lt;p&gt;If you don't have AutoHotkey installed, you can also download the pre-compiled
 &lt;a class="reference external" href="https://dl.dropboxusercontent.com/u/561594/lyx-inverse-search.zip"&gt;exe&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
@@ -57,10 +52,10 @@ of SumatraPDF to &lt;tt class="docutils literal"&gt;PATH prefix&lt;/tt&gt;. For 
 &lt;li&gt;&lt;p class="first"&gt;In &lt;tt class="docutils literal"&gt;Tools&lt;/tt&gt; &amp;gt; &lt;tt class="docutils literal"&gt;Preferences&lt;/tt&gt; &amp;gt; &lt;tt class="docutils literal"&gt;File Handling&lt;/tt&gt; &amp;gt; &lt;tt class="docutils literal"&gt;File Formats&lt;/tt&gt;
 select &lt;tt class="docutils literal"&gt;PDF (pdflatex)&lt;/tt&gt; from the list &lt;tt class="docutils literal"&gt;Format&lt;/tt&gt; and modify &lt;tt class="docutils literal"&gt;Viewer&lt;/tt&gt; to
 the following (including quotes):&lt;/p&gt;
-&lt;pre class="code bat"&gt;&lt;a name="rest_code_af14a40215c04facb8d42d7e666809db-1"&gt;&lt;/a&gt;SumatraPDF -inverse-search &lt;span class="s2"&gt;"lyxeditor.cmd \"&lt;/span&gt;&lt;span class="nv"&gt;%f&lt;/span&gt;\&lt;span class="s2"&gt;" \"&lt;/span&gt;&lt;span class="nv"&gt;%l&lt;/span&gt;\&lt;span class="s2"&gt;""&lt;/span&gt;
+&lt;pre class="code bat"&gt;&lt;a name="rest_code_49f6429ef4fa4e548d49eac4a98d696a-1"&gt;&lt;/a&gt;SumatraPDF -inverse-search &lt;span class="s2"&gt;"lyxeditor.cmd \"&lt;/span&gt;&lt;span class="nv"&gt;%f&lt;/span&gt;\&lt;span class="s2"&gt;" \"&lt;/span&gt;&lt;span class="nv"&gt;%l&lt;/span&gt;\&lt;span class="s2"&gt;""&lt;/span&gt;
 &lt;/pre&gt;&lt;p&gt;If you have the compiled AutoHotkey script from above, use the following
 instead (recommended):&lt;/p&gt;
-&lt;pre class="code bat"&gt;&lt;a name="rest_code_121df3584f1b46e9b11d5f7aa2f2e49e-1"&gt;&lt;/a&gt;SumatraPDF -inverse-search &lt;span class="s2"&gt;"lyx-inverse-search.exe \"&lt;/span&gt;&lt;span class="nv"&gt;%f&lt;/span&gt;\&lt;span class="s2"&gt;" \"&lt;/span&gt;&lt;span class="nv"&gt;%l&lt;/span&gt;\&lt;span class="s2"&gt;""&lt;/span&gt;
+&lt;pre class="code bat"&gt;&lt;a name="rest_code_1e79e5ad80e14b86993b728111bcc50b-1"&gt;&lt;/a&gt;SumatraPDF -inverse-search &lt;span class="s2"&gt;"lyx-inverse-search.exe \"&lt;/span&gt;&lt;span class="nv"&gt;%f&lt;/span&gt;\&lt;span class="s2"&gt;" \"&lt;/span&gt;&lt;span class="nv"&gt;%l&lt;/span&gt;\&lt;span class="s2"&gt;""&lt;/span&gt;
 &lt;/pre&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;Now once you &lt;tt class="docutils literal"&gt;Document&lt;/tt&gt; -&amp;gt; &lt;tt class="docutils literal"&gt;View (PDF (pdflatex))&lt;/tt&gt; or &lt;tt class="docutils literal"&gt;View Master Documen&lt;/tt&gt; in

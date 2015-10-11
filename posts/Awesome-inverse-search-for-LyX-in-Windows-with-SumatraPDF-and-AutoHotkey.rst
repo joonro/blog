@@ -5,7 +5,9 @@
 .. link: 
 .. description: org file for my blog
 .. type: text
-.. author: Joon RoI describe how to setup inverse search between LyX and SumatraPDF and/or
+.. author: Joon Ro
+
+I describe how to setup inverse search between LyX and SumatraPDF and/or
 Okular. Most of the instructions overlap with the ones at
 `http://wiki.lyx.org/LyX/SyncTeX#toc3 <http://wiki.lyx.org/LyX/SyncTeX#toc3>`_.
 
@@ -15,8 +17,7 @@ LyX Settings
 1. Set ``Tools`` > ``Preferences`` > ``Paths`` > ``LyxServer pipe`` to
    ``\\.\pipe\lyxpipe``.
 
-2. In ``Document`` > ``Settings`` > ``Output``, check ``Synchronize with
-      output``. (checked by default)
+2. In ``Document`` > ``Settings`` > ``Output``, check ``Synchronize with output``. (checked by default)
 
 3. Create a batch-file named ``lyxeditor.cmd`` with the following contents and
    save it to one of the locations in your ``PATH`` Windows environmental
