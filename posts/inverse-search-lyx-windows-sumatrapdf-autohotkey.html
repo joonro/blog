@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Awesome inverse search for LyX in Windows with SumatraPDF and AutoHotkey | Joon's Blog</title>
+
+    
+            <link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="../assets/css/rst.css" rel="stylesheet" type="text/css">
+        <link href="../assets/css/code.css" rel="stylesheet" type="text/css">
+        <link href="../assets/css/colorbox.css" rel="stylesheet" type="text/css">
+        <link href="../assets/css/theme.css" rel="stylesheet" type="text/css">
+
+    
+            <link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
+
+      <link rel="canonical" href="http://joonro.github.io/blog/posts/inverse-search-lyx-windows-sumatrapdf-autohotkey.html">
+
+
+
+
+    
+        <!--[if lt IE 9]><script src="../assets/js/html5.js"></script><![endif]-->
+
+    
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/styles/github.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/languages/lisp.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/languages/powershell.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/languages/r.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-38842404-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+    
+
+    <meta name="author" content="Joon Ro">
+        <link rel="prev" href="installing-gsl-and-cythongsl-in-windows.html" title="Installing GNU Scientific Library (GSL) and CythonGSL in Windows" type="text/html">
+        <link rel="next" href="Awesome-inverse-search-for-LyX-in-Windows-with-SumatraPDF-and-AutoHotkey.html" title="Awesome inverse search for LyX in Windows with SumatraPDF and AutoHotkey" type="text/html">
+    
+    <meta property="og:site_name" content="Joon's Blog">
+    <meta property="og:title" content="Awesome inverse search for LyX in Windows with SumatraPDF and AutoHotk">
+    <meta property="og:url" content="http://joonro.github.io/blog/posts/inverse-search-lyx-windows-sumatrapdf-autohotkey.html">
+    <meta property="og:description" content="Table of Contents
+
+
+TODO Awesome inverse search for LyX in Windows with SumatraPDF and AutoHotkey   howto windows lyx latex
+
+AutoHotkey Script
+SumatraPDF
+
+
+
+
+
+
+
+TODO Awesome inverse search for LyX in ">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2015-08-17T02:24:25-05:00">
+           <meta property="article:tag" content="howto">
+           <meta property="article:tag" content="latex">
+           <meta property="article:tag" content="lyx">
+           <meta property="article:tag" content="windows">
+
+    
+
+    
+
+
+
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+    <div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://joonro.github.io/blog/">
+
+                <span id="blog-title">Joon's Blog</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                
+                <li>
+<a href="../archive.html">Archive</a>
+                </li>
+<li>
+<a href="../categories/index.html">Tags</a>
+                </li>
+<li>
+<a href="../rss.xml">RSS feed</a>
+
+                
+            </li>
+</ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                
+                
+                    
+    <li>
+    <a href="inverse-search-lyx-windows-sumatrapdf-autohotkey.wp" id="sourcelink">Source</a>
+    </li>
+
+                
+            </ul>
+        </div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav>
+
+<!-- End of Menubar -->
+
+<div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article">
+    
+    <header>
+        
+    <h1 class="p-name entry-title" itemprop="headline name"><a href="#" class="u-url">Awesome inverse search for LyX in Windows with SumatraPDF and AutoHotkey</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Joon Ro</span></p>
+            <p class="dateline"><a href="#" rel="bookmark"><time class="published dt-published" datetime="2015-08-17T02:24:25-05:00" itemprop="datePublished" title="2015-08-17 02:24">2015-08-17 02:24</time></a></p>
+                <p class="commentline">
+        
+    <a href="inverse-search-lyx-windows-sumatrapdf-autohotkey.html#disqus_thread" data-disqus-identifier="cache/posts/inverse-search-lyx-windows-sumatrapdf-autohotkey.html">Comments</a>
+
+
+            
+        </p>
+<p class="sourceline"><a href="inverse-search-lyx-windows-sumatrapdf-autohotkey.wp" id="sourcelink">Source</a></p>
+
+        </div>
+        
+
+    </header>
+
+    <div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<div id="table-of-contents">
+<h3>Table of Contents</h3>
+<div id="text-table-of-contents">
+<ul>
+<li>
+<a href="inverse-search-lyx-windows-sumatrapdf-autohotkey.html#orgheadline1"><span class="todo nilTODO">TODO</span> Awesome inverse search for LyX in Windows with SumatraPDF and AutoHotkey   <span class="tag"><span class="howto">howto</span> <span class="windows">windows</span> <span class="lyx">lyx</span> <span class="latex">latex</span></span></a>
+<ul>
+<li><a href="inverse-search-lyx-windows-sumatrapdf-autohotkey.html#orgheadline2">AutoHotkey Script</a></li>
+<li><a href="inverse-search-lyx-windows-sumatrapdf-autohotkey.html#orgheadline3">SumatraPDF</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline1" class="outline-2">
+<h3 id="orgheadline1">
+<span class="todo TODO">TODO</span> Awesome inverse search for LyX in Windows with SumatraPDF and AutoHotkey   <span class="tag"><span class="howto">howto</span> <span class="windows">windows</span> <span class="lyx">lyx</span> <span class="latex">latex</span></span>
+</h3>
+<div class="outline-text-2" id="text-orgheadline1">
+<p>
+I describe how to setup inverse search between LyX and SumatraPDF and/or
+Okular. Most of the instructions overlap with the ones at
+<a href="http://wiki.lyx.org/LyX/SyncTeX#toc3">http://wiki.lyx.org/LyX/SyncTeX#toc3</a>.
+</p>
+
+<ol class="org-ol">
+<li>Set <code>Tools</code> &gt; <code>Preferences</code> &gt; <code>Paths</code> &gt; <code>LyxServer pipe</code> to
+<code>\\.\pipe\lyxpipe</code>.</li>
+<li>In <code>Document</code> &gt; <code>Settings</code> &gt; <code>Output</code>, check <code>Synchronize with
+   output</code>. (checked by default)</li>
+<li>
+<p>
+Create a batch-file named <code>lyxeditor.cmd</code> with the following contents and
+save it to one of the locations in your <code>PATH</code> Windows environmental
+variable, so the pdf editor can call it:
+</p>
+
+<div class="org-src-container">
+
+
+<pre><code class="lang-bat">@echo off
+SETLOCAL enabledelayedexpansion
+set file=%1
+set row=%2
+REM remove quotes from variables 
+set file=!file:"=!
+set row=!row:"=!
+%comspec% /q /c (@echo LYXCMD:revdvi:server-goto-file-row:%file% %row%)&gt; \\.\pipe\lyxpipe.in&amp;&amp;type \\.\pipe\lyxpipe.out
+endlocal
+</code></pre>
+
+</div>
+
+<p></p>
+</li>
+</ol>
+</div>
+<div id="outline-container-orgheadline2" class="outline-3">
+<h4 id="orgheadline2">AutoHotkey Script</h4>
+<div class="outline-text-3" id="text-orgheadline2">
+<p>
+The above cmd works well, but it shows an annoying black cmd window everytime
+when you invoke the script. With a simple AutoHotkey script, one can not only
+suppress this window, but also activate the LyX window after the inverse
+search.
+</p>
+<p>
+Create a AutoHotkey script named <code>lyx-inverse-search.ahk</code> with the following
+code and save it to the same location to <code>lyxeditor.cmd</code> and compile it with
+AutoHotkey to generate <code>lyx-inverse-search.exe</code>:
+</p>
+
+<div class="org-src-container">
+
+<pre><code class="lang-ahk">SetTitleMatchMode, RegEx
+Run, lyxeditor.cmd "%1%" "%2%",, Hide
+WinActivate, ^LyX:,,,
+</code></pre>
+
+</div>
+
+<p>
+If you don't have AutoHotkey installed, you can also download the pre-compiled
+<a href="https://dl.dropboxusercontent.com/u/561594/lyx-inverse-search.zip">exe</a>.
+</p>
+
+<p></p>
+</div>
+</div>
+<div id="outline-container-orgheadline3" class="outline-3">
+<h4 id="orgheadline3">SumatraPDF</h4>
+<div class="outline-text-3" id="text-orgheadline3">
+<p>
+<a href="http://wiki.lyx.org/Windows/LyXWinTips#toc6">http://wiki.lyx.org/Windows/LyXWinTips#toc6</a>
+</p>
+<ol class="org-ol">
+<li>Download and install <a href="http://blog.kowalczyk.info/software/sumatrapdf/download-free-pdf-viewer.html">Sumatra PDF</a>.</li>
+<li>In LyX, <code>Tools</code> &gt; <code>Preferences</code> &gt; <code>Paths</code> and append the install location
+of SumatraPDF to <code>PATH prefix</code>. For example, <code>C:\Program Files\SumatraPDF</code>.</li>
+<li>
+<p>
+In <code>Tools</code> &gt; <code>Preferences</code> &gt; <code>File Handling</code> &gt; <code>File Formats</code>
+select <code>PDF (pdflatex)</code> from the list <code>Format</code> and modify <code>Viewer</code> to
+the following (including quotes):
+</p>
+
+<div class="org-src-container">
+
+
+<pre><code class="lang-bat">SumatraPDF -inverse-search "lyxeditor.cmd \"%f\" \"%l\""
+</code></pre>
+
+</div>
+
+<p>
+If you have the compiled AutoHotkey script from above, use the following
+instead (recommended): 
+</p>
+
+<div class="org-src-container">
+
+
+<pre><code class="lang-bat">SumatraPDF -inverse-search "lyx-inverse-search.exe \"%f\" \"%l\""
+</code></pre>
+
+</div>
+
+<div class="NOTES">
+<p>
+If <code>lyxeditor.cmd</code> or <code>lyx-inverse-search.exe</code> is not in your 
+<code>PATH</code>, then you have to specify the full path here.
+</p>
+
+</div>
+</li>
+</ol>
+
+<p>
+Now once you <code>Document</code> -&gt; <code>View (PDF (pdflatex))</code> or <code>View Master Documen</code> in
+LyX to compile your <code>.lyx</code> file and invoke SumatraPDF to view the resulting
+pdf, you can double-click on any text on the body of the document to go to the
+corresponding text in LyX.
+</p>
+
+<p></p>
+</div>
+</div>
+</div>
+</div>
+    </div>
+    <aside class="postpromonav">
+    <nav>
+    
+        <ul itemprop="keywords" class="tags">
+            <li><a class="tag p-category" href="../categories/howto.html" rel="tag">howto</a></li>
+            <li><a class="tag p-category" href="../categories/latex.html" rel="tag">latex</a></li>
+            <li><a class="tag p-category" href="../categories/lyx.html" rel="tag">lyx</a></li>
+            <li><a class="tag p-category" href="../categories/windows.html" rel="tag">windows</a></li>
+        </ul>
+
+    
+        <ul class="pager">
+            <li class="previous">
+                <a href="installing-gsl-and-cythongsl-in-windows.html" rel="prev" title="Installing GNU Scientific Library (GSL) and CythonGSL in Windows">Previous post</a>
+            </li>
+            <li class="next">
+                <a href="Awesome-inverse-search-for-LyX-in-Windows-with-SumatraPDF-and-AutoHotkey.html" rel="next" title="Awesome inverse search for LyX in Windows with SumatraPDF and AutoHotkey">Next post</a>
+            </li>
+        </ul>
+
+    </nav>
+    </aside>
+        <section class="comments">
+        <h2>Comments</h2>
+        
+        
+        <div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="joon-blog",
+            disqus_url="http://joonro.github.io/blog/posts/inverse-search-lyx-windows-sumatrapdf-autohotkey.html",
+        disqus_title="Awesome inverse search for LyX in Windows with SumatraPDF and AutoHotkey",
+        disqus_identifier="cache/posts/inverse-search-lyx-windows-sumatrapdf-autohotkey.html",
+        disqus_config = function () {
+            this.language = "en";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="//disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+        </section>
+    
+
+</article>
+
+        
+       <script>var disqus_shortname="joon-blog";(function(){var a=document.createElement("script");a.async=true;a.src="//"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+
+
+
+        </div>
+        <!--End of body content-->
+
+        <footer>
+            Contents © 2015         <a href="mailto:joon.ro@outlook.com">Joon Ro</a> - Powered by         <a href="http://getnikola.com" rel="nofollow">Nikola</a>         
+            
+        </footer>
+    </div>
+</div>
+
+
+            <script src="../assets/js/jquery.min.js"></script>
+            <script src="../assets/js/bootstrap.min.js"></script>
+            <script src="../assets/js/moment-with-locales.min.js"></script>
+            <script src="../assets/js/fancydates.js"></script>
+        <script src="../assets/js/jquery.colorbox-min.js"></script>
+    
+
+    <script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script>
+    <!-- fancy dates -->
+    <script>
+    moment.locale("");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script>
+    <!-- end fancy dates -->
+    
+
+
+</body>
+</html>

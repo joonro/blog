@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Joon's Blog (org)</title><link>http://joonro.github.io/blog/</link><description></description><atom:link type="application/rss+xml" href="http://joonro.github.io/blog/categories/org.xml" rel="self"></atom:link><language>en</language><lastBuildDate>Mon, 14 Sep 2015 16:25:02 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>org-mode Google calendar sync in Windows</title><link>http://joonro.github.io/blog/posts/org-mode-google-calendar-sync-in-windows.html</link><dc:creator>Joon Ro</dc:creator><description>&lt;div&gt;&lt;div id="table-of-contents"&gt;
+&lt;h3&gt;Table of Contents&lt;/h3&gt;
+&lt;div id="text-table-of-contents"&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://joonro.github.io/blog/posts/org-mode-google-calendar-sync-in-windows.html#orgheadline3"&gt;1. Dependencies&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://joonro.github.io/blog/posts/org-mode-google-calendar-sync-in-windows.html#orgheadline1"&gt;1.1. &lt;code&gt;ical2org.py&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://joonro.github.io/blog/posts/org-mode-google-calendar-sync-in-windows.html#orgheadline2"&gt;1.2. Find your private URL for your calendar&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://joonro.github.io/blog/posts/org-mode-google-calendar-sync-in-windows.html#orgheadline4"&gt;2. PowerShell script&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://joonro.github.io/blog/posts/org-mode-google-calendar-sync-in-windows.html#orgheadline5"&gt;3. Install cron&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;
+The &lt;a href="http://orgmode.org/worg/org-tutorials/org-google-sync.html"&gt;instructions&lt;/a&gt; at Org-mode does not cover the Windows case. I explain how
+you can get the sync between Google calendar and org-mode in Windows.
+&lt;/p&gt;
+
+&lt;div id="outline-container-orgheadline3" class="outline-2"&gt;
+&lt;h3 id="orgheadline3"&gt;&lt;span class="section-number-2"&gt;1&lt;/span&gt; Dependencies&lt;/h3&gt;
+&lt;div class="outline-text-2" id="text-1"&gt;
+&lt;/div&gt;&lt;div id="outline-container-orgheadline1" class="outline-3"&gt;
+&lt;h4 id="orgheadline1"&gt;&lt;span class="section-number-3"&gt;1.1&lt;/span&gt; &lt;code&gt;ical2org.py&lt;/code&gt;&lt;/h4&gt;
+&lt;div class="outline-text-3" id="text-1-1"&gt;
+&lt;p&gt;
+Get the &lt;code&gt;ical2org.py&lt;/code&gt; script from &lt;a href="https://github.com/asoroa/ical2org.py"&gt;https://github.com/asoroa/ical2org.py&lt;/a&gt;. You
+have to have Python installed, and also need to install &lt;code&gt;icalendar&lt;/code&gt; and &lt;code&gt;pytz&lt;/code&gt;:
+&lt;/p&gt;
+
+&lt;div class="org-src-container"&gt;
+
+
+&lt;pre&gt;&lt;code class="lang-sh"&gt;&amp;gt; pip install icalendar
+&amp;gt; pip install pytz
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id="outline-container-orgheadline2" class="outline-3"&gt;
+&lt;h4 id="orgheadline2"&gt;&lt;span class="section-number-3"&gt;1.2&lt;/span&gt; Find your private URL for your calendar&lt;/h4&gt;
+&lt;div class="outline-text-3" id="text-1-2"&gt;
+&lt;p&gt;
+Follow step 2 in this &lt;a href="http://orgmode.org/worg/org-tutorials/org-google-sync.html"&gt;instruction&lt;/a&gt; to get the private URL for your calendar.
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;div id="outline-container-orgheadline4" class="outline-2"&gt;
+&lt;h3 id="orgheadline4"&gt;&lt;span class="section-number-2"&gt;2&lt;/span&gt; PowerShell script&lt;/h3&gt;
+&lt;div class="outline-text-2" id="text-2"&gt;
+&lt;p&gt;
+First check if you can download your calendar with &lt;code&gt;Invoke-WebRequest&lt;/code&gt;:
+&lt;/p&gt;
+
+&lt;div class="org-src-container"&gt;
+
+
+&lt;pre&gt;&lt;code class="lang-posh"&gt;&amp;gt; Invoke-WebRequest -URI &amp;lt;url to your private Google calendar&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;
+If it works, make a PowerShell script file,  &lt;code&gt;convert-gcal-to-org.ps1&lt;/code&gt;:
+&lt;/p&gt;
+
+&lt;div class="org-src-container"&gt;
+
+&lt;pre&gt;&lt;code class="lang-posh"&gt;# customize these
+$ICS2ORG = "&amp;lt;path to ical2org.py&amp;gt;"
+$ICSFILE = "&amp;lt;path for icsfile&amp;gt;"
+$ORGFILE = "&amp;lt;path to orgfile&amp;gt;"
+$URL = "&amp;lt;url to your private Google calendar&amp;gt;"
+
+# no customization needed below
+$Content = (Invoke-WebRequest -URI $URL).Content
+[System.IO.File]::WriteAllLines($ICSFILE, $Content)
+
+python $ICS2ORG $ICSFILE $ORGFILE
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;
+for example:
+&lt;/p&gt;
+
+&lt;div class="org-src-container"&gt;
+
+&lt;pre&gt;&lt;code class="lang-posh"&gt;# customize these    
+$ICS2ORG = "~/bin/ical2org.py"
+$ICSFILE = "~/bin/gcal-shared.ical"
+$ORGFILE = "~/gcal.org"
+$URL = "https://www.google.com/calendar/ical/...../basic.ics"
+
+# no customization needed below
+$Content = (Invoke-WebRequest -URI $URL).Content
+[System.IO.File]::WriteAllLines($ICSFILE, $Content) 
+
+python $ICS2ORG $ICSFILE $ORGFILE
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;
+Now try the script and see if it works:
+&lt;/p&gt;
+
+&lt;div class="org-src-container"&gt;
+
+&lt;pre&gt;&lt;code class="lang-posh"&gt;&amp;gt; convert-gcal-to-org.ps1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;
+If you have the output &lt;code&gt;org&lt;/code&gt; file in your &lt;code&gt;org-agenda-files&lt;/code&gt; list, you will
+see the entries from Google calendar when you update your agenda in Emacs.
+&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id="outline-container-orgheadline5" class="outline-2"&gt;
+&lt;h3 id="orgheadline5"&gt;&lt;span class="section-number-2"&gt;3&lt;/span&gt; Install cron&lt;/h3&gt;
+&lt;div class="outline-text-2" id="text-3"&gt;
+&lt;p&gt;
+You can install &lt;a href="http://www.intelliadmin.com/index.php/2012/05/free-utility-a-simple-task-scheduler-for-windows/"&gt;IntelliAdmin Cron&lt;/a&gt; to periodically run the script and sync your
+calendars with &lt;code&gt;org-mode&lt;/code&gt;. &lt;a href="http://thecrumb.com/2013/03/24/new-cron-for-windows/"&gt;Here&lt;/a&gt; is a blog post about this specific cron utility.
+&lt;/p&gt;
+
+&lt;p&gt;
+Then, use the following to set up the cronjob, with appropriate schedule settings:
+&lt;/p&gt;
+
+&lt;dl class="org-dl"&gt;
+&lt;dt&gt;EXE File&lt;/dt&gt;&lt;dd&gt;&lt;code&gt;C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe&lt;/code&gt;&lt;/dd&gt;
+&lt;dt&gt;Arguments&lt;/dt&gt;&lt;dd&gt;&lt;code&gt;-file C:\PATH\TO\convert-gcal-to-org.ps1&lt;/code&gt;&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;p&gt;
+For example:
+&lt;/p&gt;
+
+
+&lt;div class="figure"&gt;
+&lt;p&gt;&lt;img src="http://joonro.github.io/blog/wp-content/Capture-crontab-org-mode-google-sync.png" alt="Capture-crontab-org-mode-google-sync.png"&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;&lt;/div&gt;</description><category>emacs</category><category>org</category><category>posh</category><category>windows</category><guid>http://joonro.github.io/blog/posts/org-mode-google-calendar-sync-in-windows.html</guid><pubDate>Sat, 09 May 2015 20:27:18 GMT</pubDate></item><item><title>Changed the blog engine to nikola</title><link>http://joonro.github.io/blog/posts/changed-the-blog-engine-to-nikola.html</link><dc:creator>Joon Ro</dc:creator><description>&lt;div&gt;&lt;div id="table-of-contents"&gt;
+&lt;h3&gt;Table of Contents&lt;/h3&gt;
+&lt;div id="text-table-of-contents"&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://joonro.github.io/blog/posts/changed-the-blog-engine-to-nikola.html#orgheadline1"&gt;1. reStructuredText to org-mode&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://joonro.github.io/blog/posts/changed-the-blog-engine-to-nikola.html#orgheadline2"&gt;2. nikola&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://joonro.github.io/blog/posts/changed-the-blog-engine-to-nikola.html#orgheadline4"&gt;3. Setup&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://joonro.github.io/blog/posts/changed-the-blog-engine-to-nikola.html#orgheadline3"&gt;3.1. Syntax Highlighting&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://joonro.github.io/blog/posts/changed-the-blog-engine-to-nikola.html#orgheadline5"&gt;4. How to use&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;
+It has been a while since the last time I updated my blog. I changed my blogging
+engine to &lt;a href="http://getnikola.com/"&gt;nikola&lt;/a&gt;. Now my tool chain for writing is more streamlined, hopefully
+I post more frequently.
+&lt;/p&gt;
+
+&lt;div id="outline-container-orgheadline1" class="outline-2"&gt;
+&lt;h3 id="orgheadline1"&gt;&lt;span class="section-number-2"&gt;1&lt;/span&gt; reStructuredText to org-mode&lt;/h3&gt;
+&lt;div class="outline-text-2" id="text-1"&gt;
+&lt;p&gt;
+I do enjoy using one general tool for many tasks - I like having a consistent
+environment for different tasks. For example, I chose Python (a general
+purpose language) instead of domain specific languages such as R and MATLAB
+for my programming needs.
+&lt;/p&gt;
+
+&lt;p&gt;
+I have been looking for something like that for my writing as well, and since
+I used Python a lot, reStructuredText was a good candidate. With
+reStructuredText, I could generate output in multiple formats (html, pdf,
+slides), and I like the grammar. 
+&lt;/p&gt;
+
+&lt;p&gt;
+With reStructuredText, I started using Emacs more for writing. Emacs'
+&lt;code&gt;rst-mode&lt;/code&gt; is very well done, and I have been using &lt;a href="http://orgmode.org/"&gt;org-mode&lt;/a&gt; for a while as
+well, even though for a while I mainly used it for the TODO list management
+and some outline generation only. 
+&lt;/p&gt;
+
+&lt;p&gt;
+Then this year I started teaching, and I had multiple sections, and I started
+looking for ways to minimize the redundancy in course contents files. For
+example, syllabi for all sections of classes share many common parts and if I
+maintain separate files for each class, I have to modify all the files
+every time I make some changes on one of the common parts.
+&lt;/p&gt;
+
+&lt;p&gt;
+So I started writing lecture slides in reStructuredText in org-mode, putting
+reStructuredText code in code blocks and using &lt;code&gt;org-babel&lt;/code&gt; to tangle the
+source code into output files. In that way, I just write the common parts
+once, and I could include them in multiple files. For slide generation, I used
+&lt;a href="http://docs.hieroglyph.io/en/latest/"&gt;hieroglyph&lt;/a&gt; package which was great. Also I liked that I can generate
+document-style lecture note for distribution from the same source.
+&lt;/p&gt;
+
+&lt;p&gt;
+But quickly I started feeling that putting reStructuredText code inside code
+blocks cumbersome. In addition, I really missed the easy navigation of tree
+structure of org-mode. So I looked for a way to just use org-mode to write
+everything instead of putting reStructuredText code inside code-blocks. 
+&lt;/p&gt;
+
+&lt;p&gt;
+Then I learned about &lt;code&gt;org-export&lt;/code&gt; which can export an org-mode document to
+multiple output formats. Since then I started using org-mode to write my
+course notes. I had to learn a few tricks and also install org 8.3beta, but
+now the results has been very satisfactory. Now I write lecture note in
+org-mode, , and use &lt;code&gt;ox-beamer&lt;/code&gt; to generate beamer slides for presentations,
+and use &lt;code&gt;ox-latex&lt;/code&gt; to generate lecture notes from the same source. &lt;code&gt;org-mode&lt;/code&gt;
+is just a pleasure to use. Now I believe I found the tool-chain for all my
+writing needs: Emacs and &lt;code&gt;org-mode&lt;/code&gt;.
+&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div id="outline-container-orgheadline2" class="outline-2"&gt;
+&lt;h3 id="orgheadline2"&gt;&lt;span class="section-number-2"&gt;2&lt;/span&gt; nikola&lt;/h3&gt;
+&lt;div class="outline-text-2" id="text-2"&gt;
+&lt;p&gt;
+Naturally I started searching for a blogging engine which enables me to use
+org-mode. I have been using &lt;a href="http://tinkerer.me/"&gt;tinkerer&lt;/a&gt; for a while, and it is great, but there
+are a couple of steps you have to go through to use org-mode to write
+posts. Exporting a subtree to a &lt;code&gt;.rst&lt;/code&gt; file is easy, but there are some manual
+steps involved - basically you have to add a new post to the sphinx index file
+either by manually or by using tinkerer.
+&lt;/p&gt;
+&lt;p&gt;
+Then I found &lt;a href="http://getnikola.com/"&gt;nikola&lt;/a&gt;. Unlike tinkerer, nikola automatically reads files in the
+designated posts folder and generates index - so you don't have to manually
+add anything to the index. In addition, there is a tool &lt;a href="https://github.com/redguardtoo/org2nikola"&gt;org2nikola&lt;/a&gt; which
+generates a post from a org subtree, so I can put all my posts into one &lt;code&gt;.org&lt;/code&gt;
+file.
+&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id="outline-container-orgheadline4" class="outline-2"&gt;
+&lt;h3 id="orgheadline4"&gt;&lt;span class="section-number-2"&gt;3&lt;/span&gt; Setup&lt;/h3&gt;
+&lt;div class="outline-text-2" id="text-3"&gt;
+&lt;p&gt;
+You need to add the &lt;code&gt;.wp&lt;/code&gt; file extensions to the &lt;code&gt;POSTS&lt;/code&gt; and &lt;code&gt;PAGES&lt;/code&gt; tuples,
+and also to markdown compilers in your &lt;code&gt;conf.py&lt;/code&gt;:
+&lt;/p&gt;
+&lt;div class="org-src-container"&gt;
+
+&lt;pre&gt;&lt;code class="lang-python"&gt;POSTS = (
+    ("posts/*.rst", "posts", "post.tmpl"),
+    ("posts/*.txt", "posts", "post.tmpl"),
+    ("posts/*.wp", "posts", "post.tmpl"),
+)
+PAGES = (
+    ("stories/*.rst", "stories", "story.tmpl"),
+    ("stories/*.txt", "stories", "story.tmpl"),
+    ("stories/*.wp", "stories", "story.tmpl"),
+)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+
+&lt;div class="org-src-container"&gt;
+
+&lt;pre&gt;&lt;code class="lang-python"&gt;COMPILERS = {
+    "rest": ('.rst', '.txt'),
+    "markdown": ('.md', '.mdown', '.markdown', '.wp'),
+    "textile": ('.textile',),
+    "txt2tags": ('.t2t',),
+    "bbcode": ('.bb',),
+    "wiki": ('.wiki',),
+    "ipynb": ('.ipynb',),
+    "html": ('.html', '.htm'),
+    # PHP files are rendered the usual way (i.e. with the full templates).
+    # The resulting files have .php extensions, making it possible to run
+    # them without reconfiguring your server to recognize them.
+    "php": ('.php',),
+    # Pandoc detects the input from the source filename
+    # but is disabled by default as it would conflict
+    # with many of the others.
+    # "pandoc": ('.rst', '.md', '.txt'),
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div id="outline-container-orgheadline3" class="outline-3"&gt;
+&lt;h4 id="orgheadline3"&gt;&lt;span class="section-number-3"&gt;3.1&lt;/span&gt; Syntax Highlighting&lt;/h4&gt;
+&lt;div class="outline-text-3" id="text-3-1"&gt;
+&lt;p&gt;
+To use &lt;a href="https://highlightjs.org/"&gt;highlight.js&lt;/a&gt; for syntax highlighting, add a definition of &lt;code&gt;EXTRA_HEAD_DATA&lt;/code&gt;:
+&lt;/p&gt;
+&lt;div class="org-src-container"&gt;
+&lt;pre&gt;&lt;code class="lang-python"&gt;EXTRA_HEAD_DATA = """
+&amp;lt;link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/styles/default.min.css"&amp;gt;
+&amp;lt;script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"&amp;gt;&amp;lt;/script&amp;gt;
+
+&amp;lt;script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/languages/lisp.min.js"&amp;gt;&amp;lt;/script&amp;gt;
+&amp;lt;script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/languages/r.min.js"&amp;gt;&amp;lt;/script&amp;gt;
+
+&amp;lt;script&amp;gt;hljs.initHighlightingOnLoad();&amp;lt;/script&amp;gt;
+"""
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;
+As you can see, I added syntax highlighting for &lt;code&gt;lisp&lt;/code&gt; and &lt;code&gt;r&lt;/code&gt; in addition to
+the defaults ones. You can change the theme from &lt;code&gt;default&lt;/code&gt; to others such as
+&lt;code&gt;solarized_light&lt;/code&gt;. 
+&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id="outline-container-orgheadline5" class="outline-2"&gt;
+&lt;h3 id="orgheadline5"&gt;&lt;span class="section-number-2"&gt;4&lt;/span&gt; How to use&lt;/h3&gt;
+&lt;div class="outline-text-2" id="text-4"&gt;
+&lt;p&gt;
+Just call &lt;code&gt;org2nikola-export-subtree&lt;/code&gt; in the subtree that you want to export
+as a nikola post. It will ask you where is the root directory for your nikola
+blog. It seems it just uses the top level heading.
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;</description><category>blogging</category><category>emacs</category><category>nikola</category><category>org</category><guid>http://joonro.github.io/blog/posts/changed-the-blog-engine-to-nikola.html</guid><pubDate>Sun, 03 May 2015 04:49:55 GMT</pubDate></item></channel></rss>

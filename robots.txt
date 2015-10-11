@@ -1,0 +1,2 @@
+Sitemap: http://joonro.github.io/blog/sitemapindex.xml
+

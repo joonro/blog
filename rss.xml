@@ -1,0 +1,573 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Joon's Blog</title><link>http://joonro.github.io/blog/</link><description>Joon's Blog</description><atom:link rel="self" href="http://joonro.github.io/blog/rss.xml" type="application/rss+xml"></atom:link><language>en</language><lastBuildDate>Sun, 11 Oct 2015 02:43:07 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Awesome inverse search for LyX in Windows with SumatraPDF and AutoHotkey</title><link>http://joonro.github.io/blog/posts/Awesome-inverse-search-for-LyX-in-Windows-with-SumatraPDF-and-AutoHotkey.html</link><dc:creator>Joon Ro</dc:creator><description>&lt;div&gt;&lt;p&gt;I describe how to setup inverse search between LyX and SumatraPDF and/or
+Okular. Most of the instructions overlap with the ones at
+&lt;a class="reference external" href="http://wiki.lyx.org/LyX/SyncTeX#toc3"&gt;http://wiki.lyx.org/LyX/SyncTeX#toc3&lt;/a&gt;.&lt;/p&gt;
+&lt;div class="section" id="lyx-settings"&gt;
+&lt;h2&gt;LyX Settings&lt;/h2&gt;
+&lt;ol class="arabic"&gt;
+&lt;li&gt;&lt;p class="first"&gt;Set &lt;tt class="docutils literal"&gt;Tools&lt;/tt&gt; &amp;gt; &lt;tt class="docutils literal"&gt;Preferences&lt;/tt&gt; &amp;gt; &lt;tt class="docutils literal"&gt;Paths&lt;/tt&gt; &amp;gt; &lt;tt class="docutils literal"&gt;LyxServer pipe&lt;/tt&gt; to
+&lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;\\.\pipe\lyxpipe&lt;/span&gt;&lt;/tt&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;In &lt;tt class="docutils literal"&gt;Document&lt;/tt&gt; &amp;gt; &lt;tt class="docutils literal"&gt;Settings&lt;/tt&gt; &amp;gt; &lt;tt class="docutils literal"&gt;Output&lt;/tt&gt;, check &lt;tt class="docutils literal"&gt;Synchronize with output&lt;/tt&gt;. (checked by default)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Create a batch-file named &lt;tt class="docutils literal"&gt;lyxeditor.cmd&lt;/tt&gt; with the following contents and
+save it to one of the locations in your &lt;tt class="docutils literal"&gt;PATH&lt;/tt&gt; Windows environmental
+variable, so the pdf editor can call it:&lt;/p&gt;
+&lt;pre class="code bat"&gt;&lt;a name="rest_code_8cf8181b342e4343bac3e15f3c1f1687-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;@&lt;/span&gt;&lt;span class="k"&gt;echo&lt;/span&gt; &lt;span class="k"&gt;off&lt;/span&gt;
+&lt;a name="rest_code_8cf8181b342e4343bac3e15f3c1f1687-2"&gt;&lt;/a&gt;&lt;span class="k"&gt;SETLOCAL&lt;/span&gt; enabledelayedexpansion
+&lt;a name="rest_code_8cf8181b342e4343bac3e15f3c1f1687-3"&gt;&lt;/a&gt;&lt;span class="k"&gt;set&lt;/span&gt; &lt;span class="nv"&gt;file&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;%1&lt;/span&gt;
+&lt;a name="rest_code_8cf8181b342e4343bac3e15f3c1f1687-4"&gt;&lt;/a&gt;&lt;span class="k"&gt;set&lt;/span&gt; &lt;span class="nv"&gt;row&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;%2&lt;/span&gt;
+&lt;a name="rest_code_8cf8181b342e4343bac3e15f3c1f1687-5"&gt;&lt;/a&gt;&lt;span class="c"&gt;REM remove quotes from variables&lt;/span&gt;
+&lt;a name="rest_code_8cf8181b342e4343bac3e15f3c1f1687-6"&gt;&lt;/a&gt;&lt;span class="k"&gt;set&lt;/span&gt; &lt;span class="nv"&gt;file&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;!file:"&lt;span class="o"&gt;=&lt;/span&gt;!
+&lt;a name="rest_code_8cf8181b342e4343bac3e15f3c1f1687-7"&gt;&lt;/a&gt;&lt;span class="k"&gt;set&lt;/span&gt; &lt;span class="nv"&gt;row&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;!row:"&lt;span class="o"&gt;=&lt;/span&gt;!
+&lt;a name="rest_code_8cf8181b342e4343bac3e15f3c1f1687-8"&gt;&lt;/a&gt;&lt;span class="nv"&gt;%comspec%&lt;/span&gt; &lt;span class="n"&gt;/q&lt;/span&gt; &lt;span class="n"&gt;/c&lt;/span&gt; (@&lt;span class="k"&gt;echo&lt;/span&gt; LYXCMD:revdvi&lt;span class="nl"&gt;:server&lt;/span&gt;-&lt;span class="k"&gt;goto&lt;/span&gt;-file-row:&lt;span class="nv"&gt;%file%&lt;/span&gt; &lt;span class="nv"&gt;%row%&lt;/span&gt;)&amp;gt; \\.\pipe\lyxpipe.in&amp;amp;&amp;amp;type \\.\pipe\lyxpipe.out
+&lt;a name="rest_code_8cf8181b342e4343bac3e15f3c1f1687-9"&gt;&lt;/a&gt;&lt;span class="k"&gt;endlocal&lt;/span&gt;
+&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class="section" id="autohotkey-script"&gt;
+&lt;h2&gt;AutoHotkey Script&lt;/h2&gt;
+&lt;p&gt;The above cmd works well, but it shows an annoying black cmd window everytime
+when you invoke the script. With a simple AutoHotkey script, one can not only
+suppress this window, but also activate the LyX window after the inverse
+search.&lt;/p&gt;
+&lt;p&gt;Create a AutoHotkey script named &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;lyx-inverse-search.ahk&lt;/span&gt;&lt;/tt&gt; with the following
+code and save it to the same location to &lt;tt class="docutils literal"&gt;lyxeditor.cmd&lt;/tt&gt; and compile it with
+AutoHotkey to generate &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;lyx-inverse-search.exe&lt;/span&gt;&lt;/tt&gt;:&lt;/p&gt;
+&lt;pre class="code ahk"&gt;&lt;a name="rest_code_8bf70966a2f24a189573c97ef3a1e366-1"&gt;&lt;/a&gt;&lt;span class="nb"&gt;SetTitleMatchMode&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;RegEx&lt;/span&gt;
+&lt;a name="rest_code_8bf70966a2f24a189573c97ef3a1e366-2"&gt;&lt;/a&gt;&lt;span class="nb"&gt;Run&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;lyxeditor&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cmd&lt;/span&gt; &lt;span class="s"&gt;"%1%"&lt;/span&gt; &lt;span class="s"&gt;"%2%"&lt;/span&gt;&lt;span class="p"&gt;,,&lt;/span&gt; &lt;span class="n"&gt;Hide&lt;/span&gt;
+&lt;a name="rest_code_8bf70966a2f24a189573c97ef3a1e366-3"&gt;&lt;/a&gt;&lt;span class="nb"&gt;WinActivate&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;^&lt;/span&gt;&lt;span class="n"&gt;LyX&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="p"&gt;,,,&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;If you don't have AutoHotkey installed, you can also download the pre-compiled
+&lt;a class="reference external" href="https://dl.dropboxusercontent.com/u/561594/lyx-inverse-search.zip"&gt;exe&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="sumatrapdf"&gt;
+&lt;h2&gt;SumatraPDF&lt;/h2&gt;
+&lt;p&gt;&lt;a class="reference external" href="http://wiki.lyx.org/Windows/LyXWinTips#toc6"&gt;http://wiki.lyx.org/Windows/LyXWinTips#toc6&lt;/a&gt;&lt;/p&gt;
+&lt;ol class="arabic"&gt;
+&lt;li&gt;&lt;p class="first"&gt;Download and install &lt;a class="reference external" href="http://blog.kowalczyk.info/software/sumatrapdf/download-free-pdf-viewer.html"&gt;Sumatra PDF&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;In LyX, &lt;tt class="docutils literal"&gt;Tools&lt;/tt&gt; &amp;gt; &lt;tt class="docutils literal"&gt;Preferences&lt;/tt&gt; &amp;gt; &lt;tt class="docutils literal"&gt;Paths&lt;/tt&gt; and append the install location
+of SumatraPDF to &lt;tt class="docutils literal"&gt;PATH prefix&lt;/tt&gt;. For example, &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;C:\Program&lt;/span&gt; Files\SumatraPDF&lt;/tt&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;In &lt;tt class="docutils literal"&gt;Tools&lt;/tt&gt; &amp;gt; &lt;tt class="docutils literal"&gt;Preferences&lt;/tt&gt; &amp;gt; &lt;tt class="docutils literal"&gt;File Handling&lt;/tt&gt; &amp;gt; &lt;tt class="docutils literal"&gt;File Formats&lt;/tt&gt;
+select &lt;tt class="docutils literal"&gt;PDF (pdflatex)&lt;/tt&gt; from the list &lt;tt class="docutils literal"&gt;Format&lt;/tt&gt; and modify &lt;tt class="docutils literal"&gt;Viewer&lt;/tt&gt; to
+the following (including quotes):&lt;/p&gt;
+&lt;pre class="code bat"&gt;&lt;a name="rest_code_5b0315ab05e1447ab520b2cfc9b1d78d-1"&gt;&lt;/a&gt;SumatraPDF -inverse-search &lt;span class="s2"&gt;"lyxeditor.cmd \"&lt;/span&gt;&lt;span class="nv"&gt;%f&lt;/span&gt;\&lt;span class="s2"&gt;" \"&lt;/span&gt;&lt;span class="nv"&gt;%l&lt;/span&gt;\&lt;span class="s2"&gt;""&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;If you have the compiled AutoHotkey script from above, use the following
+instead (recommended):&lt;/p&gt;
+&lt;pre class="code bat"&gt;&lt;a name="rest_code_565b57acf4ea4a90ba6ed3ca913beb5a-1"&gt;&lt;/a&gt;SumatraPDF -inverse-search &lt;span class="s2"&gt;"lyx-inverse-search.exe \"&lt;/span&gt;&lt;span class="nv"&gt;%f&lt;/span&gt;\&lt;span class="s2"&gt;" \"&lt;/span&gt;&lt;span class="nv"&gt;%l&lt;/span&gt;\&lt;span class="s2"&gt;""&lt;/span&gt;
+&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Now once you &lt;tt class="docutils literal"&gt;Document&lt;/tt&gt; -&amp;gt; &lt;tt class="docutils literal"&gt;View (PDF (pdflatex))&lt;/tt&gt; or &lt;tt class="docutils literal"&gt;View Master Documen&lt;/tt&gt; in
+LyX to compile your &lt;tt class="docutils literal"&gt;.lyx&lt;/tt&gt; file and invoke SumatraPDF to view the resulting
+pdf, you can double-click on any text on the body of the document to go to the
+corresponding text in LyX.&lt;/p&gt;
+&lt;/div&gt;&lt;/div&gt;</description><category>autohotkey</category><category>howto</category><category>latex</category><category>lyx</category><category>setting</category><category>windows</category><guid>http://joonro.github.io/blog/posts/Awesome-inverse-search-for-LyX-in-Windows-with-SumatraPDF-and-AutoHotkey.html</guid><pubDate>Sat, 10 Oct 2015 05:00:00 GMT</pubDate></item><item><title>Installing GNU Scientific Library (GSL) and CythonGSL in Windows</title><link>http://joonro.github.io/blog/posts/installing-gsl-and-cythongsl-in-windows.html</link><dc:creator>Joon Ro</dc:creator><description>&lt;div&gt;&lt;div id="table-of-contents"&gt;
+&lt;h3&gt;Table of Contents&lt;/h3&gt;
+&lt;div id="text-table-of-contents"&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://joonro.github.io/blog/posts/installing-gsl-and-cythongsl-in-windows.html#orgheadline3"&gt;1. Download&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://joonro.github.io/blog/posts/installing-gsl-and-cythongsl-in-windows.html#orgheadline1"&gt;1.1. GSL&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://joonro.github.io/blog/posts/installing-gsl-and-cythongsl-in-windows.html#orgheadline2"&gt;1.2. CythonGSL&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://joonro.github.io/blog/posts/installing-gsl-and-cythongsl-in-windows.html#orgheadline4"&gt;2. Installing GSL&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://joonro.github.io/blog/posts/installing-gsl-and-cythongsl-in-windows.html#orgheadline7"&gt;3. Environmental Variables&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://joonro.github.io/blog/posts/installing-gsl-and-cythongsl-in-windows.html#orgheadline5"&gt;3.1. &lt;code&gt;LIB_GSL&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://joonro.github.io/blog/posts/installing-gsl-and-cythongsl-in-windows.html#orgheadline6"&gt;3.2. &lt;code&gt;PATH&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://joonro.github.io/blog/posts/installing-gsl-and-cythongsl-in-windows.html#orgheadline8"&gt;4. Installing CythonGSL&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;
+I describe how to install GNU Scientific Library (GSL) for CythonGSL in
+Windows.
+&lt;/p&gt;
+
+&lt;p&gt;
+&lt;a href="https://github.com/twiecki/CythonGSL"&gt;CythonGSL&lt;/a&gt; is a great module which expose functions of GNU Scientific Library
+(GSL) to Cython so you can use them in your Cython extension modules
+conveniently.
+&lt;/p&gt;
+
+&lt;p&gt;
+In GNU/Linux, you can install GSL library with development header files with a
+one liner (for example, &lt;code&gt;$ sudo zypper install gsl-devel&lt;/code&gt; in &lt;a href="https://www.opensuse.org/"&gt;openSUSE&lt;/a&gt;), but in
+Windows it is a bit more involved, and if you are not familiar with these kind
+of stuff (like me) it can take hours to figure out what is wrong. I hope this
+post will save some time for others.
+&lt;/p&gt;
+
+&lt;p&gt;
+In sum, you need to do 1) download and unpack GSL with header files and right
+architecture, 2) set &lt;code&gt;LIB_GSL&lt;/code&gt; environmental variable to the GSL directory,
+and 3) add the path to the &lt;code&gt;bin&lt;/code&gt; subdirectory of the GSL directory to &lt;code&gt;PATH&lt;/code&gt;
+environmental variable.
+&lt;/p&gt;
+
+&lt;div id="outline-container-orgheadline3" class="outline-2"&gt;
+&lt;h3 id="orgheadline3"&gt;&lt;span class="section-number-2"&gt;1&lt;/span&gt; Download&lt;/h3&gt;
+&lt;div class="outline-text-2" id="text-1"&gt;
+&lt;/div&gt;&lt;div id="outline-container-orgheadline1" class="outline-3"&gt;
+&lt;h4 id="orgheadline1"&gt;&lt;span class="section-number-3"&gt;1.1&lt;/span&gt; GSL&lt;/h4&gt;
+&lt;div class="outline-text-3" id="text-1-1"&gt;
+&lt;p&gt;
+&lt;a href="https://code.google.com/p/oscats/downloads/list"&gt;oscats&lt;/a&gt; project has the latest GSL Windows DLL and headers for both 32 and
+64-bit. Make sure you download the one for the right architecture (the same
+one as your Python installation). For example, &lt;code&gt;gsl-1.15-dev-win64.zip&lt;/code&gt; for
+the 64-bit.
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id="outline-container-orgheadline2" class="outline-3"&gt;
+&lt;h4 id="orgheadline2"&gt;&lt;span class="section-number-3"&gt;1.2&lt;/span&gt; CythonGSL&lt;/h4&gt;
+&lt;div class="outline-text-3" id="text-1-2"&gt;
+&lt;p&gt;
+If you use git, you can download CythonGSL with &lt;code&gt;git clone&lt;/code&gt;:
+&lt;/p&gt;
+
+&lt;div class="org-src-container"&gt;
+
+
+&lt;pre&gt;&lt;code class="lang-shell"&gt;git clone git://github.com/twiecki/CythonGSL.git
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;
+or you can just download the &lt;a href="https://github.com/twiecki/CythonGSL/archive/master.zip"&gt;zip archive&lt;/a&gt; of the master branch.
+&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id="outline-container-orgheadline4" class="outline-2"&gt;
+&lt;h3 id="orgheadline4"&gt;&lt;span class="section-number-2"&gt;2&lt;/span&gt; Installing GSL&lt;/h3&gt;
+&lt;div class="outline-text-2" id="text-2"&gt;
+&lt;p&gt;
+Just extract the downloaded file to your preferred location such as
+&lt;code&gt;C:\lib64\GSL&lt;/code&gt; or &lt;code&gt;C:\Users\YourName\lib\GSL&lt;/code&gt;. In general it is good idea to
+not have any spaces in the path. From now on I will assume that you have
+extracted the archive file into &lt;code&gt;C:\lib64\GSL&lt;/code&gt;, so if you extract it into
+different location, change the path accordingly when you follow the
+instructions below.
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id="outline-container-orgheadline7" class="outline-2"&gt;
+&lt;h3 id="orgheadline7"&gt;&lt;span class="section-number-2"&gt;3&lt;/span&gt; Environmental Variables&lt;/h3&gt;
+&lt;div class="outline-text-2" id="text-3"&gt;
+&lt;p&gt;
+You need to add an environmental variable &lt;code&gt;LIB_GSL&lt;/code&gt; and also add the path of
+&lt;code&gt;\bin&lt;/code&gt; subdirectory of your GSL installation to your &lt;code&gt;PATH&lt;/code&gt; Environmental
+variable.
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id="outline-container-orgheadline5" class="outline-3"&gt;
+&lt;h4 id="orgheadline5"&gt;&lt;span class="section-number-3"&gt;3.1&lt;/span&gt; &lt;code&gt;LIB_GSL&lt;/code&gt;&lt;/h4&gt;
+&lt;div class="outline-text-3" id="text-3-1"&gt;
+&lt;p&gt;
+Create an environmental variable &lt;code&gt;LIB_GSL&lt;/code&gt; with the path to your GSL
+installation. It is recommended to use Unix style path separator, &lt;code&gt;/&lt;/code&gt;
+instead of &lt;code&gt;\&lt;/code&gt; for this:
+&lt;/p&gt;
+&lt;div class="org-src-container"&gt;
+
+&lt;pre&gt;&lt;code class="lang-sh"&gt;LIB_GSL=C:/lib64/GSL
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id="outline-container-orgheadline6" class="outline-3"&gt;
+&lt;h4 id="orgheadline6"&gt;&lt;span class="section-number-3"&gt;3.2&lt;/span&gt; &lt;code&gt;PATH&lt;/code&gt;&lt;/h4&gt;
+&lt;div class="outline-text-3" id="text-3-2"&gt;
+&lt;p&gt;
+Add &lt;code&gt;C:\GSL\bin&lt;/code&gt; to your &lt;code&gt;PATH&lt;/code&gt; environmental variable. This is so Windows can
+find the two DLL files, &lt;code&gt;libgsl-0.dll&lt;/code&gt; and &lt;code&gt;libgslcblas-0.dll&lt;/code&gt;. Otherwise,
+your Cython code will compile, but it will raise the following error at
+runtime:
+&lt;/p&gt;
+&lt;div class="org-src-container"&gt;
+
+&lt;pre&gt;&lt;code class="lang-python"&gt;ImportError: DLL load failed: The specified module could not be found.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id="outline-container-orgheadline8" class="outline-2"&gt;
+&lt;h3 id="orgheadline8"&gt;&lt;span class="section-number-2"&gt;4&lt;/span&gt; Installing CythonGSL&lt;/h3&gt;
+&lt;div class="outline-text-2" id="text-4"&gt;
+&lt;p&gt;
+If you have done &lt;code&gt;git clone&lt;/code&gt; then just &lt;code&gt;cd CythonGSL&lt;/code&gt; and if you have downloaded
+&lt;code&gt;.zip&lt;/code&gt; archive, extract it and go to the directory. Then, following the
+official instructions,
+&lt;/p&gt;
+&lt;div class="org-src-container"&gt;
+
+&lt;pre&gt;&lt;code class="lang-sh"&gt;python setup.py build
+python setup.py install
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;</description><category>cython</category><category>gsl</category><category>python</category><category>windows</category><guid>http://joonro.github.io/blog/posts/installing-gsl-and-cythongsl-in-windows.html</guid><pubDate>Mon, 25 May 2015 05:50:11 GMT</pubDate></item><item><title>org-mode Google calendar sync in Windows</title><link>http://joonro.github.io/blog/posts/org-mode-google-calendar-sync-in-windows.html</link><dc:creator>Joon Ro</dc:creator><description>&lt;div&gt;&lt;div id="table-of-contents"&gt;
+&lt;h3&gt;Table of Contents&lt;/h3&gt;
+&lt;div id="text-table-of-contents"&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://joonro.github.io/blog/posts/org-mode-google-calendar-sync-in-windows.html#orgheadline3"&gt;1. Dependencies&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://joonro.github.io/blog/posts/org-mode-google-calendar-sync-in-windows.html#orgheadline1"&gt;1.1. &lt;code&gt;ical2org.py&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://joonro.github.io/blog/posts/org-mode-google-calendar-sync-in-windows.html#orgheadline2"&gt;1.2. Find your private URL for your calendar&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://joonro.github.io/blog/posts/org-mode-google-calendar-sync-in-windows.html#orgheadline4"&gt;2. PowerShell script&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://joonro.github.io/blog/posts/org-mode-google-calendar-sync-in-windows.html#orgheadline5"&gt;3. Install cron&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;
+The &lt;a href="http://orgmode.org/worg/org-tutorials/org-google-sync.html"&gt;instructions&lt;/a&gt; at Org-mode does not cover the Windows case. I explain how
+you can get the sync between Google calendar and org-mode in Windows.
+&lt;/p&gt;
+
+&lt;div id="outline-container-orgheadline3" class="outline-2"&gt;
+&lt;h3 id="orgheadline3"&gt;&lt;span class="section-number-2"&gt;1&lt;/span&gt; Dependencies&lt;/h3&gt;
+&lt;div class="outline-text-2" id="text-1"&gt;
+&lt;/div&gt;&lt;div id="outline-container-orgheadline1" class="outline-3"&gt;
+&lt;h4 id="orgheadline1"&gt;&lt;span class="section-number-3"&gt;1.1&lt;/span&gt; &lt;code&gt;ical2org.py&lt;/code&gt;&lt;/h4&gt;
+&lt;div class="outline-text-3" id="text-1-1"&gt;
+&lt;p&gt;
+Get the &lt;code&gt;ical2org.py&lt;/code&gt; script from &lt;a href="https://github.com/asoroa/ical2org.py"&gt;https://github.com/asoroa/ical2org.py&lt;/a&gt;. You
+have to have Python installed, and also need to install &lt;code&gt;icalendar&lt;/code&gt; and &lt;code&gt;pytz&lt;/code&gt;:
+&lt;/p&gt;
+
+&lt;div class="org-src-container"&gt;
+
+
+&lt;pre&gt;&lt;code class="lang-sh"&gt;&amp;gt; pip install icalendar
+&amp;gt; pip install pytz
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id="outline-container-orgheadline2" class="outline-3"&gt;
+&lt;h4 id="orgheadline2"&gt;&lt;span class="section-number-3"&gt;1.2&lt;/span&gt; Find your private URL for your calendar&lt;/h4&gt;
+&lt;div class="outline-text-3" id="text-1-2"&gt;
+&lt;p&gt;
+Follow step 2 in this &lt;a href="http://orgmode.org/worg/org-tutorials/org-google-sync.html"&gt;instruction&lt;/a&gt; to get the private URL for your calendar.
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;div id="outline-container-orgheadline4" class="outline-2"&gt;
+&lt;h3 id="orgheadline4"&gt;&lt;span class="section-number-2"&gt;2&lt;/span&gt; PowerShell script&lt;/h3&gt;
+&lt;div class="outline-text-2" id="text-2"&gt;
+&lt;p&gt;
+First check if you can download your calendar with &lt;code&gt;Invoke-WebRequest&lt;/code&gt;:
+&lt;/p&gt;
+
+&lt;div class="org-src-container"&gt;
+
+
+&lt;pre&gt;&lt;code class="lang-posh"&gt;&amp;gt; Invoke-WebRequest -URI &amp;lt;url to your private Google calendar&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;
+If it works, make a PowerShell script file,  &lt;code&gt;convert-gcal-to-org.ps1&lt;/code&gt;:
+&lt;/p&gt;
+
+&lt;div class="org-src-container"&gt;
+
+&lt;pre&gt;&lt;code class="lang-posh"&gt;# customize these
+$ICS2ORG = "&amp;lt;path to ical2org.py&amp;gt;"
+$ICSFILE = "&amp;lt;path for icsfile&amp;gt;"
+$ORGFILE = "&amp;lt;path to orgfile&amp;gt;"
+$URL = "&amp;lt;url to your private Google calendar&amp;gt;"
+
+# no customization needed below
+$Content = (Invoke-WebRequest -URI $URL).Content
+[System.IO.File]::WriteAllLines($ICSFILE, $Content)
+
+python $ICS2ORG $ICSFILE $ORGFILE
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;
+for example:
+&lt;/p&gt;
+
+&lt;div class="org-src-container"&gt;
+
+&lt;pre&gt;&lt;code class="lang-posh"&gt;# customize these    
+$ICS2ORG = "~/bin/ical2org.py"
+$ICSFILE = "~/bin/gcal-shared.ical"
+$ORGFILE = "~/gcal.org"
+$URL = "https://www.google.com/calendar/ical/...../basic.ics"
+
+# no customization needed below
+$Content = (Invoke-WebRequest -URI $URL).Content
+[System.IO.File]::WriteAllLines($ICSFILE, $Content) 
+
+python $ICS2ORG $ICSFILE $ORGFILE
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;
+Now try the script and see if it works:
+&lt;/p&gt;
+
+&lt;div class="org-src-container"&gt;
+
+&lt;pre&gt;&lt;code class="lang-posh"&gt;&amp;gt; convert-gcal-to-org.ps1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;
+If you have the output &lt;code&gt;org&lt;/code&gt; file in your &lt;code&gt;org-agenda-files&lt;/code&gt; list, you will
+see the entries from Google calendar when you update your agenda in Emacs.
+&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id="outline-container-orgheadline5" class="outline-2"&gt;
+&lt;h3 id="orgheadline5"&gt;&lt;span class="section-number-2"&gt;3&lt;/span&gt; Install cron&lt;/h3&gt;
+&lt;div class="outline-text-2" id="text-3"&gt;
+&lt;p&gt;
+You can install &lt;a href="http://www.intelliadmin.com/index.php/2012/05/free-utility-a-simple-task-scheduler-for-windows/"&gt;IntelliAdmin Cron&lt;/a&gt; to periodically run the script and sync your
+calendars with &lt;code&gt;org-mode&lt;/code&gt;. &lt;a href="http://thecrumb.com/2013/03/24/new-cron-for-windows/"&gt;Here&lt;/a&gt; is a blog post about this specific cron utility.
+&lt;/p&gt;
+
+&lt;p&gt;
+Then, use the following to set up the cronjob, with appropriate schedule settings:
+&lt;/p&gt;
+
+&lt;dl class="org-dl"&gt;
+&lt;dt&gt;EXE File&lt;/dt&gt;&lt;dd&gt;&lt;code&gt;C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe&lt;/code&gt;&lt;/dd&gt;
+&lt;dt&gt;Arguments&lt;/dt&gt;&lt;dd&gt;&lt;code&gt;-file C:\PATH\TO\convert-gcal-to-org.ps1&lt;/code&gt;&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;p&gt;
+For example:
+&lt;/p&gt;
+
+
+&lt;div class="figure"&gt;
+&lt;p&gt;&lt;img src="http://joonro.github.io/blog/wp-content/Capture-crontab-org-mode-google-sync.png" alt="Capture-crontab-org-mode-google-sync.png"&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;&lt;/div&gt;</description><category>emacs</category><category>org</category><category>posh</category><category>windows</category><guid>http://joonro.github.io/blog/posts/org-mode-google-calendar-sync-in-windows.html</guid><pubDate>Sat, 09 May 2015 20:27:18 GMT</pubDate></item><item><title>Changed the blog engine to nikola</title><link>http://joonro.github.io/blog/posts/changed-the-blog-engine-to-nikola.html</link><dc:creator>Joon Ro</dc:creator><description>&lt;div&gt;&lt;div id="table-of-contents"&gt;
+&lt;h3&gt;Table of Contents&lt;/h3&gt;
+&lt;div id="text-table-of-contents"&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://joonro.github.io/blog/posts/changed-the-blog-engine-to-nikola.html#orgheadline1"&gt;1. reStructuredText to org-mode&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://joonro.github.io/blog/posts/changed-the-blog-engine-to-nikola.html#orgheadline2"&gt;2. nikola&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://joonro.github.io/blog/posts/changed-the-blog-engine-to-nikola.html#orgheadline4"&gt;3. Setup&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://joonro.github.io/blog/posts/changed-the-blog-engine-to-nikola.html#orgheadline3"&gt;3.1. Syntax Highlighting&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://joonro.github.io/blog/posts/changed-the-blog-engine-to-nikola.html#orgheadline5"&gt;4. How to use&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;
+It has been a while since the last time I updated my blog. I changed my blogging
+engine to &lt;a href="http://getnikola.com/"&gt;nikola&lt;/a&gt;. Now my tool chain for writing is more streamlined, hopefully
+I post more frequently.
+&lt;/p&gt;
+
+&lt;div id="outline-container-orgheadline1" class="outline-2"&gt;
+&lt;h3 id="orgheadline1"&gt;&lt;span class="section-number-2"&gt;1&lt;/span&gt; reStructuredText to org-mode&lt;/h3&gt;
+&lt;div class="outline-text-2" id="text-1"&gt;
+&lt;p&gt;
+I do enjoy using one general tool for many tasks - I like having a consistent
+environment for different tasks. For example, I chose Python (a general
+purpose language) instead of domain specific languages such as R and MATLAB
+for my programming needs.
+&lt;/p&gt;
+
+&lt;p&gt;
+I have been looking for something like that for my writing as well, and since
+I used Python a lot, reStructuredText was a good candidate. With
+reStructuredText, I could generate output in multiple formats (html, pdf,
+slides), and I like the grammar. 
+&lt;/p&gt;
+
+&lt;p&gt;
+With reStructuredText, I started using Emacs more for writing. Emacs'
+&lt;code&gt;rst-mode&lt;/code&gt; is very well done, and I have been using &lt;a href="http://orgmode.org/"&gt;org-mode&lt;/a&gt; for a while as
+well, even though for a while I mainly used it for the TODO list management
+and some outline generation only. 
+&lt;/p&gt;
+
+&lt;p&gt;
+Then this year I started teaching, and I had multiple sections, and I started
+looking for ways to minimize the redundancy in course contents files. For
+example, syllabi for all sections of classes share many common parts and if I
+maintain separate files for each class, I have to modify all the files
+every time I make some changes on one of the common parts.
+&lt;/p&gt;
+
+&lt;p&gt;
+So I started writing lecture slides in reStructuredText in org-mode, putting
+reStructuredText code in code blocks and using &lt;code&gt;org-babel&lt;/code&gt; to tangle the
+source code into output files. In that way, I just write the common parts
+once, and I could include them in multiple files. For slide generation, I used
+&lt;a href="http://docs.hieroglyph.io/en/latest/"&gt;hieroglyph&lt;/a&gt; package which was great. Also I liked that I can generate
+document-style lecture note for distribution from the same source.
+&lt;/p&gt;
+
+&lt;p&gt;
+But quickly I started feeling that putting reStructuredText code inside code
+blocks cumbersome. In addition, I really missed the easy navigation of tree
+structure of org-mode. So I looked for a way to just use org-mode to write
+everything instead of putting reStructuredText code inside code-blocks. 
+&lt;/p&gt;
+
+&lt;p&gt;
+Then I learned about &lt;code&gt;org-export&lt;/code&gt; which can export an org-mode document to
+multiple output formats. Since then I started using org-mode to write my
+course notes. I had to learn a few tricks and also install org 8.3beta, but
+now the results has been very satisfactory. Now I write lecture note in
+org-mode, , and use &lt;code&gt;ox-beamer&lt;/code&gt; to generate beamer slides for presentations,
+and use &lt;code&gt;ox-latex&lt;/code&gt; to generate lecture notes from the same source. &lt;code&gt;org-mode&lt;/code&gt;
+is just a pleasure to use. Now I believe I found the tool-chain for all my
+writing needs: Emacs and &lt;code&gt;org-mode&lt;/code&gt;.
+&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div id="outline-container-orgheadline2" class="outline-2"&gt;
+&lt;h3 id="orgheadline2"&gt;&lt;span class="section-number-2"&gt;2&lt;/span&gt; nikola&lt;/h3&gt;
+&lt;div class="outline-text-2" id="text-2"&gt;
+&lt;p&gt;
+Naturally I started searching for a blogging engine which enables me to use
+org-mode. I have been using &lt;a href="http://tinkerer.me/"&gt;tinkerer&lt;/a&gt; for a while, and it is great, but there
+are a couple of steps you have to go through to use org-mode to write
+posts. Exporting a subtree to a &lt;code&gt;.rst&lt;/code&gt; file is easy, but there are some manual
+steps involved - basically you have to add a new post to the sphinx index file
+either by manually or by using tinkerer.
+&lt;/p&gt;
+&lt;p&gt;
+Then I found &lt;a href="http://getnikola.com/"&gt;nikola&lt;/a&gt;. Unlike tinkerer, nikola automatically reads files in the
+designated posts folder and generates index - so you don't have to manually
+add anything to the index. In addition, there is a tool &lt;a href="https://github.com/redguardtoo/org2nikola"&gt;org2nikola&lt;/a&gt; which
+generates a post from a org subtree, so I can put all my posts into one &lt;code&gt;.org&lt;/code&gt;
+file.
+&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id="outline-container-orgheadline4" class="outline-2"&gt;
+&lt;h3 id="orgheadline4"&gt;&lt;span class="section-number-2"&gt;3&lt;/span&gt; Setup&lt;/h3&gt;
+&lt;div class="outline-text-2" id="text-3"&gt;
+&lt;p&gt;
+You need to add the &lt;code&gt;.wp&lt;/code&gt; file extensions to the &lt;code&gt;POSTS&lt;/code&gt; and &lt;code&gt;PAGES&lt;/code&gt; tuples,
+and also to markdown compilers in your &lt;code&gt;conf.py&lt;/code&gt;:
+&lt;/p&gt;
+&lt;div class="org-src-container"&gt;
+
+&lt;pre&gt;&lt;code class="lang-python"&gt;POSTS = (
+    ("posts/*.rst", "posts", "post.tmpl"),
+    ("posts/*.txt", "posts", "post.tmpl"),
+    ("posts/*.wp", "posts", "post.tmpl"),
+)
+PAGES = (
+    ("stories/*.rst", "stories", "story.tmpl"),
+    ("stories/*.txt", "stories", "story.tmpl"),
+    ("stories/*.wp", "stories", "story.tmpl"),
+)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+
+&lt;div class="org-src-container"&gt;
+
+&lt;pre&gt;&lt;code class="lang-python"&gt;COMPILERS = {
+    "rest": ('.rst', '.txt'),
+    "markdown": ('.md', '.mdown', '.markdown', '.wp'),
+    "textile": ('.textile',),
+    "txt2tags": ('.t2t',),
+    "bbcode": ('.bb',),
+    "wiki": ('.wiki',),
+    "ipynb": ('.ipynb',),
+    "html": ('.html', '.htm'),
+    # PHP files are rendered the usual way (i.e. with the full templates).
+    # The resulting files have .php extensions, making it possible to run
+    # them without reconfiguring your server to recognize them.
+    "php": ('.php',),
+    # Pandoc detects the input from the source filename
+    # but is disabled by default as it would conflict
+    # with many of the others.
+    # "pandoc": ('.rst', '.md', '.txt'),
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;div id="outline-container-orgheadline3" class="outline-3"&gt;
+&lt;h4 id="orgheadline3"&gt;&lt;span class="section-number-3"&gt;3.1&lt;/span&gt; Syntax Highlighting&lt;/h4&gt;
+&lt;div class="outline-text-3" id="text-3-1"&gt;
+&lt;p&gt;
+To use &lt;a href="https://highlightjs.org/"&gt;highlight.js&lt;/a&gt; for syntax highlighting, add a definition of &lt;code&gt;EXTRA_HEAD_DATA&lt;/code&gt;:
+&lt;/p&gt;
+&lt;div class="org-src-container"&gt;
+&lt;pre&gt;&lt;code class="lang-python"&gt;EXTRA_HEAD_DATA = """
+&amp;lt;link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/styles/default.min.css"&amp;gt;
+&amp;lt;script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"&amp;gt;&amp;lt;/script&amp;gt;
+
+&amp;lt;script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/languages/lisp.min.js"&amp;gt;&amp;lt;/script&amp;gt;
+&amp;lt;script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/languages/r.min.js"&amp;gt;&amp;lt;/script&amp;gt;
+
+&amp;lt;script&amp;gt;hljs.initHighlightingOnLoad();&amp;lt;/script&amp;gt;
+"""
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;
+As you can see, I added syntax highlighting for &lt;code&gt;lisp&lt;/code&gt; and &lt;code&gt;r&lt;/code&gt; in addition to
+the defaults ones. You can change the theme from &lt;code&gt;default&lt;/code&gt; to others such as
+&lt;code&gt;solarized_light&lt;/code&gt;. 
+&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id="outline-container-orgheadline5" class="outline-2"&gt;
+&lt;h3 id="orgheadline5"&gt;&lt;span class="section-number-2"&gt;4&lt;/span&gt; How to use&lt;/h3&gt;
+&lt;div class="outline-text-2" id="text-4"&gt;
+&lt;p&gt;
+Just call &lt;code&gt;org2nikola-export-subtree&lt;/code&gt; in the subtree that you want to export
+as a nikola post. It will ask you where is the root directory for your nikola
+blog. It seems it just uses the top level heading.
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;</description><category>blogging</category><category>emacs</category><category>nikola</category><category>org</category><guid>http://joonro.github.io/blog/posts/changed-the-blog-engine-to-nikola.html</guid><pubDate>Sun, 03 May 2015 04:49:55 GMT</pubDate></item><item><title>Test Post</title><link>http://joonro.github.io/blog/posts/test-post.html</link><dc:creator>Joon Ro</dc:creator><description>&lt;p&gt;
+This is a test
+&lt;/p&gt;</description><guid>http://joonro.github.io/blog/posts/test-post.html</guid><pubDate>Sun, 03 May 2015 04:45:20 GMT</pubDate></item></channel></rss>
