@@ -49,7 +49,7 @@
 
     
 
-        <link rel="prefetch" href="posts/Awesome-inverse-search-for-LyX-in-Windows-with-SumatraPDF-and-AutoHotkey.html" type="text/html">
+        <link rel="prefetch" href="posts/inverse-and-forward-search-lyx-windows.html" type="text/html">
 
 
 </head>
@@ -113,13 +113,13 @@
 <div class="postindex">
     <article class="h-entry post-text">
     <header>
-        <h1 class="p-name entry-title"><a href="posts/Awesome-inverse-search-for-LyX-in-Windows-with-SumatraPDF-and-AutoHotkey.html" class="u-url">Awesome inverse search for LyX in Windows with SumatraPDF and AutoHotkey</a></h1>
+        <h1 class="p-name entry-title"><a href="posts/inverse-and-forward-search-lyx-windows.html" class="u-url">How to set up inverse and forward search in LyX for Windows</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn">Joon Ro</span></p>
-            <p class="dateline"><a href="posts/Awesome-inverse-search-for-LyX-in-Windows-with-SumatraPDF-and-AutoHotkey.html" rel="bookmark"><time class="published dt-published" datetime="2015-10-10T00:00:00-05:00" title="2015-10-10 00:00">2015-10-10 00:00</time></a></p>
+            <p class="dateline"><a href="posts/inverse-and-forward-search-lyx-windows.html" rel="bookmark"><time class="published dt-published" datetime="2015-10-10T00:00:00-05:00" title="2015-10-10 00:00">2015-10-10 00:00</time></a></p>
                 <p class="commentline">
         
-    <a href="posts/Awesome-inverse-search-for-LyX-in-Windows-with-SumatraPDF-and-AutoHotkey.html#disqus_thread" data-disqus-identifier="cache/posts/Awesome-inverse-search-for-LyX-in-Windows-with-SumatraPDF-and-AutoHotkey.html">Comments</a>
+    <a href="posts/inverse-and-forward-search-lyx-windows.html#disqus_thread" data-disqus-identifier="cache/posts/inverse-and-forward-search-lyx-windows.html">Comments</a>
 
 
         </p>
@@ -127,79 +127,90 @@
     </header>
     <div class="e-content entry-content">
     <div>
-<p>I describe how to setup inverse search between LyX and SumatraPDF and/or
-Okular. Most of the instructions overlap with the ones at
-<a class="reference external" href="http://wiki.lyx.org/LyX/SyncTeX#toc3">http://wiki.lyx.org/LyX/SyncTeX#toc3</a>.</p>
-<div class="section" id="lyx-settings">
-<h2>LyX Settings</h2>
-<ol class="arabic">
-<li>
-<p class="first">Set <tt class="docutils literal">Tools</tt> &gt; <tt class="docutils literal">Preferences</tt> &gt; <tt class="docutils literal">Paths</tt> &gt; <tt class="docutils literal">LyxServer pipe</tt> to
-<tt class="docutils literal"><span class="pre">\\.\pipe\lyxpipe</span></tt>.</p>
-</li>
-<li>
-<p class="first">In <tt class="docutils literal">Document</tt> &gt; <tt class="docutils literal">Settings</tt> &gt; <tt class="docutils literal">Output</tt>, check <tt class="docutils literal">Synchronize with output</tt>. (checked by default)</p>
-</li>
-<li>
-<p class="first">Create a batch-file named <tt class="docutils literal">lyxeditor.cmd</tt> with the following contents and
-save it to one of the locations in your <tt class="docutils literal">PATH</tt> Windows environmental
-variable, so the pdf editor can call it:</p>
-<pre class="code bat"><a name="rest_code_90d1205ba7aa4f3db514ffd840d87e4f-1"></a><span class="p">@</span><span class="k">echo</span> <span class="k">off</span>
-<a name="rest_code_90d1205ba7aa4f3db514ffd840d87e4f-2"></a><span class="k">SETLOCAL</span> enabledelayedexpansion
-<a name="rest_code_90d1205ba7aa4f3db514ffd840d87e4f-3"></a><span class="k">set</span> <span class="nv">file</span><span class="o">=</span><span class="nv">%1</span>
-<a name="rest_code_90d1205ba7aa4f3db514ffd840d87e4f-4"></a><span class="k">set</span> <span class="nv">row</span><span class="o">=</span><span class="nv">%2</span>
-<a name="rest_code_90d1205ba7aa4f3db514ffd840d87e4f-5"></a><span class="c">REM remove quotes from variables</span>
-<a name="rest_code_90d1205ba7aa4f3db514ffd840d87e4f-6"></a><span class="k">set</span> <span class="nv">file</span><span class="o">=</span>!file:"<span class="o">=</span>!
-<a name="rest_code_90d1205ba7aa4f3db514ffd840d87e4f-7"></a><span class="k">set</span> <span class="nv">row</span><span class="o">=</span>!row:"<span class="o">=</span>!
-<a name="rest_code_90d1205ba7aa4f3db514ffd840d87e4f-8"></a><span class="nv">%comspec%</span> <span class="n">/q</span> <span class="n">/c</span> (@<span class="k">echo</span> LYXCMD:revdvi<span class="nl">:server</span>-<span class="k">goto</span>-file-row:<span class="nv">%file%</span> <span class="nv">%row%</span>)&gt; \\.\pipe\lyxpipe.in&amp;&amp;type \\.\pipe\lyxpipe.out
-<a name="rest_code_90d1205ba7aa4f3db514ffd840d87e4f-9"></a><span class="k">endlocal</span>
-</pre>
-</li>
+<p>I describe how to set up <a class="reference external" href="https://en.wikipedia.org/wiki/Inverse_search">inverse</a> and forward search in LyX for the Windows
+environment, with <a class="reference external" href="http://www.sumatrapdfreader.org/free-pdf-reader.html">SumatraPDF</a> as the pdf viewer. Inverse search lets you
+quickly move to the corresponding part of a LyX (or LaTeX) source from its pdf
+output, typically by clicking on the text in the pdf viewer. Forward search
+works in the opposite direction; from the LyX (or LaTeX) source, you can
+invoke forward search to make the pdf viewer scroll through the pdf document
+so the output counterpart of the source is shown. They are very useful
+especially when you are editing a long document. Most of the instructions
+overlap with those found at <a class="reference external" href="http://wiki.lyx.org/LyX/SyncTeX#toc3">http://wiki.lyx.org/LyX/SyncTeX#toc3</a>.</p>
+<!-- TEASER_END: click to read the rest of the article -->
+<div class="section" id="lyx">
+<h2>LyX</h2>
+<ol class="arabic simple">
+<li>Set <tt class="docutils literal">Tools</tt> &gt; <tt class="docutils literal">Preferences</tt> &gt; <tt class="docutils literal">Paths</tt> &gt; <tt class="docutils literal">LyxServer pipe</tt> to
+<tt class="docutils literal"><span class="pre">\\.\pipe\lyxpipe</span></tt>.</li>
+<li>In <tt class="docutils literal">Document</tt> &gt; <tt class="docutils literal">Settings</tt> &gt; <tt class="docutils literal">Output</tt>, check <tt class="docutils literal">Synchronize with output</tt>. (this is checked by default)</li>
 </ol>
 </div>
-<div class="section" id="autohotkey-script">
-<h2>AutoHotkey Script</h2>
-<p>The above cmd works well, but it shows an annoying black cmd window everytime
-when you invoke the script. With a simple AutoHotkey script, one can not only
-suppress this window, but also activate the LyX window after the inverse
-search.</p>
-<p>Create a AutoHotkey script named <tt class="docutils literal"><span class="pre">lyx-inverse-search.ahk</span></tt> with the following
-code and save it to the same location to <tt class="docutils literal">lyxeditor.cmd</tt> and compile it with
-AutoHotkey to generate <tt class="docutils literal"><span class="pre">lyx-inverse-search.exe</span></tt>:</p>
-<pre class="code ahk"><a name="rest_code_003e52bde9274b268ec9f43479448993-1"></a><span class="nb">SetTitleMatchMode</span><span class="p">,</span> <span class="n">RegEx</span>
-<a name="rest_code_003e52bde9274b268ec9f43479448993-2"></a><span class="nb">Run</span><span class="p">,</span> <span class="n">lyxeditor</span><span class="o">.</span><span class="n">cmd</span> <span class="s">"%1%"</span> <span class="s">"%2%"</span><span class="p">,,</span> <span class="n">Hide</span>
-<a name="rest_code_003e52bde9274b268ec9f43479448993-3"></a><span class="nb">WinActivate</span><span class="p">,</span> <span class="o">^</span><span class="n">LyX</span><span class="o">:</span><span class="p">,,,</span>
+<div class="section" id="scripts">
+<h2>Scripts</h2>
+<p>Create a batch file named <tt class="docutils literal">lyxeditor.cmd</tt> with the following contents and save
+it to one of the locations in your <tt class="docutils literal">PATH</tt> Windows environmental variable so
+the pdf editor can call it:</p>
+<pre class="code bat"><a name="rest_code_4a34f75eb524433daf25f982b168a59b-1"></a><span class="p">@</span><span class="k">echo</span> <span class="k">off</span>
+<a name="rest_code_4a34f75eb524433daf25f982b168a59b-2"></a><span class="k">SETLOCAL</span> enabledelayedexpansion
+<a name="rest_code_4a34f75eb524433daf25f982b168a59b-3"></a><span class="k">set</span> <span class="nv">file</span><span class="o">=</span><span class="nv">%1</span>
+<a name="rest_code_4a34f75eb524433daf25f982b168a59b-4"></a><span class="k">set</span> <span class="nv">row</span><span class="o">=</span><span class="nv">%2</span>
+<a name="rest_code_4a34f75eb524433daf25f982b168a59b-5"></a><span class="c">REM remove quotes from variables</span>
+<a name="rest_code_4a34f75eb524433daf25f982b168a59b-6"></a><span class="k">set</span> <span class="nv">file</span><span class="o">=</span>!file:"<span class="o">=</span>!
+<a name="rest_code_4a34f75eb524433daf25f982b168a59b-7"></a><span class="k">set</span> <span class="nv">row</span><span class="o">=</span>!row:"<span class="o">=</span>!
+<a name="rest_code_4a34f75eb524433daf25f982b168a59b-8"></a><span class="nv">%comspec%</span> <span class="n">/q</span> <span class="n">/c</span> (@<span class="k">echo</span> LYXCMD:revdvi<span class="nl">:server</span>-<span class="k">goto</span>-file-row:<span class="nv">%file%</span> <span class="nv">%row%</span>)&gt; \\.\pipe\lyxpipe.in&amp;&amp;type \\.\pipe\lyxpipe.out
+<a name="rest_code_4a34f75eb524433daf25f982b168a59b-9"></a><span class="k">endlocal</span>
+</pre>
+<p>The above cmd works well, but it shows an annoying black cmd window when you
+invoke the script. With a simple <a class="reference external" href="http://ahkscript.org">AutoHotkey</a> script, one can not only suppress
+this window but also activate the LyX window after the inverse search.</p>
+<p>Create an AutoHotkey script named <tt class="docutils literal"><span class="pre">lyx-inverse-search.ahk</span></tt> with the following
+code and save it to the same location at <tt class="docutils literal">lyxeditor.cmd</tt> and compile it with
+the AutoHotkey to generate <tt class="docutils literal"><span class="pre">lyx-inverse-search.exe</span></tt>:</p>
+<pre class="code ahk"><a name="rest_code_8d77d248cc0c4261bdf8e4bb2d615d40-1"></a><span class="nb">SetTitleMatchMode</span><span class="p">,</span> <span class="n">RegEx</span>
+<a name="rest_code_8d77d248cc0c4261bdf8e4bb2d615d40-2"></a><span class="nb">Run</span><span class="p">,</span> <span class="n">lyxeditor</span><span class="o">.</span><span class="n">cmd</span> <span class="s">"%1%"</span> <span class="s">"%2%"</span><span class="p">,,</span> <span class="n">Hide</span>
+<a name="rest_code_8d77d248cc0c4261bdf8e4bb2d615d40-3"></a><span class="nb">WinActivate</span><span class="p">,</span> <span class="o">^</span><span class="n">LyX</span><span class="o">:</span><span class="p">,,,</span>
 </pre>
 <p>If you don't have AutoHotkey installed, you can also download the pre-compiled
 <a class="reference external" href="https://dl.dropboxusercontent.com/u/561594/lyx-inverse-search.zip">exe</a>.</p>
 </div>
-<div class="section" id="sumatrapdf">
+<div class="section" id="id1">
 <h2>SumatraPDF</h2>
-<p><a class="reference external" href="http://wiki.lyx.org/Windows/LyXWinTips#toc6">http://wiki.lyx.org/Windows/LyXWinTips#toc6</a></p>
-<ol class="arabic">
-<li>
-<p class="first">Download and install <a class="reference external" href="http://blog.kowalczyk.info/software/sumatrapdf/download-free-pdf-viewer.html">Sumatra PDF</a>.</p>
-</li>
-<li>
-<p class="first">In LyX, <tt class="docutils literal">Tools</tt> &gt; <tt class="docutils literal">Preferences</tt> &gt; <tt class="docutils literal">Paths</tt> and append the install location
-of SumatraPDF to <tt class="docutils literal">PATH prefix</tt>. For example, <tt class="docutils literal"><span class="pre">C:\Program</span> Files\SumatraPDF</tt>.</p>
-</li>
-<li>
-<p class="first">In <tt class="docutils literal">Tools</tt> &gt; <tt class="docutils literal">Preferences</tt> &gt; <tt class="docutils literal">File Handling</tt> &gt; <tt class="docutils literal">File Formats</tt>
-select <tt class="docutils literal">PDF (pdflatex)</tt> from the list <tt class="docutils literal">Format</tt> and modify <tt class="docutils literal">Viewer</tt> to
-the following (including quotes):</p>
-<pre class="code bat"><a name="rest_code_49f6429ef4fa4e548d49eac4a98d696a-1"></a>SumatraPDF -inverse-search <span class="s2">"lyxeditor.cmd \"</span><span class="nv">%f</span>\<span class="s2">" \"</span><span class="nv">%l</span>\<span class="s2">""</span>
-</pre>
-<p>If you have the compiled AutoHotkey script from above, use the following
-instead (recommended):</p>
-<pre class="code bat"><a name="rest_code_1e79e5ad80e14b86993b728111bcc50b-1"></a>SumatraPDF -inverse-search <span class="s2">"lyx-inverse-search.exe \"</span><span class="nv">%f</span>\<span class="s2">" \"</span><span class="nv">%l</span>\<span class="s2">""</span>
-</pre>
-</li>
+<p>SumatraPDF is good because you can recompile your LaTeX document while the pdf
+is open with SumatraPDF and the viewer will automatically refresh the pdf
+file. Some pdf viewers will lock the pdf file and will not let you
+re-generate the pdf file unless you close the file first. It also supports
+inverse and forward search nicely.</p>
+<ol class="arabic simple">
+<li>Download and install <a class="reference external" href="http://blog.kowalczyk.info/software/sumatrapdf/download-free-pdf-viewer.html">Sumatra PDF</a>.</li>
+<li>In LyX, go to <tt class="docutils literal">Tools</tt> &gt; <tt class="docutils literal">Preferences</tt> &gt; <tt class="docutils literal">Paths</tt> and append the install location
+of SumatraPDF to <tt class="docutils literal">PATH prefix</tt>. For example, <tt class="docutils literal"><span class="pre">C:\Program</span> Files\SumatraPDF</tt>.</li>
 </ol>
-<p>Now once you <tt class="docutils literal">Document</tt> -&gt; <tt class="docutils literal">View (PDF (pdflatex))</tt> or <tt class="docutils literal">View Master Documen</tt> in
+<div class="section" id="inverse-search">
+<h3>Inverse Search</h3>
+<p>In <tt class="docutils literal">Tools</tt> &gt; <tt class="docutils literal">Preferences</tt> &gt; <tt class="docutils literal">File Handling</tt> &gt; <tt class="docutils literal">File Formats</tt>, select <tt class="docutils literal">PDF
+(pdflatex)</tt> from the list <tt class="docutils literal">Format</tt> and modify <tt class="docutils literal">Viewer</tt> to the following
+(including the quotes). If you have the compiled AutoHotkey script from above,
+use the following instead (recommended):</p>
+<pre class="code bat"><a name="rest_code_7a0d9b6e8908465ba61f6098f2558011-1"></a>SumatraPDF -inverse-search <span class="s2">"lyx-inverse-search.exe \"</span><span class="nv">%f</span>\<span class="s2">" \"</span><span class="nv">%l</span>\<span class="s2">""</span>
+</pre>
+<p>Otherwise, use:</p>
+<pre class="code bat"><a name="rest_code_4befa81f83f24ac68b3233700033613c-1"></a>SumatraPDF -inverse-search <span class="s2">"lyxeditor.cmd \"</span><span class="nv">%f</span>\<span class="s2">" \"</span><span class="nv">%l</span>\<span class="s2">""</span>
+</pre>
+<p>Now, once you do to <tt class="docutils literal">Document</tt> -&gt; <tt class="docutils literal">View [PDF (pdflatex)]</tt> or <tt class="docutils literal">View Master Document</tt> in
 LyX to compile your <tt class="docutils literal">.lyx</tt> file and invoke SumatraPDF to view the resulting
-pdf, you can double-click on any text on the body of the document to go to the
+pdf, you can double-click on any text on the body of the pdf document to go to the
 corresponding text in LyX.</p>
+</div>
+<div class="section" id="forward-search">
+<h3>Forward Search</h3>
+<p>In LyX, go to <tt class="docutils literal">Tools</tt> &gt; <tt class="docutils literal">Preferences</tt> &gt; <tt class="docutils literal">Output</tt>, and enter the following in
+<tt class="docutils literal">PDF command</tt> under <tt class="docutils literal">Forward Search</tt> section:</p>
+<pre class="code bat"><a name="rest_code_144e73aeeda746aaa9c87718381fefb2-1"></a>SumatraPDF -reuse-instance $$o -forward-search $$t $$n
+</pre>
+<p>Now, if you click on <tt class="docutils literal">Forward Search</tt> in the <tt class="docutils literal">Navigate</tt> menu in LyX, SumatraPDF
+will scroll the pdf document to show the text corresponding to the text in LyX
+where your cursor is and highlight the line.</p>
+</div>
 </div>
 </div>
     </div>

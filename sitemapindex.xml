@@ -6,11 +6,19 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <sitemap>
   <loc>http://joonro.github.io/blog/categories/autohotkey.xml</loc>
-  <lastmod>2015-10-10</lastmod>
+  <lastmod>2015-10-13</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/categories/blogging.xml</loc>
   <lastmod>2015-09-14</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>http://joonro.github.io/blog/categories/cat_lyxlatex.xml</loc>
+  <lastmod>2015-10-13</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>http://joonro.github.io/blog/categories/cat_lyxlatexi-describe-how-to-set-up-inverse-httpsenwikipediaorgwikiinverse_search_-and-forward-search-in-lyx-for-the-windows.xml</loc>
+  <lastmod>2015-10-13</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/categories/cython.xml</loc>
@@ -26,15 +34,15 @@
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/categories/howto.xml</loc>
-  <lastmod>2015-10-10</lastmod>
+  <lastmod>2015-10-13</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/categories/latex.xml</loc>
-  <lastmod>2015-10-10</lastmod>
+  <lastmod>2015-10-13</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/categories/lyx.xml</loc>
-  <lastmod>2015-10-10</lastmod>
+  <lastmod>2015-10-13</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/categories/nikola.xml</loc>
@@ -54,11 +62,11 @@
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/categories/setting.xml</loc>
-  <lastmod>2015-10-10</lastmod>
+  <lastmod>2015-10-13</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/categories/windows.xml</loc>
-  <lastmod>2015-10-10</lastmod>
+  <lastmod>2015-10-13</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/galleries/rss.xml</loc>
@@ -66,10 +74,10 @@
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/rss.xml</loc>
-  <lastmod>2015-10-10</lastmod>
+  <lastmod>2015-10-13</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/sitemap.xml</loc>
-  <lastmod>2015-10-10</lastmod>
+  <lastmod>2015-10-13</lastmod>
  </sitemap>
 </sitemapindex>
