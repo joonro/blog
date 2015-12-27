@@ -92,4 +92,4 @@ to use Windows-style path here):
 
 which makes notifications look very nice:
 
-.. image:: c:/home/joon/AeroFs/Org/Assets/Blog/Images/toast_example_with_icon.png
+.. image:: ../images/toast_example_with_icon.png
