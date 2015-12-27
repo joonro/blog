@@ -95,7 +95,7 @@ for org-mode appointments in Windows 8+.</p>
 </h2>
 <p>I use <tt class="docutils literal">toast.exe</tt> from toaster project: <a class="reference external" href="https://github.com/nels-o/toaster">https://github.com/nels-o/toaster</a>. You
 can <tt class="docutils literal">git clone</tt> the whole repo which includes the executable:</p>
-<pre class="code posh"><a name="rest_code_aad13375fc7b47eba9965af784b315e1-1"></a><span class="p">&gt;</span> <span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="err">:</span><span class="p">//</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="p">/</span><span class="n">nels-o</span><span class="p">/</span><span class="n">toaster</span><span class="p">.</span><span class="n">git</span>
+<pre class="code posh"><a name="rest_code_cc21d17e7c294c4f86ce2a30636d586c-1"></a><span class="p">&gt;</span> <span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="err">:</span><span class="p">//</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="p">/</span><span class="n">nels-o</span><span class="p">/</span><span class="n">toaster</span><span class="p">.</span><span class="n">git</span>
 </pre>
 </div>
 <div class="section" id="emacs-settings">
@@ -103,53 +103,53 @@ can <tt class="docutils literal">git clone</tt> the whole repo which includes th
 <p>The following is pretty much the same to
 <a class="reference external" href="https://lists.gnu.org/archive/html/emacs-orgmode/2013-02/msg00644.html">https://lists.gnu.org/archive/html/emacs-orgmode/2013-02/msg00644.html</a>. You
 can modify <tt class="docutils literal"><span class="pre">appt-message-warning-time</span></tt> and <tt class="docutils literal"><span class="pre">appt-display-interval</span></tt> to your need:</p>
-<pre class="code scheme"><a name="rest_code_bb26521ffc2045adab0e3658e6f8711c-1"></a><span class="p">(</span><span class="nf">require</span> <span class="ss">'appt</span><span class="p">)</span>
-<a name="rest_code_bb26521ffc2045adab0e3658e6f8711c-2"></a><span class="p">(</span><span class="nf">setq</span> <span class="nv">appt-time-msg-list</span> <span class="nv">nil</span><span class="p">)</span>    <span class="c1">;; clear existing appt list</span>
-<a name="rest_code_bb26521ffc2045adab0e3658e6f8711c-3"></a><span class="p">(</span><span class="nf">setq</span> <span class="nv">appt-display-interval</span> <span class="ss">'5</span><span class="p">)</span>  <span class="c1">;; warn every 5 minutes from t - appt-message-warning-time</span>
-<a name="rest_code_bb26521ffc2045adab0e3658e6f8711c-4"></a><span class="p">(</span><span class="nf">setq</span>
-<a name="rest_code_bb26521ffc2045adab0e3658e6f8711c-5"></a>  <span class="nv">appt-message-warning-time</span> <span class="ss">'15</span>  <span class="c1">;; send first warning 15 minutes before appointment</span>
-<a name="rest_code_bb26521ffc2045adab0e3658e6f8711c-6"></a>  <span class="nv">appt-display-mode-line</span> <span class="nv">nil</span>     <span class="c1">;; don't show in the modeline</span>
-<a name="rest_code_bb26521ffc2045adab0e3658e6f8711c-7"></a>  <span class="nv">appt-display-format</span> <span class="ss">'window</span><span class="p">)</span>   <span class="c1">;; pass warnings to the designated window function</span>
-<a name="rest_code_bb26521ffc2045adab0e3658e6f8711c-8"></a><span class="p">(</span><span class="nf">appt-activate</span> <span class="mi">1</span><span class="p">)</span>                <span class="c1">;; activate appointment notification</span>
-<a name="rest_code_bb26521ffc2045adab0e3658e6f8711c-9"></a><span class="p">(</span><span class="nf">display-time</span><span class="p">)</span>                   <span class="c1">;; activate time display</span>
-<a name="rest_code_bb26521ffc2045adab0e3658e6f8711c-10"></a>
-<a name="rest_code_bb26521ffc2045adab0e3658e6f8711c-11"></a><span class="p">(</span><span class="nf">org-agenda-to-appt</span><span class="p">)</span>             <span class="c1">;; generate the appt list from org agenda files on emacs launch</span>
-<a name="rest_code_bb26521ffc2045adab0e3658e6f8711c-12"></a><span class="p">(</span><span class="nf">run-at-time</span> <span class="s">"24:01"</span> <span class="mi">3600</span> <span class="ss">'org-agenda-to-appt</span><span class="p">)</span>           <span class="c1">;; update appt list hourly</span>
-<a name="rest_code_bb26521ffc2045adab0e3658e6f8711c-13"></a><span class="p">(</span><span class="nf">add-hook</span> <span class="ss">'org-finalize-agenda-hook</span> <span class="ss">'org-agenda-to-appt</span><span class="p">)</span> <span class="c1">;; update appt list on agenda view</span>
+<pre class="code scheme"><a name="rest_code_2aab44867eca4864a07282f517fc3edb-1"></a><span class="p">(</span><span class="nf">require</span> <span class="ss">'appt</span><span class="p">)</span>
+<a name="rest_code_2aab44867eca4864a07282f517fc3edb-2"></a><span class="p">(</span><span class="nf">setq</span> <span class="nv">appt-time-msg-list</span> <span class="nv">nil</span><span class="p">)</span>    <span class="c1">;; clear existing appt list</span>
+<a name="rest_code_2aab44867eca4864a07282f517fc3edb-3"></a><span class="p">(</span><span class="nf">setq</span> <span class="nv">appt-display-interval</span> <span class="ss">'5</span><span class="p">)</span>  <span class="c1">;; warn every 5 minutes from t - appt-message-warning-time</span>
+<a name="rest_code_2aab44867eca4864a07282f517fc3edb-4"></a><span class="p">(</span><span class="nf">setq</span>
+<a name="rest_code_2aab44867eca4864a07282f517fc3edb-5"></a>  <span class="nv">appt-message-warning-time</span> <span class="ss">'15</span>  <span class="c1">;; send first warning 15 minutes before appointment</span>
+<a name="rest_code_2aab44867eca4864a07282f517fc3edb-6"></a>  <span class="nv">appt-display-mode-line</span> <span class="nv">nil</span>     <span class="c1">;; don't show in the modeline</span>
+<a name="rest_code_2aab44867eca4864a07282f517fc3edb-7"></a>  <span class="nv">appt-display-format</span> <span class="ss">'window</span><span class="p">)</span>   <span class="c1">;; pass warnings to the designated window function</span>
+<a name="rest_code_2aab44867eca4864a07282f517fc3edb-8"></a><span class="p">(</span><span class="nf">appt-activate</span> <span class="mi">1</span><span class="p">)</span>                <span class="c1">;; activate appointment notification</span>
+<a name="rest_code_2aab44867eca4864a07282f517fc3edb-9"></a><span class="p">(</span><span class="nf">display-time</span><span class="p">)</span>                   <span class="c1">;; activate time display</span>
+<a name="rest_code_2aab44867eca4864a07282f517fc3edb-10"></a>
+<a name="rest_code_2aab44867eca4864a07282f517fc3edb-11"></a><span class="p">(</span><span class="nf">org-agenda-to-appt</span><span class="p">)</span>             <span class="c1">;; generate the appt list from org agenda files on emacs launch</span>
+<a name="rest_code_2aab44867eca4864a07282f517fc3edb-12"></a><span class="p">(</span><span class="nf">run-at-time</span> <span class="s">"24:01"</span> <span class="mi">3600</span> <span class="ss">'org-agenda-to-appt</span><span class="p">)</span>           <span class="c1">;; update appt list hourly</span>
+<a name="rest_code_2aab44867eca4864a07282f517fc3edb-13"></a><span class="p">(</span><span class="nf">add-hook</span> <span class="ss">'org-finalize-agenda-hook</span> <span class="ss">'org-agenda-to-appt</span><span class="p">)</span> <span class="c1">;; update appt list on agenda view</span>
 </pre>
 <p>Next, specify the path to your <tt class="docutils literal">toast</tt> executable (note that I'm using
 UNIX-style path here, seems to be working well):</p>
-<pre class="code scheme"><a name="rest_code_baf33ba295934b0bbccf0135f511e99c-1"></a><span class="p">(</span><span class="nf">defvar</span> <span class="nv">toast-notifier-path</span>
-<a name="rest_code_baf33ba295934b0bbccf0135f511e99c-2"></a>  <span class="s">"/home/joon/Programs/toast/bin/Release/toast"</span>
-<a name="rest_code_baf33ba295934b0bbccf0135f511e99c-3"></a>  <span class="p">)</span>
+<pre class="code scheme"><a name="rest_code_66400e68c07140688bb4044b55d02b21-1"></a><span class="p">(</span><span class="nf">defvar</span> <span class="nv">toast-notifier-path</span>
+<a name="rest_code_66400e68c07140688bb4044b55d02b21-2"></a>  <span class="s">"/home/joon/Programs/toast/bin/Release/toast"</span>
+<a name="rest_code_66400e68c07140688bb4044b55d02b21-3"></a>  <span class="p">)</span>
 </pre>
 <p>Set up the call to <tt class="docutils literal">toast</tt>:</p>
-<pre class="code scheme"><a name="rest_code_e4785557f0c04df5ba150766c8466e39-1"></a><span class="c1">;; set up the call to the notifier</span>
-<a name="rest_code_e4785557f0c04df5ba150766c8466e39-2"></a><span class="p">(</span><span class="nf">defun</span> <span class="nv">toast-appt-send-notification</span> <span class="p">(</span><span class="nf">title</span> <span class="nv">msg</span><span class="p">)</span>
-<a name="rest_code_e4785557f0c04df5ba150766c8466e39-3"></a>  <span class="p">(</span><span class="nf">shell-command</span> <span class="p">(</span><span class="nf">concat</span> <span class="nv">toast-notifier-path</span>
-<a name="rest_code_e4785557f0c04df5ba150766c8466e39-4"></a>                         <span class="s">" -t \""</span> <span class="nv">title</span> <span class="s">"\""</span>
-<a name="rest_code_e4785557f0c04df5ba150766c8466e39-5"></a>                         <span class="s">" -m \""</span> <span class="nv">msg</span> <span class="s">"\""</span><span class="p">)))</span>
-<a name="rest_code_e4785557f0c04df5ba150766c8466e39-6"></a>
-<a name="rest_code_e4785557f0c04df5ba150766c8466e39-7"></a><span class="c1">;; designate the window function for my-appt-send-notification</span>
-<a name="rest_code_e4785557f0c04df5ba150766c8466e39-8"></a><span class="p">(</span><span class="nf">defun</span> <span class="nv">toast-appt-display</span> <span class="p">(</span><span class="nf">min-to-app</span> <span class="nv">new-time</span> <span class="nv">msg</span><span class="p">)</span>
-<a name="rest_code_e4785557f0c04df5ba150766c8466e39-9"></a>  <span class="p">(</span><span class="nf">toast-appt-send-notification</span>
-<a name="rest_code_e4785557f0c04df5ba150766c8466e39-10"></a>    <span class="p">(</span><span class="nf">format</span> <span class="s">"Appointment in %s minutes"</span> <span class="nv">min-to-app</span><span class="p">)</span>    <span class="c1">;; passed to -t in toast call</span>
-<a name="rest_code_e4785557f0c04df5ba150766c8466e39-11"></a>    <span class="p">(</span><span class="nf">format</span> <span class="s">"%s"</span> <span class="nv">msg</span><span class="p">)))</span>                                <span class="c1">;; passed to -m in toast call</span>
-<a name="rest_code_e4785557f0c04df5ba150766c8466e39-12"></a>
-<a name="rest_code_e4785557f0c04df5ba150766c8466e39-13"></a><span class="p">(</span><span class="nf">setq</span> <span class="nv">appt-disp-window-function</span> <span class="p">(</span><span class="nf">function</span> <span class="nv">toast-appt-display</span><span class="p">))</span>
+<pre class="code scheme"><a name="rest_code_037f787fdc8e4c80be9ae73a199911a9-1"></a><span class="c1">;; set up the call to the notifier</span>
+<a name="rest_code_037f787fdc8e4c80be9ae73a199911a9-2"></a><span class="p">(</span><span class="nf">defun</span> <span class="nv">toast-appt-send-notification</span> <span class="p">(</span><span class="nf">title</span> <span class="nv">msg</span><span class="p">)</span>
+<a name="rest_code_037f787fdc8e4c80be9ae73a199911a9-3"></a>  <span class="p">(</span><span class="nf">shell-command</span> <span class="p">(</span><span class="nf">concat</span> <span class="nv">toast-notifier-path</span>
+<a name="rest_code_037f787fdc8e4c80be9ae73a199911a9-4"></a>                         <span class="s">" -t \""</span> <span class="nv">title</span> <span class="s">"\""</span>
+<a name="rest_code_037f787fdc8e4c80be9ae73a199911a9-5"></a>                         <span class="s">" -m \""</span> <span class="nv">msg</span> <span class="s">"\""</span><span class="p">)))</span>
+<a name="rest_code_037f787fdc8e4c80be9ae73a199911a9-6"></a>
+<a name="rest_code_037f787fdc8e4c80be9ae73a199911a9-7"></a><span class="c1">;; designate the window function for my-appt-send-notification</span>
+<a name="rest_code_037f787fdc8e4c80be9ae73a199911a9-8"></a><span class="p">(</span><span class="nf">defun</span> <span class="nv">toast-appt-display</span> <span class="p">(</span><span class="nf">min-to-app</span> <span class="nv">new-time</span> <span class="nv">msg</span><span class="p">)</span>
+<a name="rest_code_037f787fdc8e4c80be9ae73a199911a9-9"></a>  <span class="p">(</span><span class="nf">toast-appt-send-notification</span>
+<a name="rest_code_037f787fdc8e4c80be9ae73a199911a9-10"></a>    <span class="p">(</span><span class="nf">format</span> <span class="s">"Appointment in %s minutes"</span> <span class="nv">min-to-app</span><span class="p">)</span>    <span class="c1">;; passed to -t in toast call</span>
+<a name="rest_code_037f787fdc8e4c80be9ae73a199911a9-11"></a>    <span class="p">(</span><span class="nf">format</span> <span class="s">"%s"</span> <span class="nv">msg</span><span class="p">)))</span>                                <span class="c1">;; passed to -m in toast call</span>
+<a name="rest_code_037f787fdc8e4c80be9ae73a199911a9-12"></a>
+<a name="rest_code_037f787fdc8e4c80be9ae73a199911a9-13"></a><span class="p">(</span><span class="nf">setq</span> <span class="nv">appt-disp-window-function</span> <span class="p">(</span><span class="nf">function</span> <span class="nv">toast-appt-display</span><span class="p">))</span>
 </pre>
 <p>Now Emacs will use <tt class="docutils literal">toast</tt> to notify you of upcoming appointments:</p>
-<img alt="c:/home/joon/AeroFs/Org/Assets/Blog/Images/toast_example.png" src="c:/home/joon/AeroFs/Org/Assets/Blog/Images/toast_example.png"><p>If you want to be fancier, you can show an icon in the notification as
+<img alt="../images/toast_example.png" src="images/toast_example.png"><p>If you want to be fancier, you can show an icon in the notification as
 well. You can download an icon (from
 <a class="reference external" href="http://www.easyicon.net/language.en/540985-org_mode_icon.html">http://www.easyicon.net/language.en/540985-org_mode_icon.html</a>, for example)
 and modify <tt class="docutils literal"><span class="pre">toast-appt-send-notification</span></tt> by adding <tt class="docutils literal"><span class="pre">-p</span></tt> argument (you have
 to use Windows-style path here):</p>
-<pre class="code scheme"><a name="rest_code_62f4ecbed3c548ac8119f2c07cb44b53-1"></a><span class="c1">;; set up the call to the notifier</span>
-<a name="rest_code_62f4ecbed3c548ac8119f2c07cb44b53-2"></a><span class="p">(</span><span class="nf">defun</span> <span class="nv">toast-appt-send-notification</span> <span class="p">(</span><span class="nf">title</span> <span class="nv">msg</span><span class="p">)</span>
-<a name="rest_code_62f4ecbed3c548ac8119f2c07cb44b53-3"></a>  <span class="p">(</span><span class="nf">shell-command</span> <span class="p">(</span><span class="nf">concat</span> <span class="nv">toast-notifier-path</span>
-<a name="rest_code_62f4ecbed3c548ac8119f2c07cb44b53-4"></a>                         <span class="s">" -t \""</span> <span class="nv">title</span> <span class="s">"\""</span>
-<a name="rest_code_62f4ecbed3c548ac8119f2c07cb44b53-5"></a>                         <span class="s">" -m \""</span> <span class="nv">msg</span> <span class="s">"\""</span>
-<a name="rest_code_62f4ecbed3c548ac8119f2c07cb44b53-6"></a>                         <span class="s">" -p C:\\Users\\joon\\Programs\\Assets\\Icons\\org_mode_256px_540985_easyicon.net.png"</span><span class="p">)))</span>
+<pre class="code scheme"><a name="rest_code_5aacb059530a4e11bb408e14d1834a23-1"></a><span class="c1">;; set up the call to the notifier</span>
+<a name="rest_code_5aacb059530a4e11bb408e14d1834a23-2"></a><span class="p">(</span><span class="nf">defun</span> <span class="nv">toast-appt-send-notification</span> <span class="p">(</span><span class="nf">title</span> <span class="nv">msg</span><span class="p">)</span>
+<a name="rest_code_5aacb059530a4e11bb408e14d1834a23-3"></a>  <span class="p">(</span><span class="nf">shell-command</span> <span class="p">(</span><span class="nf">concat</span> <span class="nv">toast-notifier-path</span>
+<a name="rest_code_5aacb059530a4e11bb408e14d1834a23-4"></a>                         <span class="s">" -t \""</span> <span class="nv">title</span> <span class="s">"\""</span>
+<a name="rest_code_5aacb059530a4e11bb408e14d1834a23-5"></a>                         <span class="s">" -m \""</span> <span class="nv">msg</span> <span class="s">"\""</span>
+<a name="rest_code_5aacb059530a4e11bb408e14d1834a23-6"></a>                         <span class="s">" -p C:\\Users\\joon\\Programs\\Assets\\Icons\\org_mode_256px_540985_easyicon.net.png"</span><span class="p">)))</span>
 </pre>
 <p>which makes notifications look very nice:</p>
 <img alt="c:/home/joon/AeroFs/Org/Assets/Blog/Images/toast_example_with_icon.png" src="c:/home/joon/AeroFs/Org/Assets/Blog/Images/toast_example_with_icon.png">
