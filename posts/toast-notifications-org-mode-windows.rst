@@ -1,6 +1,6 @@
 .. title: Native desktop (toast) notifications for org-mode appointments in Windows
 .. slug: toast-notifications-org-mode-windows
-.. date: 
+.. date: 2015/12/26 00:00
 .. tags: howto, setting, emacs, org-mode, windows, toast
 .. link: 
 .. description: org file for my blog

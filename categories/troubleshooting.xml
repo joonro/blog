@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Joon's Blog (troubleshooting)</title><link>http://joonro.github.io/blog/</link><description></description><atom:link type="application/rss+xml" href="http://joonro.github.io/blog/categories/troubleshooting.xml" rel="self"></atom:link><language>en</language><lastBuildDate>Mon, 28 Dec 2015 04:43:30 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Lenovo Y50 UHD Laptop: Driver Recommendations and Troubleshooting Information</title><link>http://joonro.github.io/blog/posts/lenovo-y50-uhd-laptop-driver-troubleshooting.html</link><dc:creator>Joon Ro</dc:creator><description>&lt;div&gt;&lt;p&gt;Lenovo Y50 UHD is a laptop with good specs (especially for the price), as it
+has a high-end quad-core processor (i7-4700HQ, passmark &lt;a class="reference external" href="http://www.cpubenchmark.net/cpu.php?cpu=Intel+Core+i7-4700HQ+%40+2.40GHz"&gt;7750+&lt;/a&gt; ), 16GB Ram,
+256GB SSD, UHD display (3840x2160), Nvidia Geforce GTX 860M GPU, etc. The
+problem is that it suffers from many driver issues, making it unnecessarily
+frustrating to use. At first I had several problems, but now my machine is
+pretty reliable and stable, and I want to document driver recommendations and
+troubleshooting information. I'm using Windows 10.&lt;/p&gt;
+&lt;p&gt;I feel the most important things to take care of are the SSD lock-up issue and
+the Nvidia driver. I will keep this post updated as we get more driver updates.&lt;/p&gt;
+&lt;div class="section" id="ssd-lock-up"&gt;
+&lt;h2&gt;SSD Lock-up&lt;/h2&gt;
+&lt;p&gt;The system becomes not responsive for 30~ seconds, Task Manager shows 100% disk
+usage, while no process is using the disk.&lt;/p&gt;
+&lt;p&gt;The solution is using &lt;tt class="docutils literal"&gt;Standard SATA AHCI Controller&lt;/tt&gt; instead of intel's for
+&lt;tt class="docutils literal"&gt;IDE ATA/ATAPI controllers&lt;/tt&gt; in &lt;tt class="docutils literal"&gt;Device Manager&lt;/tt&gt;.&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;Right click on the &lt;tt class="docutils literal"&gt;Intel(R) 8 Series Chipset Family SATA AHCI Controller&lt;/tt&gt; and click on  &lt;tt class="docutils literal"&gt;Update Driver Software ..&lt;/tt&gt;&lt;/li&gt;
+&lt;li&gt;Select &lt;tt class="docutils literal"&gt;Browse my computer for driver software&lt;/tt&gt;&lt;/li&gt;
+&lt;li&gt;Select &lt;tt class="docutils literal"&gt;Let me pick from a list of ...&lt;/tt&gt;&lt;/li&gt;
+&lt;li&gt;Choose and install &lt;tt class="docutils literal"&gt;Standard SATA AHCI Controller&lt;/tt&gt;&lt;/li&gt;
+&lt;li&gt;Reboot&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;A major Windows 10 update will revert the driver back to the Intel's, so you
+have to manually do this again if it happens.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="nvidia-driver-for-gtx-860m"&gt;
+&lt;h2&gt;Nvidia Driver for GTX 860M&lt;/h2&gt;
+&lt;p&gt;It seems GTX 860M suffers from driver issues more than other desktop GPU's. If
+you install a wrong version of the driver, you will suffer from performance
+issues, crashes, and even BOSDs. Please do not update Nvidia driver without
+checking the web and make sure it does not have any problems.&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Current (2015/12/27) recommended driver version is &lt;a class="reference external" href="http://nvidia.custhelp.com/app/answers/detail/a_id/3812/~/geforce-hot-fix-driver-359.12"&gt;GeForce Hot Fix driver 359.12&lt;/a&gt;.
+It is for GTX 860M, but it seems it fixes problems for 960M as
+well. You can read about it at the following Nvidia forum thread:
+&lt;a class="reference external" href="https://forums.geforce.com/default/topic/900924/geforce-drivers/geforce-hotfix-driver-359-12-for-geforce-860m-notebook-gpus-released-12-2-15-"&gt;GeForce Hotfix driver 359.12 for GeForce 860M notebook GPUs (Released 12/2/15)&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;The current version 361.43 seems to have less number of problems, but
+&lt;a class="reference external" href="https://forums.geforce.com/default/topic/904579/geforce-drivers/official-361-43-game-ready-whql-display-driver-feedback-thread-12-21-15-/6/"&gt;people seem to have BOSDs&lt;/a&gt; with &lt;tt class="docutils literal"&gt;Kernal_Security_Check_Failure&lt;/tt&gt; error.&lt;/li&gt;
+&lt;li&gt;The previously working version was 355.98. All drivers in between (358.50,
+358.87, 358.91) will cause problems.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="touchpad-loses-gestures-after-waking-up"&gt;
+&lt;h2&gt;Touchpad loses gestures after waking up&lt;/h2&gt;
+&lt;p&gt;Sometimes after waking up, the Synaptics touchpad will lose gestures such as
+three-finger swipe. Albeit not a permanent fix, running the following batch file will
+reset the touchpad and bring back gestures. (I saved it as
+&lt;tt class="docutils literal"&gt;synaptics_touchpad_reset.bat&lt;/tt&gt;) and run it whenever it doesn't work.&lt;/p&gt;
+&lt;pre class="code bat"&gt;&lt;a name="rest_code_cc7bdcabe0c94a22b107f7fa30966e88-1"&gt;&lt;/a&gt;taskkill -f -im syntpenh.exe
+&lt;a name="rest_code_cc7bdcabe0c94a22b107f7fa30966e88-2"&gt;&lt;/a&gt;&lt;span class="k"&gt;cd&lt;/span&gt; C:\Program Files\Synaptics\SynTP
+&lt;a name="rest_code_cc7bdcabe0c94a22b107f7fa30966e88-3"&gt;&lt;/a&gt;start &lt;span class="s2"&gt;""&lt;/span&gt; &lt;span class="s2"&gt;"syntpenh.exe"&lt;/span&gt;
+&lt;a name="rest_code_cc7bdcabe0c94a22b107f7fa30966e88-4"&gt;&lt;/a&gt;exit
+&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="section" id="enabling-touchpad-2-and-3-finger-tap"&gt;
+&lt;h2&gt;Enabling Touchpad 2- and 3-finger tap&lt;/h2&gt;
+&lt;p&gt;If you want to enable touchpad 2- and 3-finger tap - for example, 2-finger tap
+for the right-click and 3-finger tap for the middle-click, you can follow the
+instructions at &lt;a class="reference external" href="https://forums.lenovo.com/t5/Lenovo-P-Y-and-Z-series/Y580-touchpad-two-finger-tap-for-right-click-not-working/m-p/1025407#M86254"&gt;this thread&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;In sum, what you need to do is, hit windows key + x, select &lt;tt class="docutils literal"&gt;run&lt;/tt&gt;, enter
+&lt;tt class="docutils literal"&gt;regedit&lt;/tt&gt; then hit enter, and on the left pane browse to the following
+location:&lt;/p&gt;
+&lt;p&gt;&lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;HKEY_USERS\&amp;lt;SID&lt;/span&gt; name for your current &lt;span class="pre"&gt;user&amp;gt;\Software\Synaptics\SynTP\TouchPadPS2&lt;/span&gt;&lt;/tt&gt;&lt;/p&gt;
+&lt;p&gt;Only issue for me was that I had two entries, &lt;tt class="docutils literal"&gt;TouchPadSMB2cTM2334&lt;/tt&gt; and
+&lt;tt class="docutils literal"&gt;TouchPadPS2TM2334&lt;/tt&gt;, and &lt;tt class="docutils literal"&gt;TouchPadSMB2cTM2334&lt;/tt&gt; was the one that worked.&lt;/p&gt;
+&lt;p&gt;Then, in the right pane, change values of according to the following:&lt;/p&gt;
+&lt;dl class="docutils"&gt;
+&lt;dt&gt;2FingerTapAction&lt;/dt&gt;
+&lt;dd&gt;&lt;tt class="docutils literal"&gt;2&lt;/tt&gt; for right click, &lt;tt class="docutils literal"&gt;4&lt;/tt&gt; for middle click.&lt;/dd&gt;
+&lt;dt&gt;2FingerTapPluginID&lt;/dt&gt;
+&lt;dd&gt;clear any value it may have&lt;/dd&gt;
+&lt;dt&gt;3FingerTapAction&lt;/dt&gt;
+&lt;dd&gt;&lt;tt class="docutils literal"&gt;2&lt;/tt&gt; for right click, &lt;tt class="docutils literal"&gt;4&lt;/tt&gt; for middle click.&lt;/dd&gt;
+&lt;dt&gt;3FingerTapPluginID&lt;/dt&gt;
+&lt;dd&gt;clear any value it may have&lt;/dd&gt;
+&lt;dt&gt;3FingerTapPluginActionID&lt;/dt&gt;
+&lt;dd&gt;&lt;tt class="docutils literal"&gt;0&lt;/tt&gt;&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;p&gt;Reboot and the 2- and 3-finger taps will work.&lt;/p&gt;
+&lt;/div&gt;&lt;/div&gt;</description><category>drivers</category><category>GTX 860M</category><category>lenovo</category><category>setting</category><category>troubleshooting</category><category>UHD</category><category>windows 10</category><category>y50</category><guid>http://joonro.github.io/blog/posts/lenovo-y50-uhd-laptop-driver-troubleshooting.html</guid><pubDate>Sun, 27 Dec 2015 06:00:00 GMT</pubDate></item></channel></rss>
