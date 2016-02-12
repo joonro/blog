@@ -4,7 +4,7 @@
 .. updated: 2015/12/27 17:00
 .. tags: lenovo, y50, UHD, GTX 860M, drivers, setting, troubleshooting, windows 10
 .. link: 
-.. description: org file for my blog
+.. description: Driver Recommendations and Troubleshooting Information for Lenovo Y50 UHD Laptop.
 .. type: text
 .. author: Joon Ro
 .. category: Hardware
