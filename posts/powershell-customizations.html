@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="en">
+<head>
+<meta charset="utf-8">
+<base href="http://joonro.github.io/blog/posts/powershell-customizations.html">
+<meta name="description" content="My Powershell Customizations">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My PowerShell Customizations | Joon's Blog</title>
+<link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/rst.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/code.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/colorbox.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/theme.css" rel="stylesheet" type="text/css">
+<meta content="#5670d4" name="theme-color">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
+<link rel="canonical" href="http://joonro.github.io/blog/posts/powershell-customizations.html">
+<!--[if lt IE 9]><script src="../assets/js/html5.js"></script><![endif]--><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/styles/github.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/languages/lisp.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/languages/powershell.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/languages/r.min.js"></script><script>hljs.initHighlightingOnLoad();</script><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-38842404-1', 'auto');
+  ga('send', 'pageview');
+
+</script><meta name="description" itemprop="description" content="My Powershell Customizations">
+<meta name="author" content="Joon Ro">
+<link rel="prev" href="lenovo-y50-uhd-laptop-driver-troubleshooting.html" title="Lenovo Y50 UHD Laptop: Driver Recommendations and Troubleshooting Information" type="text/html">
+<meta property="og:site_name" content="Joon's Blog">
+<meta property="og:title" content="My PowerShell Customizations">
+<meta property="og:url" content="http://joonro.github.io/blog/posts/powershell-customizations.html">
+<meta property="og:description" content="My Powershell Customizations">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2016-02-10T16:00:00-06:00">
+<meta property="article:tag" content="git">
+<meta property="article:tag" content="posh">
+<meta property="article:tag" content="PowerShell">
+<meta property="article:tag" content="settings">
+<meta property="article:tag" content="windows">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-static-top"><div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://joonro.github.io/blog/">
+
+                <span id="blog-title">Joon's Blog</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
+            <ul class="nav navbar-nav">
+<li>
+<a href="../archive.html">Archive</a>
+                </li>
+<li>
+<a href="../categories/index.html">Tags and Categories</a>
+                </li>
+<li>
+<a href="../rss.xml">RSS feed</a>
+
+                
+            </li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+    <a href="powershell-customizations.rst" id="sourcelink">Source</a>
+    </li>
+
+                
+            </ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="#" class="u-url">My PowerShell Customizations</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                    Joon Ro
+            </span></p>
+            <p class="dateline"><a href="#" rel="bookmark"><time class="published dt-published" datetime="2016-02-10T16:00:00-06:00" itemprop="datePublished" title="2016-02-10 16:00">2016-02-10 16:00</time></a></p>
+                <p class="commentline">
+        
+    <a href="powershell-customizations.html#disqus_thread" data-disqus-identifier="cache/posts/powershell-customizations.html">Comments</a>
+
+
+            
+        </p>
+<p class="sourceline"><a href="powershell-customizations.rst" id="sourcelink">Source</a></p>
+
+                <meta name="description" itemprop="description" content="My Powershell Customizations">
+</div>
+        
+
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<p>I describe my customizations for PowerShell. With these, my PowerShell
+terminal looks like the following screenshot. Not only these customizations
+make it look great, but also they make me productive in the command line in
+Windows.</p>
+<img alt="../images/posh_prompt.png" src="../images/posh_prompt.png"><div class="section" id="conemu">
+<h2>ConEmu</h2>
+<p>I use ConEmu as my terminal emulator. ConEmu provides tabbed sessions,
+changing color schemes on-the-fly, and many customization options.</p>
+<div class="section" id="color-themes">
+<h3>Color Themes</h3>
+<p>The screenshots are taken with <tt class="docutils literal"><span class="pre">moe-dark</span> theme</tt>. ConEmu comes with many color
+schemes, and I also maintain a github repository which contains my favorite
+color themes for ConEmu. You can check it out at &lt;Put link here&gt;</p>
+</div>
+</div>
+<div class="section" id="prompt-customization">
+<h2>Prompt Customization</h2>
+<div class="section" id="git">
+<h3>git</h3>
+<p>To get git-related information on your prompt, you should get
+<tt class="docutils literal"><span class="pre">posh-git</span></tt>. Then, you can show the git-related information with the following:</p>
+<pre class="code powershell"><a name="rest_code_e24e32d68e464ebb9f4821273182189a-1"></a><span class="nb">Import-Module</span> <span class="n">posh-git</span>
+<a name="rest_code_e24e32d68e464ebb9f4821273182189a-2"></a>
+<a name="rest_code_e24e32d68e464ebb9f4821273182189a-3"></a><span class="c"># customize git prompt display settings</span>
+<a name="rest_code_e24e32d68e464ebb9f4821273182189a-4"></a><span class="nv">$global:GitPromptSettings</span><span class="p">.</span><span class="n">BeforeText</span> <span class="p">=</span> <span class="s1">'['</span>
+<a name="rest_code_e24e32d68e464ebb9f4821273182189a-5"></a><span class="nv">$global:GitPromptSettings</span><span class="p">.</span><span class="n">AfterText</span> <span class="p">=</span> <span class="s1">'] '</span>
+<a name="rest_code_e24e32d68e464ebb9f4821273182189a-6"></a><span class="nv">$global:GitPromptSettings</span><span class="p">.</span><span class="n">BranchAheadForegroundColor</span> <span class="p">=</span> <span class="no">[ConsoleColor]</span><span class="p">::</span><span class="n">Green</span>
+<a name="rest_code_e24e32d68e464ebb9f4821273182189a-7"></a><span class="nv">$global:GitPromptSettings</span><span class="p">.</span><span class="n">WorkingForegroundColor</span> <span class="p">=</span> <span class="no">[ConsoleColor]</span><span class="p">::</span><span class="n">Magenta</span>
+<a name="rest_code_e24e32d68e464ebb9f4821273182189a-8"></a><span class="nv">$global:GitPromptSettings</span><span class="p">.</span><span class="n">UntrackedForegroundColor</span> <span class="p">=</span> <span class="no">[ConsoleColor]</span><span class="p">::</span><span class="n">DarkGray</span>
+<a name="rest_code_e24e32d68e464ebb9f4821273182189a-9"></a>
+<a name="rest_code_e24e32d68e464ebb9f4821273182189a-10"></a><span class="nb">Enable-GitColors</span>
+</pre>
+<p>where the item names are self-explanatory.</p>
+</div>
+<div class="section" id="prompt-function">
+<h3>
+<tt class="docutils literal">prompt</tt> function</h3>
+<p>Now you can set-up a function called <tt class="docutils literal">prompt</tt> and put whatever information you
+want there with color settings. My current setup is the following:</p>
+<pre class="code powershell"><a name="rest_code_29520d5193544386b8b60c05517481a7-1"></a><span class="c"># http://serverfault.com/questions/95431</span>
+<a name="rest_code_29520d5193544386b8b60c05517481a7-2"></a><span class="k">function</span> <span class="nb">Test-Administrator</span> <span class="p">{</span>
+<a name="rest_code_29520d5193544386b8b60c05517481a7-3"></a>    <span class="nv">$user</span> <span class="p">=</span> <span class="no">[Security.Principal.WindowsIdentity]</span><span class="p">::</span><span class="n">GetCurrent</span><span class="p">();</span>
+<a name="rest_code_29520d5193544386b8b60c05517481a7-4"></a>    <span class="p">(</span><span class="nb">New-Object</span> <span class="n">Security</span><span class="p">.</span><span class="n">Principal</span><span class="p">.</span><span class="n">WindowsPrincipal</span> <span class="nv">$user</span><span class="p">).</span><span class="n">IsInRole</span><span class="p">(</span><span class="no">[Security.Principal.WindowsBuiltinRole]</span><span class="p">::</span><span class="n">Administrator</span><span class="p">)</span>
+<a name="rest_code_29520d5193544386b8b60c05517481a7-5"></a><span class="p">}</span>
+<a name="rest_code_29520d5193544386b8b60c05517481a7-6"></a>
+<a name="rest_code_29520d5193544386b8b60c05517481a7-7"></a><span class="k">function</span> <span class="n">prompt</span> <span class="p">{</span>
+<a name="rest_code_29520d5193544386b8b60c05517481a7-8"></a>    <span class="nv">$realLASTEXITCODE</span> <span class="p">=</span> <span class="nv">$LASTEXITCODE</span>
+<a name="rest_code_29520d5193544386b8b60c05517481a7-9"></a>
+<a name="rest_code_29520d5193544386b8b60c05517481a7-10"></a>    <span class="nb">Write-Host</span>
+<a name="rest_code_29520d5193544386b8b60c05517481a7-11"></a>
+<a name="rest_code_29520d5193544386b8b60c05517481a7-12"></a>    <span class="c"># Reset color, which can be messed up by Enable-GitColors</span>
+<a name="rest_code_29520d5193544386b8b60c05517481a7-13"></a>    <span class="nv">$Host</span><span class="p">.</span><span class="n">UI</span><span class="p">.</span><span class="n">RawUI</span><span class="p">.</span><span class="n">ForegroundColor</span> <span class="p">=</span> <span class="nv">$GitPromptSettings</span><span class="p">.</span><span class="n">DefaultForegroundColor</span>
+<a name="rest_code_29520d5193544386b8b60c05517481a7-14"></a>
+<a name="rest_code_29520d5193544386b8b60c05517481a7-15"></a>    <span class="k">if</span> <span class="p">(</span><span class="nb">Test-Administrator</span><span class="p">)</span> <span class="p">{</span>  <span class="c"># Use different username if elevated</span>
+<a name="rest_code_29520d5193544386b8b60c05517481a7-16"></a>        <span class="nb">Write-Host</span> <span class="s2">"(Elevated) "</span> <span class="n">-NoNewline</span> <span class="n">-ForegroundColor</span> <span class="n">White</span>
+<a name="rest_code_29520d5193544386b8b60c05517481a7-17"></a>    <span class="p">}</span>
+<a name="rest_code_29520d5193544386b8b60c05517481a7-18"></a>
+<a name="rest_code_29520d5193544386b8b60c05517481a7-19"></a>    <span class="nb">Write-Host</span> <span class="s2">"$ENV:USERNAME@"</span> <span class="n">-NoNewline</span> <span class="n">-ForegroundColor</span> <span class="n">DarkYellow</span>
+<a name="rest_code_29520d5193544386b8b60c05517481a7-20"></a>    <span class="nb">Write-Host</span> <span class="s2">"$ENV:COMPUTERNAME"</span> <span class="n">-NoNewline</span> <span class="n">-ForegroundColor</span> <span class="n">Magenta</span>
+<a name="rest_code_29520d5193544386b8b60c05517481a7-21"></a>
+<a name="rest_code_29520d5193544386b8b60c05517481a7-22"></a>    <span class="k">if</span> <span class="p">(</span><span class="nv">$s</span> <span class="o">-ne</span> <span class="nv">$null</span><span class="p">)</span> <span class="p">{</span>  <span class="c"># color for PSSessions</span>
+<a name="rest_code_29520d5193544386b8b60c05517481a7-23"></a>        <span class="nb">Write-Host</span> <span class="s2">" (</span><span class="se">`$</span><span class="s2">s: "</span> <span class="n">-NoNewline</span> <span class="n">-ForegroundColor</span> <span class="n">DarkGray</span>
+<a name="rest_code_29520d5193544386b8b60c05517481a7-24"></a>        <span class="nb">Write-Host</span> <span class="s2">"</span><span class="p">$(</span><span class="nv">$s</span><span class="p">.</span><span class="n">Name</span><span class="p">)</span><span class="s2">"</span> <span class="n">-NoNewline</span> <span class="n">-ForegroundColor</span> <span class="n">Yellow</span>
+<a name="rest_code_29520d5193544386b8b60c05517481a7-25"></a>        <span class="nb">Write-Host</span> <span class="s2">") "</span> <span class="n">-NoNewline</span> <span class="n">-ForegroundColor</span> <span class="n">DarkGray</span>
+<a name="rest_code_29520d5193544386b8b60c05517481a7-26"></a>    <span class="p">}</span>
+<a name="rest_code_29520d5193544386b8b60c05517481a7-27"></a>
+<a name="rest_code_29520d5193544386b8b60c05517481a7-28"></a>    <span class="nb">Write-Host</span> <span class="s2">" : "</span> <span class="n">-NoNewline</span> <span class="n">-ForegroundColor</span> <span class="n">DarkGray</span>
+<a name="rest_code_29520d5193544386b8b60c05517481a7-29"></a>    <span class="nb">Write-Host</span> <span class="p">$($(</span><span class="nb">Get-Location</span><span class="p">)</span> <span class="o">-replace</span> <span class="s2">"C:\\Users\\Joon"</span><span class="p">,</span> <span class="s2">"~"</span><span class="p">)</span> <span class="n">-NoNewline</span> <span class="n">-ForegroundColor</span> <span class="n">Blue</span>
+<a name="rest_code_29520d5193544386b8b60c05517481a7-30"></a>    <span class="nb">Write-Host</span> <span class="s2">" : "</span> <span class="n">-NoNewline</span> <span class="n">-ForegroundColor</span> <span class="n">DarkGray</span>
+<a name="rest_code_29520d5193544386b8b60c05517481a7-31"></a>    <span class="nb">Write-Host</span> <span class="p">(</span><span class="nb">Get-Date</span> <span class="n">-Format</span> <span class="n">G</span><span class="p">)</span> <span class="n">-NoNewline</span> <span class="n">-ForegroundColor</span> <span class="n">DarkMagenta</span>
+<a name="rest_code_29520d5193544386b8b60c05517481a7-32"></a>    <span class="nb">Write-Host</span> <span class="s2">" : "</span> <span class="n">-NoNewline</span> <span class="n">-ForegroundColor</span> <span class="n">DarkGray</span>
+<a name="rest_code_29520d5193544386b8b60c05517481a7-33"></a>
+<a name="rest_code_29520d5193544386b8b60c05517481a7-34"></a>    <span class="nv">$global:LASTEXITCODE</span> <span class="p">=</span> <span class="nv">$realLASTEXITCODE</span>
+<a name="rest_code_29520d5193544386b8b60c05517481a7-35"></a>
+<a name="rest_code_29520d5193544386b8b60c05517481a7-36"></a>    <span class="nb">Write-VcsStatus</span>
+<a name="rest_code_29520d5193544386b8b60c05517481a7-37"></a>
+<a name="rest_code_29520d5193544386b8b60c05517481a7-38"></a>    <span class="nb">Write-Host</span> <span class="s2">""</span>
+<a name="rest_code_29520d5193544386b8b60c05517481a7-39"></a>
+<a name="rest_code_29520d5193544386b8b60c05517481a7-40"></a>    <span class="k">return</span> <span class="s2">"&gt; "</span>
+<a name="rest_code_29520d5193544386b8b60c05517481a7-41"></a><span class="p">}</span>
+</pre>
+<p>You want to replace <tt class="docutils literal"><span class="pre">C:\\Users\\Joon</span></tt> with your own path, of course. Also I
+have additional things for <tt class="docutils literal">PSSessions</tt> (the block starting with <tt class="docutils literal">if ($s <span class="pre">-ne</span> $null) { # color for PSSessions</tt>), which you can safely remove (or just leave
+it there).</p>
+</div>
+</div>
+<div class="section" id="color-coding-get-childitem">
+<h2>Color coding <tt class="docutils literal"><span class="pre">Get-ChildItem</span></tt>
+</h2>
+<p>To color-code the results of <tt class="docutils literal"><span class="pre">Get-ChildItem</span></tt>, I use my own
+<a class="reference external" href="https://github.com/joonro/Get-ChildItem-Color">Get-ChildItem-Color</a>. Once you download it, you can set aliases to it:</p>
+<pre class="code powershell"><a name="rest_code_abe8f32916a74049959677d4ee794b27-1"></a><span class="c"># Color coded ls</span>
+<a name="rest_code_abe8f32916a74049959677d4ee794b27-2"></a><span class="p">.</span> <span class="s2">"$ScriptPath\Get-ChildItem-Color\Get-ChildItem-Color.ps1"</span>
+<a name="rest_code_abe8f32916a74049959677d4ee794b27-3"></a>
+<a name="rest_code_abe8f32916a74049959677d4ee794b27-4"></a><span class="nb">Set-Alias</span> <span class="n">l</span> <span class="nb">Get-ChildItem</span><span class="n">-Color</span> <span class="n">-option</span> <span class="n">AllScope</span>
+<a name="rest_code_abe8f32916a74049959677d4ee794b27-5"></a><span class="nb">Set-Alias</span> <span class="n">ls</span> <span class="nb">Get-ChildItem</span><span class="n">-Format-Wide</span> <span class="n">-option</span> <span class="n">AllScope</span>
+<a name="rest_code_abe8f32916a74049959677d4ee794b27-6"></a>
+<a name="rest_code_abe8f32916a74049959677d4ee794b27-7"></a><span class="k">function</span> <span class="nb">Get-ChildItem</span><span class="n">-Force</span> <span class="p">{</span> <span class="n">l</span> <span class="n">-Force</span> <span class="p">}</span>
+<a name="rest_code_abe8f32916a74049959677d4ee794b27-8"></a><span class="nb">set-alias</span> <span class="n">la</span> <span class="nb">Get-ChildItem</span><span class="n">-Force</span> <span class="n">-option</span> <span class="n">AllScope</span>
+</pre>
+<p>so you have <tt class="docutils literal">l</tt>, <tt class="docutils literal">ls</tt>, and <tt class="docutils literal">la</tt>.</p>
+<p>Note that I have the following on top of my PowerShell script so I can refer
+to the script path easily with <tt class="docutils literal">$ScriptPath</tt>, and I put <tt class="docutils literal"><span class="pre">Get-ChildItem-Color</span></tt>
+under <tt class="docutils literal">~\Documents\WindowsPowerShell</tt>. You can modify the path obviously.</p>
+<pre class="code powershell"><a name="rest_code_89a4d30069db45eea00284d3aae74d82-1"></a><span class="nv">$ScriptPath</span> <span class="p">=</span> <span class="nb">Split-Path</span> <span class="n">-parent</span> <span class="nv">$PSCommandPath</span>
+</pre>
+</div>
+<div class="section" id="psreadline">
+<h2>PSReadLine</h2>
+<p><a class="reference external" href="https://github.com/lzybkr/PSReadLine">PSReadLine</a> makes PowerShell to behave like <tt class="docutils literal">zsh</tt>, which is my favorite shell
+in GNU/Linux. It gives you substring history search, incremental history
+search, and awesome tab-completion. The following is my current setup:</p>
+<pre class="code powershell"><a name="rest_code_3d44c25e821a476ab2bb17859b996aff-1"></a><span class="nb">Import-Module</span> <span class="n">PSReadLine</span>
+<a name="rest_code_3d44c25e821a476ab2bb17859b996aff-2"></a>
+<a name="rest_code_3d44c25e821a476ab2bb17859b996aff-3"></a><span class="nb">Set-PSReadLineOption</span> <span class="n">-HistoryNoDuplicates</span>
+<a name="rest_code_3d44c25e821a476ab2bb17859b996aff-4"></a><span class="nb">Set-PSReadLineOption</span> <span class="n">-HistorySearchCursorMovesToEnd</span>
+<a name="rest_code_3d44c25e821a476ab2bb17859b996aff-5"></a><span class="nb">Set-PSReadLineOption</span> <span class="n">-HistorySaveStyle</span> <span class="n">SaveIncrementally</span>
+<a name="rest_code_3d44c25e821a476ab2bb17859b996aff-6"></a><span class="nb">Set-PSReadLineOption</span> <span class="n">-MaximumHistoryCount</span> <span class="n">4000</span>
+<a name="rest_code_3d44c25e821a476ab2bb17859b996aff-7"></a><span class="c"># history substring search</span>
+<a name="rest_code_3d44c25e821a476ab2bb17859b996aff-8"></a><span class="nb">Set-PSReadlineKeyHandler</span> <span class="n">-Key</span> <span class="n">UpArrow</span> <span class="n">-Function</span> <span class="n">HistorySearchBackward</span>
+<a name="rest_code_3d44c25e821a476ab2bb17859b996aff-9"></a><span class="nb">Set-PSReadlineKeyHandler</span> <span class="n">-Key</span> <span class="n">DownArrow</span> <span class="n">-Function</span> <span class="n">HistorySearchForward</span>
+<a name="rest_code_3d44c25e821a476ab2bb17859b996aff-10"></a>
+<a name="rest_code_3d44c25e821a476ab2bb17859b996aff-11"></a><span class="c"># Tab completion</span>
+<a name="rest_code_3d44c25e821a476ab2bb17859b996aff-12"></a><span class="nb">Set-PSReadlineKeyHandler</span> <span class="n">-Chord</span> <span class="s1">'Shift+Tab'</span> <span class="n">-Function</span> <span class="n">Complete</span>
+<a name="rest_code_3d44c25e821a476ab2bb17859b996aff-13"></a><span class="nb">Set-PSReadlineKeyHandler</span> <span class="n">-Key</span> <span class="n">Tab</span> <span class="n">-Function</span> <span class="n">MenuComplete</span>
+</pre>
+<p>With these settings, I can press up and down arrows for history substring
+search, and the tab completion shows me available candidates. For example:</p>
+<img alt="../images/posh_PSReadLine_tab_completion.png" src="../images/posh_PSReadLine_tab_completion.png"><p>You can also press <tt class="docutils literal">CTRL+R</tt> for incremental history search.</p>
+</div>
+<div class="section" id="others">
+<h2>Others</h2>
+<div class="section" id="cddash">
+<h3><tt class="docutils literal">cddash</tt></h3>
+<p>You can use the following to have the "dash" functionality - namely, you can go
+back to the previous location by typing <tt class="docutils literal">cd -</tt>. It is from
+<a class="reference external" href="http://goo.gl/xRbYbk">http://goo.gl/xRbYbk</a>.</p>
+<pre class="code powershell"><a name="rest_code_683042c2d73949d3ad997cb38afb514e-1"></a><span class="k">function</span> <span class="n">cddash</span> <span class="p">{</span>
+<a name="rest_code_683042c2d73949d3ad997cb38afb514e-2"></a>    <span class="k">if</span> <span class="p">(</span><span class="nv">$args</span><span class="p">[</span><span class="n">0</span><span class="p">]</span> <span class="o">-eq</span> <span class="s1">'-'</span><span class="p">)</span> <span class="p">{</span>
+<a name="rest_code_683042c2d73949d3ad997cb38afb514e-3"></a>        <span class="nv">$pwd</span> <span class="p">=</span> <span class="nv">$OLDPWD</span><span class="p">;</span>
+<a name="rest_code_683042c2d73949d3ad997cb38afb514e-4"></a>    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<a name="rest_code_683042c2d73949d3ad997cb38afb514e-5"></a>        <span class="nv">$pwd</span> <span class="p">=</span> <span class="nv">$args</span><span class="p">[</span><span class="n">0</span><span class="p">];</span>
+<a name="rest_code_683042c2d73949d3ad997cb38afb514e-6"></a>    <span class="p">}</span>
+<a name="rest_code_683042c2d73949d3ad997cb38afb514e-7"></a>    <span class="nv">$tmp</span> <span class="p">=</span> <span class="n">pwd</span><span class="p">;</span>
+<a name="rest_code_683042c2d73949d3ad997cb38afb514e-8"></a>
+<a name="rest_code_683042c2d73949d3ad997cb38afb514e-9"></a>    <span class="k">if</span> <span class="p">(</span><span class="nv">$pwd</span><span class="p">)</span> <span class="p">{</span>
+<a name="rest_code_683042c2d73949d3ad997cb38afb514e-10"></a>        <span class="nb">Set-Location</span> <span class="nv">$pwd</span><span class="p">;</span>
+<a name="rest_code_683042c2d73949d3ad997cb38afb514e-11"></a>    <span class="p">}</span>
+<a name="rest_code_683042c2d73949d3ad997cb38afb514e-12"></a>    <span class="nb">Set-Variable</span> <span class="n">-Name</span> <span class="n">OLDPWD</span> <span class="n">-Value</span> <span class="nv">$tmp</span> <span class="n">-Scope</span> <span class="n">global</span><span class="p">;</span>
+<a name="rest_code_683042c2d73949d3ad997cb38afb514e-13"></a><span class="p">}</span>
+<a name="rest_code_683042c2d73949d3ad997cb38afb514e-14"></a>
+<a name="rest_code_683042c2d73949d3ad997cb38afb514e-15"></a><span class="nb">Set-Alias</span> <span class="n">-Name</span> <span class="n">cd</span> <span class="n">-value</span> <span class="n">cddash</span> <span class="n">-Option</span> <span class="n">AllScope</span>
+</pre>
+</div>
+<div class="section" id="boost-startup-speed">
+<h3>Boost startup speed</h3>
+<p>If you feel it takes a lot of time to start a PowerShell session due to your
+profile script, I found running the following (I saved it as <tt class="docutils literal">ngen.ps1</tt>) in an
+elevated PowerShell helps a lot.</p>
+<pre class="code powershell"><a name="rest_code_ac159c6bcd4d4313a2878160f10d0e00-1"></a><span class="nv">$env:path</span> <span class="p">=</span> <span class="no">[Runtime.InteropServices.RuntimeEnvironment]</span><span class="p">::</span><span class="n">GetRuntimeDirectory</span><span class="p">()</span>
+<a name="rest_code_ac159c6bcd4d4313a2878160f10d0e00-2"></a><span class="no">[AppDomain]</span><span class="p">::</span><span class="n">CurrentDomain</span><span class="p">.</span><span class="n">GetAssemblies</span><span class="p">()</span> <span class="p">|</span> <span class="p">%</span> <span class="p">{</span>
+<a name="rest_code_ac159c6bcd4d4313a2878160f10d0e00-3"></a>  <span class="k">if</span> <span class="p">(!</span> <span class="nv">$_</span><span class="p">.</span><span class="n">location</span><span class="p">)</span> <span class="p">{</span><span class="k">continue</span><span class="p">}</span>
+<a name="rest_code_ac159c6bcd4d4313a2878160f10d0e00-4"></a>  <span class="nv">$Name</span> <span class="p">=</span> <span class="nb">Split-Path</span> <span class="nv">$_</span><span class="p">.</span><span class="n">location</span> <span class="n">-leaf</span>
+<a name="rest_code_ac159c6bcd4d4313a2878160f10d0e00-5"></a>  <span class="nb">Write-Host</span> <span class="n">-ForegroundColor</span> <span class="n">Yellow</span> <span class="s2">"NGENing : $Name"</span>
+<a name="rest_code_ac159c6bcd4d4313a2878160f10d0e00-6"></a>  <span class="n">ngen</span> <span class="n">install</span> <span class="nv">$_</span><span class="p">.</span><span class="n">location</span> <span class="p">|</span> <span class="p">%</span> <span class="p">{</span><span class="s2">"</span><span class="se">`t</span><span class="s2">$_"</span><span class="p">}</span>
+<a name="rest_code_ac159c6bcd4d4313a2878160f10d0e00-7"></a><span class="p">}</span>
+</pre>
+<p>Source: <a class="reference external" href="http://stackoverflow.com/questions/4208694/">http://stackoverflow.com/questions/4208694/</a>.</p>
+</div>
+</div>
+</div>
+    </div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../categories/git.html" rel="tag">git</a></li>
+            <li><a class="tag p-category" href="../categories/posh.html" rel="tag">posh</a></li>
+            <li><a class="tag p-category" href="../categories/powershell.html" rel="tag">PowerShell</a></li>
+            <li><a class="tag p-category" href="../categories/settings.html" rel="tag">settings</a></li>
+            <li><a class="tag p-category" href="../categories/windows.html" rel="tag">windows</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="lenovo-y50-uhd-laptop-driver-troubleshooting.html" rel="prev" title="Lenovo Y50 UHD Laptop: Driver Recommendations and Troubleshooting Information">Previous post</a>
+            </li>
+        </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
+        
+        
+        <div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="joon-blog",
+            disqus_url="http://joonro.github.io/blog/posts/powershell-customizations.html",
+        disqus_title="My PowerShell Customizations",
+        disqus_identifier="cache/posts/powershell-customizations.html",
+        disqus_config = function () {
+            this.language = "en";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script><noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="//disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+        </section></article><script>var disqus_shortname="joon-blog";(function(){var a=document.createElement("script");a.async=true;a.src="//"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+</div>
+        <!--End of body content-->
+
+        <footer id="footer">
+            Contents © 2016 <a href="mailto:joon.ro@outlook.com">Joon Ro</a> - Powered by <a href="http://getnikola.com" rel="nofollow">Nikola</a> 
+            
+        </footer>
+</div>
+</div>
+
+
+            <script src="../assets/js/jquery.min.js"></script><script src="../assets/js/bootstrap.min.js"></script><script src="../assets/js/moment-with-locales.min.js"></script><script src="../assets/js/fancydates.js"></script><script src="../assets/js/jquery.colorbox-min.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
+    moment.locale("");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates -->
+</body>
+</html>
