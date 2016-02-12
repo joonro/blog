@@ -26,7 +26,7 @@ Color Themes
 
 The screenshots are taken with ``moe-dark theme``. ConEmu comes with many color
 schemes, and I also maintain a github repository which contains my favorite
-color themes for ConEmu. You can check it out at <Put link here>
+color themes for ConEmu. You can check the `GitHub <https://github.com/joonro/ConEmu-Color-Themes>`_ repository.
 
 Prompt Customization
 --------------------
