@@ -26,7 +26,7 @@ Color Themes
 
 The screenshots are taken with ``moe-dark theme``. ConEmu comes with many color
 schemes, and I also maintain a github repository which contains my favorite
-color themes for ConEmu. You can check the `GitHub <https://github.com/joonro/ConEmu-Color-Themes>`_ repository.
+color themes for ConEmu. You can check out the `GitHub <https://github.com/joonro/ConEmu-Color-Themes>`_ repository.
 
 Prompt Customization
 --------------------
@@ -34,8 +34,8 @@ Prompt Customization
 git
 ~~~
 
-To get git-related information on your prompt, you should get
-``posh-git``. Then, you can show the git-related information with the following:
+To get git-related information on your prompt, you should get `posh-git <https://github.com/dahlbyk/posh-git>`_. Then,
+you can show the git-related information with the following:
 
 .. code-block:: powershell
 
