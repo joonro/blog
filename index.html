@@ -24,7 +24,7 @@
   ga('create', 'UA-38842404-1', 'auto');
   ga('send', 'pageview');
 
-</script><link rel="prefetch" href="posts/powershell-customizations.html" type="text/html">
+</script><link rel="prefetch" href="posts/windows-10-enable-dark-mode-posh.html" type="text/html">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -72,8 +72,41 @@
             
             
 
+    
 <div class="postindex">
-    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/powershell-customizations.html" class="u-url">My PowerShell Customizations</a></h1>
+    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/windows-10-enable-dark-mode-posh.html" class="u-url">Windows 10: How to Enable Dark mode in PowerShell</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                Joon Ro
+            </span></p>
+            <p class="dateline"><a href="posts/windows-10-enable-dark-mode-posh.html" rel="bookmark"><time class="published dt-published" datetime="2016-02-10T16:00:00-06:00" title="2016-02-10 16:00">2016-02-10 16:00</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/windows-10-enable-dark-mode-posh.html#disqus_thread" data-disqus-identifier="cache/posts/windows-10-enable-dark-mode-posh.html">Comments</a>
+
+
+        </p>
+</div>
+    </header><div class="e-content entry-content">
+    <div>
+<p>With <a class="reference external" href="https://blogs.windows.com/windowsexperience/2016/08/02/new-video-series-this-week-on-windows-highlights-windows-10-anniversary-update/">Windows 10 Anniversary Update</a>, one can choose between the <a class="reference external" href="https://blogs.windows.com/windowsexperience/2016/08/08/windows-10-tip-personalize-your-pc-by-enabling-the-dark-theme/">light and dark
+modes</a>. Here are a way to set this in PowerShell in case you want to automate
+it. These are slightly modified commands from this <a class="reference external" href="https://www.reddit.com/r/windows/comments/3f0n2u/windows_10_enable_dark_mode/">reddit</a> post.</p>
+<p>To use the dark mode:</p>
+<table class="codetable"><tr>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/windows-10-enable-dark-mode-posh.html#rest_code_37ce21def21b476bad6ed86a2bbede5f-0">0</a></pre></div></td>
+<td class="code"><pre class="code PowerShell"><a name="rest_code_37ce21def21b476bad6ed86a2bbede5f-0"></a><span class="nb">Set-ItemProperty</span> <span class="n">-Path</span> <span class="n">HKCU</span><span class="err">:</span><span class="p">\</span><span class="n">SOFTWARE</span><span class="p">\</span><span class="n">Microsoft</span><span class="p">\</span><span class="n">Windows</span><span class="p">\</span><span class="n">CurrentVersion</span><span class="p">\</span><span class="n">Themes</span><span class="p">\</span><span class="n">Personalize</span> <span class="n">-Name</span> <span class="n">AppsUseLightTheme</span> <span class="n">-Value</span> <span class="n">0</span>
+</pre></td>
+</tr></table>
+<p>To use the light mode:</p>
+<table class="codetable"><tr>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/windows-10-enable-dark-mode-posh.html#rest_code_b1306f28e86c495b822cf016328e4714-0">0</a></pre></div></td>
+<td class="code"><pre class="code PowerShell"><a name="rest_code_b1306f28e86c495b822cf016328e4714-0"></a><span class="nb">Set-ItemProperty</span> <span class="n">-Path</span> <span class="n">HKCU</span><span class="err">:</span><span class="p">\</span><span class="n">SOFTWARE</span><span class="p">\</span><span class="n">Microsoft</span><span class="p">\</span><span class="n">Windows</span><span class="p">\</span><span class="n">CurrentVersion</span><span class="p">\</span><span class="n">Themes</span><span class="p">\</span><span class="n">Personalize</span> <span class="n">-Name</span> <span class="n">AppsUseLightTheme</span> <span class="n">-Value</span> <span class="n">1</span>
+</pre></td>
+</tr></table>
+</div>
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/powershell-customizations.html" class="u-url">My PowerShell Customizations</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn">
                 Joon Ro
@@ -1151,7 +1184,7 @@ blog. It seems it just uses the top level heading.
 
 
         
-       <script>var disqus_shortname="joon-blog";(function(){var a=document.createElement("script");a.async=true;a.src="//"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+       <script>var disqus_shortname="joon-blog";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
 </div>
         <!--End of body content-->
 
@@ -1164,7 +1197,7 @@ blog. It seems it just uses the top level heading.
 
 
             <script src="assets/js/jquery.min.js"></script><script src="assets/js/bootstrap.min.js"></script><script src="assets/js/moment-with-locales.min.js"></script><script src="assets/js/fancydates.js"></script><script src="assets/js/jquery.colorbox-min.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
-    moment.locale("");
+    moment.locale("en");
     fancydates(0, "YYYY-MM-DD HH:mm");
     </script><!-- end fancy dates -->
 </body>
