@@ -90,18 +90,18 @@
     </header><div class="e-content entry-content">
     <div>
 <p>With <a class="reference external" href="https://blogs.windows.com/windowsexperience/2016/08/02/new-video-series-this-week-on-windows-highlights-windows-10-anniversary-update/">Windows 10 Anniversary Update</a>, one can choose between the <a class="reference external" href="https://blogs.windows.com/windowsexperience/2016/08/08/windows-10-tip-personalize-your-pc-by-enabling-the-dark-theme/">light and dark
-modes</a>. Here are a way to set this in PowerShell in case you want to automate
+modes</a>. Here is a set of PowerShell commands to set this in case you want to automate
 it. These are slightly modified commands from this <a class="reference external" href="https://www.reddit.com/r/windows/comments/3f0n2u/windows_10_enable_dark_mode/">reddit</a> post.</p>
 <p>To use the dark mode:</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/windows-10-enable-dark-mode-posh.html#rest_code_37ce21def21b476bad6ed86a2bbede5f-0">0</a></pre></div></td>
-<td class="code"><pre class="code PowerShell"><a name="rest_code_37ce21def21b476bad6ed86a2bbede5f-0"></a><span class="nb">Set-ItemProperty</span> <span class="n">-Path</span> <span class="n">HKCU</span><span class="err">:</span><span class="p">\</span><span class="n">SOFTWARE</span><span class="p">\</span><span class="n">Microsoft</span><span class="p">\</span><span class="n">Windows</span><span class="p">\</span><span class="n">CurrentVersion</span><span class="p">\</span><span class="n">Themes</span><span class="p">\</span><span class="n">Personalize</span> <span class="n">-Name</span> <span class="n">AppsUseLightTheme</span> <span class="n">-Value</span> <span class="n">0</span>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/windows-10-enable-dark-mode-posh.html#rest_code_520fee00e4034bce99dd216a426435b7-0">0</a></pre></div></td>
+<td class="code"><pre class="code PowerShell"><a name="rest_code_520fee00e4034bce99dd216a426435b7-0"></a><span class="nb">Set-ItemProperty</span> <span class="n">-Path</span> <span class="n">HKCU</span><span class="err">:</span><span class="p">\</span><span class="n">SOFTWARE</span><span class="p">\</span><span class="n">Microsoft</span><span class="p">\</span><span class="n">Windows</span><span class="p">\</span><span class="n">CurrentVersion</span><span class="p">\</span><span class="n">Themes</span><span class="p">\</span><span class="n">Personalize</span> <span class="n">-Name</span> <span class="n">AppsUseLightTheme</span> <span class="n">-Value</span> <span class="n">0</span>
 </pre></td>
 </tr></table>
 <p>To use the light mode:</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/windows-10-enable-dark-mode-posh.html#rest_code_b1306f28e86c495b822cf016328e4714-0">0</a></pre></div></td>
-<td class="code"><pre class="code PowerShell"><a name="rest_code_b1306f28e86c495b822cf016328e4714-0"></a><span class="nb">Set-ItemProperty</span> <span class="n">-Path</span> <span class="n">HKCU</span><span class="err">:</span><span class="p">\</span><span class="n">SOFTWARE</span><span class="p">\</span><span class="n">Microsoft</span><span class="p">\</span><span class="n">Windows</span><span class="p">\</span><span class="n">CurrentVersion</span><span class="p">\</span><span class="n">Themes</span><span class="p">\</span><span class="n">Personalize</span> <span class="n">-Name</span> <span class="n">AppsUseLightTheme</span> <span class="n">-Value</span> <span class="n">1</span>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/windows-10-enable-dark-mode-posh.html#rest_code_9c87181323d54246a1bb4eb9cb7a3684-0">0</a></pre></div></td>
+<td class="code"><pre class="code PowerShell"><a name="rest_code_9c87181323d54246a1bb4eb9cb7a3684-0"></a><span class="nb">Set-ItemProperty</span> <span class="n">-Path</span> <span class="n">HKCU</span><span class="err">:</span><span class="p">\</span><span class="n">SOFTWARE</span><span class="p">\</span><span class="n">Microsoft</span><span class="p">\</span><span class="n">Windows</span><span class="p">\</span><span class="n">CurrentVersion</span><span class="p">\</span><span class="n">Themes</span><span class="p">\</span><span class="n">Personalize</span> <span class="n">-Name</span> <span class="n">AppsUseLightTheme</span> <span class="n">-Value</span> <span class="n">1</span>
 </pre></td>
 </tr></table>
 </div>

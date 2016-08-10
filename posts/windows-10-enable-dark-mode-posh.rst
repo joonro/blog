@@ -9,7 +9,7 @@
 .. category: Windows
 
 With `Windows 10 Anniversary Update <https://blogs.windows.com/windowsexperience/2016/08/02/new-video-series-this-week-on-windows-highlights-windows-10-anniversary-update/>`_, one can choose between the `light and dark
-modes <https://blogs.windows.com/windowsexperience/2016/08/08/windows-10-tip-personalize-your-pc-by-enabling-the-dark-theme/>`_. Here are a way to set this in PowerShell in case you want to automate
+modes <https://blogs.windows.com/windowsexperience/2016/08/08/windows-10-tip-personalize-your-pc-by-enabling-the-dark-theme/>`_. Here is a set of PowerShell commands to set this in case you want to automate
 it. These are slightly modified commands from this `reddit <https://www.reddit.com/r/windows/comments/3f0n2u/windows_10_enable_dark_mode/>`_ post.
 
 To use the dark mode:
