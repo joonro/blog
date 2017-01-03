@@ -37,18 +37,16 @@ git
 To get git-related information on your prompt, you should get `posh-git <https://github.com/dahlbyk/posh-git>`_. Then,
 you can show the git-related information with the following:
 
-.. code-block:: powershell
+.. code:: powershell
+    :number-lines: 1
 
     Import-Module posh-git
 
     # customize git prompt display settings
     $global:GitPromptSettings.BeforeText = '['
     $global:GitPromptSettings.AfterText = '] '
-    $global:GitPromptSettings.BranchAheadForegroundColor = [ConsoleColor]::Green
+    $global:GitPromptSettings.BranchAheadStatusForegroundColor = [ConsoleColor]::Green
     $global:GitPromptSettings.WorkingForegroundColor = [ConsoleColor]::Magenta
-    $global:GitPromptSettings.UntrackedForegroundColor = [ConsoleColor]::DarkGray
-
-    Enable-GitColors
 
 where the item names are self-explanatory.
 
@@ -58,7 +56,8 @@ where the item names are self-explanatory.
 Now you can set-up a function called ``prompt`` and put whatever information you
 want there with color settings. My current setup is the following:
 
-.. code-block:: powershell
+.. code:: powershell
+    :number-lines: 1
 
     # http://serverfault.com/questions/95431
     function Test-Administrator {
@@ -112,7 +111,8 @@ Color coding ``Get-ChildItem``
 To color-code the results of ``Get-ChildItem``, I use my own
 `Get-ChildItem-Color <https://github.com/joonro/Get-ChildItem-Color>`_. Once you download it, you can set aliases to it:
 
-.. code-block:: powershell
+.. code:: powershell
+    :number-lines: 1
 
     # Color coded ls
     . "$ScriptPath\Get-ChildItem-Color\Get-ChildItem-Color.ps1"
@@ -129,7 +129,8 @@ Note that I have the following on top of my PowerShell script so I can refer
 to the script path easily with ``$ScriptPath``, and I put ``Get-ChildItem-Color``
 under ``~\Documents\WindowsPowerShell``. You can modify the path obviously.
 
-.. code-block:: powershell
+.. code:: powershell
+    :number-lines: 1
 
     $ScriptPath = Split-Path -parent $PSCommandPath
 
@@ -140,7 +141,8 @@ PSReadLine
 in GNU/Linux. It gives you substring history search, incremental history
 search, and awesome tab-completion. The following is my current setup:
 
-.. code-block:: powershell
+.. code:: powershell
+    :number-lines: 1
 
     Import-Module PSReadLine
 
@@ -173,7 +175,8 @@ You can use the following to have the "dash" functionality - namely, you can go
 back to the previous location by typing ``cd -``. It is from
 `http://goo.gl/xRbYbk <http://goo.gl/xRbYbk>`_.
 
-.. code-block:: powershell
+.. code:: powershell
+    :number-lines: 1
 
     function cddash {
         if ($args[0] -eq '-') {
@@ -198,7 +201,8 @@ If you feel it takes a lot of time to start a PowerShell session due to your
 profile script, I found running the following (I saved it as ``ngen.ps1``) in an
 elevated PowerShell helps a lot.
 
-.. code-block:: powershell
+.. code:: powershell
+    :number-lines: 1
 
     $env:path = [Runtime.InteropServices.RuntimeEnvironment]::GetRuntimeDirectory()
     [AppDomain]::CurrentDomain.GetAssemblies() | % {
@@ -209,3 +213,10 @@ elevated PowerShell helps a lot.
     }
 
 Source: `http://stackoverflow.com/questions/4208694/ <http://stackoverflow.com/questions/4208694/>`_.
+
+Changelog
+---------
+
+[2017-01-03 Tue]
+    Updated prompt customization script for the latest
+    version of ``posh-git``
