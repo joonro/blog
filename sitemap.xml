@@ -7,190 +7,218 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
   <loc>http://joonro.github.io/blog/2015/index.html</loc>
-  <lastmod>2017-01-03T20:36:00Z</lastmod>
+  <lastmod>2017-01-03T21:12:00Z</lastmod>
  </url>
  <url>
   <loc>http://joonro.github.io/blog/2016/index.html</loc>
-  <lastmod>2017-01-03T20:39:00Z</lastmod>
+  <lastmod>2017-02-18T04:55:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://joonro.github.io/blog/2017/index.html</loc>
+  <lastmod>2017-02-18T04:55:00Z</lastmod>
  </url>
  <url>
   <loc>http://joonro.github.io/blog/archive.html</loc>
-  <lastmod>2017-01-03T20:36:00Z</lastmod>
+  <lastmod>2017-02-18T00:16:00Z</lastmod>
  </url>
  <url>
   <loc>http://joonro.github.io/blog/categories/autohotkey.html</loc>
-  <lastmod>2017-01-03T20:36:00Z</lastmod>
+  <lastmod>2017-01-03T21:12:00Z</lastmod>
  </url>
  <url>
   <loc>http://joonro.github.io/blog/categories/blogging.html</loc>
-  <lastmod>2017-01-03T20:36:00Z</lastmod>
+  <lastmod>2017-01-03T21:12:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://joonro.github.io/blog/categories/cat_emacs-org-mode.html</loc>
+  <lastmod>2017-02-18T04:55:00Z</lastmod>
  </url>
  <url>
   <loc>http://joonro.github.io/blog/categories/cat_emacs.html</loc>
-  <lastmod>2017-01-03T20:36:00Z</lastmod>
+  <lastmod>2017-01-03T21:12:00Z</lastmod>
  </url>
  <url>
   <loc>http://joonro.github.io/blog/categories/cat_hardware.html</loc>
-  <lastmod>2017-01-03T20:36:00Z</lastmod>
+  <lastmod>2017-01-03T21:12:00Z</lastmod>
  </url>
  <url>
   <loc>http://joonro.github.io/blog/categories/cat_lyxlatex.html</loc>
-  <lastmod>2017-01-03T20:36:00Z</lastmod>
+  <lastmod>2017-01-03T21:12:00Z</lastmod>
  </url>
  <url>
   <loc>http://joonro.github.io/blog/categories/cat_windows.html</loc>
-  <lastmod>2017-01-03T20:39:00Z</lastmod>
+  <lastmod>2017-02-18T04:55:00Z</lastmod>
  </url>
  <url>
   <loc>http://joonro.github.io/blog/categories/cython.html</loc>
-  <lastmod>2017-01-03T20:36:00Z</lastmod>
+  <lastmod>2017-01-03T21:12:00Z</lastmod>
  </url>
  <url>
   <loc>http://joonro.github.io/blog/categories/dark.html</loc>
-  <lastmod>2017-01-03T20:36:00Z</lastmod>
+  <lastmod>2017-01-03T21:12:00Z</lastmod>
  </url>
  <url>
   <loc>http://joonro.github.io/blog/categories/drivers.html</loc>
-  <lastmod>2017-01-03T20:36:00Z</lastmod>
+  <lastmod>2017-01-03T21:12:00Z</lastmod>
  </url>
  <url>
   <loc>http://joonro.github.io/blog/categories/emacs.html</loc>
-  <lastmod>2017-01-03T20:36:00Z</lastmod>
+  <lastmod>2017-01-03T21:12:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://joonro.github.io/blog/categories/export.html</loc>
+  <lastmod>2017-02-18T04:55:00Z</lastmod>
  </url>
  <url>
   <loc>http://joonro.github.io/blog/categories/git.html</loc>
-  <lastmod>2017-01-03T20:39:00Z</lastmod>
+  <lastmod>2017-01-03T21:12:00Z</lastmod>
  </url>
  <url>
   <loc>http://joonro.github.io/blog/categories/gsl.html</loc>
-  <lastmod>2017-01-03T20:36:00Z</lastmod>
+  <lastmod>2017-01-03T21:12:00Z</lastmod>
  </url>
  <url>
   <loc>http://joonro.github.io/blog/categories/gtx-860m.html</loc>
-  <lastmod>2017-01-03T20:36:00Z</lastmod>
+  <lastmod>2017-01-03T21:12:00Z</lastmod>
  </url>
  <url>
   <loc>http://joonro.github.io/blog/categories/howto.html</loc>
-  <lastmod>2017-01-03T20:36:00Z</lastmod>
+  <lastmod>2017-01-03T21:12:00Z</lastmod>
  </url>
  <url>
   <loc>http://joonro.github.io/blog/categories/index.html</loc>
-  <lastmod>2017-01-03T20:36:00Z</lastmod>
+  <lastmod>2017-02-18T00:15:00Z</lastmod>
  </url>
  <url>
   <loc>http://joonro.github.io/blog/categories/latex.html</loc>
-  <lastmod>2017-01-03T20:36:00Z</lastmod>
+  <lastmod>2017-02-18T04:55:00Z</lastmod>
  </url>
  <url>
   <loc>http://joonro.github.io/blog/categories/lenovo.html</loc>
-  <lastmod>2017-01-03T20:36:00Z</lastmod>
+  <lastmod>2017-01-03T21:12:00Z</lastmod>
  </url>
  <url>
   <loc>http://joonro.github.io/blog/categories/lyx.html</loc>
-  <lastmod>2017-01-03T20:36:00Z</lastmod>
+  <lastmod>2017-01-03T21:12:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://joonro.github.io/blog/categories/minted.html</loc>
+  <lastmod>2017-02-18T04:55:00Z</lastmod>
  </url>
  <url>
   <loc>http://joonro.github.io/blog/categories/nikola.html</loc>
-  <lastmod>2017-01-03T20:36:00Z</lastmod>
+  <lastmod>2017-01-03T21:12:00Z</lastmod>
  </url>
  <url>
   <loc>http://joonro.github.io/blog/categories/org-mode.html</loc>
-  <lastmod>2017-01-03T20:36:00Z</lastmod>
+  <lastmod>2017-02-18T04:55:00Z</lastmod>
  </url>
  <url>
   <loc>http://joonro.github.io/blog/categories/org.html</loc>
-  <lastmod>2017-01-03T20:36:00Z</lastmod>
+  <lastmod>2017-01-03T21:12:00Z</lastmod>
  </url>
  <url>
   <loc>http://joonro.github.io/blog/categories/posh.html</loc>
-  <lastmod>2017-01-03T20:39:00Z</lastmod>
+  <lastmod>2017-02-18T04:55:00Z</lastmod>
  </url>
  <url>
   <loc>http://joonro.github.io/blog/categories/powershell.html</loc>
-  <lastmod>2017-01-03T20:39:00Z</lastmod>
+  <lastmod>2017-02-18T04:55:00Z</lastmod>
  </url>
  <url>
   <loc>http://joonro.github.io/blog/categories/python.html</loc>
-  <lastmod>2017-01-03T20:36:00Z</lastmod>
+  <lastmod>2017-01-03T21:12:00Z</lastmod>
  </url>
  <url>
   <loc>http://joonro.github.io/blog/categories/setting.html</loc>
-  <lastmod>2017-01-03T20:36:00Z</lastmod>
+  <lastmod>2017-01-03T21:12:00Z</lastmod>
  </url>
  <url>
   <loc>http://joonro.github.io/blog/categories/settings.html</loc>
-  <lastmod>2017-01-03T20:39:00Z</lastmod>
+  <lastmod>2017-02-18T04:55:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://joonro.github.io/blog/categories/syntax-highlighting.html</loc>
+  <lastmod>2017-02-18T04:55:00Z</lastmod>
  </url>
  <url>
   <loc>http://joonro.github.io/blog/categories/theme.html</loc>
-  <lastmod>2017-01-03T20:36:00Z</lastmod>
+  <lastmod>2017-01-03T21:12:00Z</lastmod>
  </url>
  <url>
   <loc>http://joonro.github.io/blog/categories/toast.html</loc>
-  <lastmod>2017-01-03T20:36:00Z</lastmod>
+  <lastmod>2017-01-03T21:12:00Z</lastmod>
  </url>
  <url>
   <loc>http://joonro.github.io/blog/categories/troubleshooting.html</loc>
-  <lastmod>2017-01-03T20:36:00Z</lastmod>
+  <lastmod>2017-01-03T21:12:00Z</lastmod>
  </url>
  <url>
   <loc>http://joonro.github.io/blog/categories/uhd.html</loc>
-  <lastmod>2017-01-03T20:36:00Z</lastmod>
+  <lastmod>2017-01-03T21:12:00Z</lastmod>
  </url>
  <url>
   <loc>http://joonro.github.io/blog/categories/windows-10.html</loc>
-  <lastmod>2017-01-03T20:36:00Z</lastmod>
+  <lastmod>2017-01-03T21:12:00Z</lastmod>
  </url>
  <url>
   <loc>http://joonro.github.io/blog/categories/windows.html</loc>
-  <lastmod>2017-01-03T20:39:00Z</lastmod>
+  <lastmod>2017-02-18T04:55:00Z</lastmod>
  </url>
  <url>
   <loc>http://joonro.github.io/blog/categories/y50.html</loc>
-  <lastmod>2017-01-03T20:36:00Z</lastmod>
+  <lastmod>2017-01-03T21:12:00Z</lastmod>
  </url>
  <url>
   <loc>http://joonro.github.io/blog/galleries/index.html</loc>
-  <lastmod>2017-01-03T20:36:00Z</lastmod>
+  <lastmod>2017-01-03T21:12:00Z</lastmod>
  </url>
  <url>
   <loc>http://joonro.github.io/blog/index.html</loc>
-  <lastmod>2017-01-03T20:39:00Z</lastmod>
+  <lastmod>2017-02-18T04:55:00Z</lastmod>
  </url>
  <url>
   <loc>http://joonro.github.io/blog/listings/index.html</loc>
-  <lastmod>2017-01-03T20:36:00Z</lastmod>
+  <lastmod>2017-01-03T21:12:00Z</lastmod>
  </url>
  <url>
   <loc>http://joonro.github.io/blog/posts/changed-the-blog-engine-to-nikola.html</loc>
-  <lastmod>2017-01-03T20:36:00Z</lastmod>
+  <lastmod>2017-01-03T21:12:00Z</lastmod>
  </url>
  <url>
   <loc>http://joonro.github.io/blog/posts/installing-gsl-and-cythongsl-in-windows.html</loc>
-  <lastmod>2017-01-03T20:36:00Z</lastmod>
+  <lastmod>2017-01-03T21:12:00Z</lastmod>
  </url>
  <url>
   <loc>http://joonro.github.io/blog/posts/inverse-and-forward-search-lyx-windows.html</loc>
-  <lastmod>2017-01-03T20:36:00Z</lastmod>
+  <lastmod>2017-01-03T21:12:00Z</lastmod>
  </url>
  <url>
   <loc>http://joonro.github.io/blog/posts/lenovo-y50-uhd-laptop-driver-troubleshooting.html</loc>
-  <lastmod>2017-01-03T20:36:00Z</lastmod>
+  <lastmod>2017-01-03T21:12:00Z</lastmod>
  </url>
  <url>
   <loc>http://joonro.github.io/blog/posts/org-mode-google-calendar-sync-in-windows.html</loc>
-  <lastmod>2017-01-03T20:36:00Z</lastmod>
+  <lastmod>2017-01-03T21:12:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://joonro.github.io/blog/posts/org-mode-outputdir-minted-latex-export.html</loc>
+  <lastmod>2017-02-18T04:55:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://joonro.github.io/blog/posts/org-mode-outputdir-minted-latex.html</loc>
+  <lastmod>2017-02-18T04:51:00Z</lastmod>
  </url>
  <url>
   <loc>http://joonro.github.io/blog/posts/powershell-customizations.html</loc>
-  <lastmod>2017-01-03T20:39:00Z</lastmod>
+  <lastmod>2017-01-03T21:12:00Z</lastmod>
  </url>
  <url>
   <loc>http://joonro.github.io/blog/posts/toast-notifications-org-mode-windows.html</loc>
-  <lastmod>2017-01-03T20:36:00Z</lastmod>
+  <lastmod>2017-01-03T21:12:00Z</lastmod>
  </url>
  <url>
   <loc>http://joonro.github.io/blog/posts/windows-10-enable-dark-mode-posh.html</loc>
-  <lastmod>2017-01-03T20:36:00Z</lastmod>
+  <lastmod>2017-02-18T04:53:00Z</lastmod>
  </url>
 </urlset>

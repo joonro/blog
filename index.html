@@ -5,11 +5,7 @@
 <meta name="description" content="Joon's Blog">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Joon's Blog</title>
-<link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-<link href="assets/css/rst.css" rel="stylesheet" type="text/css">
-<link href="assets/css/code.css" rel="stylesheet" type="text/css">
-<link href="assets/css/colorbox.css" rel="stylesheet" type="text/css">
-<link href="assets/css/theme.css" rel="stylesheet" type="text/css">
+<link href="assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
 <meta content="#5670d4" name="theme-color">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.xml">
 <link rel="canonical" href="http://joonro.github.io/blog/index.html">
@@ -23,7 +19,7 @@
   ga('create', 'UA-38842404-1', 'auto');
   ga('send', 'pageview');
 
-</script><link rel="prefetch" href="posts/windows-10-enable-dark-mode-posh.html" type="text/html">
+</script><link rel="prefetch" href="posts/org-mode-outputdir-minted-latex-export.html" type="text/html">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -73,7 +69,66 @@
 
     
 <div class="postindex">
-    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/windows-10-enable-dark-mode-posh.html" class="u-url">Windows 10: How to Enable Dark mode in PowerShell</a></h1>
+    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/org-mode-outputdir-minted-latex-export.html" class="u-url">Syntax highlighting in LaTeX export in org-mode: specifying outputdir option for minted package</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                Joon Ro
+            </span></p>
+            <p class="dateline"><a href="posts/org-mode-outputdir-minted-latex-export.html" rel="bookmark"><time class="published dt-published" datetime="2017-02-17T18:00:00-06:00" title="2017-02-17 18:00">2017-02-17 18:00</time></a></p>
+                <p class="commentline">
+        
+    <a href="posts/org-mode-outputdir-minted-latex-export.html#disqus_thread" data-disqus-identifier="cache/posts/org-mode-outputdir-minted-latex-export.html">Comments</a>
+
+
+        </p>
+</div>
+    </header><div class="e-content entry-content">
+    <div>
+<p>When you do LaTeX export in org-mode, you can get syntax highlighting in pdf
+output using <tt class="docutils literal">minted</tt> package, which uses <tt class="docutils literal">pygments</tt>. You can add the following
+in your <tt class="docutils literal">init</tt> file:</p>
+<pre class="code common-lisp"><a name="rest_code_2fff76b1b26c4df09b8f2898530ff2be-1"></a><span class="p">(</span><span class="nb">require</span> <span class="ss">'ox-latex</span><span class="p">)</span>
+<a name="rest_code_2fff76b1b26c4df09b8f2898530ff2be-2"></a><span class="p">(</span><span class="nv">add-to-list</span> <span class="ss">'org-latex-packages-alist</span> <span class="o">'</span><span class="p">(</span><span class="s">""</span> <span class="s">"minted"</span><span class="p">))</span>
+<a name="rest_code_2fff76b1b26c4df09b8f2898530ff2be-3"></a><span class="p">(</span><span class="k">setq</span> <span class="nv">org-latex-listings</span> <span class="ss">'minted</span><span class="p">)</span>
+<a name="rest_code_2fff76b1b26c4df09b8f2898530ff2be-4"></a>
+<a name="rest_code_2fff76b1b26c4df09b8f2898530ff2be-5"></a><span class="p">(</span><span class="k">setq</span> <span class="nv">org-latex-pdf-process</span>
+<a name="rest_code_2fff76b1b26c4df09b8f2898530ff2be-6"></a>      <span class="o">'</span><span class="p">(</span><span class="s">"pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"</span>
+<a name="rest_code_2fff76b1b26c4df09b8f2898530ff2be-7"></a>        <span class="s">"pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"</span>
+<a name="rest_code_2fff76b1b26c4df09b8f2898530ff2be-8"></a>        <span class="s">"pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"</span><span class="p">))</span>
+</pre>
+<p>The problem with this is that if you want to export the document to a output
+directory, (e.g., using <tt class="docutils literal">:EXPORT_FILE_NAME: ./Output/File_Name</tt> property),
+then you will get the following error:</p>
+<pre class="code tex"><a name="rest_code_552761ad2f934211b04194cb6e421dfb-1"></a>! Package minted Error: Missing Pygments output; <span class="k">\inputminted</span> was
+<a name="rest_code_552761ad2f934211b04194cb6e421dfb-2"></a>probably given a file that does not exist--otherwise, you may need
+<a name="rest_code_552761ad2f934211b04194cb6e421dfb-3"></a>the outputdir package option, or may be using an incompatible build tool.
+</pre>
+<p>because <tt class="docutils literal">minted</tt> does not know where to find the intermediate file.</p>
+<p>My solution is first commenting out the <tt class="docutils literal">minted</tt> package part:</p>
+<pre class="code common-lisp"><a name="rest_code_6342ec1cef904cf98da413a52851ee24-1"></a><span class="p">(</span><span class="nb">require</span> <span class="ss">'ox-latex</span><span class="p">)</span>
+<a name="rest_code_6342ec1cef904cf98da413a52851ee24-2"></a><span class="c1">;(add-to-list 'org-latex-packages-alist '("" "minted"))</span>
+<a name="rest_code_6342ec1cef904cf98da413a52851ee24-3"></a><span class="p">(</span><span class="k">setq</span> <span class="nv">org-latex-listings</span> <span class="ss">'minted</span><span class="p">)</span>
+<a name="rest_code_6342ec1cef904cf98da413a52851ee24-4"></a>
+<a name="rest_code_6342ec1cef904cf98da413a52851ee24-5"></a><span class="p">(</span><span class="k">setq</span> <span class="nv">org-latex-pdf-process</span>
+<a name="rest_code_6342ec1cef904cf98da413a52851ee24-6"></a>      <span class="o">'</span><span class="p">(</span><span class="s">"pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"</span>
+<a name="rest_code_6342ec1cef904cf98da413a52851ee24-7"></a>        <span class="s">"pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"</span>
+<a name="rest_code_6342ec1cef904cf98da413a52851ee24-8"></a>        <span class="s">"pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"</span><span class="p">))</span>
+</pre>
+<p>and then manually load <tt class="docutils literal">minted</tt> package with specifying <tt class="docutils literal">outputdir</tt> option in the org file:</p>
+<pre class="code text"><a name="rest_code_7b7ca065345e4595a20175d3c530d34e-1"></a>* Test
+<a name="rest_code_7b7ca065345e4595a20175d3c530d34e-2"></a>:PROPERTIES:
+<a name="rest_code_7b7ca065345e4595a20175d3c530d34e-3"></a>:EXPORT_FILE_NAME: Output/File_Name
+<a name="rest_code_7b7ca065345e4595a20175d3c530d34e-4"></a>:EXPORT_LATEX_HEADER+: \usepackage[outputdir=Output]{minted}
+<a name="rest_code_7b7ca065345e4595a20175d3c530d34e-5"></a>:END:
+</pre>
+<p>and it should work.</p>
+<p>Last, if you want to highlight <tt class="docutils literal">ipython</tt> block, you can add the following to
+your <tt class="docutils literal">init</tt> file:</p>
+<pre class="code common-lisp"><a name="rest_code_bc5e7c64b52e461fb89fee6701d277d2-1"></a><span class="p">(</span><span class="nv">add-to-list</span> <span class="ss">'org-latex-minted-langs</span> <span class="o">'</span><span class="p">(</span><span class="nv">ipython</span> <span class="s">"python"</span><span class="p">))</span>
+</pre>
+</div>
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/windows-10-enable-dark-mode-posh.html" class="u-url">Windows 10: How to Enable Dark mode in PowerShell</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn">
                 Joon Ro
@@ -1307,7 +1362,7 @@ blog. It seems it just uses the top level heading.
 </div>
 
 
-            <script src="assets/js/jquery.min.js"></script><script src="assets/js/bootstrap.min.js"></script><script src="assets/js/moment-with-locales.min.js"></script><script src="assets/js/fancydates.js"></script><script src="assets/js/jquery.colorbox-min.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
+            <script src="assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
     moment.locale("en");
     fancydates(0, "YYYY-MM-DD HH:mm");
     </script><!-- end fancy dates -->
