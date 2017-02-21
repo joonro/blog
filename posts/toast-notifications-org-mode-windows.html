@@ -1,15 +1,20 @@
 <!DOCTYPE html>
-<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="en">
+<html prefix="
+og: http://ogp.me/ns#
+article: http://ogp.me/ns/article#
+" lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="description" content="org file for my blog">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Native desktop (toast) notifications for org-mode appointments in Windows | Joon's Blog</title>
 <link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
-<meta content="#5670d4" name="theme-color">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
 <link rel="canonical" href="http://joonro.github.io/blog/posts/toast-notifications-org-mode-windows.html">
-<!--[if lt IE 9]><script src="../assets/js/html5.js"></script><![endif]--><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/styles/github.min.css">
+<!--[if lt IE 9]>
+            <script src="../assets/js/html5shiv.min.js"></script>
+            <script src="../assets/js/respond.min.js"></script>
+        <![endif]--><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/styles/github.min.css">
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/languages/lisp.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/languages/powershell.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/languages/r.min.js"></script><script>hljs.initHighlightingOnLoad();</script><script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -41,73 +46,49 @@
 
 <!-- Menubar -->
 
-<nav class="navbar navbar-inverse navbar-static-top"><div class="container">
-<!-- This keeps the margins nice -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="http://joonro.github.io/blog/">
-
-                <span id="blog-title">Joon's Blog</span>
-            </a>
-        </div>
-<!-- /.navbar-header -->
-        <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
-            <ul class="nav navbar-nav">
-<li>
-<a href="../archive.html">Archive</a>
-                </li>
-<li>
-<a href="../categories/index.html">Tags and Categories</a>
-                </li>
-<li>
-<a href="../rss.xml">RSS feed</a>
-
-                
-            </li>
-</ul>
-<ul class="nav navbar-nav navbar-right">
-<li>
-    <a href="toast-notifications-org-mode-windows.rst" id="sourcelink">Source</a>
-    </li>
-
-                
-            </ul>
-</div>
-<!-- /.navbar-collapse -->
-    </div>
-<!-- /.container -->
-</nav><!-- End of Menubar --><div class="container" id="content" role="main">
-    <div class="body-content">
-        <!--Body content-->
+<nav class="navbar navbar-default header-panel shadow-z-3" role="navigation"><div class="container-fluid">
         <div class="row">
-            
-            
+          <div class="col-xs-3">
+            <h1 class="title-blog">
+                <a href="http://joonro.github.io/blog/">
+                        <span id="blog-title">Joon's Blog</span>
+                    </a>
+            </h1>
+          </div>
+        </div>
+      </div>
+<!-- /.container-fluid -->
+</nav><div class="container-fluid main" id="content" role="main">
+        <div class="row">
+            <nav class="col-xs-3 menu"><ul>
+<li class="withripple"><a href="../archive.html">Archive</a></li>
+                <li class="withripple"><a href="../categories/index.html">Tags and Categories</a></li>
+                <li class="withripple"><a href="../rss.xml">RSS feed</a></li>
+
+                    
+                </ul>
+<ul class="nav navbar-nav"></ul></nav><div class="posts-material col-xs-9">
+                <div class="col-xs-12 col-md-11 content-material">
 <article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="#" class="u-url">Native desktop (toast) notifications for org-mode appointments in Windows</a></h1>
-
-        <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn">
+<hr>
+<div class="metadata">
+            <span class="byline author vcard">
+                <a href="#">
+                        <img class="img-circle" src="../images/avatar.jpg" alt="icon">
                     Joon Ro
-            </span></p>
-            <p class="dateline"><a href="#" rel="bookmark"><time class="published dt-published" datetime="2015-12-26T00:00:00-06:00" itemprop="datePublished" title="2015-12-26 00:00">2015-12-26 00:00</time></a></p>
-                <p class="commentline">
-        
-    <a href="toast-notifications-org-mode-windows.html#disqus_thread" data-disqus-identifier="cache/posts/toast-notifications-org-mode-windows.html">Comments</a>
+                </a>
+            </span>
+            <span class="dateline">
+                <a href="#" rel="bookmark"><i class="mdi-device-access-time"></i>
+                    <time class="published dt-published" datetime="2015-12-26T00:00:00-06:00" itemprop="datePublished" title="2015-12-26 00:00">2015-12-26 00:00</time></a>
+            </span>
+                <span class="commentline">            <a href="toast-notifications-org-mode-windows.html#disqus_thread" data-disqus-identifier="cache/posts/toast-notifications-org-mode-windows.html">Comments</a>
 
-
-            
-        </p>
-<p class="sourceline"><a href="toast-notifications-org-mode-windows.rst" id="sourcelink">Source</a></p>
-
+</span>
                 <meta name="description" itemprop="description" content="org file for my blog">
 </div>
         
-
-    </header><div class="e-content entry-content" itemprop="articleBody text">
+        <hr></header><div class="e-content entry-content" itemprop="articleBody text">
     <div>
 <p>I describe how to set up native desktop notifications (Toast notifications)
 for org-mode appointments in Windows 8+.</p>
@@ -177,25 +158,26 @@ to use Windows-style path here):</p>
 </div>
 </div>
     </div>
-    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
-<li><a class="tag p-category" href="../categories/emacs.html" rel="tag">emacs</a></li>
-            <li><a class="tag p-category" href="../categories/howto.html" rel="tag">howto</a></li>
-            <li><a class="tag p-category" href="../categories/org-mode.html" rel="tag">org-mode</a></li>
-            <li><a class="tag p-category" href="../categories/setting.html" rel="tag">setting</a></li>
-            <li><a class="tag p-category" href="../categories/toast.html" rel="tag">toast</a></li>
-            <li><a class="tag p-category" href="../categories/windows.html" rel="tag">windows</a></li>
-        </ul>
-<ul class="pager hidden-print">
+    <aside class="postpromonav"><nav><div itemprop="keywords" class="tags">
+            <a class="tag p-category btn btn-success btn-raised btn-sm" href="../categories/emacs.html" rel="tag">emacs</a>
+            <a class="tag p-category btn btn-success btn-raised btn-sm" href="../categories/howto.html" rel="tag">howto</a>
+            <a class="tag p-category btn btn-success btn-raised btn-sm" href="../categories/org-mode.html" rel="tag">org-mode</a>
+            <a class="tag p-category btn btn-success btn-raised btn-sm" href="../categories/setting.html" rel="tag">setting</a>
+            <a class="tag p-category btn btn-success btn-raised btn-sm" href="../categories/toast.html" rel="tag">toast</a>
+            <a class="tag p-category btn btn-success btn-raised btn-sm" href="../categories/windows.html" rel="tag">windows</a>
+        </div>
+
+            <ul class="pager">
 <li class="previous">
                 <a href="inverse-and-forward-search-lyx-windows.html" rel="prev" title="How to set up inverse and forward search in LyX for Windows">Previous post</a>
             </li>
             <li class="next">
                 <a href="lenovo-y50-uhd-laptop-driver-troubleshooting.html" rel="next" title="Lenovo Y50 UHD Laptop: Driver Recommendations and Troubleshooting Information">Next post</a>
             </li>
-        </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
-        
-        
-        <div id="disqus_thread"></div>
+        </ul></nav></aside><section class="comments"><h2>
+<i class="mdi-communication-forum"></i>Comments</h2>
+        <hr>
+<div id="disqus_thread"></div>
         <script>
         var disqus_shortname ="joon-blog",
             disqus_url="http://joonro.github.io/blog/posts/toast-notifications-org-mode-windows.html",
@@ -216,17 +198,55 @@ to use Windows-style path here):</p>
 
         </section></article><script>var disqus_shortname="joon-blog";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
 </div>
-        <!--End of body content-->
+            </div>
+        </div>
+        <button class="btn btn-fab btn-raised btn-material-green btn-footer" data-toggle="modal" data-target="#footer-dialog">
+            <i class="mdi-communication-message"></i>
+        </button>
+        <div id="footer-dialog" class="modal fade" tabindex="-1">
+          <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Joon Ro</h4>
+                <div>
+                    
+<img class="img-circle" style="float:left;margin:10px 20px 10px 0px;max-height:200px;" src="../images/avatar.jpg"><p>Joon Ro is an Assistant Professor of Marketing at Tulane University.</p>
 
-        <footer id="footer">
-            Contents © 2017 <a href="mailto:joon.ro@outlook.com">Joon Ro</a> - Powered by <a href="http://getnikola.com" rel="nofollow">Nikola</a> 
-            
-        </footer>
+                </div>
+                <hr>
 </div>
+              <div class="modal-body">
+                    Contents © 2017 <a href="mailto:joon.ro@outlook.com">Joon Ro</a> - Powered by <a href="http://getnikola.com" rel="nofollow">Nikola</a> 
+                    
+              </div>
+              <div class="modal-footer">
+                <button class="btn btn-primary" data-dismiss="modal">Ok</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="source-button">
+    <a class="btn btn-fab btn-raised btn-material-indigo" target="_blank" href="toast-notifications-org-mode-windows.rst" title="Source">
+        <i class="mdi-file-cloud-download"></i>
+    </a>
+
+        </div>
 </div>
 
+            <script src="../assets/js/all-nocdn.js"></script><script>
 
-            <script src="../assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
+            $(document).ready(function() {
+                // This command is used to initialize some elements and make them work properly
+                $.material.init();
+            });
+
+            $(window).on("resize", function() {
+                $("html, body").height($(window).height());
+                $(".main, .menu").height($(window).height() - $(".header-panel").outerHeight() - 76 ); // footer margin: $("footer.footer").outerHeight()
+                $(".posts-material").height($(window).height());
+            }).trigger("resize");
+        </script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
     moment.locale("en");
     fancydates(0, "YYYY-MM-DD HH:mm");
     </script><!-- end fancy dates -->
