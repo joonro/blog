@@ -7,23 +7,31 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <sitemap>
   <loc>http://joonro.github.io/blog/categories/autohotkey.xml</loc>
-  <lastmod>2017-01-03T20:36:00Z</lastmod>
+  <lastmod>2017-04-23T00:53:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/categories/blogging.xml</loc>
-  <lastmod>2017-01-03T20:36:00Z</lastmod>
+  <lastmod>2017-04-23T00:53:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/categories/cat_emacs-org-mode.xml</loc>
-  <lastmod>2017-02-18T04:55:00Z</lastmod>
+  <lastmod>2017-04-23T00:53:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/categories/cat_emacs.xml</loc>
-  <lastmod>2017-01-03T20:36:00Z</lastmod>
+  <lastmod>2017-04-23T00:53:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/categories/cat_hardware.xml</loc>
-  <lastmod>2017-01-03T20:36:00Z</lastmod>
+  <lastmod>2017-04-23T00:53:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>http://joonro.github.io/blog/categories/cat_lyx-latex.xml</loc>
+  <lastmod>2017-04-23T00:53:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>http://joonro.github.io/blog/categories/cat_lyx.xml</loc>
+  <lastmod>2017-04-23T00:53:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/categories/cat_lyxlatex.xml</loc>
@@ -31,134 +39,134 @@
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/categories/cat_windows.xml</loc>
-  <lastmod>2017-01-03T20:39:00Z</lastmod>
+  <lastmod>2017-04-23T01:04:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/categories/cython.xml</loc>
-  <lastmod>2017-01-03T20:36:00Z</lastmod>
+  <lastmod>2017-04-23T00:53:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/categories/dark.xml</loc>
-  <lastmod>2017-01-03T20:36:00Z</lastmod>
+  <lastmod>2017-04-23T00:53:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/categories/drivers.xml</loc>
-  <lastmod>2017-01-03T20:36:00Z</lastmod>
+  <lastmod>2017-04-23T00:53:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/categories/emacs.xml</loc>
-  <lastmod>2017-01-03T20:36:00Z</lastmod>
+  <lastmod>2017-04-23T00:53:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/categories/export.xml</loc>
-  <lastmod>2017-02-18T04:55:00Z</lastmod>
+  <lastmod>2017-04-23T00:53:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/categories/git.xml</loc>
-  <lastmod>2017-01-03T20:39:00Z</lastmod>
+  <lastmod>2017-04-23T01:04:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/categories/gsl.xml</loc>
-  <lastmod>2017-01-03T20:36:00Z</lastmod>
+  <lastmod>2017-04-23T00:53:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/categories/gtx-860m.xml</loc>
-  <lastmod>2017-01-03T20:36:00Z</lastmod>
+  <lastmod>2017-04-23T00:53:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/categories/howto.xml</loc>
-  <lastmod>2017-01-03T20:36:00Z</lastmod>
+  <lastmod>2017-04-23T00:53:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/categories/latex.xml</loc>
-  <lastmod>2017-02-18T04:55:00Z</lastmod>
+  <lastmod>2017-04-23T00:53:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/categories/lenovo.xml</loc>
-  <lastmod>2017-01-03T20:36:00Z</lastmod>
+  <lastmod>2017-04-23T00:53:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/categories/lyx.xml</loc>
-  <lastmod>2017-01-03T20:36:00Z</lastmod>
+  <lastmod>2017-04-23T00:53:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/categories/minted.xml</loc>
-  <lastmod>2017-02-18T04:55:00Z</lastmod>
+  <lastmod>2017-04-23T00:53:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/categories/nikola.xml</loc>
-  <lastmod>2017-01-03T20:36:00Z</lastmod>
+  <lastmod>2017-04-23T00:53:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/categories/org-mode.xml</loc>
-  <lastmod>2017-02-18T04:55:00Z</lastmod>
+  <lastmod>2017-04-23T00:53:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/categories/org.xml</loc>
-  <lastmod>2017-01-03T20:36:00Z</lastmod>
+  <lastmod>2017-04-23T00:53:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/categories/posh.xml</loc>
-  <lastmod>2017-01-03T20:39:00Z</lastmod>
+  <lastmod>2017-04-23T01:04:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/categories/powershell.xml</loc>
-  <lastmod>2017-01-03T20:39:00Z</lastmod>
+  <lastmod>2017-04-23T01:04:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/categories/python.xml</loc>
-  <lastmod>2017-01-03T20:36:00Z</lastmod>
+  <lastmod>2017-04-23T00:53:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/categories/setting.xml</loc>
-  <lastmod>2017-01-03T20:36:00Z</lastmod>
+  <lastmod>2017-04-23T00:53:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/categories/settings.xml</loc>
-  <lastmod>2017-01-03T20:39:00Z</lastmod>
+  <lastmod>2017-04-23T01:04:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/categories/syntax-highlighting.xml</loc>
-  <lastmod>2017-02-18T04:55:00Z</lastmod>
+  <lastmod>2017-04-23T00:53:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/categories/theme.xml</loc>
-  <lastmod>2017-01-03T20:36:00Z</lastmod>
+  <lastmod>2017-04-23T00:53:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/categories/toast.xml</loc>
-  <lastmod>2017-01-03T20:36:00Z</lastmod>
+  <lastmod>2017-04-23T00:53:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/categories/troubleshooting.xml</loc>
-  <lastmod>2017-01-03T20:36:00Z</lastmod>
+  <lastmod>2017-04-23T00:53:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/categories/uhd.xml</loc>
-  <lastmod>2017-01-03T20:36:00Z</lastmod>
+  <lastmod>2017-04-23T00:53:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/categories/windows-10.xml</loc>
-  <lastmod>2017-01-03T20:36:00Z</lastmod>
+  <lastmod>2017-04-23T00:53:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/categories/windows.xml</loc>
-  <lastmod>2017-01-03T20:39:00Z</lastmod>
+  <lastmod>2017-04-23T01:04:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/categories/y50.xml</loc>
-  <lastmod>2017-01-03T20:36:00Z</lastmod>
+  <lastmod>2017-04-23T00:53:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/galleries/rss.xml</loc>
-  <lastmod>2017-02-21T16:13:00Z</lastmod>
+  <lastmod>2017-04-23T00:52:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/rss.xml</loc>
-  <lastmod>2017-02-18T04:55:00Z</lastmod>
+  <lastmod>2017-04-23T01:04:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/sitemap.xml</loc>
-  <lastmod>2017-02-21T16:23:00Z</lastmod>
+  <lastmod>2017-04-23T01:04:00Z</lastmod>
  </sitemap>
 </sitemapindex>

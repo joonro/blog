@@ -8,7 +8,16 @@ article: http://ogp.me/ns/article#
 <meta name="description" content="Joon's Blog">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Joon's Blog | Joon's Blog</title>
-<link href="assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="assets/css/rst.css" rel="stylesheet" type="text/css">
+<link href="assets/css/code.css" rel="stylesheet" type="text/css">
+<link href="assets/css/colorbox.css" rel="stylesheet" type="text/css">
+<link href="assets/css/roboto.min.css" rel="stylesheet" type="text/css">
+<link href="assets/css/material.min.css" rel="stylesheet" type="text/css">
+<link href="assets/css/ripples.min.css" rel="stylesheet" type="text/css">
+<link href="assets/css/kc.fab.css" rel="stylesheet" type="text/css">
+<link href="assets/css/theme.css" rel="stylesheet" type="text/css">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.xml">
 <link rel="canonical" href="http://joonro.github.io/blog/index.html">
 <!--[if lt IE 9]>
@@ -24,7 +33,7 @@ article: http://ogp.me/ns/article#
   ga('create', 'UA-38842404-1', 'auto');
   ga('send', 'pageview');
 
-</script><link rel="prefetch" href="posts/org-mode-outputdir-minted-latex-export.html" type="text/html">
+</script><link rel="prefetch" href="posts/powershell-customizations.html" type="text/html">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -57,7 +66,173 @@ article: http://ogp.me/ns/article#
 
     <div class="postindex well post-material ">
     
-        <article class="h-entry post-text"><header><h1 class="p-name entry-title header"><a href="posts/org-mode-outputdir-minted-latex-export.html" class="u-url">Syntax highlighting in LaTeX export in org-mode: specifying outputdir option for minted package</a></h1>
+        <article class="h-entry post-text"><header><h1 class="p-name entry-title header"><a href="posts/powershell-customizations.html" class="u-url">My PowerShell Customizations</a></h1>
+            <div class="metadata">
+                <span class="byline author vcard">
+                        <img class="img-circle" src="images/avatar.jpg" alt="icon">
+                    Joon Ro
+                </span>
+                <span class="dateline"><a href="posts/powershell-customizations.html" rel="bookmark">
+                    <i class="mdi-device-access-time"></i><time class="published dt-published" datetime="2017-04-22T16:00:00-05:00" title="2017-04-22 16:00">2017-04-22 16:00</time></a></span>
+                    <span class="commentline">            <a href="posts/powershell-customizations.html#disqus_thread" data-disqus-identifier="cache/posts/powershell-customizations.html">Comments</a>
+
+</span>
+            </div>
+            <hr></header><div class="e-content entry-content">
+        <div>
+<p>I describe my customizations for PowerShell. With these, my PowerShell
+terminal looks like the following screenshot. Not only these customizations
+make it look great, but also they make me productive in the command line in
+Windows.</p>
+<img alt="../images/posh_prompt.png" src="images/posh_prompt.png"><div class="section" id="conemu">
+<h2>ConEmu</h2>
+<p>I use ConEmu as my terminal emulator. ConEmu provides tabbed sessions,
+changing color schemes on-the-fly, and many customization options.</p>
+<div class="section" id="color-themes">
+<h3>Color Themes</h3>
+<p>The screenshots are taken with <tt class="docutils literal"><span class="pre">moe-dark</span> theme</tt>. ConEmu comes with many color
+schemes, and I also maintain a github repository which contains my favorite
+color themes for ConEmu. You can check out the <a class="reference external" href="https://github.com/joonro/ConEmu-Color-Themes">GitHub</a> repository.</p>
+</div>
+</div>
+<div class="section" id="posh-git-and-prompt-customization">
+<h2>posh-git and prompt Customization</h2>
+<p>To get git-related information on your prompt, you should get <a class="reference external" href="https://github.com/dahlbyk/posh-git">posh-git</a>. Then,
+you can show the git-related information along with other useful information by modifying
+<tt class="docutils literal">prompt()</tt> function. For example:</p>
+<pre class="code powershell"><a name="rest_code_25dd1009b39b4939b594f597770d27cc-1"></a><span class="c"># http://serverfault.com/questions/95431</span>
+<a name="rest_code_25dd1009b39b4939b594f597770d27cc-2"></a><span class="k">function</span> <span class="nb">Test-Administrator</span> <span class="p">{</span>
+<a name="rest_code_25dd1009b39b4939b594f597770d27cc-3"></a>    <span class="nv">$user</span> <span class="p">=</span> <span class="no">[Security.Principal.WindowsIdentity]</span><span class="p">::</span><span class="n">GetCurrent</span><span class="p">();</span>
+<a name="rest_code_25dd1009b39b4939b594f597770d27cc-4"></a>    <span class="p">(</span><span class="nb">New-Object</span> <span class="n">Security</span><span class="p">.</span><span class="n">Principal</span><span class="p">.</span><span class="n">WindowsPrincipal</span> <span class="nv">$user</span><span class="p">).</span><span class="n">IsInRole</span><span class="p">(</span><span class="no">[Security.Principal.WindowsBuiltinRole]</span><span class="p">::</span><span class="n">Administrator</span><span class="p">)</span>
+<a name="rest_code_25dd1009b39b4939b594f597770d27cc-5"></a><span class="p">}</span>
+<a name="rest_code_25dd1009b39b4939b594f597770d27cc-6"></a>
+<a name="rest_code_25dd1009b39b4939b594f597770d27cc-7"></a><span class="k">function</span> <span class="n">prompt</span> <span class="p">{</span>
+<a name="rest_code_25dd1009b39b4939b594f597770d27cc-8"></a>    <span class="c"># https://github.com/dahlbyk/posh-git/wiki/Customizing-Your-PowerShell-Prompt</span>
+<a name="rest_code_25dd1009b39b4939b594f597770d27cc-9"></a>    <span class="nv">$origLastExitCode</span> <span class="p">=</span> <span class="nv">$LastExitCode</span>
+<a name="rest_code_25dd1009b39b4939b594f597770d27cc-10"></a>    <span class="nb">Write-VcsStatus</span>
+<a name="rest_code_25dd1009b39b4939b594f597770d27cc-11"></a>
+<a name="rest_code_25dd1009b39b4939b594f597770d27cc-12"></a>    <span class="k">if</span> <span class="p">(</span><span class="nb">Test-Administrator</span><span class="p">)</span> <span class="p">{</span>  <span class="c"># if elevated</span>
+<a name="rest_code_25dd1009b39b4939b594f597770d27cc-13"></a>        <span class="nb">Write-Host</span> <span class="s2">"(Elevated) "</span> <span class="n">-NoNewline</span> <span class="n">-ForegroundColor</span> <span class="n">White</span>
+<a name="rest_code_25dd1009b39b4939b594f597770d27cc-14"></a>    <span class="p">}</span>
+<a name="rest_code_25dd1009b39b4939b594f597770d27cc-15"></a>
+<a name="rest_code_25dd1009b39b4939b594f597770d27cc-16"></a>    <span class="nb">Write-Host</span> <span class="s2">"$env:USERNAME@"</span> <span class="n">-NoNewline</span> <span class="n">-ForegroundColor</span> <span class="n">DarkYellow</span>
+<a name="rest_code_25dd1009b39b4939b594f597770d27cc-17"></a>    <span class="nb">Write-Host</span> <span class="s2">"$env:COMPUTERNAME"</span> <span class="n">-NoNewline</span> <span class="n">-ForegroundColor</span> <span class="n">Magenta</span>
+<a name="rest_code_25dd1009b39b4939b594f597770d27cc-18"></a>    <span class="nb">Write-Host</span> <span class="s2">" : "</span> <span class="n">-NoNewline</span> <span class="n">-ForegroundColor</span> <span class="n">DarkGray</span>
+<a name="rest_code_25dd1009b39b4939b594f597770d27cc-19"></a>
+<a name="rest_code_25dd1009b39b4939b594f597770d27cc-20"></a>    <span class="nv">$curPath</span> <span class="p">=</span> <span class="nv">$ExecutionContext</span><span class="p">.</span><span class="n">SessionState</span><span class="p">.</span><span class="n">Path</span><span class="p">.</span><span class="n">CurrentLocation</span><span class="p">.</span><span class="n">Path</span>
+<a name="rest_code_25dd1009b39b4939b594f597770d27cc-21"></a>    <span class="k">if</span> <span class="p">(</span><span class="nv">$curPath</span><span class="p">.</span><span class="n">ToLower</span><span class="p">().</span><span class="n">StartsWith</span><span class="p">(</span><span class="nv">$Home</span><span class="p">.</span><span class="n">ToLower</span><span class="p">()))</span>
+<a name="rest_code_25dd1009b39b4939b594f597770d27cc-22"></a>    <span class="p">{</span>
+<a name="rest_code_25dd1009b39b4939b594f597770d27cc-23"></a>        <span class="nv">$curPath</span> <span class="p">=</span> <span class="s2">"~"</span> <span class="p">+</span> <span class="nv">$curPath</span><span class="p">.</span><span class="n">SubString</span><span class="p">(</span><span class="nv">$Home</span><span class="p">.</span><span class="n">Length</span><span class="p">)</span>
+<a name="rest_code_25dd1009b39b4939b594f597770d27cc-24"></a>    <span class="p">}</span>
+<a name="rest_code_25dd1009b39b4939b594f597770d27cc-25"></a>
+<a name="rest_code_25dd1009b39b4939b594f597770d27cc-26"></a>    <span class="nb">Write-Host</span> <span class="nv">$curPath</span> <span class="n">-NoNewline</span> <span class="n">-ForegroundColor</span> <span class="n">Blue</span>
+<a name="rest_code_25dd1009b39b4939b594f597770d27cc-27"></a>    <span class="nb">Write-Host</span> <span class="s2">" : "</span> <span class="n">-NoNewline</span> <span class="n">-ForegroundColor</span> <span class="n">DarkGray</span>
+<a name="rest_code_25dd1009b39b4939b594f597770d27cc-28"></a>    <span class="nb">Write-Host</span> <span class="p">(</span><span class="nb">Get-Date</span> <span class="n">-Format</span> <span class="n">G</span><span class="p">)</span> <span class="n">-NoNewline</span> <span class="n">-ForegroundColor</span> <span class="n">DarkMagenta</span>
+<a name="rest_code_25dd1009b39b4939b594f597770d27cc-29"></a>    <span class="nb">Write-Host</span> <span class="s2">" : "</span> <span class="n">-NoNewline</span> <span class="n">-ForegroundColor</span> <span class="n">DarkGray</span>
+<a name="rest_code_25dd1009b39b4939b594f597770d27cc-30"></a>    <span class="nv">$LastExitCode</span> <span class="p">=</span> <span class="nv">$origLastExitCode</span>
+<a name="rest_code_25dd1009b39b4939b594f597770d27cc-31"></a>    <span class="s2">"</span><span class="se">`n</span><span class="p">$(</span><span class="s1">'&gt;'</span> <span class="p">*</span> <span class="p">(</span><span class="nv">$nestedPromptLevel</span> <span class="p">+</span> <span class="n">1</span><span class="p">))</span><span class="s2"> "</span>
+<a name="rest_code_25dd1009b39b4939b594f597770d27cc-32"></a><span class="p">}</span>
+<a name="rest_code_25dd1009b39b4939b594f597770d27cc-33"></a>
+<a name="rest_code_25dd1009b39b4939b594f597770d27cc-34"></a><span class="nb">Import-Module</span> <span class="n">posh-git</span>
+<a name="rest_code_25dd1009b39b4939b594f597770d27cc-35"></a>
+<a name="rest_code_25dd1009b39b4939b594f597770d27cc-36"></a><span class="nv">$global:GitPromptSettings</span><span class="p">.</span><span class="n">BeforeText</span> <span class="p">=</span> <span class="s1">'['</span>
+<a name="rest_code_25dd1009b39b4939b594f597770d27cc-37"></a><span class="nv">$global:GitPromptSettings</span><span class="p">.</span><span class="n">AfterText</span>  <span class="p">=</span> <span class="s1">'] '</span>
+</pre>
+</div>
+<div class="section" id="color-coding-get-childitem">
+<h2>Color coding <tt class="docutils literal"><span class="pre">Get-ChildItem</span></tt>
+</h2>
+<p>To color-code the results of <tt class="docutils literal"><span class="pre">Get-ChildItem</span></tt>, I use my own
+<a class="reference external" href="https://github.com/joonro/Get-ChildItemColor">Get-ChildItemColor</a>. Once you install it, you can set aliases to the exposed functions:</p>
+<pre class="code powershell"><a name="rest_code_ef6ece0dd03544baa34dc5f20af490d4-1"></a><span class="nb">Import-Module</span> <span class="nb">Get-ChildItemColor</span>
+<a name="rest_code_ef6ece0dd03544baa34dc5f20af490d4-2"></a>
+<a name="rest_code_ef6ece0dd03544baa34dc5f20af490d4-3"></a><span class="nb">Set-Alias</span> <span class="n">l</span> <span class="nb">Get-ChildItemColor</span> <span class="n">-option</span> <span class="n">AllScope</span>
+<a name="rest_code_ef6ece0dd03544baa34dc5f20af490d4-4"></a><span class="nb">Set-Alias</span> <span class="n">ls</span> <span class="nb">Get-ChildItemColorFormatWide</span> <span class="n">-option</span> <span class="n">AllScope</span>
+</pre>
+<p>so you have colored versions of <tt class="docutils literal">l</tt> and <tt class="docutils literal">ls</tt> equivalents.</p>
+</div>
+<div class="section" id="psreadline">
+<h2>PSReadLine</h2>
+<p><a class="reference external" href="https://github.com/lzybkr/PSReadLine">PSReadLine</a> makes PowerShell to behave like <tt class="docutils literal">zsh</tt>, which is my favorite shell
+in GNU/Linux. It gives you substring history search, incremental history
+search, and awesome tab-completion. The following is my current setup:</p>
+<pre class="code powershell"><a name="rest_code_930671354f2e4f4cb375190297630c1d-1"></a><span class="nb">Import-Module</span> <span class="n">PSReadLine</span>
+<a name="rest_code_930671354f2e4f4cb375190297630c1d-2"></a>
+<a name="rest_code_930671354f2e4f4cb375190297630c1d-3"></a><span class="nb">Set-PSReadLineOption</span> <span class="n">-HistoryNoDuplicates</span>
+<a name="rest_code_930671354f2e4f4cb375190297630c1d-4"></a><span class="nb">Set-PSReadLineOption</span> <span class="n">-HistorySearchCursorMovesToEnd</span>
+<a name="rest_code_930671354f2e4f4cb375190297630c1d-5"></a><span class="nb">Set-PSReadLineOption</span> <span class="n">-HistorySaveStyle</span> <span class="n">SaveIncrementally</span>
+<a name="rest_code_930671354f2e4f4cb375190297630c1d-6"></a><span class="nb">Set-PSReadLineOption</span> <span class="n">-MaximumHistoryCount</span> <span class="n">4000</span>
+<a name="rest_code_930671354f2e4f4cb375190297630c1d-7"></a><span class="c"># history substring search</span>
+<a name="rest_code_930671354f2e4f4cb375190297630c1d-8"></a><span class="nb">Set-PSReadlineKeyHandler</span> <span class="n">-Key</span> <span class="n">UpArrow</span> <span class="n">-Function</span> <span class="n">HistorySearchBackward</span>
+<a name="rest_code_930671354f2e4f4cb375190297630c1d-9"></a><span class="nb">Set-PSReadlineKeyHandler</span> <span class="n">-Key</span> <span class="n">DownArrow</span> <span class="n">-Function</span> <span class="n">HistorySearchForward</span>
+<a name="rest_code_930671354f2e4f4cb375190297630c1d-10"></a>
+<a name="rest_code_930671354f2e4f4cb375190297630c1d-11"></a><span class="c"># Tab completion</span>
+<a name="rest_code_930671354f2e4f4cb375190297630c1d-12"></a><span class="nb">Set-PSReadlineKeyHandler</span> <span class="n">-Chord</span> <span class="s1">'Shift+Tab'</span> <span class="n">-Function</span> <span class="n">Complete</span>
+<a name="rest_code_930671354f2e4f4cb375190297630c1d-13"></a><span class="nb">Set-PSReadlineKeyHandler</span> <span class="n">-Key</span> <span class="n">Tab</span> <span class="n">-Function</span> <span class="n">MenuComplete</span>
+</pre>
+<p>With these settings, I can press up and down arrows for history substring
+search, and the tab completion shows me available candidates. For example:</p>
+<img alt="../images/posh_PSReadLine_tab_completion.png" src="images/posh_PSReadLine_tab_completion.png"><p>You can also use <tt class="docutils literal">CTRL + r</tt> for incremental history search.</p>
+</div>
+<div class="section" id="others">
+<h2>Others</h2>
+<div class="section" id="cddash">
+<h3><tt class="docutils literal">cddash</tt></h3>
+<p>You can use the following to have the "dash" functionality - namely, you can go
+back to the previous location by typing <tt class="docutils literal">cd -</tt>. It is from
+<a class="reference external" href="http://goo.gl/xRbYbk">http://goo.gl/xRbYbk</a>.</p>
+<pre class="code powershell"><a name="rest_code_b52eb687a36a44b2b30458ef93c11d30-1"></a><span class="k">function</span> <span class="n">cddash</span> <span class="p">{</span>
+<a name="rest_code_b52eb687a36a44b2b30458ef93c11d30-2"></a>    <span class="k">if</span> <span class="p">(</span><span class="nv">$args</span><span class="p">[</span><span class="n">0</span><span class="p">]</span> <span class="o">-eq</span> <span class="s1">'-'</span><span class="p">)</span> <span class="p">{</span>
+<a name="rest_code_b52eb687a36a44b2b30458ef93c11d30-3"></a>        <span class="nv">$pwd</span> <span class="p">=</span> <span class="nv">$OLDPWD</span><span class="p">;</span>
+<a name="rest_code_b52eb687a36a44b2b30458ef93c11d30-4"></a>    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<a name="rest_code_b52eb687a36a44b2b30458ef93c11d30-5"></a>        <span class="nv">$pwd</span> <span class="p">=</span> <span class="nv">$args</span><span class="p">[</span><span class="n">0</span><span class="p">];</span>
+<a name="rest_code_b52eb687a36a44b2b30458ef93c11d30-6"></a>    <span class="p">}</span>
+<a name="rest_code_b52eb687a36a44b2b30458ef93c11d30-7"></a>    <span class="nv">$tmp</span> <span class="p">=</span> <span class="n">pwd</span><span class="p">;</span>
+<a name="rest_code_b52eb687a36a44b2b30458ef93c11d30-8"></a>
+<a name="rest_code_b52eb687a36a44b2b30458ef93c11d30-9"></a>    <span class="k">if</span> <span class="p">(</span><span class="nv">$pwd</span><span class="p">)</span> <span class="p">{</span>
+<a name="rest_code_b52eb687a36a44b2b30458ef93c11d30-10"></a>        <span class="nb">Set-Location</span> <span class="nv">$pwd</span><span class="p">;</span>
+<a name="rest_code_b52eb687a36a44b2b30458ef93c11d30-11"></a>    <span class="p">}</span>
+<a name="rest_code_b52eb687a36a44b2b30458ef93c11d30-12"></a>    <span class="nb">Set-Variable</span> <span class="n">-Name</span> <span class="n">OLDPWD</span> <span class="n">-Value</span> <span class="nv">$tmp</span> <span class="n">-Scope</span> <span class="n">global</span><span class="p">;</span>
+<a name="rest_code_b52eb687a36a44b2b30458ef93c11d30-13"></a><span class="p">}</span>
+<a name="rest_code_b52eb687a36a44b2b30458ef93c11d30-14"></a>
+<a name="rest_code_b52eb687a36a44b2b30458ef93c11d30-15"></a><span class="nb">Set-Alias</span> <span class="n">-Name</span> <span class="n">cd</span> <span class="n">-value</span> <span class="n">cddash</span> <span class="n">-Option</span> <span class="n">AllScope</span>
+</pre>
+</div>
+<div class="section" id="boost-startup-speed">
+<h3>Boost startup speed</h3>
+<p>If you feel it takes a lot of time to start a PowerShell session due to your
+profile script, I found running the following (I saved it as <tt class="docutils literal">ngen.ps1</tt>) in an
+elevated PowerShell helps a lot.</p>
+<pre class="code powershell"><a name="rest_code_eb06b17754eb40fea9ae5d673dee3b83-1"></a><span class="nv">$env:path</span> <span class="p">=</span> <span class="no">[Runtime.InteropServices.RuntimeEnvironment]</span><span class="p">::</span><span class="n">GetRuntimeDirectory</span><span class="p">()</span>
+<a name="rest_code_eb06b17754eb40fea9ae5d673dee3b83-2"></a><span class="no">[AppDomain]</span><span class="p">::</span><span class="n">CurrentDomain</span><span class="p">.</span><span class="n">GetAssemblies</span><span class="p">()</span> <span class="p">|</span> <span class="p">%</span> <span class="p">{</span>
+<a name="rest_code_eb06b17754eb40fea9ae5d673dee3b83-3"></a>  <span class="k">if</span> <span class="p">(!</span> <span class="nv">$_</span><span class="p">.</span><span class="n">location</span><span class="p">)</span> <span class="p">{</span><span class="k">continue</span><span class="p">}</span>
+<a name="rest_code_eb06b17754eb40fea9ae5d673dee3b83-4"></a>  <span class="nv">$Name</span> <span class="p">=</span> <span class="nb">Split-Path</span> <span class="nv">$_</span><span class="p">.</span><span class="n">location</span> <span class="n">-leaf</span>
+<a name="rest_code_eb06b17754eb40fea9ae5d673dee3b83-5"></a>  <span class="nb">Write-Host</span> <span class="n">-ForegroundColor</span> <span class="n">Yellow</span> <span class="s2">"NGENing : $Name"</span>
+<a name="rest_code_eb06b17754eb40fea9ae5d673dee3b83-6"></a>  <span class="n">ngen</span> <span class="n">install</span> <span class="nv">$_</span><span class="p">.</span><span class="n">location</span> <span class="p">|</span> <span class="p">%</span> <span class="p">{</span><span class="s2">"</span><span class="se">`t</span><span class="s2">$_"</span><span class="p">}</span>
+<a name="rest_code_eb06b17754eb40fea9ae5d673dee3b83-7"></a><span class="p">}</span>
+</pre>
+<p>Source: <a class="reference external" href="http://stackoverflow.com/questions/4208694/">http://stackoverflow.com/questions/4208694/</a>.</p>
+</div>
+</div>
+<div class="section" id="changelog">
+<h2>Changelog</h2>
+<dl class="docutils">
+<dt>[2017-04-22 Sat]</dt>
+<dd><ul class="first last simple">
+<li>Updated prompt customization script for the latest version of <tt class="docutils literal"><span class="pre">posh-git</span></tt>
+(0.7.2)</li>
+<li>Updated <tt class="docutils literal"><span class="pre">Git-ChildItemColor</span></tt> related information</li>
+</ul></dd>
+<dt>[2017-01-03 Tue]</dt>
+<dd><ul class="first last simple">
+<li>Updated prompt customization script for the latest version of <tt class="docutils literal"><span class="pre">posh-git</span></tt>
+</li>
+</ul></dd>
+</dl>
+</div>
+</div>
+        </div>
+        </article><article class="h-entry post-text"><header><h1 class="p-name entry-title header"><a href="posts/org-mode-outputdir-minted-latex-export.html" class="u-url">Syntax highlighting in LaTeX export in org-mode: specifying outputdir option for minted package</a></h1>
             <div class="metadata">
                 <span class="byline author vcard">
                         <img class="img-circle" src="images/avatar.jpg" alt="icon">
@@ -74,44 +249,44 @@ article: http://ogp.me/ns/article#
 <p>When you do LaTeX export in org-mode, you can get syntax highlighting in pdf
 output using <tt class="docutils literal">minted</tt> package, which uses <tt class="docutils literal">pygments</tt>. You can add the following
 in your <tt class="docutils literal">init</tt> file:</p>
-<pre class="code common-lisp"><a name="rest_code_2fff76b1b26c4df09b8f2898530ff2be-1"></a><span class="p">(</span><span class="nb">require</span> <span class="ss">'ox-latex</span><span class="p">)</span>
-<a name="rest_code_2fff76b1b26c4df09b8f2898530ff2be-2"></a><span class="p">(</span><span class="nv">add-to-list</span> <span class="ss">'org-latex-packages-alist</span> <span class="o">'</span><span class="p">(</span><span class="s">""</span> <span class="s">"minted"</span><span class="p">))</span>
-<a name="rest_code_2fff76b1b26c4df09b8f2898530ff2be-3"></a><span class="p">(</span><span class="k">setq</span> <span class="nv">org-latex-listings</span> <span class="ss">'minted</span><span class="p">)</span>
-<a name="rest_code_2fff76b1b26c4df09b8f2898530ff2be-4"></a>
-<a name="rest_code_2fff76b1b26c4df09b8f2898530ff2be-5"></a><span class="p">(</span><span class="k">setq</span> <span class="nv">org-latex-pdf-process</span>
-<a name="rest_code_2fff76b1b26c4df09b8f2898530ff2be-6"></a>      <span class="o">'</span><span class="p">(</span><span class="s">"pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"</span>
-<a name="rest_code_2fff76b1b26c4df09b8f2898530ff2be-7"></a>        <span class="s">"pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"</span>
-<a name="rest_code_2fff76b1b26c4df09b8f2898530ff2be-8"></a>        <span class="s">"pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"</span><span class="p">))</span>
+<pre class="code common-lisp"><a name="rest_code_6c74fdbec29f47868ff1e4e8ca2300e8-1"></a><span class="p">(</span><span class="nb">require</span> <span class="ss">'ox-latex</span><span class="p">)</span>
+<a name="rest_code_6c74fdbec29f47868ff1e4e8ca2300e8-2"></a><span class="p">(</span><span class="nv">add-to-list</span> <span class="ss">'org-latex-packages-alist</span> <span class="o">'</span><span class="p">(</span><span class="s">""</span> <span class="s">"minted"</span><span class="p">))</span>
+<a name="rest_code_6c74fdbec29f47868ff1e4e8ca2300e8-3"></a><span class="p">(</span><span class="k">setq</span> <span class="nv">org-latex-listings</span> <span class="ss">'minted</span><span class="p">)</span>
+<a name="rest_code_6c74fdbec29f47868ff1e4e8ca2300e8-4"></a>
+<a name="rest_code_6c74fdbec29f47868ff1e4e8ca2300e8-5"></a><span class="p">(</span><span class="k">setq</span> <span class="nv">org-latex-pdf-process</span>
+<a name="rest_code_6c74fdbec29f47868ff1e4e8ca2300e8-6"></a>      <span class="o">'</span><span class="p">(</span><span class="s">"pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"</span>
+<a name="rest_code_6c74fdbec29f47868ff1e4e8ca2300e8-7"></a>        <span class="s">"pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"</span>
+<a name="rest_code_6c74fdbec29f47868ff1e4e8ca2300e8-8"></a>        <span class="s">"pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"</span><span class="p">))</span>
 </pre>
 <p>The problem with this is that if you want to export the document to a output
 directory, (e.g., using <tt class="docutils literal">:EXPORT_FILE_NAME: ./Output/File_Name</tt> property),
 then you will get the following error:</p>
-<pre class="code tex"><a name="rest_code_552761ad2f934211b04194cb6e421dfb-1"></a>! Package minted Error: Missing Pygments output; <span class="k">\inputminted</span> was
-<a name="rest_code_552761ad2f934211b04194cb6e421dfb-2"></a>probably given a file that does not exist--otherwise, you may need
-<a name="rest_code_552761ad2f934211b04194cb6e421dfb-3"></a>the outputdir package option, or may be using an incompatible build tool.
+<pre class="code tex"><a name="rest_code_0c37eab16feb4041ac1691c5efc40911-1"></a>! Package minted Error: Missing Pygments output; <span class="k">\inputminted</span> was
+<a name="rest_code_0c37eab16feb4041ac1691c5efc40911-2"></a>probably given a file that does not exist--otherwise, you may need
+<a name="rest_code_0c37eab16feb4041ac1691c5efc40911-3"></a>the outputdir package option, or may be using an incompatible build tool.
 </pre>
 <p>because <tt class="docutils literal">minted</tt> does not know where to find the intermediate file.</p>
 <p>My solution is first commenting out the <tt class="docutils literal">minted</tt> package part:</p>
-<pre class="code common-lisp"><a name="rest_code_6342ec1cef904cf98da413a52851ee24-1"></a><span class="p">(</span><span class="nb">require</span> <span class="ss">'ox-latex</span><span class="p">)</span>
-<a name="rest_code_6342ec1cef904cf98da413a52851ee24-2"></a><span class="c1">;(add-to-list 'org-latex-packages-alist '("" "minted"))</span>
-<a name="rest_code_6342ec1cef904cf98da413a52851ee24-3"></a><span class="p">(</span><span class="k">setq</span> <span class="nv">org-latex-listings</span> <span class="ss">'minted</span><span class="p">)</span>
-<a name="rest_code_6342ec1cef904cf98da413a52851ee24-4"></a>
-<a name="rest_code_6342ec1cef904cf98da413a52851ee24-5"></a><span class="p">(</span><span class="k">setq</span> <span class="nv">org-latex-pdf-process</span>
-<a name="rest_code_6342ec1cef904cf98da413a52851ee24-6"></a>      <span class="o">'</span><span class="p">(</span><span class="s">"pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"</span>
-<a name="rest_code_6342ec1cef904cf98da413a52851ee24-7"></a>        <span class="s">"pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"</span>
-<a name="rest_code_6342ec1cef904cf98da413a52851ee24-8"></a>        <span class="s">"pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"</span><span class="p">))</span>
+<pre class="code common-lisp"><a name="rest_code_2f8714642f3c4041864ac7fd8892e226-1"></a><span class="p">(</span><span class="nb">require</span> <span class="ss">'ox-latex</span><span class="p">)</span>
+<a name="rest_code_2f8714642f3c4041864ac7fd8892e226-2"></a><span class="c1">;(add-to-list 'org-latex-packages-alist '("" "minted"))</span>
+<a name="rest_code_2f8714642f3c4041864ac7fd8892e226-3"></a><span class="p">(</span><span class="k">setq</span> <span class="nv">org-latex-listings</span> <span class="ss">'minted</span><span class="p">)</span>
+<a name="rest_code_2f8714642f3c4041864ac7fd8892e226-4"></a>
+<a name="rest_code_2f8714642f3c4041864ac7fd8892e226-5"></a><span class="p">(</span><span class="k">setq</span> <span class="nv">org-latex-pdf-process</span>
+<a name="rest_code_2f8714642f3c4041864ac7fd8892e226-6"></a>      <span class="o">'</span><span class="p">(</span><span class="s">"pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"</span>
+<a name="rest_code_2f8714642f3c4041864ac7fd8892e226-7"></a>        <span class="s">"pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"</span>
+<a name="rest_code_2f8714642f3c4041864ac7fd8892e226-8"></a>        <span class="s">"pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"</span><span class="p">))</span>
 </pre>
 <p>and then manually load <tt class="docutils literal">minted</tt> package with specifying <tt class="docutils literal">outputdir</tt> option in the org file:</p>
-<pre class="code text"><a name="rest_code_7b7ca065345e4595a20175d3c530d34e-1"></a>* Test
-<a name="rest_code_7b7ca065345e4595a20175d3c530d34e-2"></a>:PROPERTIES:
-<a name="rest_code_7b7ca065345e4595a20175d3c530d34e-3"></a>:EXPORT_FILE_NAME: Output/File_Name
-<a name="rest_code_7b7ca065345e4595a20175d3c530d34e-4"></a>:EXPORT_LATEX_HEADER+: \usepackage[outputdir=Output]{minted}
-<a name="rest_code_7b7ca065345e4595a20175d3c530d34e-5"></a>:END:
+<pre class="code text"><a name="rest_code_07587ccb399e429fa4694186f8205b1a-1"></a>* Test
+<a name="rest_code_07587ccb399e429fa4694186f8205b1a-2"></a>:PROPERTIES:
+<a name="rest_code_07587ccb399e429fa4694186f8205b1a-3"></a>:EXPORT_FILE_NAME: Output/File_Name
+<a name="rest_code_07587ccb399e429fa4694186f8205b1a-4"></a>:EXPORT_LATEX_HEADER+: \usepackage[outputdir=Output]{minted}
+<a name="rest_code_07587ccb399e429fa4694186f8205b1a-5"></a>:END:
 </pre>
 <p>and it should work.</p>
 <p>Last, if you want to highlight <tt class="docutils literal">ipython</tt> block, you can add the following to
 your <tt class="docutils literal">init</tt> file:</p>
-<pre class="code common-lisp"><a name="rest_code_bc5e7c64b52e461fb89fee6701d277d2-1"></a><span class="p">(</span><span class="nv">add-to-list</span> <span class="ss">'org-latex-minted-langs</span> <span class="o">'</span><span class="p">(</span><span class="nv">ipython</span> <span class="s">"python"</span><span class="p">))</span>
+<pre class="code common-lisp"><a name="rest_code_c0d5f37161cc452088e536171a43a828-1"></a><span class="p">(</span><span class="nv">add-to-list</span> <span class="ss">'org-latex-minted-langs</span> <span class="o">'</span><span class="p">(</span><span class="nv">ipython</span> <span class="s">"python"</span><span class="p">))</span>
 </pre>
 </div>
         </div>
@@ -134,314 +309,16 @@ modes</a>. Here is a set of PowerShell commands to set this in case you want to 
 it. These are slightly modified commands from this <a class="reference external" href="https://www.reddit.com/r/windows/comments/3f0n2u/windows_10_enable_dark_mode/">reddit</a> post.</p>
 <p>To use the dark mode:</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/windows-10-enable-dark-mode-posh.html#rest_code_520fee00e4034bce99dd216a426435b7-0">0</a></pre></div></td>
-<td class="code"><pre class="code PowerShell"><a name="rest_code_520fee00e4034bce99dd216a426435b7-0"></a><span class="nb">Set-ItemProperty</span> <span class="n">-Path</span> <span class="n">HKCU</span><span class="err">:</span><span class="p">\</span><span class="n">SOFTWARE</span><span class="p">\</span><span class="n">Microsoft</span><span class="p">\</span><span class="n">Windows</span><span class="p">\</span><span class="n">CurrentVersion</span><span class="p">\</span><span class="n">Themes</span><span class="p">\</span><span class="n">Personalize</span> <span class="n">-Name</span> <span class="n">AppsUseLightTheme</span> <span class="n">-Value</span> <span class="n">0</span>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/windows-10-enable-dark-mode-posh.html#rest_code_f82d9d2c576a4b01953c3a451520ce39-0">0</a></pre></div></td>
+<td class="code"><pre class="code PowerShell"><a name="rest_code_f82d9d2c576a4b01953c3a451520ce39-0"></a><span class="nb">Set-ItemProperty</span> <span class="n">-Path</span> <span class="n">HKCU</span><span class="err">:</span><span class="p">\</span><span class="n">SOFTWARE</span><span class="p">\</span><span class="n">Microsoft</span><span class="p">\</span><span class="n">Windows</span><span class="p">\</span><span class="n">CurrentVersion</span><span class="p">\</span><span class="n">Themes</span><span class="p">\</span><span class="n">Personalize</span> <span class="n">-Name</span> <span class="n">AppsUseLightTheme</span> <span class="n">-Value</span> <span class="n">0</span>
 </pre></td>
 </tr></table>
 <p>To use the light mode:</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/windows-10-enable-dark-mode-posh.html#rest_code_9c87181323d54246a1bb4eb9cb7a3684-0">0</a></pre></div></td>
-<td class="code"><pre class="code PowerShell"><a name="rest_code_9c87181323d54246a1bb4eb9cb7a3684-0"></a><span class="nb">Set-ItemProperty</span> <span class="n">-Path</span> <span class="n">HKCU</span><span class="err">:</span><span class="p">\</span><span class="n">SOFTWARE</span><span class="p">\</span><span class="n">Microsoft</span><span class="p">\</span><span class="n">Windows</span><span class="p">\</span><span class="n">CurrentVersion</span><span class="p">\</span><span class="n">Themes</span><span class="p">\</span><span class="n">Personalize</span> <span class="n">-Name</span> <span class="n">AppsUseLightTheme</span> <span class="n">-Value</span> <span class="n">1</span>
+<td class="linenos"><div class="linenodiv"><pre><a href="posts/windows-10-enable-dark-mode-posh.html#rest_code_6e64d68aa53a43d1b51bd2eae1f50c36-0">0</a></pre></div></td>
+<td class="code"><pre class="code PowerShell"><a name="rest_code_6e64d68aa53a43d1b51bd2eae1f50c36-0"></a><span class="nb">Set-ItemProperty</span> <span class="n">-Path</span> <span class="n">HKCU</span><span class="err">:</span><span class="p">\</span><span class="n">SOFTWARE</span><span class="p">\</span><span class="n">Microsoft</span><span class="p">\</span><span class="n">Windows</span><span class="p">\</span><span class="n">CurrentVersion</span><span class="p">\</span><span class="n">Themes</span><span class="p">\</span><span class="n">Personalize</span> <span class="n">-Name</span> <span class="n">AppsUseLightTheme</span> <span class="n">-Value</span> <span class="n">1</span>
 </pre></td>
 </tr></table>
-</div>
-        </div>
-        </article><article class="h-entry post-text"><header><h1 class="p-name entry-title header"><a href="posts/powershell-customizations.html" class="u-url">My PowerShell Customizations</a></h1>
-            <div class="metadata">
-                <span class="byline author vcard">
-                        <img class="img-circle" src="images/avatar.jpg" alt="icon">
-                    Joon Ro
-                </span>
-                <span class="dateline"><a href="posts/powershell-customizations.html" rel="bookmark">
-                    <i class="mdi-device-access-time"></i><time class="published dt-published" datetime="2016-02-10T16:00:00-06:00" title="2016-02-10 16:00">2016-02-10 16:00</time></a></span>
-                    <span class="commentline">            <a href="posts/powershell-customizations.html#disqus_thread" data-disqus-identifier="cache/posts/powershell-customizations.html">Comments</a>
-
-</span>
-            </div>
-            <hr></header><div class="e-content entry-content">
-        <div>
-<p>I describe my customizations for PowerShell. With these, my PowerShell
-terminal looks like the following screenshot. Not only these customizations
-make it look great, but also they make me productive in the command line in
-Windows.</p>
-<img alt="../images/posh_prompt.png" src="images/posh_prompt.png"><div class="section" id="conemu">
-<h2>ConEmu</h2>
-<p>I use ConEmu as my terminal emulator. ConEmu provides tabbed sessions,
-changing color schemes on-the-fly, and many customization options.</p>
-<div class="section" id="color-themes">
-<h3>Color Themes</h3>
-<p>The screenshots are taken with <tt class="docutils literal"><span class="pre">moe-dark</span> theme</tt>. ConEmu comes with many color
-schemes, and I also maintain a github repository which contains my favorite
-color themes for ConEmu. You can check out the <a class="reference external" href="https://github.com/joonro/ConEmu-Color-Themes">GitHub</a> repository.</p>
-</div>
-</div>
-<div class="section" id="prompt-customization">
-<h2>Prompt Customization</h2>
-<div class="section" id="git">
-<h3>git</h3>
-<p>To get git-related information on your prompt, you should get <a class="reference external" href="https://github.com/dahlbyk/posh-git">posh-git</a>. Then,
-you can show the git-related information with the following:</p>
-<table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/powershell-customizations.html#rest_code_767d1f3ebd664b9c86961796f868c47a-1">1</a>
-<a href="posts/powershell-customizations.html#rest_code_767d1f3ebd664b9c86961796f868c47a-2">2</a>
-<a href="posts/powershell-customizations.html#rest_code_767d1f3ebd664b9c86961796f868c47a-3">3</a>
-<a href="posts/powershell-customizations.html#rest_code_767d1f3ebd664b9c86961796f868c47a-4">4</a>
-<a href="posts/powershell-customizations.html#rest_code_767d1f3ebd664b9c86961796f868c47a-5">5</a>
-<a href="posts/powershell-customizations.html#rest_code_767d1f3ebd664b9c86961796f868c47a-6">6</a>
-<a href="posts/powershell-customizations.html#rest_code_767d1f3ebd664b9c86961796f868c47a-7">7</a></pre></div></td>
-<td class="code"><pre class="code powershell"><a name="rest_code_767d1f3ebd664b9c86961796f868c47a-1"></a><span class="nb">Import-Module</span> <span class="n">posh-git</span>
-<a name="rest_code_767d1f3ebd664b9c86961796f868c47a-2"></a>
-<a name="rest_code_767d1f3ebd664b9c86961796f868c47a-3"></a><span class="c"># customize git prompt display settings</span>
-<a name="rest_code_767d1f3ebd664b9c86961796f868c47a-4"></a><span class="nv">$global:GitPromptSettings</span><span class="p">.</span><span class="n">BeforeText</span> <span class="p">=</span> <span class="s1">'['</span>
-<a name="rest_code_767d1f3ebd664b9c86961796f868c47a-5"></a><span class="nv">$global:GitPromptSettings</span><span class="p">.</span><span class="n">AfterText</span> <span class="p">=</span> <span class="s1">'] '</span>
-<a name="rest_code_767d1f3ebd664b9c86961796f868c47a-6"></a><span class="nv">$global:GitPromptSettings</span><span class="p">.</span><span class="n">BranchAheadStatusForegroundColor</span> <span class="p">=</span> <span class="no">[ConsoleColor]</span><span class="p">::</span><span class="n">Green</span>
-<a name="rest_code_767d1f3ebd664b9c86961796f868c47a-7"></a><span class="nv">$global:GitPromptSettings</span><span class="p">.</span><span class="n">WorkingForegroundColor</span> <span class="p">=</span> <span class="no">[ConsoleColor]</span><span class="p">::</span><span class="n">Magenta</span>
-</pre></td>
-</tr></table>
-<p>where the item names are self-explanatory.</p>
-</div>
-<div class="section" id="prompt-function">
-<h3>
-<tt class="docutils literal">prompt</tt> function</h3>
-<p>Now you can set-up a function called <tt class="docutils literal">prompt</tt> and put whatever information you
-want there with color settings. My current setup is the following:</p>
-<table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/powershell-customizations.html#rest_code_f5d14ec842f14761b6d57c6efca89da1-1"> 1</a>
-<a href="posts/powershell-customizations.html#rest_code_f5d14ec842f14761b6d57c6efca89da1-2"> 2</a>
-<a href="posts/powershell-customizations.html#rest_code_f5d14ec842f14761b6d57c6efca89da1-3"> 3</a>
-<a href="posts/powershell-customizations.html#rest_code_f5d14ec842f14761b6d57c6efca89da1-4"> 4</a>
-<a href="posts/powershell-customizations.html#rest_code_f5d14ec842f14761b6d57c6efca89da1-5"> 5</a>
-<a href="posts/powershell-customizations.html#rest_code_f5d14ec842f14761b6d57c6efca89da1-6"> 6</a>
-<a href="posts/powershell-customizations.html#rest_code_f5d14ec842f14761b6d57c6efca89da1-7"> 7</a>
-<a href="posts/powershell-customizations.html#rest_code_f5d14ec842f14761b6d57c6efca89da1-8"> 8</a>
-<a href="posts/powershell-customizations.html#rest_code_f5d14ec842f14761b6d57c6efca89da1-9"> 9</a>
-<a href="posts/powershell-customizations.html#rest_code_f5d14ec842f14761b6d57c6efca89da1-10">10</a>
-<a href="posts/powershell-customizations.html#rest_code_f5d14ec842f14761b6d57c6efca89da1-11">11</a>
-<a href="posts/powershell-customizations.html#rest_code_f5d14ec842f14761b6d57c6efca89da1-12">12</a>
-<a href="posts/powershell-customizations.html#rest_code_f5d14ec842f14761b6d57c6efca89da1-13">13</a>
-<a href="posts/powershell-customizations.html#rest_code_f5d14ec842f14761b6d57c6efca89da1-14">14</a>
-<a href="posts/powershell-customizations.html#rest_code_f5d14ec842f14761b6d57c6efca89da1-15">15</a>
-<a href="posts/powershell-customizations.html#rest_code_f5d14ec842f14761b6d57c6efca89da1-16">16</a>
-<a href="posts/powershell-customizations.html#rest_code_f5d14ec842f14761b6d57c6efca89da1-17">17</a>
-<a href="posts/powershell-customizations.html#rest_code_f5d14ec842f14761b6d57c6efca89da1-18">18</a>
-<a href="posts/powershell-customizations.html#rest_code_f5d14ec842f14761b6d57c6efca89da1-19">19</a>
-<a href="posts/powershell-customizations.html#rest_code_f5d14ec842f14761b6d57c6efca89da1-20">20</a>
-<a href="posts/powershell-customizations.html#rest_code_f5d14ec842f14761b6d57c6efca89da1-21">21</a>
-<a href="posts/powershell-customizations.html#rest_code_f5d14ec842f14761b6d57c6efca89da1-22">22</a>
-<a href="posts/powershell-customizations.html#rest_code_f5d14ec842f14761b6d57c6efca89da1-23">23</a>
-<a href="posts/powershell-customizations.html#rest_code_f5d14ec842f14761b6d57c6efca89da1-24">24</a>
-<a href="posts/powershell-customizations.html#rest_code_f5d14ec842f14761b6d57c6efca89da1-25">25</a>
-<a href="posts/powershell-customizations.html#rest_code_f5d14ec842f14761b6d57c6efca89da1-26">26</a>
-<a href="posts/powershell-customizations.html#rest_code_f5d14ec842f14761b6d57c6efca89da1-27">27</a>
-<a href="posts/powershell-customizations.html#rest_code_f5d14ec842f14761b6d57c6efca89da1-28">28</a>
-<a href="posts/powershell-customizations.html#rest_code_f5d14ec842f14761b6d57c6efca89da1-29">29</a>
-<a href="posts/powershell-customizations.html#rest_code_f5d14ec842f14761b6d57c6efca89da1-30">30</a>
-<a href="posts/powershell-customizations.html#rest_code_f5d14ec842f14761b6d57c6efca89da1-31">31</a>
-<a href="posts/powershell-customizations.html#rest_code_f5d14ec842f14761b6d57c6efca89da1-32">32</a>
-<a href="posts/powershell-customizations.html#rest_code_f5d14ec842f14761b6d57c6efca89da1-33">33</a>
-<a href="posts/powershell-customizations.html#rest_code_f5d14ec842f14761b6d57c6efca89da1-34">34</a>
-<a href="posts/powershell-customizations.html#rest_code_f5d14ec842f14761b6d57c6efca89da1-35">35</a>
-<a href="posts/powershell-customizations.html#rest_code_f5d14ec842f14761b6d57c6efca89da1-36">36</a>
-<a href="posts/powershell-customizations.html#rest_code_f5d14ec842f14761b6d57c6efca89da1-37">37</a>
-<a href="posts/powershell-customizations.html#rest_code_f5d14ec842f14761b6d57c6efca89da1-38">38</a>
-<a href="posts/powershell-customizations.html#rest_code_f5d14ec842f14761b6d57c6efca89da1-39">39</a>
-<a href="posts/powershell-customizations.html#rest_code_f5d14ec842f14761b6d57c6efca89da1-40">40</a>
-<a href="posts/powershell-customizations.html#rest_code_f5d14ec842f14761b6d57c6efca89da1-41">41</a></pre></div></td>
-<td class="code"><pre class="code powershell"><a name="rest_code_f5d14ec842f14761b6d57c6efca89da1-1"></a><span class="c"># http://serverfault.com/questions/95431</span>
-<a name="rest_code_f5d14ec842f14761b6d57c6efca89da1-2"></a><span class="k">function</span> <span class="nb">Test-Administrator</span> <span class="p">{</span>
-<a name="rest_code_f5d14ec842f14761b6d57c6efca89da1-3"></a>    <span class="nv">$user</span> <span class="p">=</span> <span class="no">[Security.Principal.WindowsIdentity]</span><span class="p">::</span><span class="n">GetCurrent</span><span class="p">();</span>
-<a name="rest_code_f5d14ec842f14761b6d57c6efca89da1-4"></a>    <span class="p">(</span><span class="nb">New-Object</span> <span class="n">Security</span><span class="p">.</span><span class="n">Principal</span><span class="p">.</span><span class="n">WindowsPrincipal</span> <span class="nv">$user</span><span class="p">).</span><span class="n">IsInRole</span><span class="p">(</span><span class="no">[Security.Principal.WindowsBuiltinRole]</span><span class="p">::</span><span class="n">Administrator</span><span class="p">)</span>
-<a name="rest_code_f5d14ec842f14761b6d57c6efca89da1-5"></a><span class="p">}</span>
-<a name="rest_code_f5d14ec842f14761b6d57c6efca89da1-6"></a>
-<a name="rest_code_f5d14ec842f14761b6d57c6efca89da1-7"></a><span class="k">function</span> <span class="n">prompt</span> <span class="p">{</span>
-<a name="rest_code_f5d14ec842f14761b6d57c6efca89da1-8"></a>    <span class="nv">$realLASTEXITCODE</span> <span class="p">=</span> <span class="nv">$LASTEXITCODE</span>
-<a name="rest_code_f5d14ec842f14761b6d57c6efca89da1-9"></a>
-<a name="rest_code_f5d14ec842f14761b6d57c6efca89da1-10"></a>    <span class="nb">Write-Host</span>
-<a name="rest_code_f5d14ec842f14761b6d57c6efca89da1-11"></a>
-<a name="rest_code_f5d14ec842f14761b6d57c6efca89da1-12"></a>    <span class="c"># Reset color, which can be messed up by Enable-GitColors</span>
-<a name="rest_code_f5d14ec842f14761b6d57c6efca89da1-13"></a>    <span class="nv">$Host</span><span class="p">.</span><span class="n">UI</span><span class="p">.</span><span class="n">RawUI</span><span class="p">.</span><span class="n">ForegroundColor</span> <span class="p">=</span> <span class="nv">$GitPromptSettings</span><span class="p">.</span><span class="n">DefaultForegroundColor</span>
-<a name="rest_code_f5d14ec842f14761b6d57c6efca89da1-14"></a>
-<a name="rest_code_f5d14ec842f14761b6d57c6efca89da1-15"></a>    <span class="k">if</span> <span class="p">(</span><span class="nb">Test-Administrator</span><span class="p">)</span> <span class="p">{</span>  <span class="c"># Use different username if elevated</span>
-<a name="rest_code_f5d14ec842f14761b6d57c6efca89da1-16"></a>        <span class="nb">Write-Host</span> <span class="s2">"(Elevated) "</span> <span class="n">-NoNewline</span> <span class="n">-ForegroundColor</span> <span class="n">White</span>
-<a name="rest_code_f5d14ec842f14761b6d57c6efca89da1-17"></a>    <span class="p">}</span>
-<a name="rest_code_f5d14ec842f14761b6d57c6efca89da1-18"></a>
-<a name="rest_code_f5d14ec842f14761b6d57c6efca89da1-19"></a>    <span class="nb">Write-Host</span> <span class="s2">"$ENV:USERNAME@"</span> <span class="n">-NoNewline</span> <span class="n">-ForegroundColor</span> <span class="n">DarkYellow</span>
-<a name="rest_code_f5d14ec842f14761b6d57c6efca89da1-20"></a>    <span class="nb">Write-Host</span> <span class="s2">"$ENV:COMPUTERNAME"</span> <span class="n">-NoNewline</span> <span class="n">-ForegroundColor</span> <span class="n">Magenta</span>
-<a name="rest_code_f5d14ec842f14761b6d57c6efca89da1-21"></a>
-<a name="rest_code_f5d14ec842f14761b6d57c6efca89da1-22"></a>    <span class="k">if</span> <span class="p">(</span><span class="nv">$s</span> <span class="o">-ne</span> <span class="nv">$null</span><span class="p">)</span> <span class="p">{</span>  <span class="c"># color for PSSessions</span>
-<a name="rest_code_f5d14ec842f14761b6d57c6efca89da1-23"></a>        <span class="nb">Write-Host</span> <span class="s2">" (</span><span class="se">`$</span><span class="s2">s: "</span> <span class="n">-NoNewline</span> <span class="n">-ForegroundColor</span> <span class="n">DarkGray</span>
-<a name="rest_code_f5d14ec842f14761b6d57c6efca89da1-24"></a>        <span class="nb">Write-Host</span> <span class="s2">"</span><span class="p">$(</span><span class="nv">$s</span><span class="p">.</span><span class="n">Name</span><span class="p">)</span><span class="s2">"</span> <span class="n">-NoNewline</span> <span class="n">-ForegroundColor</span> <span class="n">Yellow</span>
-<a name="rest_code_f5d14ec842f14761b6d57c6efca89da1-25"></a>        <span class="nb">Write-Host</span> <span class="s2">") "</span> <span class="n">-NoNewline</span> <span class="n">-ForegroundColor</span> <span class="n">DarkGray</span>
-<a name="rest_code_f5d14ec842f14761b6d57c6efca89da1-26"></a>    <span class="p">}</span>
-<a name="rest_code_f5d14ec842f14761b6d57c6efca89da1-27"></a>
-<a name="rest_code_f5d14ec842f14761b6d57c6efca89da1-28"></a>    <span class="nb">Write-Host</span> <span class="s2">" : "</span> <span class="n">-NoNewline</span> <span class="n">-ForegroundColor</span> <span class="n">DarkGray</span>
-<a name="rest_code_f5d14ec842f14761b6d57c6efca89da1-29"></a>    <span class="nb">Write-Host</span> <span class="p">$($(</span><span class="nb">Get-Location</span><span class="p">)</span> <span class="o">-replace</span> <span class="s2">"C:\\Users\\Joon"</span><span class="p">,</span> <span class="s2">"~"</span><span class="p">)</span> <span class="n">-NoNewline</span> <span class="n">-ForegroundColor</span> <span class="n">Blue</span>
-<a name="rest_code_f5d14ec842f14761b6d57c6efca89da1-30"></a>    <span class="nb">Write-Host</span> <span class="s2">" : "</span> <span class="n">-NoNewline</span> <span class="n">-ForegroundColor</span> <span class="n">DarkGray</span>
-<a name="rest_code_f5d14ec842f14761b6d57c6efca89da1-31"></a>    <span class="nb">Write-Host</span> <span class="p">(</span><span class="nb">Get-Date</span> <span class="n">-Format</span> <span class="n">G</span><span class="p">)</span> <span class="n">-NoNewline</span> <span class="n">-ForegroundColor</span> <span class="n">DarkMagenta</span>
-<a name="rest_code_f5d14ec842f14761b6d57c6efca89da1-32"></a>    <span class="nb">Write-Host</span> <span class="s2">" : "</span> <span class="n">-NoNewline</span> <span class="n">-ForegroundColor</span> <span class="n">DarkGray</span>
-<a name="rest_code_f5d14ec842f14761b6d57c6efca89da1-33"></a>
-<a name="rest_code_f5d14ec842f14761b6d57c6efca89da1-34"></a>    <span class="nv">$global:LASTEXITCODE</span> <span class="p">=</span> <span class="nv">$realLASTEXITCODE</span>
-<a name="rest_code_f5d14ec842f14761b6d57c6efca89da1-35"></a>
-<a name="rest_code_f5d14ec842f14761b6d57c6efca89da1-36"></a>    <span class="nb">Write-VcsStatus</span>
-<a name="rest_code_f5d14ec842f14761b6d57c6efca89da1-37"></a>
-<a name="rest_code_f5d14ec842f14761b6d57c6efca89da1-38"></a>    <span class="nb">Write-Host</span> <span class="s2">""</span>
-<a name="rest_code_f5d14ec842f14761b6d57c6efca89da1-39"></a>
-<a name="rest_code_f5d14ec842f14761b6d57c6efca89da1-40"></a>    <span class="k">return</span> <span class="s2">"&gt; "</span>
-<a name="rest_code_f5d14ec842f14761b6d57c6efca89da1-41"></a><span class="p">}</span>
-</pre></td>
-</tr></table>
-<p>You want to replace <tt class="docutils literal"><span class="pre">C:\\Users\\Joon</span></tt> with your own path, of course. Also I
-have additional things for <tt class="docutils literal">PSSessions</tt> (the block starting with <tt class="docutils literal">if ($s <span class="pre">-ne</span> $null) { # color for PSSessions</tt>), which you can safely remove (or just leave
-it there).</p>
-</div>
-</div>
-<div class="section" id="color-coding-get-childitem">
-<h2>Color coding <tt class="docutils literal"><span class="pre">Get-ChildItem</span></tt>
-</h2>
-<p>To color-code the results of <tt class="docutils literal"><span class="pre">Get-ChildItem</span></tt>, I use my own
-<a class="reference external" href="https://github.com/joonro/Get-ChildItem-Color">Get-ChildItem-Color</a>. Once you download it, you can set aliases to it:</p>
-<table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/powershell-customizations.html#rest_code_f23726a367b540889f2d999ff4763466-1">1</a>
-<a href="posts/powershell-customizations.html#rest_code_f23726a367b540889f2d999ff4763466-2">2</a>
-<a href="posts/powershell-customizations.html#rest_code_f23726a367b540889f2d999ff4763466-3">3</a>
-<a href="posts/powershell-customizations.html#rest_code_f23726a367b540889f2d999ff4763466-4">4</a>
-<a href="posts/powershell-customizations.html#rest_code_f23726a367b540889f2d999ff4763466-5">5</a>
-<a href="posts/powershell-customizations.html#rest_code_f23726a367b540889f2d999ff4763466-6">6</a>
-<a href="posts/powershell-customizations.html#rest_code_f23726a367b540889f2d999ff4763466-7">7</a>
-<a href="posts/powershell-customizations.html#rest_code_f23726a367b540889f2d999ff4763466-8">8</a></pre></div></td>
-<td class="code"><pre class="code powershell"><a name="rest_code_f23726a367b540889f2d999ff4763466-1"></a><span class="c"># Color coded ls</span>
-<a name="rest_code_f23726a367b540889f2d999ff4763466-2"></a><span class="p">.</span> <span class="s2">"$ScriptPath\Get-ChildItem-Color\Get-ChildItem-Color.ps1"</span>
-<a name="rest_code_f23726a367b540889f2d999ff4763466-3"></a>
-<a name="rest_code_f23726a367b540889f2d999ff4763466-4"></a><span class="nb">Set-Alias</span> <span class="n">l</span> <span class="nb">Get-ChildItem</span><span class="n">-Color</span> <span class="n">-option</span> <span class="n">AllScope</span>
-<a name="rest_code_f23726a367b540889f2d999ff4763466-5"></a><span class="nb">Set-Alias</span> <span class="n">ls</span> <span class="nb">Get-ChildItem</span><span class="n">-Format-Wide</span> <span class="n">-option</span> <span class="n">AllScope</span>
-<a name="rest_code_f23726a367b540889f2d999ff4763466-6"></a>
-<a name="rest_code_f23726a367b540889f2d999ff4763466-7"></a><span class="k">function</span> <span class="nb">Get-ChildItem</span><span class="n">-Force</span> <span class="p">{</span> <span class="n">l</span> <span class="n">-Force</span> <span class="p">}</span>
-<a name="rest_code_f23726a367b540889f2d999ff4763466-8"></a><span class="nb">set-alias</span> <span class="n">la</span> <span class="nb">Get-ChildItem</span><span class="n">-Force</span> <span class="n">-option</span> <span class="n">AllScope</span>
-</pre></td>
-</tr></table>
-<p>so you have <tt class="docutils literal">l</tt>, <tt class="docutils literal">ls</tt>, and <tt class="docutils literal">la</tt>.</p>
-<p>Note that I have the following on top of my PowerShell script so I can refer
-to the script path easily with <tt class="docutils literal">$ScriptPath</tt>, and I put <tt class="docutils literal"><span class="pre">Get-ChildItem-Color</span></tt>
-under <tt class="docutils literal">~\Documents\WindowsPowerShell</tt>. You can modify the path obviously.</p>
-<table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/powershell-customizations.html#rest_code_578b977d48074302a0a04bfae0238241-1">1</a></pre></div></td>
-<td class="code"><pre class="code powershell"><a name="rest_code_578b977d48074302a0a04bfae0238241-1"></a><span class="nv">$ScriptPath</span> <span class="p">=</span> <span class="nb">Split-Path</span> <span class="n">-parent</span> <span class="nv">$PSCommandPath</span>
-</pre></td>
-</tr></table>
-</div>
-<div class="section" id="psreadline">
-<h2>PSReadLine</h2>
-<p><a class="reference external" href="https://github.com/lzybkr/PSReadLine">PSReadLine</a> makes PowerShell to behave like <tt class="docutils literal">zsh</tt>, which is my favorite shell
-in GNU/Linux. It gives you substring history search, incremental history
-search, and awesome tab-completion. The following is my current setup:</p>
-<table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/powershell-customizations.html#rest_code_7cfdf8b46d6a4c4eb8782f9dea29e759-1"> 1</a>
-<a href="posts/powershell-customizations.html#rest_code_7cfdf8b46d6a4c4eb8782f9dea29e759-2"> 2</a>
-<a href="posts/powershell-customizations.html#rest_code_7cfdf8b46d6a4c4eb8782f9dea29e759-3"> 3</a>
-<a href="posts/powershell-customizations.html#rest_code_7cfdf8b46d6a4c4eb8782f9dea29e759-4"> 4</a>
-<a href="posts/powershell-customizations.html#rest_code_7cfdf8b46d6a4c4eb8782f9dea29e759-5"> 5</a>
-<a href="posts/powershell-customizations.html#rest_code_7cfdf8b46d6a4c4eb8782f9dea29e759-6"> 6</a>
-<a href="posts/powershell-customizations.html#rest_code_7cfdf8b46d6a4c4eb8782f9dea29e759-7"> 7</a>
-<a href="posts/powershell-customizations.html#rest_code_7cfdf8b46d6a4c4eb8782f9dea29e759-8"> 8</a>
-<a href="posts/powershell-customizations.html#rest_code_7cfdf8b46d6a4c4eb8782f9dea29e759-9"> 9</a>
-<a href="posts/powershell-customizations.html#rest_code_7cfdf8b46d6a4c4eb8782f9dea29e759-10">10</a>
-<a href="posts/powershell-customizations.html#rest_code_7cfdf8b46d6a4c4eb8782f9dea29e759-11">11</a>
-<a href="posts/powershell-customizations.html#rest_code_7cfdf8b46d6a4c4eb8782f9dea29e759-12">12</a>
-<a href="posts/powershell-customizations.html#rest_code_7cfdf8b46d6a4c4eb8782f9dea29e759-13">13</a></pre></div></td>
-<td class="code"><pre class="code powershell"><a name="rest_code_7cfdf8b46d6a4c4eb8782f9dea29e759-1"></a><span class="nb">Import-Module</span> <span class="n">PSReadLine</span>
-<a name="rest_code_7cfdf8b46d6a4c4eb8782f9dea29e759-2"></a>
-<a name="rest_code_7cfdf8b46d6a4c4eb8782f9dea29e759-3"></a><span class="nb">Set-PSReadLineOption</span> <span class="n">-HistoryNoDuplicates</span>
-<a name="rest_code_7cfdf8b46d6a4c4eb8782f9dea29e759-4"></a><span class="nb">Set-PSReadLineOption</span> <span class="n">-HistorySearchCursorMovesToEnd</span>
-<a name="rest_code_7cfdf8b46d6a4c4eb8782f9dea29e759-5"></a><span class="nb">Set-PSReadLineOption</span> <span class="n">-HistorySaveStyle</span> <span class="n">SaveIncrementally</span>
-<a name="rest_code_7cfdf8b46d6a4c4eb8782f9dea29e759-6"></a><span class="nb">Set-PSReadLineOption</span> <span class="n">-MaximumHistoryCount</span> <span class="n">4000</span>
-<a name="rest_code_7cfdf8b46d6a4c4eb8782f9dea29e759-7"></a><span class="c"># history substring search</span>
-<a name="rest_code_7cfdf8b46d6a4c4eb8782f9dea29e759-8"></a><span class="nb">Set-PSReadlineKeyHandler</span> <span class="n">-Key</span> <span class="n">UpArrow</span> <span class="n">-Function</span> <span class="n">HistorySearchBackward</span>
-<a name="rest_code_7cfdf8b46d6a4c4eb8782f9dea29e759-9"></a><span class="nb">Set-PSReadlineKeyHandler</span> <span class="n">-Key</span> <span class="n">DownArrow</span> <span class="n">-Function</span> <span class="n">HistorySearchForward</span>
-<a name="rest_code_7cfdf8b46d6a4c4eb8782f9dea29e759-10"></a>
-<a name="rest_code_7cfdf8b46d6a4c4eb8782f9dea29e759-11"></a><span class="c"># Tab completion</span>
-<a name="rest_code_7cfdf8b46d6a4c4eb8782f9dea29e759-12"></a><span class="nb">Set-PSReadlineKeyHandler</span> <span class="n">-Chord</span> <span class="s1">'Shift+Tab'</span> <span class="n">-Function</span> <span class="n">Complete</span>
-<a name="rest_code_7cfdf8b46d6a4c4eb8782f9dea29e759-13"></a><span class="nb">Set-PSReadlineKeyHandler</span> <span class="n">-Key</span> <span class="n">Tab</span> <span class="n">-Function</span> <span class="n">MenuComplete</span>
-</pre></td>
-</tr></table>
-<p>With these settings, I can press up and down arrows for history substring
-search, and the tab completion shows me available candidates. For example:</p>
-<img alt="../images/posh_PSReadLine_tab_completion.png" src="images/posh_PSReadLine_tab_completion.png"><p>You can also press <tt class="docutils literal">CTRL+R</tt> for incremental history search.</p>
-</div>
-<div class="section" id="others">
-<h2>Others</h2>
-<div class="section" id="cddash">
-<h3><tt class="docutils literal">cddash</tt></h3>
-<p>You can use the following to have the "dash" functionality - namely, you can go
-back to the previous location by typing <tt class="docutils literal">cd -</tt>. It is from
-<a class="reference external" href="http://goo.gl/xRbYbk">http://goo.gl/xRbYbk</a>.</p>
-<table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/powershell-customizations.html#rest_code_afde5b15bf9d40e4bb7395ba2bc3ec1a-1"> 1</a>
-<a href="posts/powershell-customizations.html#rest_code_afde5b15bf9d40e4bb7395ba2bc3ec1a-2"> 2</a>
-<a href="posts/powershell-customizations.html#rest_code_afde5b15bf9d40e4bb7395ba2bc3ec1a-3"> 3</a>
-<a href="posts/powershell-customizations.html#rest_code_afde5b15bf9d40e4bb7395ba2bc3ec1a-4"> 4</a>
-<a href="posts/powershell-customizations.html#rest_code_afde5b15bf9d40e4bb7395ba2bc3ec1a-5"> 5</a>
-<a href="posts/powershell-customizations.html#rest_code_afde5b15bf9d40e4bb7395ba2bc3ec1a-6"> 6</a>
-<a href="posts/powershell-customizations.html#rest_code_afde5b15bf9d40e4bb7395ba2bc3ec1a-7"> 7</a>
-<a href="posts/powershell-customizations.html#rest_code_afde5b15bf9d40e4bb7395ba2bc3ec1a-8"> 8</a>
-<a href="posts/powershell-customizations.html#rest_code_afde5b15bf9d40e4bb7395ba2bc3ec1a-9"> 9</a>
-<a href="posts/powershell-customizations.html#rest_code_afde5b15bf9d40e4bb7395ba2bc3ec1a-10">10</a>
-<a href="posts/powershell-customizations.html#rest_code_afde5b15bf9d40e4bb7395ba2bc3ec1a-11">11</a>
-<a href="posts/powershell-customizations.html#rest_code_afde5b15bf9d40e4bb7395ba2bc3ec1a-12">12</a>
-<a href="posts/powershell-customizations.html#rest_code_afde5b15bf9d40e4bb7395ba2bc3ec1a-13">13</a>
-<a href="posts/powershell-customizations.html#rest_code_afde5b15bf9d40e4bb7395ba2bc3ec1a-14">14</a>
-<a href="posts/powershell-customizations.html#rest_code_afde5b15bf9d40e4bb7395ba2bc3ec1a-15">15</a></pre></div></td>
-<td class="code"><pre class="code powershell"><a name="rest_code_afde5b15bf9d40e4bb7395ba2bc3ec1a-1"></a><span class="k">function</span> <span class="n">cddash</span> <span class="p">{</span>
-<a name="rest_code_afde5b15bf9d40e4bb7395ba2bc3ec1a-2"></a>    <span class="k">if</span> <span class="p">(</span><span class="nv">$args</span><span class="p">[</span><span class="n">0</span><span class="p">]</span> <span class="o">-eq</span> <span class="s1">'-'</span><span class="p">)</span> <span class="p">{</span>
-<a name="rest_code_afde5b15bf9d40e4bb7395ba2bc3ec1a-3"></a>        <span class="nv">$pwd</span> <span class="p">=</span> <span class="nv">$OLDPWD</span><span class="p">;</span>
-<a name="rest_code_afde5b15bf9d40e4bb7395ba2bc3ec1a-4"></a>    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-<a name="rest_code_afde5b15bf9d40e4bb7395ba2bc3ec1a-5"></a>        <span class="nv">$pwd</span> <span class="p">=</span> <span class="nv">$args</span><span class="p">[</span><span class="n">0</span><span class="p">];</span>
-<a name="rest_code_afde5b15bf9d40e4bb7395ba2bc3ec1a-6"></a>    <span class="p">}</span>
-<a name="rest_code_afde5b15bf9d40e4bb7395ba2bc3ec1a-7"></a>    <span class="nv">$tmp</span> <span class="p">=</span> <span class="n">pwd</span><span class="p">;</span>
-<a name="rest_code_afde5b15bf9d40e4bb7395ba2bc3ec1a-8"></a>
-<a name="rest_code_afde5b15bf9d40e4bb7395ba2bc3ec1a-9"></a>    <span class="k">if</span> <span class="p">(</span><span class="nv">$pwd</span><span class="p">)</span> <span class="p">{</span>
-<a name="rest_code_afde5b15bf9d40e4bb7395ba2bc3ec1a-10"></a>        <span class="nb">Set-Location</span> <span class="nv">$pwd</span><span class="p">;</span>
-<a name="rest_code_afde5b15bf9d40e4bb7395ba2bc3ec1a-11"></a>    <span class="p">}</span>
-<a name="rest_code_afde5b15bf9d40e4bb7395ba2bc3ec1a-12"></a>    <span class="nb">Set-Variable</span> <span class="n">-Name</span> <span class="n">OLDPWD</span> <span class="n">-Value</span> <span class="nv">$tmp</span> <span class="n">-Scope</span> <span class="n">global</span><span class="p">;</span>
-<a name="rest_code_afde5b15bf9d40e4bb7395ba2bc3ec1a-13"></a><span class="p">}</span>
-<a name="rest_code_afde5b15bf9d40e4bb7395ba2bc3ec1a-14"></a>
-<a name="rest_code_afde5b15bf9d40e4bb7395ba2bc3ec1a-15"></a><span class="nb">Set-Alias</span> <span class="n">-Name</span> <span class="n">cd</span> <span class="n">-value</span> <span class="n">cddash</span> <span class="n">-Option</span> <span class="n">AllScope</span>
-</pre></td>
-</tr></table>
-</div>
-<div class="section" id="boost-startup-speed">
-<h3>Boost startup speed</h3>
-<p>If you feel it takes a lot of time to start a PowerShell session due to your
-profile script, I found running the following (I saved it as <tt class="docutils literal">ngen.ps1</tt>) in an
-elevated PowerShell helps a lot.</p>
-<table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="posts/powershell-customizations.html#rest_code_7bfeefa79b4546c4a7af1ecb2d859179-1">1</a>
-<a href="posts/powershell-customizations.html#rest_code_7bfeefa79b4546c4a7af1ecb2d859179-2">2</a>
-<a href="posts/powershell-customizations.html#rest_code_7bfeefa79b4546c4a7af1ecb2d859179-3">3</a>
-<a href="posts/powershell-customizations.html#rest_code_7bfeefa79b4546c4a7af1ecb2d859179-4">4</a>
-<a href="posts/powershell-customizations.html#rest_code_7bfeefa79b4546c4a7af1ecb2d859179-5">5</a>
-<a href="posts/powershell-customizations.html#rest_code_7bfeefa79b4546c4a7af1ecb2d859179-6">6</a>
-<a href="posts/powershell-customizations.html#rest_code_7bfeefa79b4546c4a7af1ecb2d859179-7">7</a></pre></div></td>
-<td class="code"><pre class="code powershell"><a name="rest_code_7bfeefa79b4546c4a7af1ecb2d859179-1"></a><span class="nv">$env:path</span> <span class="p">=</span> <span class="no">[Runtime.InteropServices.RuntimeEnvironment]</span><span class="p">::</span><span class="n">GetRuntimeDirectory</span><span class="p">()</span>
-<a name="rest_code_7bfeefa79b4546c4a7af1ecb2d859179-2"></a><span class="no">[AppDomain]</span><span class="p">::</span><span class="n">CurrentDomain</span><span class="p">.</span><span class="n">GetAssemblies</span><span class="p">()</span> <span class="p">|</span> <span class="p">%</span> <span class="p">{</span>
-<a name="rest_code_7bfeefa79b4546c4a7af1ecb2d859179-3"></a>  <span class="k">if</span> <span class="p">(!</span> <span class="nv">$_</span><span class="p">.</span><span class="n">location</span><span class="p">)</span> <span class="p">{</span><span class="k">continue</span><span class="p">}</span>
-<a name="rest_code_7bfeefa79b4546c4a7af1ecb2d859179-4"></a>  <span class="nv">$Name</span> <span class="p">=</span> <span class="nb">Split-Path</span> <span class="nv">$_</span><span class="p">.</span><span class="n">location</span> <span class="n">-leaf</span>
-<a name="rest_code_7bfeefa79b4546c4a7af1ecb2d859179-5"></a>  <span class="nb">Write-Host</span> <span class="n">-ForegroundColor</span> <span class="n">Yellow</span> <span class="s2">"NGENing : $Name"</span>
-<a name="rest_code_7bfeefa79b4546c4a7af1ecb2d859179-6"></a>  <span class="n">ngen</span> <span class="n">install</span> <span class="nv">$_</span><span class="p">.</span><span class="n">location</span> <span class="p">|</span> <span class="p">%</span> <span class="p">{</span><span class="s2">"</span><span class="se">`t</span><span class="s2">$_"</span><span class="p">}</span>
-<a name="rest_code_7bfeefa79b4546c4a7af1ecb2d859179-7"></a><span class="p">}</span>
-</pre></td>
-</tr></table>
-<p>Source: <a class="reference external" href="http://stackoverflow.com/questions/4208694/">http://stackoverflow.com/questions/4208694/</a>.</p>
-</div>
-</div>
-<div class="section" id="changelog">
-<h2>Changelog</h2>
-<dl class="docutils">
-<dt>[2017-01-03 Tue]</dt>
-<dd>Updated prompt customization script for the latest
-version of <tt class="docutils literal"><span class="pre">posh-git</span></tt>
-</dd>
-</dl>
-</div>
 </div>
         </div>
         </article><article class="h-entry post-text"><header><h1 class="p-name entry-title header"><a href="posts/lenovo-y50-uhd-laptop-driver-troubleshooting.html" class="u-url">Lenovo Y50 UHD Laptop: Driver Recommendations and Troubleshooting Information</a></h1>
@@ -510,10 +387,10 @@ well. You can read about it at the following Nvidia forum thread:
 three-finger swipe. Albeit not a permanent fix, running the following batch file will
 reset the touchpad and bring back gestures. (I saved it as
 <tt class="docutils literal">synaptics_touchpad_reset.bat</tt>) and run it whenever it doesn't work.</p>
-<pre class="code bat"><a name="rest_code_1818ec785f464b998da168b3264fbf71-1"></a>taskkill -f -im syntpenh.exe
-<a name="rest_code_1818ec785f464b998da168b3264fbf71-2"></a><span class="k">cd</span> C:\Program Files\Synaptics\SynTP
-<a name="rest_code_1818ec785f464b998da168b3264fbf71-3"></a><span class="k">start</span> <span class="s2">""</span> <span class="s2">"syntpenh.exe"</span>
-<a name="rest_code_1818ec785f464b998da168b3264fbf71-4"></a><span class="k">exit</span>
+<pre class="code bat"><a name="rest_code_b7decfce598d482eb095afdc25a9a4ff-1"></a>taskkill -f -im syntpenh.exe
+<a name="rest_code_b7decfce598d482eb095afdc25a9a4ff-2"></a><span class="k">cd</span> C:\Program Files\Synaptics\SynTP
+<a name="rest_code_b7decfce598d482eb095afdc25a9a4ff-3"></a><span class="k">start</span> <span class="s2">""</span> <span class="s2">"syntpenh.exe"</span>
+<a name="rest_code_b7decfce598d482eb095afdc25a9a4ff-4"></a><span class="k">exit</span>
 </pre>
 </div>
 <div class="section" id="enabling-touchpad-2-and-3-finger-tap">
@@ -567,7 +444,7 @@ for org-mode appointments in Windows 8+.</p>
 </h2>
 <p>I use <tt class="docutils literal">toast.exe</tt> from toaster project: <a class="reference external" href="https://github.com/nels-o/toaster">https://github.com/nels-o/toaster</a>. You
 can <tt class="docutils literal">git clone</tt> the whole repo which includes the executable:</p>
-<pre class="code posh"><a name="rest_code_1b658dbe296b482c99b05e5bed2d3bd7-1"></a><span class="p">&gt;</span> <span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="err">:</span><span class="p">//</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="p">/</span><span class="n">nels-o</span><span class="p">/</span><span class="n">toaster</span><span class="p">.</span><span class="n">git</span>
+<pre class="code posh"><a name="rest_code_09bcf3e309ed4ebeb31bbfbc316073bc-1"></a><span class="p">&gt;</span> <span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="err">:</span><span class="p">//</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="p">/</span><span class="n">nels-o</span><span class="p">/</span><span class="n">toaster</span><span class="p">.</span><span class="n">git</span>
 </pre>
 </div>
 <div class="section" id="emacs-settings">
@@ -575,40 +452,40 @@ can <tt class="docutils literal">git clone</tt> the whole repo which includes th
 <p>The following is pretty much the same to
 <a class="reference external" href="https://lists.gnu.org/archive/html/emacs-orgmode/2013-02/msg00644.html">https://lists.gnu.org/archive/html/emacs-orgmode/2013-02/msg00644.html</a>. You
 can modify <tt class="docutils literal"><span class="pre">appt-message-warning-time</span></tt> and <tt class="docutils literal"><span class="pre">appt-display-interval</span></tt> to your need:</p>
-<pre class="code scheme"><a name="rest_code_a7df81ac30c94d4988285f6284beea39-1"></a><span class="p">(</span><span class="nf">require</span> <span class="ss">'appt</span><span class="p">)</span>
-<a name="rest_code_a7df81ac30c94d4988285f6284beea39-2"></a><span class="p">(</span><span class="nf">setq</span> <span class="nv">appt-time-msg-list</span> <span class="nv">nil</span><span class="p">)</span>    <span class="c1">;; clear existing appt list</span>
-<a name="rest_code_a7df81ac30c94d4988285f6284beea39-3"></a><span class="p">(</span><span class="nf">setq</span> <span class="nv">appt-display-interval</span> <span class="ss">'5</span><span class="p">)</span>  <span class="c1">;; warn every 5 minutes from t - appt-message-warning-time</span>
-<a name="rest_code_a7df81ac30c94d4988285f6284beea39-4"></a><span class="p">(</span><span class="nf">setq</span>
-<a name="rest_code_a7df81ac30c94d4988285f6284beea39-5"></a>  <span class="nv">appt-message-warning-time</span> <span class="ss">'15</span>  <span class="c1">;; send first warning 15 minutes before appointment</span>
-<a name="rest_code_a7df81ac30c94d4988285f6284beea39-6"></a>  <span class="nv">appt-display-mode-line</span> <span class="nv">nil</span>     <span class="c1">;; don't show in the modeline</span>
-<a name="rest_code_a7df81ac30c94d4988285f6284beea39-7"></a>  <span class="nv">appt-display-format</span> <span class="ss">'window</span><span class="p">)</span>   <span class="c1">;; pass warnings to the designated window function</span>
-<a name="rest_code_a7df81ac30c94d4988285f6284beea39-8"></a><span class="p">(</span><span class="nf">appt-activate</span> <span class="mi">1</span><span class="p">)</span>                <span class="c1">;; activate appointment notification</span>
-<a name="rest_code_a7df81ac30c94d4988285f6284beea39-9"></a><span class="p">(</span><span class="nf">display-time</span><span class="p">)</span>                   <span class="c1">;; activate time display</span>
-<a name="rest_code_a7df81ac30c94d4988285f6284beea39-10"></a>
-<a name="rest_code_a7df81ac30c94d4988285f6284beea39-11"></a><span class="p">(</span><span class="nf">org-agenda-to-appt</span><span class="p">)</span>             <span class="c1">;; generate the appt list from org agenda files on emacs launch</span>
-<a name="rest_code_a7df81ac30c94d4988285f6284beea39-12"></a><span class="p">(</span><span class="nf">run-at-time</span> <span class="s">"24:01"</span> <span class="mi">3600</span> <span class="ss">'org-agenda-to-appt</span><span class="p">)</span>           <span class="c1">;; update appt list hourly</span>
-<a name="rest_code_a7df81ac30c94d4988285f6284beea39-13"></a><span class="p">(</span><span class="nf">add-hook</span> <span class="ss">'org-finalize-agenda-hook</span> <span class="ss">'org-agenda-to-appt</span><span class="p">)</span> <span class="c1">;; update appt list on agenda view</span>
+<pre class="code scheme"><a name="rest_code_d30425f83b8447f892eb4a3a346d4134-1"></a><span class="p">(</span><span class="nf">require</span> <span class="ss">'appt</span><span class="p">)</span>
+<a name="rest_code_d30425f83b8447f892eb4a3a346d4134-2"></a><span class="p">(</span><span class="nf">setq</span> <span class="nv">appt-time-msg-list</span> <span class="nv">nil</span><span class="p">)</span>    <span class="c1">;; clear existing appt list</span>
+<a name="rest_code_d30425f83b8447f892eb4a3a346d4134-3"></a><span class="p">(</span><span class="nf">setq</span> <span class="nv">appt-display-interval</span> <span class="ss">'5</span><span class="p">)</span>  <span class="c1">;; warn every 5 minutes from t - appt-message-warning-time</span>
+<a name="rest_code_d30425f83b8447f892eb4a3a346d4134-4"></a><span class="p">(</span><span class="nf">setq</span>
+<a name="rest_code_d30425f83b8447f892eb4a3a346d4134-5"></a>  <span class="nv">appt-message-warning-time</span> <span class="ss">'15</span>  <span class="c1">;; send first warning 15 minutes before appointment</span>
+<a name="rest_code_d30425f83b8447f892eb4a3a346d4134-6"></a>  <span class="nv">appt-display-mode-line</span> <span class="nv">nil</span>     <span class="c1">;; don't show in the modeline</span>
+<a name="rest_code_d30425f83b8447f892eb4a3a346d4134-7"></a>  <span class="nv">appt-display-format</span> <span class="ss">'window</span><span class="p">)</span>   <span class="c1">;; pass warnings to the designated window function</span>
+<a name="rest_code_d30425f83b8447f892eb4a3a346d4134-8"></a><span class="p">(</span><span class="nf">appt-activate</span> <span class="mi">1</span><span class="p">)</span>                <span class="c1">;; activate appointment notification</span>
+<a name="rest_code_d30425f83b8447f892eb4a3a346d4134-9"></a><span class="p">(</span><span class="nf">display-time</span><span class="p">)</span>                   <span class="c1">;; activate time display</span>
+<a name="rest_code_d30425f83b8447f892eb4a3a346d4134-10"></a>
+<a name="rest_code_d30425f83b8447f892eb4a3a346d4134-11"></a><span class="p">(</span><span class="nf">org-agenda-to-appt</span><span class="p">)</span>             <span class="c1">;; generate the appt list from org agenda files on emacs launch</span>
+<a name="rest_code_d30425f83b8447f892eb4a3a346d4134-12"></a><span class="p">(</span><span class="nf">run-at-time</span> <span class="s">"24:01"</span> <span class="mi">3600</span> <span class="ss">'org-agenda-to-appt</span><span class="p">)</span>           <span class="c1">;; update appt list hourly</span>
+<a name="rest_code_d30425f83b8447f892eb4a3a346d4134-13"></a><span class="p">(</span><span class="nf">add-hook</span> <span class="ss">'org-finalize-agenda-hook</span> <span class="ss">'org-agenda-to-appt</span><span class="p">)</span> <span class="c1">;; update appt list on agenda view</span>
 </pre>
 <p>Next, specify the path to your <tt class="docutils literal">toast</tt> executable (note that I'm using
 UNIX-style path here, seems to be working well):</p>
-<pre class="code scheme"><a name="rest_code_6322ef1d036140ff80e357bc7d42810b-1"></a><span class="p">(</span><span class="nf">defvar</span> <span class="nv">toast-notifier-path</span>
-<a name="rest_code_6322ef1d036140ff80e357bc7d42810b-2"></a>  <span class="s">"/home/joon/Programs/toast/bin/Release/toast"</span>
-<a name="rest_code_6322ef1d036140ff80e357bc7d42810b-3"></a>  <span class="p">)</span>
+<pre class="code scheme"><a name="rest_code_937ec06a44aa478b882ae4326c377625-1"></a><span class="p">(</span><span class="nf">defvar</span> <span class="nv">toast-notifier-path</span>
+<a name="rest_code_937ec06a44aa478b882ae4326c377625-2"></a>  <span class="s">"/home/joon/Programs/toast/bin/Release/toast"</span>
+<a name="rest_code_937ec06a44aa478b882ae4326c377625-3"></a>  <span class="p">)</span>
 </pre>
 <p>Set up the call to <tt class="docutils literal">toast</tt>:</p>
-<pre class="code scheme"><a name="rest_code_1178bd009f034aa0a2d07a9063569186-1"></a><span class="c1">;; set up the call to the notifier</span>
-<a name="rest_code_1178bd009f034aa0a2d07a9063569186-2"></a><span class="p">(</span><span class="nf">defun</span> <span class="nv">toast-appt-send-notification</span> <span class="p">(</span><span class="nf">title</span> <span class="nv">msg</span><span class="p">)</span>
-<a name="rest_code_1178bd009f034aa0a2d07a9063569186-3"></a>  <span class="p">(</span><span class="nf">shell-command</span> <span class="p">(</span><span class="nf">concat</span> <span class="nv">toast-notifier-path</span>
-<a name="rest_code_1178bd009f034aa0a2d07a9063569186-4"></a>                         <span class="s">" -t \""</span> <span class="nv">title</span> <span class="s">"\""</span>
-<a name="rest_code_1178bd009f034aa0a2d07a9063569186-5"></a>                         <span class="s">" -m \""</span> <span class="nv">msg</span> <span class="s">"\""</span><span class="p">)))</span>
-<a name="rest_code_1178bd009f034aa0a2d07a9063569186-6"></a>
-<a name="rest_code_1178bd009f034aa0a2d07a9063569186-7"></a><span class="c1">;; designate the window function for my-appt-send-notification</span>
-<a name="rest_code_1178bd009f034aa0a2d07a9063569186-8"></a><span class="p">(</span><span class="nf">defun</span> <span class="nv">toast-appt-display</span> <span class="p">(</span><span class="nf">min-to-app</span> <span class="nv">new-time</span> <span class="nv">msg</span><span class="p">)</span>
-<a name="rest_code_1178bd009f034aa0a2d07a9063569186-9"></a>  <span class="p">(</span><span class="nf">toast-appt-send-notification</span>
-<a name="rest_code_1178bd009f034aa0a2d07a9063569186-10"></a>    <span class="p">(</span><span class="nf">format</span> <span class="s">"Appointment in %s minutes"</span> <span class="nv">min-to-app</span><span class="p">)</span>    <span class="c1">;; passed to -t in toast call</span>
-<a name="rest_code_1178bd009f034aa0a2d07a9063569186-11"></a>    <span class="p">(</span><span class="nf">format</span> <span class="s">"%s"</span> <span class="nv">msg</span><span class="p">)))</span>                                <span class="c1">;; passed to -m in toast call</span>
-<a name="rest_code_1178bd009f034aa0a2d07a9063569186-12"></a>
-<a name="rest_code_1178bd009f034aa0a2d07a9063569186-13"></a><span class="p">(</span><span class="nf">setq</span> <span class="nv">appt-disp-window-function</span> <span class="p">(</span><span class="nf">function</span> <span class="nv">toast-appt-display</span><span class="p">))</span>
+<pre class="code scheme"><a name="rest_code_2005efbdee6c4868ab769a0b1a1299da-1"></a><span class="c1">;; set up the call to the notifier</span>
+<a name="rest_code_2005efbdee6c4868ab769a0b1a1299da-2"></a><span class="p">(</span><span class="nf">defun</span> <span class="nv">toast-appt-send-notification</span> <span class="p">(</span><span class="nf">title</span> <span class="nv">msg</span><span class="p">)</span>
+<a name="rest_code_2005efbdee6c4868ab769a0b1a1299da-3"></a>  <span class="p">(</span><span class="nf">shell-command</span> <span class="p">(</span><span class="nf">concat</span> <span class="nv">toast-notifier-path</span>
+<a name="rest_code_2005efbdee6c4868ab769a0b1a1299da-4"></a>                         <span class="s">" -t \""</span> <span class="nv">title</span> <span class="s">"\""</span>
+<a name="rest_code_2005efbdee6c4868ab769a0b1a1299da-5"></a>                         <span class="s">" -m \""</span> <span class="nv">msg</span> <span class="s">"\""</span><span class="p">)))</span>
+<a name="rest_code_2005efbdee6c4868ab769a0b1a1299da-6"></a>
+<a name="rest_code_2005efbdee6c4868ab769a0b1a1299da-7"></a><span class="c1">;; designate the window function for my-appt-send-notification</span>
+<a name="rest_code_2005efbdee6c4868ab769a0b1a1299da-8"></a><span class="p">(</span><span class="nf">defun</span> <span class="nv">toast-appt-display</span> <span class="p">(</span><span class="nf">min-to-app</span> <span class="nv">new-time</span> <span class="nv">msg</span><span class="p">)</span>
+<a name="rest_code_2005efbdee6c4868ab769a0b1a1299da-9"></a>  <span class="p">(</span><span class="nf">toast-appt-send-notification</span>
+<a name="rest_code_2005efbdee6c4868ab769a0b1a1299da-10"></a>    <span class="p">(</span><span class="nf">format</span> <span class="s">"Appointment in %s minutes"</span> <span class="nv">min-to-app</span><span class="p">)</span>    <span class="c1">;; passed to -t in toast call</span>
+<a name="rest_code_2005efbdee6c4868ab769a0b1a1299da-11"></a>    <span class="p">(</span><span class="nf">format</span> <span class="s">"%s"</span> <span class="nv">msg</span><span class="p">)))</span>                                <span class="c1">;; passed to -m in toast call</span>
+<a name="rest_code_2005efbdee6c4868ab769a0b1a1299da-12"></a>
+<a name="rest_code_2005efbdee6c4868ab769a0b1a1299da-13"></a><span class="p">(</span><span class="nf">setq</span> <span class="nv">appt-disp-window-function</span> <span class="p">(</span><span class="nf">function</span> <span class="nv">toast-appt-display</span><span class="p">))</span>
 </pre>
 <p>Now Emacs will use <tt class="docutils literal">toast</tt> to notify you of upcoming appointments:</p>
 <img alt="../images/toast_example.png" src="images/toast_example.png"><p>If you want to be fancier, you can show an icon in the notification as
@@ -616,12 +493,12 @@ well. You can download an icon (from
 <a class="reference external" href="http://www.easyicon.net/language.en/540985-org_mode_icon.html">http://www.easyicon.net/language.en/540985-org_mode_icon.html</a>, for example)
 and modify <tt class="docutils literal"><span class="pre">toast-appt-send-notification</span></tt> by adding <tt class="docutils literal"><span class="pre">-p</span></tt> argument (you have
 to use Windows-style path here):</p>
-<pre class="code scheme"><a name="rest_code_71fbc40b79534f44abbc03c29ef28e5a-1"></a><span class="c1">;; set up the call to the notifier</span>
-<a name="rest_code_71fbc40b79534f44abbc03c29ef28e5a-2"></a><span class="p">(</span><span class="nf">defun</span> <span class="nv">toast-appt-send-notification</span> <span class="p">(</span><span class="nf">title</span> <span class="nv">msg</span><span class="p">)</span>
-<a name="rest_code_71fbc40b79534f44abbc03c29ef28e5a-3"></a>  <span class="p">(</span><span class="nf">shell-command</span> <span class="p">(</span><span class="nf">concat</span> <span class="nv">toast-notifier-path</span>
-<a name="rest_code_71fbc40b79534f44abbc03c29ef28e5a-4"></a>                         <span class="s">" -t \""</span> <span class="nv">title</span> <span class="s">"\""</span>
-<a name="rest_code_71fbc40b79534f44abbc03c29ef28e5a-5"></a>                         <span class="s">" -m \""</span> <span class="nv">msg</span> <span class="s">"\""</span>
-<a name="rest_code_71fbc40b79534f44abbc03c29ef28e5a-6"></a>                         <span class="s">" -p C:\\Users\\joon\\Programs\\Assets\\Icons\\org_mode_256px_540985_easyicon.net.png"</span><span class="p">)))</span>
+<pre class="code scheme"><a name="rest_code_796b1c1a99df4617ae9cef64c9c88832-1"></a><span class="c1">;; set up the call to the notifier</span>
+<a name="rest_code_796b1c1a99df4617ae9cef64c9c88832-2"></a><span class="p">(</span><span class="nf">defun</span> <span class="nv">toast-appt-send-notification</span> <span class="p">(</span><span class="nf">title</span> <span class="nv">msg</span><span class="p">)</span>
+<a name="rest_code_796b1c1a99df4617ae9cef64c9c88832-3"></a>  <span class="p">(</span><span class="nf">shell-command</span> <span class="p">(</span><span class="nf">concat</span> <span class="nv">toast-notifier-path</span>
+<a name="rest_code_796b1c1a99df4617ae9cef64c9c88832-4"></a>                         <span class="s">" -t \""</span> <span class="nv">title</span> <span class="s">"\""</span>
+<a name="rest_code_796b1c1a99df4617ae9cef64c9c88832-5"></a>                         <span class="s">" -m \""</span> <span class="nv">msg</span> <span class="s">"\""</span>
+<a name="rest_code_796b1c1a99df4617ae9cef64c9c88832-6"></a>                         <span class="s">" -p C:\\Users\\joon\\Programs\\Assets\\Icons\\org_mode_256px_540985_easyicon.net.png"</span><span class="p">)))</span>
 </pre>
 <p>which makes notifications look very nice:</p>
 <img alt="../images/toast_example_with_icon.png" src="images/toast_example_with_icon.png">
@@ -665,15 +542,15 @@ overlap with those found at <a class="reference external" href="http://wiki.lyx.
 <p>Create a batch file named <tt class="docutils literal">lyxeditor.cmd</tt> with the following contents and save
 it to one of the locations in your <tt class="docutils literal">PATH</tt> Windows environmental variable so
 the pdf editor can call it:</p>
-<pre class="code bat"><a name="rest_code_4a34f75eb524433daf25f982b168a59b-1"></a><span class="p">@</span><span class="k">echo</span> <span class="k">off</span>
-<a name="rest_code_4a34f75eb524433daf25f982b168a59b-2"></a><span class="k">SETLOCAL</span> enabledelayedexpansion
-<a name="rest_code_4a34f75eb524433daf25f982b168a59b-3"></a><span class="k">set</span> <span class="nv">file</span><span class="o">=</span><span class="nv">%1</span>
-<a name="rest_code_4a34f75eb524433daf25f982b168a59b-4"></a><span class="k">set</span> <span class="nv">row</span><span class="o">=</span><span class="nv">%2</span>
-<a name="rest_code_4a34f75eb524433daf25f982b168a59b-5"></a><span class="c">REM remove quotes from variables</span>
-<a name="rest_code_4a34f75eb524433daf25f982b168a59b-6"></a><span class="k">set</span> <span class="nv">file</span><span class="o">=</span>!file:"<span class="o">=</span>!
-<a name="rest_code_4a34f75eb524433daf25f982b168a59b-7"></a><span class="k">set</span> <span class="nv">row</span><span class="o">=</span>!row:"<span class="o">=</span>!
-<a name="rest_code_4a34f75eb524433daf25f982b168a59b-8"></a><span class="nv">%comspec%</span> <span class="n">/q</span> <span class="n">/c</span> (@<span class="k">echo</span> LYXCMD:revdvi<span class="nl">:server</span>-<span class="k">goto</span>-file-row:<span class="nv">%file%</span> <span class="nv">%row%</span>)&gt; \\.\pipe\lyxpipe.in&amp;&amp;type \\.\pipe\lyxpipe.out
-<a name="rest_code_4a34f75eb524433daf25f982b168a59b-9"></a><span class="k">endlocal</span>
+<pre class="code bat"><a name="rest_code_46954eb373af4ad4a29a62cb620834e3-1"></a><span class="p">@</span><span class="k">echo</span> off
+<a name="rest_code_46954eb373af4ad4a29a62cb620834e3-2"></a><span class="k">SETLOCAL</span> enabledelayedexpansion
+<a name="rest_code_46954eb373af4ad4a29a62cb620834e3-3"></a><span class="k">set</span> <span class="nv">file</span><span class="p">=</span><span class="nv">%1</span>
+<a name="rest_code_46954eb373af4ad4a29a62cb620834e3-4"></a><span class="k">set</span> <span class="nv">row</span><span class="p">=</span><span class="nv">%2</span>
+<a name="rest_code_46954eb373af4ad4a29a62cb620834e3-5"></a><span class="c1">REM remove quotes from variables</span>
+<a name="rest_code_46954eb373af4ad4a29a62cb620834e3-6"></a><span class="k">set</span> <span class="nv">file</span><span class="p">=</span><span class="nv">!file:"=!</span>
+<a name="rest_code_46954eb373af4ad4a29a62cb620834e3-7"></a><span class="k">set</span> <span class="nv">row</span><span class="p">=</span><span class="nv">!row:"=!</span>
+<a name="rest_code_46954eb373af4ad4a29a62cb620834e3-8"></a><span class="nv">%comspec%</span> /q /c (@echo LYXCMD:revdvi:server-goto-file-row:<span class="nv">%file%</span> <span class="nv">%row%</span>)<span class="p">&gt;</span> \\.\pipe\lyxpipe.in<span class="p">&amp;&amp;</span><span class="k">type</span> \\.\pipe\lyxpipe.out
+<a name="rest_code_46954eb373af4ad4a29a62cb620834e3-9"></a><span class="k">endlocal</span>
 </pre>
 <p>The above cmd works well, but it shows an annoying black cmd window when you
 invoke the script. With a simple <a class="reference external" href="http://ahkscript.org">AutoHotkey</a> script, one can not only suppress
@@ -681,9 +558,9 @@ this window but also activate the LyX window after the inverse search.</p>
 <p>Create an AutoHotkey script named <tt class="docutils literal"><span class="pre">lyx-inverse-search.ahk</span></tt> with the following
 code and save it to the same location at <tt class="docutils literal">lyxeditor.cmd</tt> and compile it with
 the AutoHotkey to generate <tt class="docutils literal"><span class="pre">lyx-inverse-search.exe</span></tt>:</p>
-<pre class="code ahk"><a name="rest_code_8d77d248cc0c4261bdf8e4bb2d615d40-1"></a><span class="nb">SetTitleMatchMode</span><span class="p">,</span> <span class="n">RegEx</span>
-<a name="rest_code_8d77d248cc0c4261bdf8e4bb2d615d40-2"></a><span class="nb">Run</span><span class="p">,</span> <span class="n">lyxeditor</span><span class="o">.</span><span class="n">cmd</span> <span class="s">"%1%"</span> <span class="s">"%2%"</span><span class="p">,,</span> <span class="n">Hide</span>
-<a name="rest_code_8d77d248cc0c4261bdf8e4bb2d615d40-3"></a><span class="nb">WinActivate</span><span class="p">,</span> <span class="o">^</span><span class="n">LyX</span><span class="o">:</span><span class="p">,,,</span>
+<pre class="code ahk"><a name="rest_code_025e001d50a5422ead234aef96363f84-1"></a><span class="nb">SetTitleMatchMode</span><span class="p">,</span> <span class="n">RegEx</span>
+<a name="rest_code_025e001d50a5422ead234aef96363f84-2"></a><span class="nb">Run</span><span class="p">,</span> <span class="n">lyxeditor</span><span class="o">.</span><span class="n">cmd</span> <span class="s">"%1%"</span> <span class="s">"%2%"</span><span class="p">,,</span> <span class="n">Hide</span>
+<a name="rest_code_025e001d50a5422ead234aef96363f84-3"></a><span class="nb">WinActivate</span><span class="p">,</span> <span class="o">^</span><span class="n">LyX</span><span class="o">:</span><span class="p">,,,</span>
 </pre>
 <p>If you don't have AutoHotkey installed, you can also download the pre-compiled
 <a class="reference external" href="https://dl.dropboxusercontent.com/u/561594/lyx-inverse-search.zip">exe</a>.</p>
@@ -706,10 +583,10 @@ of SumatraPDF to <tt class="docutils literal">PATH prefix</tt>. For example, <tt
 (pdflatex)</tt> from the list <tt class="docutils literal">Format</tt> and modify <tt class="docutils literal">Viewer</tt> to the following
 (including the quotes). If you have the compiled AutoHotkey script from above,
 use the following instead (recommended):</p>
-<pre class="code bat"><a name="rest_code_7a0d9b6e8908465ba61f6098f2558011-1"></a>SumatraPDF -inverse-search <span class="s2">"lyx-inverse-search.exe \"</span><span class="nv">%f</span>\<span class="s2">" \"</span><span class="nv">%l</span>\<span class="s2">""</span>
+<pre class="code bat"><a name="rest_code_7e0951f790094b2db97eeb25bc98f2c7-1"></a>SumatraPDF -inverse-search <span class="s2">"lyx-inverse-search.exe \"</span><span class="nv">%f\" \"%</span>l\<span class="s2">""</span>
 </pre>
 <p>Otherwise, use:</p>
-<pre class="code bat"><a name="rest_code_4befa81f83f24ac68b3233700033613c-1"></a>SumatraPDF -inverse-search <span class="s2">"lyxeditor.cmd \"</span><span class="nv">%f</span>\<span class="s2">" \"</span><span class="nv">%l</span>\<span class="s2">""</span>
+<pre class="code bat"><a name="rest_code_b68a53585b45489fbf206d70dbf66edf-1"></a>SumatraPDF -inverse-search <span class="s2">"lyxeditor.cmd \"</span><span class="nv">%f\" \"%</span>l\<span class="s2">""</span>
 </pre>
 <p>Now, once you do to <tt class="docutils literal">Document</tt> -&gt; <tt class="docutils literal">View [PDF (pdflatex)]</tt> or <tt class="docutils literal">View Master Document</tt> in
 LyX to compile your <tt class="docutils literal">.lyx</tt> file and invoke SumatraPDF to view the resulting
@@ -720,7 +597,7 @@ corresponding text in LyX.</p>
 <h3>Forward Search</h3>
 <p>In LyX, go to <tt class="docutils literal">Tools</tt> &gt; <tt class="docutils literal">Preferences</tt> &gt; <tt class="docutils literal">Output</tt>, and enter the following in
 <tt class="docutils literal">PDF command</tt> under <tt class="docutils literal">Forward Search</tt> section:</p>
-<pre class="code bat"><a name="rest_code_144e73aeeda746aaa9c87718381fefb2-1"></a>SumatraPDF -reuse-instance $$o -forward-search $$t $$n
+<pre class="code bat"><a name="rest_code_21553197654f495792cf8990daaa8bf4-1"></a>SumatraPDF -reuse-instance $$o -forward-search $$t $$n
 </pre>
 <p>Now, if you click on <tt class="docutils literal">Forward Search</tt> in the <tt class="docutils literal">Navigate</tt> menu in LyX, SumatraPDF
 will scroll the pdf document to show the text corresponding to the text in LyX
@@ -829,11 +706,10 @@ If you use git, you can download CythonGSL with <code>git clone</code>:
 <p>
 or you can just download the <a href="https://github.com/twiecki/CythonGSL/archive/master.zip">zip archive</a> of the master branch.
 </p>
+</div>
+</div>
+</div>
 
-<p></p>
-</div>
-</div>
-</div>
 <div id="outline-container-orgheadline4" class="outline-2">
 <h3 id="orgheadline4">
 <span class="section-number-2">2</span> Installing GSL</h3>
@@ -848,6 +724,7 @@ instructions below.
 </p>
 </div>
 </div>
+
 <div id="outline-container-orgheadline7" class="outline-2">
 <h3 id="orgheadline7">
 <span class="section-number-2">3</span> Environmental Variables</h3>
@@ -868,14 +745,14 @@ Create an environmental variable <code>LIB_GSL</code> with the path to your GSL
 installation. It is recommended to use Unix style path separator, <code>/</code>
 instead of <code>\</code> for this:
 </p>
+
 <div class="org-src-container">
+
 
 <pre><code class="lang-sh">LIB_GSL=C:/lib64/GSL
 </code></pre>
 
 </div>
-
-<p></p>
 </div>
 </div>
 <div id="outline-container-orgheadline6" class="outline-3">
@@ -889,17 +766,18 @@ find the two DLL files, <code>libgsl-0.dll</code> and <code>libgslcblas-0.dll</c
 your Cython code will compile, but it will raise the following error at
 runtime:
 </p>
+
 <div class="org-src-container">
+
 
 <pre><code class="lang-python">ImportError: DLL load failed: The specified module could not be found.
 </code></pre>
 
 </div>
+</div>
+</div>
+</div>
 
-<p></p>
-</div>
-</div>
-</div>
 <div id="outline-container-orgheadline8" class="outline-2">
 <h3 id="orgheadline8">
 <span class="section-number-2">4</span> Installing CythonGSL</h3>
@@ -909,15 +787,15 @@ If you have done <code>git clone</code> then just <code>cd CythonGSL</code> and 
 <code>.zip</code> archive, extract it and go to the directory. Then, following the
 official instructions,
 </p>
+
 <div class="org-src-container">
+
 
 <pre><code class="lang-sh">python setup.py build
 python setup.py install
 </code></pre>
 
 </div>
-
-<p></p>
 </div>
 </div>
 </div>
@@ -981,10 +859,9 @@ have to have Python installed, and also need to install <code>icalendar</code> a
 </code></pre>
 
 </div>
+</div>
+</div>
 
-<p></p>
-</div>
-</div>
 <div id="outline-container-orgheadline2" class="outline-3">
 <h4 id="orgheadline2">
 <span class="section-number-3">1.2</span> Find your private URL for your calendar</h4>
@@ -994,7 +871,6 @@ Follow step 2 in this <a href="http://orgmode.org/worg/org-tutorials/org-google-
 </p>
 </div>
 </div>
-
 </div>
 
 <div id="outline-container-orgheadline4" class="outline-2">
@@ -1019,6 +895,7 @@ If it works, make a PowerShell script file,  <code>convert-gcal-to-org.ps1</code
 
 <div class="org-src-container">
 
+
 <pre><code class="lang-posh"># customize these
 $ICS2ORG = "&lt;path to ical2org.py&gt;"
 $ICSFILE = "&lt;path for icsfile&gt;"
@@ -1039,6 +916,7 @@ for example:
 </p>
 
 <div class="org-src-container">
+
 
 <pre><code class="lang-posh"># customize these    
 $ICS2ORG = "~/bin/ical2org.py"
@@ -1061,6 +939,7 @@ Now try the script and see if it works:
 
 <div class="org-src-container">
 
+
 <pre><code class="lang-posh">&gt; convert-gcal-to-org.ps1
 </code></pre>
 
@@ -1070,10 +949,9 @@ Now try the script and see if it works:
 If you have the output <code>org</code> file in your <code>org-agenda-files</code> list, you will
 see the entries from Google calendar when you update your agenda in Emacs.
 </p>
+</div>
+</div>
 
-<p></p>
-</div>
-</div>
 <div id="outline-container-orgheadline5" class="outline-2">
 <h3 id="orgheadline5">
 <span class="section-number-2">3</span> Install cron</h3>
@@ -1102,7 +980,6 @@ For example:
 <p><img src="wp-content/Capture-crontab-org-mode-google-sync.png" alt="Capture-crontab-org-mode-google-sync.png"></p>
 </div>
 </div>
-
 </div>
 </div>
         </div>
@@ -1203,9 +1080,8 @@ is just a pleasure to use. Now I believe I found the tool-chain for all my
 writing needs: Emacs and <code>org-mode</code>.
 </p>
 </div>
-
-<p></p>
 </div>
+
 <div id="outline-container-orgheadline2" class="outline-2">
 <h3 id="orgheadline2">
 <span class="section-number-2">2</span> nikola</h3>
@@ -1218,6 +1094,7 @@ posts. Exporting a subtree to a <code>.rst</code> file is easy, but there are so
 steps involved - basically you have to add a new post to the sphinx index file
 either by manually or by using tinkerer.
 </p>
+
 <p>
 Then I found <a href="http://getnikola.com/">nikola</a>. Unlike tinkerer, nikola automatically reads files in the
 designated posts folder and generates index - so you don't have to manually
@@ -1225,10 +1102,9 @@ add anything to the index. In addition, there is a tool <a href="https://github.
 generates a post from a org subtree, so I can put all my posts into one <code>.org</code>
 file.
 </p>
+</div>
+</div>
 
-<p></p>
-</div>
-</div>
 <div id="outline-container-orgheadline4" class="outline-2">
 <h3 id="orgheadline4">
 <span class="section-number-2">3</span> Setup</h3>
@@ -1237,7 +1113,9 @@ file.
 You need to add the <code>.wp</code> file extensions to the <code>POSTS</code> and <code>PAGES</code> tuples,
 and also to markdown compilers in your <code>conf.py</code>:
 </p>
+
 <div class="org-src-container">
+
 
 <pre><code class="lang-python">POSTS = (
     ("posts/*.rst", "posts", "post.tmpl"),
@@ -1254,6 +1132,7 @@ PAGES = (
 </div>
 
 <div class="org-src-container">
+
 
 <pre><code class="lang-python">COMPILERS = {
     "rest": ('.rst', '.txt'),
@@ -1276,8 +1155,6 @@ PAGES = (
 </code></pre>
 
 </div>
-
-<p></p>
 </div>
 <div id="outline-container-orgheadline3" class="outline-3">
 <h4 id="orgheadline3">
@@ -1287,6 +1164,8 @@ PAGES = (
 To use <a href="https://highlightjs.org/">highlight.js</a> for syntax highlighting, add a definition of <code>EXTRA_HEAD_DATA</code>:
 </p>
 <div class="org-src-container">
+
+
 <pre><code class="lang-python">EXTRA_HEAD_DATA = """
 &lt;link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/styles/default.min.css"&gt;
 &lt;script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"&gt;&lt;/script&gt;
@@ -1305,11 +1184,10 @@ As you can see, I added syntax highlighting for <code>lisp</code> and <code>r</c
 the defaults ones. You can change the theme from <code>default</code> to others such as
 <code>solarized_light</code>. 
 </p>
+</div>
+</div>
+</div>
 
-<p></p>
-</div>
-</div>
-</div>
 <div id="outline-container-orgheadline5" class="outline-2">
 <h3 id="orgheadline5">
 <span class="section-number-2">4</span> How to use</h3>
@@ -1360,7 +1238,7 @@ blog. It seems it just uses the top level heading.
         </div>
 </div>
 
-            <script src="assets/js/all-nocdn.js"></script><script>
+            <script src="assets/js/jquery.min.js"></script><script src="assets/js/bootstrap.min.js"></script><script src="assets/js/kc.fab.js"></script><script src="assets/js/moment-with-locales.min.js"></script><script src="assets/js/fancydates.js"></script><script src="assets/js/ripples.min.js"></script><script src="assets/js/material.min.js"></script><script src="assets/js/jquery.colorbox-min.js"></script><script>
 
             $(document).ready(function() {
                 // This command is used to initialize some elements and make them work properly

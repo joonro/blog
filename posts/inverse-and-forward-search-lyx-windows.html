@@ -8,7 +8,16 @@ article: http://ogp.me/ns/article#
 <meta name="description" content="org file for my blog">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>How to set up inverse and forward search in LyX for Windows | Joon's Blog</title>
-<link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/rst.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/code.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/colorbox.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/roboto.min.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/material.min.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/ripples.min.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/kc.fab.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/theme.css" rel="stylesheet" type="text/css">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
 <link rel="canonical" href="http://joonro.github.io/blog/posts/inverse-and-forward-search-lyx-windows.html">
 <!--[if lt IE 9]>
@@ -113,15 +122,15 @@ overlap with those found at <a class="reference external" href="http://wiki.lyx.
 <p>Create a batch file named <tt class="docutils literal">lyxeditor.cmd</tt> with the following contents and save
 it to one of the locations in your <tt class="docutils literal">PATH</tt> Windows environmental variable so
 the pdf editor can call it:</p>
-<pre class="code bat"><a name="rest_code_4a34f75eb524433daf25f982b168a59b-1"></a><span class="p">@</span><span class="k">echo</span> <span class="k">off</span>
-<a name="rest_code_4a34f75eb524433daf25f982b168a59b-2"></a><span class="k">SETLOCAL</span> enabledelayedexpansion
-<a name="rest_code_4a34f75eb524433daf25f982b168a59b-3"></a><span class="k">set</span> <span class="nv">file</span><span class="o">=</span><span class="nv">%1</span>
-<a name="rest_code_4a34f75eb524433daf25f982b168a59b-4"></a><span class="k">set</span> <span class="nv">row</span><span class="o">=</span><span class="nv">%2</span>
-<a name="rest_code_4a34f75eb524433daf25f982b168a59b-5"></a><span class="c">REM remove quotes from variables</span>
-<a name="rest_code_4a34f75eb524433daf25f982b168a59b-6"></a><span class="k">set</span> <span class="nv">file</span><span class="o">=</span>!file:"<span class="o">=</span>!
-<a name="rest_code_4a34f75eb524433daf25f982b168a59b-7"></a><span class="k">set</span> <span class="nv">row</span><span class="o">=</span>!row:"<span class="o">=</span>!
-<a name="rest_code_4a34f75eb524433daf25f982b168a59b-8"></a><span class="nv">%comspec%</span> <span class="n">/q</span> <span class="n">/c</span> (@<span class="k">echo</span> LYXCMD:revdvi<span class="nl">:server</span>-<span class="k">goto</span>-file-row:<span class="nv">%file%</span> <span class="nv">%row%</span>)&gt; \\.\pipe\lyxpipe.in&amp;&amp;type \\.\pipe\lyxpipe.out
-<a name="rest_code_4a34f75eb524433daf25f982b168a59b-9"></a><span class="k">endlocal</span>
+<pre class="code bat"><a name="rest_code_46954eb373af4ad4a29a62cb620834e3-1"></a><span class="p">@</span><span class="k">echo</span> off
+<a name="rest_code_46954eb373af4ad4a29a62cb620834e3-2"></a><span class="k">SETLOCAL</span> enabledelayedexpansion
+<a name="rest_code_46954eb373af4ad4a29a62cb620834e3-3"></a><span class="k">set</span> <span class="nv">file</span><span class="p">=</span><span class="nv">%1</span>
+<a name="rest_code_46954eb373af4ad4a29a62cb620834e3-4"></a><span class="k">set</span> <span class="nv">row</span><span class="p">=</span><span class="nv">%2</span>
+<a name="rest_code_46954eb373af4ad4a29a62cb620834e3-5"></a><span class="c1">REM remove quotes from variables</span>
+<a name="rest_code_46954eb373af4ad4a29a62cb620834e3-6"></a><span class="k">set</span> <span class="nv">file</span><span class="p">=</span><span class="nv">!file:"=!</span>
+<a name="rest_code_46954eb373af4ad4a29a62cb620834e3-7"></a><span class="k">set</span> <span class="nv">row</span><span class="p">=</span><span class="nv">!row:"=!</span>
+<a name="rest_code_46954eb373af4ad4a29a62cb620834e3-8"></a><span class="nv">%comspec%</span> /q /c (@echo LYXCMD:revdvi:server-goto-file-row:<span class="nv">%file%</span> <span class="nv">%row%</span>)<span class="p">&gt;</span> \\.\pipe\lyxpipe.in<span class="p">&amp;&amp;</span><span class="k">type</span> \\.\pipe\lyxpipe.out
+<a name="rest_code_46954eb373af4ad4a29a62cb620834e3-9"></a><span class="k">endlocal</span>
 </pre>
 <p>The above cmd works well, but it shows an annoying black cmd window when you
 invoke the script. With a simple <a class="reference external" href="http://ahkscript.org">AutoHotkey</a> script, one can not only suppress
@@ -129,9 +138,9 @@ this window but also activate the LyX window after the inverse search.</p>
 <p>Create an AutoHotkey script named <tt class="docutils literal"><span class="pre">lyx-inverse-search.ahk</span></tt> with the following
 code and save it to the same location at <tt class="docutils literal">lyxeditor.cmd</tt> and compile it with
 the AutoHotkey to generate <tt class="docutils literal"><span class="pre">lyx-inverse-search.exe</span></tt>:</p>
-<pre class="code ahk"><a name="rest_code_8d77d248cc0c4261bdf8e4bb2d615d40-1"></a><span class="nb">SetTitleMatchMode</span><span class="p">,</span> <span class="n">RegEx</span>
-<a name="rest_code_8d77d248cc0c4261bdf8e4bb2d615d40-2"></a><span class="nb">Run</span><span class="p">,</span> <span class="n">lyxeditor</span><span class="o">.</span><span class="n">cmd</span> <span class="s">"%1%"</span> <span class="s">"%2%"</span><span class="p">,,</span> <span class="n">Hide</span>
-<a name="rest_code_8d77d248cc0c4261bdf8e4bb2d615d40-3"></a><span class="nb">WinActivate</span><span class="p">,</span> <span class="o">^</span><span class="n">LyX</span><span class="o">:</span><span class="p">,,,</span>
+<pre class="code ahk"><a name="rest_code_025e001d50a5422ead234aef96363f84-1"></a><span class="nb">SetTitleMatchMode</span><span class="p">,</span> <span class="n">RegEx</span>
+<a name="rest_code_025e001d50a5422ead234aef96363f84-2"></a><span class="nb">Run</span><span class="p">,</span> <span class="n">lyxeditor</span><span class="o">.</span><span class="n">cmd</span> <span class="s">"%1%"</span> <span class="s">"%2%"</span><span class="p">,,</span> <span class="n">Hide</span>
+<a name="rest_code_025e001d50a5422ead234aef96363f84-3"></a><span class="nb">WinActivate</span><span class="p">,</span> <span class="o">^</span><span class="n">LyX</span><span class="o">:</span><span class="p">,,,</span>
 </pre>
 <p>If you don't have AutoHotkey installed, you can also download the pre-compiled
 <a class="reference external" href="https://dl.dropboxusercontent.com/u/561594/lyx-inverse-search.zip">exe</a>.</p>
@@ -154,10 +163,10 @@ of SumatraPDF to <tt class="docutils literal">PATH prefix</tt>. For example, <tt
 (pdflatex)</tt> from the list <tt class="docutils literal">Format</tt> and modify <tt class="docutils literal">Viewer</tt> to the following
 (including the quotes). If you have the compiled AutoHotkey script from above,
 use the following instead (recommended):</p>
-<pre class="code bat"><a name="rest_code_7a0d9b6e8908465ba61f6098f2558011-1"></a>SumatraPDF -inverse-search <span class="s2">"lyx-inverse-search.exe \"</span><span class="nv">%f</span>\<span class="s2">" \"</span><span class="nv">%l</span>\<span class="s2">""</span>
+<pre class="code bat"><a name="rest_code_7e0951f790094b2db97eeb25bc98f2c7-1"></a>SumatraPDF -inverse-search <span class="s2">"lyx-inverse-search.exe \"</span><span class="nv">%f\" \"%</span>l\<span class="s2">""</span>
 </pre>
 <p>Otherwise, use:</p>
-<pre class="code bat"><a name="rest_code_4befa81f83f24ac68b3233700033613c-1"></a>SumatraPDF -inverse-search <span class="s2">"lyxeditor.cmd \"</span><span class="nv">%f</span>\<span class="s2">" \"</span><span class="nv">%l</span>\<span class="s2">""</span>
+<pre class="code bat"><a name="rest_code_b68a53585b45489fbf206d70dbf66edf-1"></a>SumatraPDF -inverse-search <span class="s2">"lyxeditor.cmd \"</span><span class="nv">%f\" \"%</span>l\<span class="s2">""</span>
 </pre>
 <p>Now, once you do to <tt class="docutils literal">Document</tt> -&gt; <tt class="docutils literal">View [PDF (pdflatex)]</tt> or <tt class="docutils literal">View Master Document</tt> in
 LyX to compile your <tt class="docutils literal">.lyx</tt> file and invoke SumatraPDF to view the resulting
@@ -168,7 +177,7 @@ corresponding text in LyX.</p>
 <h3>Forward Search</h3>
 <p>In LyX, go to <tt class="docutils literal">Tools</tt> &gt; <tt class="docutils literal">Preferences</tt> &gt; <tt class="docutils literal">Output</tt>, and enter the following in
 <tt class="docutils literal">PDF command</tt> under <tt class="docutils literal">Forward Search</tt> section:</p>
-<pre class="code bat"><a name="rest_code_144e73aeeda746aaa9c87718381fefb2-1"></a>SumatraPDF -reuse-instance $$o -forward-search $$t $$n
+<pre class="code bat"><a name="rest_code_21553197654f495792cf8990daaa8bf4-1"></a>SumatraPDF -reuse-instance $$o -forward-search $$t $$n
 </pre>
 <p>Now, if you click on <tt class="docutils literal">Forward Search</tt> in the <tt class="docutils literal">Navigate</tt> menu in LyX, SumatraPDF
 will scroll the pdf document to show the text corresponding to the text in LyX
@@ -253,7 +262,7 @@ where your cursor is and highlight the line.</p>
         </div>
 </div>
 
-            <script src="../assets/js/all-nocdn.js"></script><script>
+            <script src="../assets/js/jquery.min.js"></script><script src="../assets/js/bootstrap.min.js"></script><script src="../assets/js/kc.fab.js"></script><script src="../assets/js/moment-with-locales.min.js"></script><script src="../assets/js/fancydates.js"></script><script src="../assets/js/ripples.min.js"></script><script src="../assets/js/material.min.js"></script><script src="../assets/js/jquery.colorbox-min.js"></script><script>
 
             $(document).ready(function() {
                 // This command is used to initialize some elements and make them work properly

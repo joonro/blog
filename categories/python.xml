@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Joon's Blog (python)</title><link>http://joonro.github.io/blog/</link><description></description><atom:link href="http://joonro.github.io/blog/categories/python.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><lastBuildDate>Tue, 03 Jan 2017 20:36:54 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Installing GNU Scientific Library (GSL) and CythonGSL in Windows</title><link>http://joonro.github.io/blog/posts/installing-gsl-and-cythongsl-in-windows.html</link><dc:creator>Joon Ro</dc:creator><description>&lt;div&gt;&lt;div id="table-of-contents"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Joon's Blog (Posts about python)</title><link>http://joonro.github.io/blog/</link><description></description><atom:link type="application/rss+xml" href="http://joonro.github.io/blog/categories/python.xml" rel="self"></atom:link><language>en</language><lastBuildDate>Sun, 23 Apr 2017 00:53:01 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Installing GNU Scientific Library (GSL) and CythonGSL in Windows</title><link>http://joonro.github.io/blog/posts/installing-gsl-and-cythongsl-in-windows.html</link><dc:creator>Joon Ro</dc:creator><description>&lt;div&gt;&lt;div id="table-of-contents"&gt;
 &lt;h3&gt;Table of Contents&lt;/h3&gt;
 &lt;div id="text-table-of-contents"&gt;
 &lt;ul&gt;
@@ -79,10 +79,10 @@ If you use git, you can download CythonGSL with &lt;code&gt;git clone&lt;/code&g
 &lt;p&gt;
 or you can just download the &lt;a href="https://github.com/twiecki/CythonGSL/archive/master.zip"&gt;zip archive&lt;/a&gt; of the master branch.
 &lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 
-&lt;p&gt;&lt;/p&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
 &lt;div id="outline-container-orgheadline4" class="outline-2"&gt;
 &lt;h3 id="orgheadline4"&gt;&lt;span class="section-number-2"&gt;2&lt;/span&gt; Installing GSL&lt;/h3&gt;
 &lt;div class="outline-text-2" id="text-2"&gt;
@@ -96,6 +96,7 @@ instructions below.
 &lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
+
 &lt;div id="outline-container-orgheadline7" class="outline-2"&gt;
 &lt;h3 id="orgheadline7"&gt;&lt;span class="section-number-2"&gt;3&lt;/span&gt; Environmental Variables&lt;/h3&gt;
 &lt;div class="outline-text-2" id="text-3"&gt;
@@ -113,14 +114,15 @@ Create an environmental variable &lt;code&gt;LIB_GSL&lt;/code&gt; with the path 
 installation. It is recommended to use Unix style path separator, &lt;code&gt;/&lt;/code&gt;
 instead of &lt;code&gt;\&lt;/code&gt; for this:
 &lt;/p&gt;
+
 &lt;div class="org-src-container"&gt;
+
 
 &lt;pre&gt;&lt;code class="lang-sh"&gt;LIB_GSL=C:/lib64/GSL
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;/div&gt;
-
-&lt;p&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div id="outline-container-orgheadline6" class="outline-3"&gt;
 &lt;h4 id="orgheadline6"&gt;&lt;span class="section-number-3"&gt;3.2&lt;/span&gt; &lt;code&gt;PATH&lt;/code&gt;&lt;/h4&gt;
@@ -131,16 +133,18 @@ find the two DLL files, &lt;code&gt;libgsl-0.dll&lt;/code&gt; and &lt;code&gt;li
 your Cython code will compile, but it will raise the following error at
 runtime:
 &lt;/p&gt;
+
 &lt;div class="org-src-container"&gt;
+
 
 &lt;pre&gt;&lt;code class="lang-python"&gt;ImportError: DLL load failed: The specified module could not be found.
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 
-&lt;p&gt;&lt;/p&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
 &lt;div id="outline-container-orgheadline8" class="outline-2"&gt;
 &lt;h3 id="orgheadline8"&gt;&lt;span class="section-number-2"&gt;4&lt;/span&gt; Installing CythonGSL&lt;/h3&gt;
 &lt;div class="outline-text-2" id="text-4"&gt;
@@ -149,13 +153,14 @@ If you have done &lt;code&gt;git clone&lt;/code&gt; then just &lt;code&gt;cd Cyt
 &lt;code&gt;.zip&lt;/code&gt; archive, extract it and go to the directory. Then, following the
 official instructions,
 &lt;/p&gt;
+
 &lt;div class="org-src-container"&gt;
+
 
 &lt;pre&gt;&lt;code class="lang-sh"&gt;python setup.py build
 python setup.py install
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;/div&gt;
-
-&lt;p&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;
 &lt;/div&gt;&lt;/div&gt;</description><category>cython</category><category>gsl</category><category>python</category><category>windows</category><guid>http://joonro.github.io/blog/posts/installing-gsl-and-cythongsl-in-windows.html</guid><pubDate>Mon, 25 May 2015 05:50:11 GMT</pubDate></item></channel></rss>

@@ -8,7 +8,16 @@ article: http://ogp.me/ns/article#
 <meta name="description" content="Specifying outputdir for minted package syntax highlighting in LaTeX export using in org-mode">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Syntax highlighting in LaTeX export in org-mode: specifying outputdir option for minted package | Joon's Blog</title>
-<link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/rst.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/code.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/colorbox.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/roboto.min.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/material.min.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/ripples.min.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/kc.fab.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/theme.css" rel="stylesheet" type="text/css">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
 <link rel="canonical" href="http://joonro.github.io/blog/posts/org-mode-outputdir-minted-latex-export.html">
 <!--[if lt IE 9]>
@@ -27,6 +36,7 @@ article: http://ogp.me/ns/article#
 </script><meta name="description" itemprop="description" content="Specifying outputdir for minted package syntax highlighting in LaTeX export using in org-mode">
 <meta name="author" content="Joon Ro">
 <link rel="prev" href="windows-10-enable-dark-mode-posh.html" title="Windows 10: How to Enable Dark mode in PowerShell" type="text/html">
+<link rel="next" href="powershell-customizations.html" title="My PowerShell Customizations" type="text/html">
 <meta property="og:site_name" content="Joon's Blog">
 <meta property="og:title" content="Syntax highlighting in LaTeX export in org-mode: specifying outputdir ">
 <meta property="og:url" content="http://joonro.github.io/blog/posts/org-mode-outputdir-minted-latex-export.html">
@@ -91,44 +101,44 @@ article: http://ogp.me/ns/article#
 <p>When you do LaTeX export in org-mode, you can get syntax highlighting in pdf
 output using <tt class="docutils literal">minted</tt> package, which uses <tt class="docutils literal">pygments</tt>. You can add the following
 in your <tt class="docutils literal">init</tt> file:</p>
-<pre class="code common-lisp"><a name="rest_code_2fff76b1b26c4df09b8f2898530ff2be-1"></a><span class="p">(</span><span class="nb">require</span> <span class="ss">'ox-latex</span><span class="p">)</span>
-<a name="rest_code_2fff76b1b26c4df09b8f2898530ff2be-2"></a><span class="p">(</span><span class="nv">add-to-list</span> <span class="ss">'org-latex-packages-alist</span> <span class="o">'</span><span class="p">(</span><span class="s">""</span> <span class="s">"minted"</span><span class="p">))</span>
-<a name="rest_code_2fff76b1b26c4df09b8f2898530ff2be-3"></a><span class="p">(</span><span class="k">setq</span> <span class="nv">org-latex-listings</span> <span class="ss">'minted</span><span class="p">)</span>
-<a name="rest_code_2fff76b1b26c4df09b8f2898530ff2be-4"></a>
-<a name="rest_code_2fff76b1b26c4df09b8f2898530ff2be-5"></a><span class="p">(</span><span class="k">setq</span> <span class="nv">org-latex-pdf-process</span>
-<a name="rest_code_2fff76b1b26c4df09b8f2898530ff2be-6"></a>      <span class="o">'</span><span class="p">(</span><span class="s">"pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"</span>
-<a name="rest_code_2fff76b1b26c4df09b8f2898530ff2be-7"></a>        <span class="s">"pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"</span>
-<a name="rest_code_2fff76b1b26c4df09b8f2898530ff2be-8"></a>        <span class="s">"pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"</span><span class="p">))</span>
+<pre class="code common-lisp"><a name="rest_code_6c74fdbec29f47868ff1e4e8ca2300e8-1"></a><span class="p">(</span><span class="nb">require</span> <span class="ss">'ox-latex</span><span class="p">)</span>
+<a name="rest_code_6c74fdbec29f47868ff1e4e8ca2300e8-2"></a><span class="p">(</span><span class="nv">add-to-list</span> <span class="ss">'org-latex-packages-alist</span> <span class="o">'</span><span class="p">(</span><span class="s">""</span> <span class="s">"minted"</span><span class="p">))</span>
+<a name="rest_code_6c74fdbec29f47868ff1e4e8ca2300e8-3"></a><span class="p">(</span><span class="k">setq</span> <span class="nv">org-latex-listings</span> <span class="ss">'minted</span><span class="p">)</span>
+<a name="rest_code_6c74fdbec29f47868ff1e4e8ca2300e8-4"></a>
+<a name="rest_code_6c74fdbec29f47868ff1e4e8ca2300e8-5"></a><span class="p">(</span><span class="k">setq</span> <span class="nv">org-latex-pdf-process</span>
+<a name="rest_code_6c74fdbec29f47868ff1e4e8ca2300e8-6"></a>      <span class="o">'</span><span class="p">(</span><span class="s">"pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"</span>
+<a name="rest_code_6c74fdbec29f47868ff1e4e8ca2300e8-7"></a>        <span class="s">"pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"</span>
+<a name="rest_code_6c74fdbec29f47868ff1e4e8ca2300e8-8"></a>        <span class="s">"pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"</span><span class="p">))</span>
 </pre>
 <p>The problem with this is that if you want to export the document to a output
 directory, (e.g., using <tt class="docutils literal">:EXPORT_FILE_NAME: ./Output/File_Name</tt> property),
 then you will get the following error:</p>
-<pre class="code tex"><a name="rest_code_552761ad2f934211b04194cb6e421dfb-1"></a>! Package minted Error: Missing Pygments output; <span class="k">\inputminted</span> was
-<a name="rest_code_552761ad2f934211b04194cb6e421dfb-2"></a>probably given a file that does not exist--otherwise, you may need
-<a name="rest_code_552761ad2f934211b04194cb6e421dfb-3"></a>the outputdir package option, or may be using an incompatible build tool.
+<pre class="code tex"><a name="rest_code_0c37eab16feb4041ac1691c5efc40911-1"></a>! Package minted Error: Missing Pygments output; <span class="k">\inputminted</span> was
+<a name="rest_code_0c37eab16feb4041ac1691c5efc40911-2"></a>probably given a file that does not exist--otherwise, you may need
+<a name="rest_code_0c37eab16feb4041ac1691c5efc40911-3"></a>the outputdir package option, or may be using an incompatible build tool.
 </pre>
 <p>because <tt class="docutils literal">minted</tt> does not know where to find the intermediate file.</p>
 <p>My solution is first commenting out the <tt class="docutils literal">minted</tt> package part:</p>
-<pre class="code common-lisp"><a name="rest_code_6342ec1cef904cf98da413a52851ee24-1"></a><span class="p">(</span><span class="nb">require</span> <span class="ss">'ox-latex</span><span class="p">)</span>
-<a name="rest_code_6342ec1cef904cf98da413a52851ee24-2"></a><span class="c1">;(add-to-list 'org-latex-packages-alist '("" "minted"))</span>
-<a name="rest_code_6342ec1cef904cf98da413a52851ee24-3"></a><span class="p">(</span><span class="k">setq</span> <span class="nv">org-latex-listings</span> <span class="ss">'minted</span><span class="p">)</span>
-<a name="rest_code_6342ec1cef904cf98da413a52851ee24-4"></a>
-<a name="rest_code_6342ec1cef904cf98da413a52851ee24-5"></a><span class="p">(</span><span class="k">setq</span> <span class="nv">org-latex-pdf-process</span>
-<a name="rest_code_6342ec1cef904cf98da413a52851ee24-6"></a>      <span class="o">'</span><span class="p">(</span><span class="s">"pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"</span>
-<a name="rest_code_6342ec1cef904cf98da413a52851ee24-7"></a>        <span class="s">"pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"</span>
-<a name="rest_code_6342ec1cef904cf98da413a52851ee24-8"></a>        <span class="s">"pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"</span><span class="p">))</span>
+<pre class="code common-lisp"><a name="rest_code_2f8714642f3c4041864ac7fd8892e226-1"></a><span class="p">(</span><span class="nb">require</span> <span class="ss">'ox-latex</span><span class="p">)</span>
+<a name="rest_code_2f8714642f3c4041864ac7fd8892e226-2"></a><span class="c1">;(add-to-list 'org-latex-packages-alist '("" "minted"))</span>
+<a name="rest_code_2f8714642f3c4041864ac7fd8892e226-3"></a><span class="p">(</span><span class="k">setq</span> <span class="nv">org-latex-listings</span> <span class="ss">'minted</span><span class="p">)</span>
+<a name="rest_code_2f8714642f3c4041864ac7fd8892e226-4"></a>
+<a name="rest_code_2f8714642f3c4041864ac7fd8892e226-5"></a><span class="p">(</span><span class="k">setq</span> <span class="nv">org-latex-pdf-process</span>
+<a name="rest_code_2f8714642f3c4041864ac7fd8892e226-6"></a>      <span class="o">'</span><span class="p">(</span><span class="s">"pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"</span>
+<a name="rest_code_2f8714642f3c4041864ac7fd8892e226-7"></a>        <span class="s">"pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"</span>
+<a name="rest_code_2f8714642f3c4041864ac7fd8892e226-8"></a>        <span class="s">"pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"</span><span class="p">))</span>
 </pre>
 <p>and then manually load <tt class="docutils literal">minted</tt> package with specifying <tt class="docutils literal">outputdir</tt> option in the org file:</p>
-<pre class="code text"><a name="rest_code_7b7ca065345e4595a20175d3c530d34e-1"></a>* Test
-<a name="rest_code_7b7ca065345e4595a20175d3c530d34e-2"></a>:PROPERTIES:
-<a name="rest_code_7b7ca065345e4595a20175d3c530d34e-3"></a>:EXPORT_FILE_NAME: Output/File_Name
-<a name="rest_code_7b7ca065345e4595a20175d3c530d34e-4"></a>:EXPORT_LATEX_HEADER+: \usepackage[outputdir=Output]{minted}
-<a name="rest_code_7b7ca065345e4595a20175d3c530d34e-5"></a>:END:
+<pre class="code text"><a name="rest_code_07587ccb399e429fa4694186f8205b1a-1"></a>* Test
+<a name="rest_code_07587ccb399e429fa4694186f8205b1a-2"></a>:PROPERTIES:
+<a name="rest_code_07587ccb399e429fa4694186f8205b1a-3"></a>:EXPORT_FILE_NAME: Output/File_Name
+<a name="rest_code_07587ccb399e429fa4694186f8205b1a-4"></a>:EXPORT_LATEX_HEADER+: \usepackage[outputdir=Output]{minted}
+<a name="rest_code_07587ccb399e429fa4694186f8205b1a-5"></a>:END:
 </pre>
 <p>and it should work.</p>
 <p>Last, if you want to highlight <tt class="docutils literal">ipython</tt> block, you can add the following to
 your <tt class="docutils literal">init</tt> file:</p>
-<pre class="code common-lisp"><a name="rest_code_bc5e7c64b52e461fb89fee6701d277d2-1"></a><span class="p">(</span><span class="nv">add-to-list</span> <span class="ss">'org-latex-minted-langs</span> <span class="o">'</span><span class="p">(</span><span class="nv">ipython</span> <span class="s">"python"</span><span class="p">))</span>
+<pre class="code common-lisp"><a name="rest_code_c0d5f37161cc452088e536171a43a828-1"></a><span class="p">(</span><span class="nv">add-to-list</span> <span class="ss">'org-latex-minted-langs</span> <span class="o">'</span><span class="p">(</span><span class="nv">ipython</span> <span class="s">"python"</span><span class="p">))</span>
 </pre>
 </div>
     </div>
@@ -143,6 +153,9 @@ your <tt class="docutils literal">init</tt> file:</p>
             <ul class="pager">
 <li class="previous">
                 <a href="windows-10-enable-dark-mode-posh.html" rel="prev" title="Windows 10: How to Enable Dark mode in PowerShell">Previous post</a>
+            </li>
+            <li class="next">
+                <a href="powershell-customizations.html" rel="next" title="My PowerShell Customizations">Next post</a>
             </li>
         </ul></nav></aside><section class="comments"><h2>
 <i class="mdi-communication-forum"></i>Comments</h2>
@@ -204,7 +217,7 @@ your <tt class="docutils literal">init</tt> file:</p>
         </div>
 </div>
 
-            <script src="../assets/js/all-nocdn.js"></script><script>
+            <script src="../assets/js/jquery.min.js"></script><script src="../assets/js/bootstrap.min.js"></script><script src="../assets/js/kc.fab.js"></script><script src="../assets/js/moment-with-locales.min.js"></script><script src="../assets/js/fancydates.js"></script><script src="../assets/js/ripples.min.js"></script><script src="../assets/js/material.min.js"></script><script src="../assets/js/jquery.colorbox-min.js"></script><script>
 
             $(document).ready(function() {
                 // This command is used to initialize some elements and make them work properly

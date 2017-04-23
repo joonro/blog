@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Joon's Blog (org)</title><link>http://joonro.github.io/blog/</link><description></description><atom:link href="http://joonro.github.io/blog/categories/org.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><lastBuildDate>Tue, 03 Jan 2017 20:36:54 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>org-mode Google calendar sync in Windows</title><link>http://joonro.github.io/blog/posts/org-mode-google-calendar-sync-in-windows.html</link><dc:creator>Joon Ro</dc:creator><description>&lt;div&gt;&lt;div id="table-of-contents"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Joon's Blog (Posts about org)</title><link>http://joonro.github.io/blog/</link><description></description><atom:link type="application/rss+xml" href="http://joonro.github.io/blog/categories/org.xml" rel="self"></atom:link><language>en</language><lastBuildDate>Sun, 23 Apr 2017 00:53:00 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>org-mode Google calendar sync in Windows</title><link>http://joonro.github.io/blog/posts/org-mode-google-calendar-sync-in-windows.html</link><dc:creator>Joon Ro</dc:creator><description>&lt;div&gt;&lt;div id="table-of-contents"&gt;
 &lt;h3&gt;Table of Contents&lt;/h3&gt;
 &lt;div id="text-table-of-contents"&gt;
 &lt;ul&gt;
@@ -39,9 +39,9 @@ have to have Python installed, and also need to install &lt;code&gt;icalendar&lt
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;/div&gt;
-
-&lt;p&gt;&lt;/p&gt;&lt;/div&gt;
 &lt;/div&gt;
+&lt;/div&gt;
+
 &lt;div id="outline-container-orgheadline2" class="outline-3"&gt;
 &lt;h4 id="orgheadline2"&gt;&lt;span class="section-number-3"&gt;1.2&lt;/span&gt; Find your private URL for your calendar&lt;/h4&gt;
 &lt;div class="outline-text-3" id="text-1-2"&gt;
@@ -50,7 +50,6 @@ Follow step 2 in this &lt;a href="http://orgmode.org/worg/org-tutorials/org-goog
 &lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-
 &lt;/div&gt;
 
 &lt;div id="outline-container-orgheadline4" class="outline-2"&gt;
@@ -74,6 +73,7 @@ If it works, make a PowerShell script file,  &lt;code&gt;convert-gcal-to-org.ps1
 
 &lt;div class="org-src-container"&gt;
 
+
 &lt;pre&gt;&lt;code class="lang-posh"&gt;# customize these
 $ICS2ORG = "&amp;lt;path to ical2org.py&amp;gt;"
 $ICSFILE = "&amp;lt;path for icsfile&amp;gt;"
@@ -94,6 +94,7 @@ for example:
 &lt;/p&gt;
 
 &lt;div class="org-src-container"&gt;
+
 
 &lt;pre&gt;&lt;code class="lang-posh"&gt;# customize these    
 $ICS2ORG = "~/bin/ical2org.py"
@@ -116,6 +117,7 @@ Now try the script and see if it works:
 
 &lt;div class="org-src-container"&gt;
 
+
 &lt;pre&gt;&lt;code class="lang-posh"&gt;&amp;gt; convert-gcal-to-org.ps1
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -125,9 +127,9 @@ Now try the script and see if it works:
 If you have the output &lt;code&gt;org&lt;/code&gt; file in your &lt;code&gt;org-agenda-files&lt;/code&gt; list, you will
 see the entries from Google calendar when you update your agenda in Emacs.
 &lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;&lt;/div&gt;
 &lt;/div&gt;
+&lt;/div&gt;
+
 &lt;div id="outline-container-orgheadline5" class="outline-2"&gt;
 &lt;h3 id="orgheadline5"&gt;&lt;span class="section-number-2"&gt;3&lt;/span&gt; Install cron&lt;/h3&gt;
 &lt;div class="outline-text-2" id="text-3"&gt;
@@ -155,7 +157,6 @@ For example:
 &lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-
 &lt;/div&gt;&lt;/div&gt;</description><category>emacs</category><category>org</category><category>posh</category><category>windows</category><guid>http://joonro.github.io/blog/posts/org-mode-google-calendar-sync-in-windows.html</guid><pubDate>Sat, 09 May 2015 20:27:18 GMT</pubDate></item><item><title>Changed the blog engine to nikola</title><link>http://joonro.github.io/blog/posts/changed-the-blog-engine-to-nikola.html</link><dc:creator>Joon Ro</dc:creator><description>&lt;div&gt;&lt;div id="table-of-contents"&gt;
 &lt;h3&gt;Table of Contents&lt;/h3&gt;
 &lt;div id="text-table-of-contents"&gt;
@@ -237,8 +238,8 @@ is just a pleasure to use. Now I believe I found the tool-chain for all my
 writing needs: Emacs and &lt;code&gt;org-mode&lt;/code&gt;.
 &lt;/p&gt;
 &lt;/div&gt;
+&lt;/div&gt;
 
-&lt;p&gt;&lt;/p&gt;&lt;/div&gt;
 &lt;div id="outline-container-orgheadline2" class="outline-2"&gt;
 &lt;h3 id="orgheadline2"&gt;&lt;span class="section-number-2"&gt;2&lt;/span&gt; nikola&lt;/h3&gt;
 &lt;div class="outline-text-2" id="text-2"&gt;
@@ -250,6 +251,7 @@ posts. Exporting a subtree to a &lt;code&gt;.rst&lt;/code&gt; file is easy, but 
 steps involved - basically you have to add a new post to the sphinx index file
 either by manually or by using tinkerer.
 &lt;/p&gt;
+
 &lt;p&gt;
 Then I found &lt;a href="http://getnikola.com/"&gt;nikola&lt;/a&gt;. Unlike tinkerer, nikola automatically reads files in the
 designated posts folder and generates index - so you don't have to manually
@@ -257,9 +259,9 @@ add anything to the index. In addition, there is a tool &lt;a href="https://gith
 generates a post from a org subtree, so I can put all my posts into one &lt;code&gt;.org&lt;/code&gt;
 file.
 &lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;&lt;/div&gt;
 &lt;/div&gt;
+&lt;/div&gt;
+
 &lt;div id="outline-container-orgheadline4" class="outline-2"&gt;
 &lt;h3 id="orgheadline4"&gt;&lt;span class="section-number-2"&gt;3&lt;/span&gt; Setup&lt;/h3&gt;
 &lt;div class="outline-text-2" id="text-3"&gt;
@@ -267,7 +269,9 @@ file.
 You need to add the &lt;code&gt;.wp&lt;/code&gt; file extensions to the &lt;code&gt;POSTS&lt;/code&gt; and &lt;code&gt;PAGES&lt;/code&gt; tuples,
 and also to markdown compilers in your &lt;code&gt;conf.py&lt;/code&gt;:
 &lt;/p&gt;
+
 &lt;div class="org-src-container"&gt;
+
 
 &lt;pre&gt;&lt;code class="lang-python"&gt;POSTS = (
     ("posts/*.rst", "posts", "post.tmpl"),
@@ -284,6 +288,7 @@ PAGES = (
 &lt;/div&gt;
 
 &lt;div class="org-src-container"&gt;
+
 
 &lt;pre&gt;&lt;code class="lang-python"&gt;COMPILERS = {
     "rest": ('.rst', '.txt'),
@@ -306,8 +311,7 @@ PAGES = (
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;/div&gt;
-
-&lt;p&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;
 &lt;div id="outline-container-orgheadline3" class="outline-3"&gt;
 &lt;h4 id="orgheadline3"&gt;&lt;span class="section-number-3"&gt;3.1&lt;/span&gt; Syntax Highlighting&lt;/h4&gt;
 &lt;div class="outline-text-3" id="text-3-1"&gt;
@@ -315,6 +319,8 @@ PAGES = (
 To use &lt;a href="https://highlightjs.org/"&gt;highlight.js&lt;/a&gt; for syntax highlighting, add a definition of &lt;code&gt;EXTRA_HEAD_DATA&lt;/code&gt;:
 &lt;/p&gt;
 &lt;div class="org-src-container"&gt;
+
+
 &lt;pre&gt;&lt;code class="lang-python"&gt;EXTRA_HEAD_DATA = """
 &amp;lt;link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/styles/default.min.css"&amp;gt;
 &amp;lt;script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"&amp;gt;&amp;lt;/script&amp;gt;
@@ -333,10 +339,10 @@ As you can see, I added syntax highlighting for &lt;code&gt;lisp&lt;/code&gt; an
 the defaults ones. You can change the theme from &lt;code&gt;default&lt;/code&gt; to others such as
 &lt;code&gt;solarized_light&lt;/code&gt;. 
 &lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 
-&lt;p&gt;&lt;/p&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
 &lt;div id="outline-container-orgheadline5" class="outline-2"&gt;
 &lt;h3 id="orgheadline5"&gt;&lt;span class="section-number-2"&gt;4&lt;/span&gt; How to use&lt;/h3&gt;
 &lt;div class="outline-text-2" id="text-4"&gt;

@@ -7,7 +7,16 @@ article: http://ogp.me/ns/article#
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>org-mode Google calendar sync in Windows | Joon's Blog</title>
-<link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/rst.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/code.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/colorbox.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/roboto.min.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/material.min.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/ripples.min.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/kc.fab.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/theme.css" rel="stylesheet" type="text/css">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
 <link rel="canonical" href="http://joonro.github.io/blog/posts/org-mode-google-calendar-sync-in-windows.html">
 <!--[if lt IE 9]>
@@ -146,10 +155,9 @@ have to have Python installed, and also need to install <code>icalendar</code> a
 </code></pre>
 
 </div>
+</div>
+</div>
 
-<p></p>
-</div>
-</div>
 <div id="outline-container-orgheadline2" class="outline-3">
 <h4 id="orgheadline2">
 <span class="section-number-3">1.2</span> Find your private URL for your calendar</h4>
@@ -159,7 +167,6 @@ Follow step 2 in this <a href="http://orgmode.org/worg/org-tutorials/org-google-
 </p>
 </div>
 </div>
-
 </div>
 
 <div id="outline-container-orgheadline4" class="outline-2">
@@ -184,6 +191,7 @@ If it works, make a PowerShell script file,  <code>convert-gcal-to-org.ps1</code
 
 <div class="org-src-container">
 
+
 <pre><code class="lang-posh"># customize these
 $ICS2ORG = "&lt;path to ical2org.py&gt;"
 $ICSFILE = "&lt;path for icsfile&gt;"
@@ -204,6 +212,7 @@ for example:
 </p>
 
 <div class="org-src-container">
+
 
 <pre><code class="lang-posh"># customize these    
 $ICS2ORG = "~/bin/ical2org.py"
@@ -226,6 +235,7 @@ Now try the script and see if it works:
 
 <div class="org-src-container">
 
+
 <pre><code class="lang-posh">&gt; convert-gcal-to-org.ps1
 </code></pre>
 
@@ -235,10 +245,9 @@ Now try the script and see if it works:
 If you have the output <code>org</code> file in your <code>org-agenda-files</code> list, you will
 see the entries from Google calendar when you update your agenda in Emacs.
 </p>
+</div>
+</div>
 
-<p></p>
-</div>
-</div>
 <div id="outline-container-orgheadline5" class="outline-2">
 <h3 id="orgheadline5">
 <span class="section-number-2">3</span> Install cron</h3>
@@ -267,7 +276,6 @@ For example:
 <p><img src="../wp-content/Capture-crontab-org-mode-google-sync.png" alt="Capture-crontab-org-mode-google-sync.png"></p>
 </div>
 </div>
-
 </div>
 </div>
     </div>
@@ -345,7 +353,7 @@ For example:
         </div>
 </div>
 
-            <script src="../assets/js/all-nocdn.js"></script><script>
+            <script src="../assets/js/jquery.min.js"></script><script src="../assets/js/bootstrap.min.js"></script><script src="../assets/js/kc.fab.js"></script><script src="../assets/js/moment-with-locales.min.js"></script><script src="../assets/js/fancydates.js"></script><script src="../assets/js/ripples.min.js"></script><script src="../assets/js/material.min.js"></script><script src="../assets/js/jquery.colorbox-min.js"></script><script>
 
             $(document).ready(function() {
                 // This command is used to initialize some elements and make them work properly

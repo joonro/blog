@@ -1,6 +1,6 @@
 .. title: My PowerShell Customizations
 .. slug: powershell-customizations
-.. date: 2016/02/10 16:00
+.. date: 2017/04/22 16:00
 .. tags: PowerShell, windows, settings, posh, git
 .. link: 
 .. description: My Powershell Customizations
@@ -28,36 +28,14 @@ The screenshots are taken with ``moe-dark theme``. ConEmu comes with many color
 schemes, and I also maintain a github repository which contains my favorite
 color themes for ConEmu. You can check out the `GitHub <https://github.com/joonro/ConEmu-Color-Themes>`_ repository.
 
-Prompt Customization
---------------------
-
-git
-~~~
+posh-git and prompt Customization
+---------------------------------
 
 To get git-related information on your prompt, you should get `posh-git <https://github.com/dahlbyk/posh-git>`_. Then,
-you can show the git-related information with the following:
+you can show the git-related information along with other useful information by modifying 
+``prompt()`` function. For example:
 
 .. code:: powershell
-    :number-lines: 1
-
-    Import-Module posh-git
-
-    # customize git prompt display settings
-    $global:GitPromptSettings.BeforeText = '['
-    $global:GitPromptSettings.AfterText = '] '
-    $global:GitPromptSettings.BranchAheadStatusForegroundColor = [ConsoleColor]::Green
-    $global:GitPromptSettings.WorkingForegroundColor = [ConsoleColor]::Magenta
-
-where the item names are self-explanatory.
-
-``prompt`` function
-~~~~~~~~~~~~~~~~~~~
-
-Now you can set-up a function called ``prompt`` and put whatever information you
-want there with color settings. My current setup is the following:
-
-.. code:: powershell
-    :number-lines: 1
 
     # http://serverfault.com/questions/95431
     function Test-Administrator {
@@ -66,73 +44,51 @@ want there with color settings. My current setup is the following:
     }
 
     function prompt {
-        $realLASTEXITCODE = $LASTEXITCODE
+        # https://github.com/dahlbyk/posh-git/wiki/Customizing-Your-PowerShell-Prompt
+        $origLastExitCode = $LastExitCode
+        Write-VcsStatus
 
-        Write-Host
-
-        # Reset color, which can be messed up by Enable-GitColors
-        $Host.UI.RawUI.ForegroundColor = $GitPromptSettings.DefaultForegroundColor
-
-        if (Test-Administrator) {  # Use different username if elevated
+        if (Test-Administrator) {  # if elevated
             Write-Host "(Elevated) " -NoNewline -ForegroundColor White
         }
 
-        Write-Host "$ENV:USERNAME@" -NoNewline -ForegroundColor DarkYellow
-        Write-Host "$ENV:COMPUTERNAME" -NoNewline -ForegroundColor Magenta
+        Write-Host "$env:USERNAME@" -NoNewline -ForegroundColor DarkYellow
+        Write-Host "$env:COMPUTERNAME" -NoNewline -ForegroundColor Magenta
+        Write-Host " : " -NoNewline -ForegroundColor DarkGray
 
-        if ($s -ne $null) {  # color for PSSessions
-            Write-Host " (`$s: " -NoNewline -ForegroundColor DarkGray
-            Write-Host "$($s.Name)" -NoNewline -ForegroundColor Yellow
-            Write-Host ") " -NoNewline -ForegroundColor DarkGray
+        $curPath = $ExecutionContext.SessionState.Path.CurrentLocation.Path
+        if ($curPath.ToLower().StartsWith($Home.ToLower()))
+        {
+            $curPath = "~" + $curPath.SubString($Home.Length)
         }
 
-        Write-Host " : " -NoNewline -ForegroundColor DarkGray
-        Write-Host $($(Get-Location) -replace "C:\\Users\\Joon", "~") -NoNewline -ForegroundColor Blue
+        Write-Host $curPath -NoNewline -ForegroundColor Blue
         Write-Host " : " -NoNewline -ForegroundColor DarkGray
         Write-Host (Get-Date -Format G) -NoNewline -ForegroundColor DarkMagenta
         Write-Host " : " -NoNewline -ForegroundColor DarkGray
-
-        $global:LASTEXITCODE = $realLASTEXITCODE
-
-        Write-VcsStatus
-
-        Write-Host ""
-
-        return "> "
+        $LastExitCode = $origLastExitCode
+        "`n$('>' * ($nestedPromptLevel + 1)) "
     }
 
-You want to replace ``C:\\Users\\Joon`` with your own path, of course. Also I
-have additional things for ``PSSessions`` (the block starting with ``if ($s -ne $null) { # color for PSSessions``), which you can safely remove (or just leave
-it there).
+    Import-Module posh-git
+
+    $global:GitPromptSettings.BeforeText = '['
+    $global:GitPromptSettings.AfterText  = '] '
 
 Color coding ``Get-ChildItem``
 ------------------------------
 
 To color-code the results of ``Get-ChildItem``, I use my own
-`Get-ChildItem-Color <https://github.com/joonro/Get-ChildItem-Color>`_. Once you download it, you can set aliases to it:
+`Get-ChildItemColor <https://github.com/joonro/Get-ChildItemColor>`_. Once you install it, you can set aliases to the exposed functions:
 
 .. code:: powershell
-    :number-lines: 1
 
-    # Color coded ls
-    . "$ScriptPath\Get-ChildItem-Color\Get-ChildItem-Color.ps1"
+    Import-Module Get-ChildItemColor
+ 
+    Set-Alias l Get-ChildItemColor -option AllScope
+    Set-Alias ls Get-ChildItemColorFormatWide -option AllScope
 
-    Set-Alias l Get-ChildItem-Color -option AllScope
-    Set-Alias ls Get-ChildItem-Format-Wide -option AllScope
-
-    function Get-ChildItem-Force { l -Force }
-    set-alias la Get-ChildItem-Force -option AllScope
-
-so you have ``l``, ``ls``, and ``la``.
-
-Note that I have the following on top of my PowerShell script so I can refer
-to the script path easily with ``$ScriptPath``, and I put ``Get-ChildItem-Color``
-under ``~\Documents\WindowsPowerShell``. You can modify the path obviously.
-
-.. code:: powershell
-    :number-lines: 1
-
-    $ScriptPath = Split-Path -parent $PSCommandPath
+so you have colored versions of ``l`` and ``ls`` equivalents.
 
 PSReadLine
 ----------
@@ -142,7 +98,6 @@ in GNU/Linux. It gives you substring history search, incremental history
 search, and awesome tab-completion. The following is my current setup:
 
 .. code:: powershell
-    :number-lines: 1
 
     Import-Module PSReadLine
 
@@ -163,7 +118,7 @@ search, and the tab completion shows me available candidates. For example:
 
 .. image:: ../images/posh_PSReadLine_tab_completion.png
 
-You can also press ``CTRL+R`` for incremental history search.
+You can also use ``CTRL + r`` for incremental history search.
 
 Others
 ------
@@ -176,7 +131,6 @@ back to the previous location by typing ``cd -``. It is from
 `http://goo.gl/xRbYbk <http://goo.gl/xRbYbk>`_.
 
 .. code:: powershell
-    :number-lines: 1
 
     function cddash {
         if ($args[0] -eq '-') {
@@ -202,7 +156,6 @@ profile script, I found running the following (I saved it as ``ngen.ps1``) in an
 elevated PowerShell helps a lot.
 
 .. code:: powershell
-    :number-lines: 1
 
     $env:path = [Runtime.InteropServices.RuntimeEnvironment]::GetRuntimeDirectory()
     [AppDomain]::CurrentDomain.GetAssemblies() | % {
@@ -217,6 +170,11 @@ Source: `http://stackoverflow.com/questions/4208694/ <http://stackoverflow.com/q
 Changelog
 ---------
 
+[2017-04-22 Sat]
+    - Updated prompt customization script for the latest version of ``posh-git``
+      (0.7.2)
+
+    - Updated ``Git-ChildItemColor`` related information
+
 [2017-01-03 Tue]
-    Updated prompt customization script for the latest
-    version of ``posh-git``
+    - Updated prompt customization script for the latest version of ``posh-git``

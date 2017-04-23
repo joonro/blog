@@ -7,7 +7,16 @@ article: http://ogp.me/ns/article#
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Changed the blog engine to nikola | Joon's Blog</title>
-<link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/rst.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/code.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/colorbox.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/roboto.min.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/material.min.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/ripples.min.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/kc.fab.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/theme.css" rel="stylesheet" type="text/css">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
 <link rel="canonical" href="http://joonro.github.io/blog/posts/changed-the-blog-engine-to-nikola.html">
 <!--[if lt IE 9]>
@@ -184,9 +193,8 @@ is just a pleasure to use. Now I believe I found the tool-chain for all my
 writing needs: Emacs and <code>org-mode</code>.
 </p>
 </div>
-
-<p></p>
 </div>
+
 <div id="outline-container-orgheadline2" class="outline-2">
 <h3 id="orgheadline2">
 <span class="section-number-2">2</span> nikola</h3>
@@ -199,6 +207,7 @@ posts. Exporting a subtree to a <code>.rst</code> file is easy, but there are so
 steps involved - basically you have to add a new post to the sphinx index file
 either by manually or by using tinkerer.
 </p>
+
 <p>
 Then I found <a href="http://getnikola.com/">nikola</a>. Unlike tinkerer, nikola automatically reads files in the
 designated posts folder and generates index - so you don't have to manually
@@ -206,10 +215,9 @@ add anything to the index. In addition, there is a tool <a href="https://github.
 generates a post from a org subtree, so I can put all my posts into one <code>.org</code>
 file.
 </p>
+</div>
+</div>
 
-<p></p>
-</div>
-</div>
 <div id="outline-container-orgheadline4" class="outline-2">
 <h3 id="orgheadline4">
 <span class="section-number-2">3</span> Setup</h3>
@@ -218,7 +226,9 @@ file.
 You need to add the <code>.wp</code> file extensions to the <code>POSTS</code> and <code>PAGES</code> tuples,
 and also to markdown compilers in your <code>conf.py</code>:
 </p>
+
 <div class="org-src-container">
+
 
 <pre><code class="lang-python">POSTS = (
     ("posts/*.rst", "posts", "post.tmpl"),
@@ -235,6 +245,7 @@ PAGES = (
 </div>
 
 <div class="org-src-container">
+
 
 <pre><code class="lang-python">COMPILERS = {
     "rest": ('.rst', '.txt'),
@@ -257,8 +268,6 @@ PAGES = (
 </code></pre>
 
 </div>
-
-<p></p>
 </div>
 <div id="outline-container-orgheadline3" class="outline-3">
 <h4 id="orgheadline3">
@@ -268,6 +277,8 @@ PAGES = (
 To use <a href="https://highlightjs.org/">highlight.js</a> for syntax highlighting, add a definition of <code>EXTRA_HEAD_DATA</code>:
 </p>
 <div class="org-src-container">
+
+
 <pre><code class="lang-python">EXTRA_HEAD_DATA = """
 &lt;link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/styles/default.min.css"&gt;
 &lt;script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"&gt;&lt;/script&gt;
@@ -286,11 +297,10 @@ As you can see, I added syntax highlighting for <code>lisp</code> and <code>r</c
 the defaults ones. You can change the theme from <code>default</code> to others such as
 <code>solarized_light</code>. 
 </p>
+</div>
+</div>
+</div>
 
-<p></p>
-</div>
-</div>
-</div>
 <div id="outline-container-orgheadline5" class="outline-2">
 <h3 id="orgheadline5">
 <span class="section-number-2">4</span> How to use</h3>
@@ -375,7 +385,7 @@ blog. It seems it just uses the top level heading.
         </div>
 </div>
 
-            <script src="../assets/js/all-nocdn.js"></script><script>
+            <script src="../assets/js/jquery.min.js"></script><script src="../assets/js/bootstrap.min.js"></script><script src="../assets/js/kc.fab.js"></script><script src="../assets/js/moment-with-locales.min.js"></script><script src="../assets/js/fancydates.js"></script><script src="../assets/js/ripples.min.js"></script><script src="../assets/js/material.min.js"></script><script src="../assets/js/jquery.colorbox-min.js"></script><script>
 
             $(document).ready(function() {
                 // This command is used to initialize some elements and make them work properly

@@ -8,7 +8,16 @@ article: http://ogp.me/ns/article#
 <meta name="description" content="Driver Recommendations and Troubleshooting Information for Lenovo Y50 UHD Laptop.">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Lenovo Y50 UHD Laptop: Driver Recommendations and Troubleshooting Information | Joon's Blog</title>
-<link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/rst.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/code.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/colorbox.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/roboto.min.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/material.min.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/ripples.min.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/kc.fab.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/theme.css" rel="stylesheet" type="text/css">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
 <link rel="canonical" href="http://joonro.github.io/blog/posts/lenovo-y50-uhd-laptop-driver-troubleshooting.html">
 <!--[if lt IE 9]>
@@ -27,7 +36,7 @@ article: http://ogp.me/ns/article#
 </script><meta name="description" itemprop="description" content="Driver Recommendations and Troubleshooting Information for Lenovo Y50 UHD Laptop.">
 <meta name="author" content="Joon Ro">
 <link rel="prev" href="toast-notifications-org-mode-windows.html" title="Native desktop (toast) notifications for org-mode appointments in Windows" type="text/html">
-<link rel="next" href="powershell-customizations.html" title="My PowerShell Customizations" type="text/html">
+<link rel="next" href="windows-10-enable-dark-mode-posh.html" title="Windows 10: How to Enable Dark mode in PowerShell" type="text/html">
 <meta property="og:site_name" content="Joon's Blog">
 <meta property="og:title" content="Lenovo Y50 UHD Laptop: Driver Recommendations and Troubleshooting Info">
 <meta property="og:url" content="http://joonro.github.io/blog/posts/lenovo-y50-uhd-laptop-driver-troubleshooting.html">
@@ -144,10 +153,10 @@ well. You can read about it at the following Nvidia forum thread:
 three-finger swipe. Albeit not a permanent fix, running the following batch file will
 reset the touchpad and bring back gestures. (I saved it as
 <tt class="docutils literal">synaptics_touchpad_reset.bat</tt>) and run it whenever it doesn't work.</p>
-<pre class="code bat"><a name="rest_code_1818ec785f464b998da168b3264fbf71-1"></a>taskkill -f -im syntpenh.exe
-<a name="rest_code_1818ec785f464b998da168b3264fbf71-2"></a><span class="k">cd</span> C:\Program Files\Synaptics\SynTP
-<a name="rest_code_1818ec785f464b998da168b3264fbf71-3"></a><span class="k">start</span> <span class="s2">""</span> <span class="s2">"syntpenh.exe"</span>
-<a name="rest_code_1818ec785f464b998da168b3264fbf71-4"></a><span class="k">exit</span>
+<pre class="code bat"><a name="rest_code_b7decfce598d482eb095afdc25a9a4ff-1"></a>taskkill -f -im syntpenh.exe
+<a name="rest_code_b7decfce598d482eb095afdc25a9a4ff-2"></a><span class="k">cd</span> C:\Program Files\Synaptics\SynTP
+<a name="rest_code_b7decfce598d482eb095afdc25a9a4ff-3"></a><span class="k">start</span> <span class="s2">""</span> <span class="s2">"syntpenh.exe"</span>
+<a name="rest_code_b7decfce598d482eb095afdc25a9a4ff-4"></a><span class="k">exit</span>
 </pre>
 </div>
 <div class="section" id="enabling-touchpad-2-and-3-finger-tap">
@@ -196,7 +205,7 @@ location:</p>
                 <a href="toast-notifications-org-mode-windows.html" rel="prev" title="Native desktop (toast) notifications for org-mode appointments in Windows">Previous post</a>
             </li>
             <li class="next">
-                <a href="powershell-customizations.html" rel="next" title="My PowerShell Customizations">Next post</a>
+                <a href="windows-10-enable-dark-mode-posh.html" rel="next" title="Windows 10: How to Enable Dark mode in PowerShell">Next post</a>
             </li>
         </ul></nav></aside><section class="comments"><h2>
 <i class="mdi-communication-forum"></i>Comments</h2>
@@ -258,7 +267,7 @@ location:</p>
         </div>
 </div>
 
-            <script src="../assets/js/all-nocdn.js"></script><script>
+            <script src="../assets/js/jquery.min.js"></script><script src="../assets/js/bootstrap.min.js"></script><script src="../assets/js/kc.fab.js"></script><script src="../assets/js/moment-with-locales.min.js"></script><script src="../assets/js/fancydates.js"></script><script src="../assets/js/ripples.min.js"></script><script src="../assets/js/material.min.js"></script><script src="../assets/js/jquery.colorbox-min.js"></script><script>
 
             $(document).ready(function() {
                 // This command is used to initialize some elements and make them work properly

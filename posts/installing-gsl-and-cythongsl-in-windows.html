@@ -7,7 +7,16 @@ article: http://ogp.me/ns/article#
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Installing GNU Scientific Library (GSL) and CythonGSL in Windows | Joon's Blog</title>
-<link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/rst.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/code.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/colorbox.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/roboto.min.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/material.min.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/ripples.min.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/kc.fab.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/theme.css" rel="stylesheet" type="text/css">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
 <link rel="canonical" href="http://joonro.github.io/blog/posts/installing-gsl-and-cythongsl-in-windows.html">
 <!--[if lt IE 9]>
@@ -193,11 +202,10 @@ If you use git, you can download CythonGSL with <code>git clone</code>:
 <p>
 or you can just download the <a href="https://github.com/twiecki/CythonGSL/archive/master.zip">zip archive</a> of the master branch.
 </p>
+</div>
+</div>
+</div>
 
-<p></p>
-</div>
-</div>
-</div>
 <div id="outline-container-orgheadline4" class="outline-2">
 <h3 id="orgheadline4">
 <span class="section-number-2">2</span> Installing GSL</h3>
@@ -212,6 +220,7 @@ instructions below.
 </p>
 </div>
 </div>
+
 <div id="outline-container-orgheadline7" class="outline-2">
 <h3 id="orgheadline7">
 <span class="section-number-2">3</span> Environmental Variables</h3>
@@ -232,14 +241,14 @@ Create an environmental variable <code>LIB_GSL</code> with the path to your GSL
 installation. It is recommended to use Unix style path separator, <code>/</code>
 instead of <code>\</code> for this:
 </p>
+
 <div class="org-src-container">
+
 
 <pre><code class="lang-sh">LIB_GSL=C:/lib64/GSL
 </code></pre>
 
 </div>
-
-<p></p>
 </div>
 </div>
 <div id="outline-container-orgheadline6" class="outline-3">
@@ -253,17 +262,18 @@ find the two DLL files, <code>libgsl-0.dll</code> and <code>libgslcblas-0.dll</c
 your Cython code will compile, but it will raise the following error at
 runtime:
 </p>
+
 <div class="org-src-container">
+
 
 <pre><code class="lang-python">ImportError: DLL load failed: The specified module could not be found.
 </code></pre>
 
 </div>
+</div>
+</div>
+</div>
 
-<p></p>
-</div>
-</div>
-</div>
 <div id="outline-container-orgheadline8" class="outline-2">
 <h3 id="orgheadline8">
 <span class="section-number-2">4</span> Installing CythonGSL</h3>
@@ -273,15 +283,15 @@ If you have done <code>git clone</code> then just <code>cd CythonGSL</code> and 
 <code>.zip</code> archive, extract it and go to the directory. Then, following the
 official instructions,
 </p>
+
 <div class="org-src-container">
+
 
 <pre><code class="lang-sh">python setup.py build
 python setup.py install
 </code></pre>
 
 </div>
-
-<p></p>
 </div>
 </div>
 </div>
@@ -360,7 +370,7 @@ python setup.py install
         </div>
 </div>
 
-            <script src="../assets/js/all-nocdn.js"></script><script>
+            <script src="../assets/js/jquery.min.js"></script><script src="../assets/js/bootstrap.min.js"></script><script src="../assets/js/kc.fab.js"></script><script src="../assets/js/moment-with-locales.min.js"></script><script src="../assets/js/fancydates.js"></script><script src="../assets/js/ripples.min.js"></script><script src="../assets/js/material.min.js"></script><script src="../assets/js/jquery.colorbox-min.js"></script><script>
 
             $(document).ready(function() {
                 // This command is used to initialize some elements and make them work properly

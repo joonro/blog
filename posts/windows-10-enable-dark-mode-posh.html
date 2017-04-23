@@ -8,7 +8,16 @@ article: http://ogp.me/ns/article#
 <meta name="description" content="How to enable dark mode in PowerShell">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Windows 10: How to Enable Dark mode in PowerShell | Joon's Blog</title>
-<link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/rst.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/code.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/colorbox.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/roboto.min.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/material.min.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/ripples.min.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/kc.fab.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/theme.css" rel="stylesheet" type="text/css">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
 <link rel="canonical" href="http://joonro.github.io/blog/posts/windows-10-enable-dark-mode-posh.html">
 <!--[if lt IE 9]>
@@ -26,7 +35,7 @@ article: http://ogp.me/ns/article#
 
 </script><meta name="description" itemprop="description" content="How to enable dark mode in PowerShell">
 <meta name="author" content="Joon Ro">
-<link rel="prev" href="powershell-customizations.html" title="My PowerShell Customizations" type="text/html">
+<link rel="prev" href="lenovo-y50-uhd-laptop-driver-troubleshooting.html" title="Lenovo Y50 UHD Laptop: Driver Recommendations and Troubleshooting Information" type="text/html">
 <link rel="next" href="org-mode-outputdir-minted-latex-export.html" title="Syntax highlighting in LaTeX export in org-mode: specifying outputdir option for minted package" type="text/html">
 <meta property="og:site_name" content="Joon's Blog">
 <meta property="og:title" content="Windows 10: How to Enable Dark mode in PowerShell">
@@ -95,14 +104,14 @@ modes</a>. Here is a set of PowerShell commands to set this in case you want to 
 it. These are slightly modified commands from this <a class="reference external" href="https://www.reddit.com/r/windows/comments/3f0n2u/windows_10_enable_dark_mode/">reddit</a> post.</p>
 <p>To use the dark mode:</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="windows-10-enable-dark-mode-posh.html#rest_code_520fee00e4034bce99dd216a426435b7-0">0</a></pre></div></td>
-<td class="code"><pre class="code PowerShell"><a name="rest_code_520fee00e4034bce99dd216a426435b7-0"></a><span class="nb">Set-ItemProperty</span> <span class="n">-Path</span> <span class="n">HKCU</span><span class="err">:</span><span class="p">\</span><span class="n">SOFTWARE</span><span class="p">\</span><span class="n">Microsoft</span><span class="p">\</span><span class="n">Windows</span><span class="p">\</span><span class="n">CurrentVersion</span><span class="p">\</span><span class="n">Themes</span><span class="p">\</span><span class="n">Personalize</span> <span class="n">-Name</span> <span class="n">AppsUseLightTheme</span> <span class="n">-Value</span> <span class="n">0</span>
+<td class="linenos"><div class="linenodiv"><pre><a href="windows-10-enable-dark-mode-posh.html#rest_code_f82d9d2c576a4b01953c3a451520ce39-0">0</a></pre></div></td>
+<td class="code"><pre class="code PowerShell"><a name="rest_code_f82d9d2c576a4b01953c3a451520ce39-0"></a><span class="nb">Set-ItemProperty</span> <span class="n">-Path</span> <span class="n">HKCU</span><span class="err">:</span><span class="p">\</span><span class="n">SOFTWARE</span><span class="p">\</span><span class="n">Microsoft</span><span class="p">\</span><span class="n">Windows</span><span class="p">\</span><span class="n">CurrentVersion</span><span class="p">\</span><span class="n">Themes</span><span class="p">\</span><span class="n">Personalize</span> <span class="n">-Name</span> <span class="n">AppsUseLightTheme</span> <span class="n">-Value</span> <span class="n">0</span>
 </pre></td>
 </tr></table>
 <p>To use the light mode:</p>
 <table class="codetable"><tr>
-<td class="linenos"><div class="linenodiv"><pre><a href="windows-10-enable-dark-mode-posh.html#rest_code_9c87181323d54246a1bb4eb9cb7a3684-0">0</a></pre></div></td>
-<td class="code"><pre class="code PowerShell"><a name="rest_code_9c87181323d54246a1bb4eb9cb7a3684-0"></a><span class="nb">Set-ItemProperty</span> <span class="n">-Path</span> <span class="n">HKCU</span><span class="err">:</span><span class="p">\</span><span class="n">SOFTWARE</span><span class="p">\</span><span class="n">Microsoft</span><span class="p">\</span><span class="n">Windows</span><span class="p">\</span><span class="n">CurrentVersion</span><span class="p">\</span><span class="n">Themes</span><span class="p">\</span><span class="n">Personalize</span> <span class="n">-Name</span> <span class="n">AppsUseLightTheme</span> <span class="n">-Value</span> <span class="n">1</span>
+<td class="linenos"><div class="linenodiv"><pre><a href="windows-10-enable-dark-mode-posh.html#rest_code_6e64d68aa53a43d1b51bd2eae1f50c36-0">0</a></pre></div></td>
+<td class="code"><pre class="code PowerShell"><a name="rest_code_6e64d68aa53a43d1b51bd2eae1f50c36-0"></a><span class="nb">Set-ItemProperty</span> <span class="n">-Path</span> <span class="n">HKCU</span><span class="err">:</span><span class="p">\</span><span class="n">SOFTWARE</span><span class="p">\</span><span class="n">Microsoft</span><span class="p">\</span><span class="n">Windows</span><span class="p">\</span><span class="n">CurrentVersion</span><span class="p">\</span><span class="n">Themes</span><span class="p">\</span><span class="n">Personalize</span> <span class="n">-Name</span> <span class="n">AppsUseLightTheme</span> <span class="n">-Value</span> <span class="n">1</span>
 </pre></td>
 </tr></table>
 </div>
@@ -118,7 +127,7 @@ it. These are slightly modified commands from this <a class="reference external"
 
             <ul class="pager">
 <li class="previous">
-                <a href="powershell-customizations.html" rel="prev" title="My PowerShell Customizations">Previous post</a>
+                <a href="lenovo-y50-uhd-laptop-driver-troubleshooting.html" rel="prev" title="Lenovo Y50 UHD Laptop: Driver Recommendations and Troubleshooting Information">Previous post</a>
             </li>
             <li class="next">
                 <a href="org-mode-outputdir-minted-latex-export.html" rel="next" title="Syntax highlighting in LaTeX export in org-mode: specifying outputdir option for minted package">Next post</a>
@@ -183,7 +192,7 @@ it. These are slightly modified commands from this <a class="reference external"
         </div>
 </div>
 
-            <script src="../assets/js/all-nocdn.js"></script><script>
+            <script src="../assets/js/jquery.min.js"></script><script src="../assets/js/bootstrap.min.js"></script><script src="../assets/js/kc.fab.js"></script><script src="../assets/js/moment-with-locales.min.js"></script><script src="../assets/js/fancydates.js"></script><script src="../assets/js/ripples.min.js"></script><script src="../assets/js/material.min.js"></script><script src="../assets/js/jquery.colorbox-min.js"></script><script>
 
             $(document).ready(function() {
                 // This command is used to initialize some elements and make them work properly
