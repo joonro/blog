@@ -7,7 +7,7 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <sitemap>
   <loc>http://joonro.github.io/blog/categories/autohotkey.xml</loc>
-  <lastmod>2018-07-16T17:44:00Z</lastmod>
+  <lastmod>2018-07-16T17:50:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/categories/blogging.xml</loc>
@@ -27,11 +27,11 @@
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/categories/cat_lyx-latex.xml</loc>
-  <lastmod>2018-07-16T17:44:00Z</lastmod>
+  <lastmod>2018-07-16T17:50:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/categories/cat_lyx.xml</loc>
-  <lastmod>2018-07-16T17:44:00Z</lastmod>
+  <lastmod>2018-07-16T17:50:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/categories/cat_lyxlatex.xml</loc>
@@ -75,11 +75,11 @@
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/categories/howto.xml</loc>
-  <lastmod>2018-07-16T17:44:00Z</lastmod>
+  <lastmod>2018-07-16T17:50:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/categories/latex.xml</loc>
-  <lastmod>2018-07-16T17:44:00Z</lastmod>
+  <lastmod>2018-07-16T17:50:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/categories/lenovo.xml</loc>
@@ -87,7 +87,7 @@
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/categories/lyx.xml</loc>
-  <lastmod>2018-07-16T17:44:00Z</lastmod>
+  <lastmod>2018-07-16T17:50:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/categories/minted.xml</loc>
@@ -119,7 +119,7 @@
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/categories/setting.xml</loc>
-  <lastmod>2018-07-16T17:44:00Z</lastmod>
+  <lastmod>2018-07-16T17:50:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/categories/settings.xml</loc>
@@ -151,7 +151,7 @@
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/categories/windows.xml</loc>
-  <lastmod>2018-07-16T17:44:00Z</lastmod>
+  <lastmod>2018-07-16T17:50:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/categories/y50.xml</loc>
@@ -163,10 +163,10 @@
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/rss.xml</loc>
-  <lastmod>2018-07-16T17:44:00Z</lastmod>
+  <lastmod>2018-07-16T17:50:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/sitemap.xml</loc>
-  <lastmod>2018-07-16T17:44:00Z</lastmod>
+  <lastmod>2018-07-16T17:50:00Z</lastmod>
  </sitemap>
 </sitemapindex>

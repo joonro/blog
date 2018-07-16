@@ -63,7 +63,7 @@ the AutoHotkey to generate ``lyx-inverse-search.exe``:
     WinActivate, ahk_exe lyx.exe,,,
 
 If you don't have AutoHotkey installed, you can also download the pre-compiled
-`exe <https://dl.dropboxusercontent.com/u/561594/lyx-inverse-search.zip>`_.
+`file <https://github.com/joonro/blog/raw/gh-pages/assets/lyx-inverse-search.zip>`_.
 
 SumatraPDF
 ----------
