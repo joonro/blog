@@ -1,7 +1,7 @@
 .. title: How to set up inverse and forward search in LyX for Windows
 .. slug: inverse-and-forward-search-lyx-windows
 .. date: 2015/10/10 00:00
-.. updated: 2015/10/12 00:00
+.. updated: 2018/07/16 09:00
 .. tags: howto, setting, windows, lyx, latex, autohotkey
 .. link: 
 .. description: org file for my blog
@@ -36,7 +36,7 @@ Create a batch file named ``lyxeditor.cmd`` with the following contents and save
 it to one of the locations in your ``PATH`` Windows environmental variable so
 the pdf editor can call it:
 
-.. code-block:: bat
+.. code:: bat
 
     @echo off
     SETLOCAL enabledelayedexpansion
@@ -56,11 +56,11 @@ Create an AutoHotkey script named ``lyx-inverse-search.ahk`` with the following
 code and save it to the same location at ``lyxeditor.cmd`` and compile it with
 the AutoHotkey to generate ``lyx-inverse-search.exe``:
 
-.. code-block:: ahk
+.. code:: ahk
 
     SetTitleMatchMode, RegEx
     Run, lyxeditor.cmd "%1%" "%2%",, Hide
-    WinActivate, ^LyX:,,,
+    WinActivate, ahk_exe lyx.exe,,,
 
 If you don't have AutoHotkey installed, you can also download the pre-compiled
 `exe <https://dl.dropboxusercontent.com/u/561594/lyx-inverse-search.zip>`_.
@@ -82,20 +82,25 @@ inverse and forward search nicely.
 Inverse Search
 ~~~~~~~~~~~~~~
 
-In ``Tools`` > ``Preferences`` > ``File Handling`` > ``File Formats``, select ``PDF
-(pdflatex)`` from the list ``Format`` and modify ``Viewer`` to the following
+In ``Tools`` > ``Preferences`` > ``File Handling`` > ``File Formats``, select ``PDF (pdflatex)`` from the list ``Format`` and modify ``Viewer`` to the following
 (including the quotes). If you have the compiled AutoHotkey script from above,
 use the following instead (recommended):
 
-.. code-block:: bat
+.. code:: bat
 
     SumatraPDF -inverse-search "lyx-inverse-search.exe \"%f\" \"%l\""
 
 Otherwise, use:
 
-.. code-block:: bat
+.. code:: bat
 
     SumatraPDF -inverse-search "lyxeditor.cmd \"%f\" \"%l\""
+
+.. note::
+
+    If the folder containing ``lyxeditor.cmd`` and ``lyx-inverse-search.exe`` is not
+    in your ``PATH`` environmental variable, then you have to specify their full path
+    here.
 
 Now, once you do to ``Document`` -> ``View [PDF (pdflatex)]`` or ``View Master Document`` in
 LyX to compile your ``.lyx`` file and invoke SumatraPDF to view the resulting
@@ -108,10 +113,18 @@ Forward Search
 In LyX, go to ``Tools`` > ``Preferences`` > ``Output``, and enter the following in
 ``PDF command`` under ``Forward Search`` section:
 
-.. code-block:: bat
+.. code:: bat
 
     SumatraPDF -reuse-instance $$o -forward-search $$t $$n
 
 Now, if you click on ``Forward Search`` in the ``Navigate`` menu in LyX, SumatraPDF
 will scroll the pdf document to show the text corresponding to the text in LyX
 where your cursor is and highlight the line.
+
+Changelog
+---------
+
+[2018-07-16 Mon]
+~~~~~~~~~~~~~~~~
+
+- Update AutoHotkey script to correctly identify LyX window to activate
