@@ -1,7 +1,7 @@
 .. title: How to set up inverse and forward search in LyX for Windows
 .. slug: inverse-and-forward-search-lyx-windows
 .. date: 2015/10/10 00:00
-.. updated: 2018/07/16 09:00
+.. updated: 2018/07/16 12:00
 .. tags: howto, setting, windows, lyx, latex, autohotkey
 .. link: 
 .. description: org file for my blog

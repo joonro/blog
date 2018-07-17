@@ -542,15 +542,15 @@ overlap with those found at <a class="reference external" href="http://wiki.lyx.
 <p>Create a batch file named <tt class="docutils literal">lyxeditor.cmd</tt> with the following contents and save
 it to one of the locations in your <tt class="docutils literal">PATH</tt> Windows environmental variable so
 the pdf editor can call it:</p>
-<pre class="code bat"><a name="rest_code_0c7b02ce34544dfc8cfda615787689e6-1"></a><span class="p">@</span><span class="k">echo</span> off
-<a name="rest_code_0c7b02ce34544dfc8cfda615787689e6-2"></a><span class="k">SETLOCAL</span> enabledelayedexpansion
-<a name="rest_code_0c7b02ce34544dfc8cfda615787689e6-3"></a><span class="k">set</span> <span class="nv">file</span><span class="p">=</span><span class="nv">%1</span>
-<a name="rest_code_0c7b02ce34544dfc8cfda615787689e6-4"></a><span class="k">set</span> <span class="nv">row</span><span class="p">=</span><span class="nv">%2</span>
-<a name="rest_code_0c7b02ce34544dfc8cfda615787689e6-5"></a><span class="c1">REM remove quotes from variables</span>
-<a name="rest_code_0c7b02ce34544dfc8cfda615787689e6-6"></a><span class="k">set</span> <span class="nv">file</span><span class="p">=</span><span class="nv">!file:"=!</span>
-<a name="rest_code_0c7b02ce34544dfc8cfda615787689e6-7"></a><span class="k">set</span> <span class="nv">row</span><span class="p">=</span><span class="nv">!row:"=!</span>
-<a name="rest_code_0c7b02ce34544dfc8cfda615787689e6-8"></a><span class="nv">%comspec%</span> /q /c (@echo LYXCMD:revdvi:server-goto-file-row:<span class="nv">%file%</span> <span class="nv">%row%</span>)<span class="p">&gt;</span> \\.\pipe\lyxpipe.in<span class="p">&amp;&amp;</span><span class="k">type</span> \\.\pipe\lyxpipe.out
-<a name="rest_code_0c7b02ce34544dfc8cfda615787689e6-9"></a><span class="k">endlocal</span>
+<pre class="code bat"><a name="rest_code_0cda7bf15f234b6094d0e58ad61fb701-1"></a><span class="p">@</span><span class="k">echo</span> off
+<a name="rest_code_0cda7bf15f234b6094d0e58ad61fb701-2"></a><span class="k">SETLOCAL</span> enabledelayedexpansion
+<a name="rest_code_0cda7bf15f234b6094d0e58ad61fb701-3"></a><span class="k">set</span> <span class="nv">file</span><span class="p">=</span><span class="nv">%1</span>
+<a name="rest_code_0cda7bf15f234b6094d0e58ad61fb701-4"></a><span class="k">set</span> <span class="nv">row</span><span class="p">=</span><span class="nv">%2</span>
+<a name="rest_code_0cda7bf15f234b6094d0e58ad61fb701-5"></a><span class="c1">REM remove quotes from variables</span>
+<a name="rest_code_0cda7bf15f234b6094d0e58ad61fb701-6"></a><span class="k">set</span> <span class="nv">file</span><span class="p">=</span><span class="nv">!file:"=!</span>
+<a name="rest_code_0cda7bf15f234b6094d0e58ad61fb701-7"></a><span class="k">set</span> <span class="nv">row</span><span class="p">=</span><span class="nv">!row:"=!</span>
+<a name="rest_code_0cda7bf15f234b6094d0e58ad61fb701-8"></a><span class="nv">%comspec%</span> /q /c (@echo LYXCMD:revdvi:server-goto-file-row:<span class="nv">%file%</span> <span class="nv">%row%</span>)<span class="p">&gt;</span> \\.\pipe\lyxpipe.in<span class="p">&amp;&amp;</span><span class="k">type</span> \\.\pipe\lyxpipe.out
+<a name="rest_code_0cda7bf15f234b6094d0e58ad61fb701-9"></a><span class="k">endlocal</span>
 </pre>
 <p>The above cmd works well, but it shows an annoying black cmd window when you
 invoke the script. With a simple <a class="reference external" href="http://ahkscript.org">AutoHotkey</a> script, one can not only suppress
@@ -558,9 +558,9 @@ this window but also activate the LyX window after the inverse search.</p>
 <p>Create an AutoHotkey script named <tt class="docutils literal"><span class="pre">lyx-inverse-search.ahk</span></tt> with the following
 code and save it to the same location at <tt class="docutils literal">lyxeditor.cmd</tt> and compile it with
 the AutoHotkey to generate <tt class="docutils literal"><span class="pre">lyx-inverse-search.exe</span></tt>:</p>
-<pre class="code ahk"><a name="rest_code_0c6dc00f7f50461b9199a4c34f98ed7e-1"></a><span class="nb">SetTitleMatchMode</span><span class="p">,</span> <span class="n">RegEx</span>
-<a name="rest_code_0c6dc00f7f50461b9199a4c34f98ed7e-2"></a><span class="nb">Run</span><span class="p">,</span> <span class="n">lyxeditor</span><span class="o">.</span><span class="n">cmd</span> <span class="s">"%1%"</span> <span class="s">"%2%"</span><span class="p">,,</span> <span class="n">Hide</span>
-<a name="rest_code_0c6dc00f7f50461b9199a4c34f98ed7e-3"></a><span class="nb">WinActivate</span><span class="p">,</span> <span class="n">ahk_exe</span> <span class="n">lyx</span><span class="o">.</span><span class="n">exe</span><span class="p">,,,</span>
+<pre class="code ahk"><a name="rest_code_0add7e725a1145a3b679da556eebe19f-1"></a><span class="nb">SetTitleMatchMode</span><span class="p">,</span> <span class="n">RegEx</span>
+<a name="rest_code_0add7e725a1145a3b679da556eebe19f-2"></a><span class="nb">Run</span><span class="p">,</span> <span class="n">lyxeditor</span><span class="o">.</span><span class="n">cmd</span> <span class="s">"%1%"</span> <span class="s">"%2%"</span><span class="p">,,</span> <span class="n">Hide</span>
+<a name="rest_code_0add7e725a1145a3b679da556eebe19f-3"></a><span class="nb">WinActivate</span><span class="p">,</span> <span class="n">ahk_exe</span> <span class="n">lyx</span><span class="o">.</span><span class="n">exe</span><span class="p">,,,</span>
 </pre>
 <p>If you don't have AutoHotkey installed, you can also download the pre-compiled
 <a class="reference external" href="https://github.com/joonro/blog/raw/gh-pages/assets/lyx-inverse-search.zip">file</a>.</p>
@@ -582,10 +582,10 @@ of SumatraPDF to <tt class="docutils literal">PATH prefix</tt>. For example, <tt
 <p>In <tt class="docutils literal">Tools</tt> &gt; <tt class="docutils literal">Preferences</tt> &gt; <tt class="docutils literal">File Handling</tt> &gt; <tt class="docutils literal">File Formats</tt>, select <tt class="docutils literal">PDF (pdflatex)</tt> from the list <tt class="docutils literal">Format</tt> and modify <tt class="docutils literal">Viewer</tt> to the following
 (including the quotes). If you have the compiled AutoHotkey script from above,
 use the following instead (recommended):</p>
-<pre class="code bat"><a name="rest_code_4db63232c9a14755a317e7a0cecd29e1-1"></a>SumatraPDF -inverse-search <span class="s2">"lyx-inverse-search.exe \"</span><span class="nv">%f\" \"%</span>l\<span class="s2">""</span>
+<pre class="code bat"><a name="rest_code_a589e60cef7647378048937b5b3fa32f-1"></a>SumatraPDF -inverse-search <span class="s2">"lyx-inverse-search.exe \"</span><span class="nv">%f\" \"%</span>l\<span class="s2">""</span>
 </pre>
 <p>Otherwise, use:</p>
-<pre class="code bat"><a name="rest_code_39b5b98d271f416a8e9f961b9f87bb86-1"></a>SumatraPDF -inverse-search <span class="s2">"lyxeditor.cmd \"</span><span class="nv">%f\" \"%</span>l\<span class="s2">""</span>
+<pre class="code bat"><a name="rest_code_809ffe7dd2c642f1bd07d9a7dc390ef0-1"></a>SumatraPDF -inverse-search <span class="s2">"lyxeditor.cmd \"</span><span class="nv">%f\" \"%</span>l\<span class="s2">""</span>
 </pre>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -602,7 +602,7 @@ corresponding text in LyX.</p>
 <h3>Forward Search</h3>
 <p>In LyX, go to <tt class="docutils literal">Tools</tt> &gt; <tt class="docutils literal">Preferences</tt> &gt; <tt class="docutils literal">Output</tt>, and enter the following in
 <tt class="docutils literal">PDF command</tt> under <tt class="docutils literal">Forward Search</tt> section:</p>
-<pre class="code bat"><a name="rest_code_1af1f12b55b843e09de27a034eb5a197-1"></a>SumatraPDF -reuse-instance $$o -forward-search $$t $$n
+<pre class="code bat"><a name="rest_code_abb650f44f6040e69982cad7b03fee95-1"></a>SumatraPDF -reuse-instance $$o -forward-search $$t $$n
 </pre>
 <p>Now, if you click on <tt class="docutils literal">Forward Search</tt> in the <tt class="docutils literal">Navigate</tt> menu in LyX, SumatraPDF
 will scroll the pdf document to show the text corresponding to the text in LyX
