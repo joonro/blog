@@ -1,6 +1,6 @@
 .. title: My PowerShell Customizations
 .. slug: powershell-customizations
-.. date: 2020/03/01 16:00
+.. date: 2020/03/01 21:00
 .. tags: PowerShell, windows, settings, posh, git
 .. link: 
 .. description: My Powershell Customizations
@@ -31,14 +31,57 @@ color themes for ConEmu. You can check out the `GitHub <https://github.com/joonr
 posh-git and prompt customization
 ---------------------------------
 
-.. note::
-
-    The current customization is for posh-git 0.7.x. posh-git 1.0.0 uses
-    a different way of customization. 
-
 To get git-related information on your prompt, you should get `posh-git <https://github.com/dahlbyk/posh-git>`_. Then,
 you can show the git-related information along with other useful information
-by modifying ``prompt()`` function. For example:
+by modifying ``prompt()`` function. I have two separate example customization
+code snippets for posh-git v1.x (currently in beta) and v0.x, the two versions
+that are available as of March 2020. Both should produce the same prompt.
+
+v1.x (e.g., v1.0.0)
+~~~~~~~~~~~~~~~~~~~
+
+.. code:: powershell
+
+    # http://serverfault.com/questions/95431
+    function Test-Administrator {
+        $user = [Security.Principal.WindowsIdentity]::GetCurrent();
+        (New-Object Security.Principal.WindowsPrincipal $user).IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator)
+    }
+
+    Import-Module -Name posh-git
+
+    $GitPromptSettings.PathStatusSeparator = ''
+    $GitPromptSettings.AfterStatus.Text += " "
+
+    function prompt {
+        $origLastExitCode = $LastExitCode
+
+        $prompt = ""
+
+        $prompt += Write-VcsStatus
+
+        if (Test-Administrator) {  # if elevated
+            $prompt += Write-Prompt "(Elevated) " -ForegroundColor White
+        }
+
+        $prompt += Write-Prompt "$env:USERNAME@" -ForegroundColor Red
+        $prompt += Write-Prompt "$env:COMPUTERNAME" -ForegroundColor Yello
+        $prompt += Write-Prompt " : " -ForegroundColor DarkGray
+
+        $prompt += Write-Prompt "$($GitPromptSettings.DefaultPromptPath.Expand().Text)" -ForegroundColor Green
+        $prompt += Write-Prompt " : " -ForegroundColor DarkGray
+        $prompt += Write-Prompt (Get-Date -Format G) -ForegroundColor Blue
+        $prompt += Write-Prompt " : " -ForegroundColor DarkGray
+
+        $prompt += Write-Prompt "`n$(if ($PsDebugContext) {' [DBG]: '} else {''})" -ForegroundColor Magenta
+        $prompt += "$('>' * ($nestedPromptLevel + 1)) "
+
+        $LastExitCode = $origLastExitCode
+        $prompt
+    }
+
+v0.x (e.g., v0.7.3)
+~~~~~~~~~~~~~~~~~~~
 
 .. code:: powershell
 
@@ -75,7 +118,7 @@ by modifying ``prompt()`` function. For example:
         "`n$('>' * ($nestedPromptLevel + 1)) "
     }
 
-    Import-Module posh-git
+    Import-Module -Name posh-git -RequiredVersion 0.7.3
 
     $global:GitPromptSettings.BeforeText = '['
     $global:GitPromptSettings.AfterText  = '] '
@@ -178,7 +221,7 @@ Changelog
 ---------
 
 [2020-03-01 Sun]
-    - Add a note that current prompt customization is for ``posh-git`` version 0.7.x.
+    - Add prompt customization for both ``posh-git`` versions v1.x and v0.x.
 
 [2017-04-22 Sat]
     - Update prompt customization script for the latest version of ``posh-git``
