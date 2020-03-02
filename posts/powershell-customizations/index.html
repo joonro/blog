@@ -119,7 +119,7 @@
 terminal looks like the following screenshot. Not only these customizations
 make it look great, but also they make me productive in the command line in
 Windows.</p>
-<img alt="../images/posh_prompt.png" src="../images/posh_prompt.png"><div class="section" id="conemu">
+<img alt="../../images/posh_prompt.png" src="../../images/posh_prompt.png"><div class="section" id="conemu">
 <h2>ConEmu</h2>
 <p>I use ConEmu as my terminal emulator. ConEmu provides tabbed sessions,
 changing color schemes on-the-fly, and many customization options.</p>
@@ -140,43 +140,43 @@ a different way of customization.</p>
 <p>To get git-related information on your prompt, you should get <a class="reference external" href="https://github.com/dahlbyk/posh-git">posh-git</a>. Then,
 you can show the git-related information along with other useful information
 by modifying <code class="docutils literal">prompt()</code> function. For example:</p>
-<pre class="code powershell"><a name="rest_code_f62d432a40f24e29af43fe8f90e5ae23-1"></a><span class="c"># http://serverfault.com/questions/95431</span>
-<a name="rest_code_f62d432a40f24e29af43fe8f90e5ae23-2"></a><span class="k">function</span> <span class="nb">Test-Administrator</span> <span class="p">{</span>
-<a name="rest_code_f62d432a40f24e29af43fe8f90e5ae23-3"></a>    <span class="nv">$user</span> <span class="p">=</span> <span class="no">[Security.Principal.WindowsIdentity]</span><span class="p">::</span><span class="n">GetCurrent</span><span class="p">();</span>
-<a name="rest_code_f62d432a40f24e29af43fe8f90e5ae23-4"></a>    <span class="p">(</span><span class="nb">New-Object</span> <span class="n">Security</span><span class="p">.</span><span class="n">Principal</span><span class="p">.</span><span class="n">WindowsPrincipal</span> <span class="nv">$user</span><span class="p">).</span><span class="n">IsInRole</span><span class="p">(</span><span class="no">[Security.Principal.WindowsBuiltinRole]</span><span class="p">::</span><span class="n">Administrator</span><span class="p">)</span>
-<a name="rest_code_f62d432a40f24e29af43fe8f90e5ae23-5"></a><span class="p">}</span>
-<a name="rest_code_f62d432a40f24e29af43fe8f90e5ae23-6"></a>
-<a name="rest_code_f62d432a40f24e29af43fe8f90e5ae23-7"></a><span class="k">function</span> <span class="n">prompt</span> <span class="p">{</span>
-<a name="rest_code_f62d432a40f24e29af43fe8f90e5ae23-8"></a>    <span class="c"># https://github.com/dahlbyk/posh-git/wiki/Customizing-Your-PowerShell-Prompt</span>
-<a name="rest_code_f62d432a40f24e29af43fe8f90e5ae23-9"></a>    <span class="nv">$origLastExitCode</span> <span class="p">=</span> <span class="nv">$LastExitCode</span>
-<a name="rest_code_f62d432a40f24e29af43fe8f90e5ae23-10"></a>    <span class="nb">Write-VcsStatus</span>
-<a name="rest_code_f62d432a40f24e29af43fe8f90e5ae23-11"></a>
-<a name="rest_code_f62d432a40f24e29af43fe8f90e5ae23-12"></a>    <span class="k">if</span> <span class="p">(</span><span class="nb">Test-Administrator</span><span class="p">)</span> <span class="p">{</span>  <span class="c"># if elevated</span>
-<a name="rest_code_f62d432a40f24e29af43fe8f90e5ae23-13"></a>        <span class="nb">Write-Host</span> <span class="s2">"(Elevated) "</span> <span class="n">-NoNewline</span> <span class="n">-ForegroundColor</span> <span class="n">White</span>
-<a name="rest_code_f62d432a40f24e29af43fe8f90e5ae23-14"></a>    <span class="p">}</span>
-<a name="rest_code_f62d432a40f24e29af43fe8f90e5ae23-15"></a>
-<a name="rest_code_f62d432a40f24e29af43fe8f90e5ae23-16"></a>    <span class="nb">Write-Host</span> <span class="s2">"$env:USERNAME@"</span> <span class="n">-NoNewline</span> <span class="n">-ForegroundColor</span> <span class="n">Red</span>
-<a name="rest_code_f62d432a40f24e29af43fe8f90e5ae23-17"></a>    <span class="nb">Write-Host</span> <span class="s2">"$env:COMPUTERNAME"</span> <span class="n">-NoNewline</span> <span class="n">-ForegroundColor</span> <span class="n">Yellow</span>
-<a name="rest_code_f62d432a40f24e29af43fe8f90e5ae23-18"></a>    <span class="nb">Write-Host</span> <span class="s2">" : "</span> <span class="n">-NoNewline</span> <span class="n">-ForegroundColor</span> <span class="n">DarkGray</span>
-<a name="rest_code_f62d432a40f24e29af43fe8f90e5ae23-19"></a>
-<a name="rest_code_f62d432a40f24e29af43fe8f90e5ae23-20"></a>    <span class="nv">$curPath</span> <span class="p">=</span> <span class="nv">$ExecutionContext</span><span class="p">.</span><span class="n">SessionState</span><span class="p">.</span><span class="n">Path</span><span class="p">.</span><span class="n">CurrentLocation</span><span class="p">.</span><span class="n">Path</span>
-<a name="rest_code_f62d432a40f24e29af43fe8f90e5ae23-21"></a>    <span class="k">if</span> <span class="p">(</span><span class="nv">$curPath</span><span class="p">.</span><span class="n">ToLower</span><span class="p">().</span><span class="n">StartsWith</span><span class="p">(</span><span class="nv">$Home</span><span class="p">.</span><span class="n">ToLower</span><span class="p">()))</span>
-<a name="rest_code_f62d432a40f24e29af43fe8f90e5ae23-22"></a>    <span class="p">{</span>
-<a name="rest_code_f62d432a40f24e29af43fe8f90e5ae23-23"></a>        <span class="nv">$curPath</span> <span class="p">=</span> <span class="s2">"~"</span> <span class="p">+</span> <span class="nv">$curPath</span><span class="p">.</span><span class="n">SubString</span><span class="p">(</span><span class="nv">$Home</span><span class="p">.</span><span class="n">Length</span><span class="p">)</span>
-<a name="rest_code_f62d432a40f24e29af43fe8f90e5ae23-24"></a>    <span class="p">}</span>
-<a name="rest_code_f62d432a40f24e29af43fe8f90e5ae23-25"></a>
-<a name="rest_code_f62d432a40f24e29af43fe8f90e5ae23-26"></a>    <span class="nb">Write-Host</span> <span class="nv">$curPath</span> <span class="n">-NoNewline</span> <span class="n">-ForegroundColor</span> <span class="n">Green</span>
-<a name="rest_code_f62d432a40f24e29af43fe8f90e5ae23-27"></a>    <span class="nb">Write-Host</span> <span class="s2">" : "</span> <span class="n">-NoNewline</span> <span class="n">-ForegroundColor</span> <span class="n">DarkGray</span>
-<a name="rest_code_f62d432a40f24e29af43fe8f90e5ae23-28"></a>    <span class="nb">Write-Host</span> <span class="p">(</span><span class="nb">Get-Date</span> <span class="n">-Format</span> <span class="n">G</span><span class="p">)</span> <span class="n">-NoNewline</span> <span class="n">-ForegroundColor</span> <span class="n">Blue</span>
-<a name="rest_code_f62d432a40f24e29af43fe8f90e5ae23-29"></a>    <span class="nb">Write-Host</span> <span class="s2">" : "</span> <span class="n">-NoNewline</span> <span class="n">-ForegroundColor</span> <span class="n">DarkGray</span>
-<a name="rest_code_f62d432a40f24e29af43fe8f90e5ae23-30"></a>    <span class="nv">$LastExitCode</span> <span class="p">=</span> <span class="nv">$origLastExitCode</span>
-<a name="rest_code_f62d432a40f24e29af43fe8f90e5ae23-31"></a>    <span class="s2">"</span><span class="se">`n</span><span class="p">$(</span><span class="s1">'&gt;'</span> <span class="p">*</span> <span class="p">(</span><span class="nv">$nestedPromptLevel</span> <span class="p">+</span> <span class="n">1</span><span class="p">))</span><span class="s2"> "</span>
-<a name="rest_code_f62d432a40f24e29af43fe8f90e5ae23-32"></a><span class="p">}</span>
-<a name="rest_code_f62d432a40f24e29af43fe8f90e5ae23-33"></a>
-<a name="rest_code_f62d432a40f24e29af43fe8f90e5ae23-34"></a><span class="nb">Import-Module</span> <span class="n">posh-git</span>
-<a name="rest_code_f62d432a40f24e29af43fe8f90e5ae23-35"></a>
-<a name="rest_code_f62d432a40f24e29af43fe8f90e5ae23-36"></a><span class="nv">$global:GitPromptSettings</span><span class="p">.</span><span class="n">BeforeText</span> <span class="p">=</span> <span class="s1">'['</span>
-<a name="rest_code_f62d432a40f24e29af43fe8f90e5ae23-37"></a><span class="nv">$global:GitPromptSettings</span><span class="p">.</span><span class="n">AfterText</span>  <span class="p">=</span> <span class="s1">'] '</span>
+<pre class="code powershell"><a name="rest_code_e72e1cdd4ee64f1c8a916db18403fbb1-1"></a><span class="c"># http://serverfault.com/questions/95431</span>
+<a name="rest_code_e72e1cdd4ee64f1c8a916db18403fbb1-2"></a><span class="k">function</span> <span class="nb">Test-Administrator</span> <span class="p">{</span>
+<a name="rest_code_e72e1cdd4ee64f1c8a916db18403fbb1-3"></a>    <span class="nv">$user</span> <span class="p">=</span> <span class="no">[Security.Principal.WindowsIdentity]</span><span class="p">::</span><span class="n">GetCurrent</span><span class="p">();</span>
+<a name="rest_code_e72e1cdd4ee64f1c8a916db18403fbb1-4"></a>    <span class="p">(</span><span class="nb">New-Object</span> <span class="n">Security</span><span class="p">.</span><span class="n">Principal</span><span class="p">.</span><span class="n">WindowsPrincipal</span> <span class="nv">$user</span><span class="p">).</span><span class="n">IsInRole</span><span class="p">(</span><span class="no">[Security.Principal.WindowsBuiltinRole]</span><span class="p">::</span><span class="n">Administrator</span><span class="p">)</span>
+<a name="rest_code_e72e1cdd4ee64f1c8a916db18403fbb1-5"></a><span class="p">}</span>
+<a name="rest_code_e72e1cdd4ee64f1c8a916db18403fbb1-6"></a>
+<a name="rest_code_e72e1cdd4ee64f1c8a916db18403fbb1-7"></a><span class="k">function</span> <span class="n">prompt</span> <span class="p">{</span>
+<a name="rest_code_e72e1cdd4ee64f1c8a916db18403fbb1-8"></a>    <span class="c"># https://github.com/dahlbyk/posh-git/wiki/Customizing-Your-PowerShell-Prompt</span>
+<a name="rest_code_e72e1cdd4ee64f1c8a916db18403fbb1-9"></a>    <span class="nv">$origLastExitCode</span> <span class="p">=</span> <span class="nv">$LastExitCode</span>
+<a name="rest_code_e72e1cdd4ee64f1c8a916db18403fbb1-10"></a>    <span class="nb">Write-VcsStatus</span>
+<a name="rest_code_e72e1cdd4ee64f1c8a916db18403fbb1-11"></a>
+<a name="rest_code_e72e1cdd4ee64f1c8a916db18403fbb1-12"></a>    <span class="k">if</span> <span class="p">(</span><span class="nb">Test-Administrator</span><span class="p">)</span> <span class="p">{</span>  <span class="c"># if elevated</span>
+<a name="rest_code_e72e1cdd4ee64f1c8a916db18403fbb1-13"></a>        <span class="nb">Write-Host</span> <span class="s2">"(Elevated) "</span> <span class="n">-NoNewline</span> <span class="n">-ForegroundColor</span> <span class="n">White</span>
+<a name="rest_code_e72e1cdd4ee64f1c8a916db18403fbb1-14"></a>    <span class="p">}</span>
+<a name="rest_code_e72e1cdd4ee64f1c8a916db18403fbb1-15"></a>
+<a name="rest_code_e72e1cdd4ee64f1c8a916db18403fbb1-16"></a>    <span class="nb">Write-Host</span> <span class="s2">"$env:USERNAME@"</span> <span class="n">-NoNewline</span> <span class="n">-ForegroundColor</span> <span class="n">Red</span>
+<a name="rest_code_e72e1cdd4ee64f1c8a916db18403fbb1-17"></a>    <span class="nb">Write-Host</span> <span class="s2">"$env:COMPUTERNAME"</span> <span class="n">-NoNewline</span> <span class="n">-ForegroundColor</span> <span class="n">Yellow</span>
+<a name="rest_code_e72e1cdd4ee64f1c8a916db18403fbb1-18"></a>    <span class="nb">Write-Host</span> <span class="s2">" : "</span> <span class="n">-NoNewline</span> <span class="n">-ForegroundColor</span> <span class="n">DarkGray</span>
+<a name="rest_code_e72e1cdd4ee64f1c8a916db18403fbb1-19"></a>
+<a name="rest_code_e72e1cdd4ee64f1c8a916db18403fbb1-20"></a>    <span class="nv">$curPath</span> <span class="p">=</span> <span class="nv">$ExecutionContext</span><span class="p">.</span><span class="n">SessionState</span><span class="p">.</span><span class="n">Path</span><span class="p">.</span><span class="n">CurrentLocation</span><span class="p">.</span><span class="n">Path</span>
+<a name="rest_code_e72e1cdd4ee64f1c8a916db18403fbb1-21"></a>    <span class="k">if</span> <span class="p">(</span><span class="nv">$curPath</span><span class="p">.</span><span class="n">ToLower</span><span class="p">().</span><span class="n">StartsWith</span><span class="p">(</span><span class="nv">$Home</span><span class="p">.</span><span class="n">ToLower</span><span class="p">()))</span>
+<a name="rest_code_e72e1cdd4ee64f1c8a916db18403fbb1-22"></a>    <span class="p">{</span>
+<a name="rest_code_e72e1cdd4ee64f1c8a916db18403fbb1-23"></a>        <span class="nv">$curPath</span> <span class="p">=</span> <span class="s2">"~"</span> <span class="p">+</span> <span class="nv">$curPath</span><span class="p">.</span><span class="n">SubString</span><span class="p">(</span><span class="nv">$Home</span><span class="p">.</span><span class="n">Length</span><span class="p">)</span>
+<a name="rest_code_e72e1cdd4ee64f1c8a916db18403fbb1-24"></a>    <span class="p">}</span>
+<a name="rest_code_e72e1cdd4ee64f1c8a916db18403fbb1-25"></a>
+<a name="rest_code_e72e1cdd4ee64f1c8a916db18403fbb1-26"></a>    <span class="nb">Write-Host</span> <span class="nv">$curPath</span> <span class="n">-NoNewline</span> <span class="n">-ForegroundColor</span> <span class="n">Green</span>
+<a name="rest_code_e72e1cdd4ee64f1c8a916db18403fbb1-27"></a>    <span class="nb">Write-Host</span> <span class="s2">" : "</span> <span class="n">-NoNewline</span> <span class="n">-ForegroundColor</span> <span class="n">DarkGray</span>
+<a name="rest_code_e72e1cdd4ee64f1c8a916db18403fbb1-28"></a>    <span class="nb">Write-Host</span> <span class="p">(</span><span class="nb">Get-Date</span> <span class="n">-Format</span> <span class="n">G</span><span class="p">)</span> <span class="n">-NoNewline</span> <span class="n">-ForegroundColor</span> <span class="n">Blue</span>
+<a name="rest_code_e72e1cdd4ee64f1c8a916db18403fbb1-29"></a>    <span class="nb">Write-Host</span> <span class="s2">" : "</span> <span class="n">-NoNewline</span> <span class="n">-ForegroundColor</span> <span class="n">DarkGray</span>
+<a name="rest_code_e72e1cdd4ee64f1c8a916db18403fbb1-30"></a>    <span class="nv">$LastExitCode</span> <span class="p">=</span> <span class="nv">$origLastExitCode</span>
+<a name="rest_code_e72e1cdd4ee64f1c8a916db18403fbb1-31"></a>    <span class="s2">"</span><span class="se">`n</span><span class="p">$(</span><span class="s1">'&gt;'</span> <span class="p">*</span> <span class="p">(</span><span class="nv">$nestedPromptLevel</span> <span class="p">+</span> <span class="n">1</span><span class="p">))</span><span class="s2"> "</span>
+<a name="rest_code_e72e1cdd4ee64f1c8a916db18403fbb1-32"></a><span class="p">}</span>
+<a name="rest_code_e72e1cdd4ee64f1c8a916db18403fbb1-33"></a>
+<a name="rest_code_e72e1cdd4ee64f1c8a916db18403fbb1-34"></a><span class="nb">Import-Module</span> <span class="n">posh-git</span>
+<a name="rest_code_e72e1cdd4ee64f1c8a916db18403fbb1-35"></a>
+<a name="rest_code_e72e1cdd4ee64f1c8a916db18403fbb1-36"></a><span class="nv">$global:GitPromptSettings</span><span class="p">.</span><span class="n">BeforeText</span> <span class="p">=</span> <span class="s1">'['</span>
+<a name="rest_code_e72e1cdd4ee64f1c8a916db18403fbb1-37"></a><span class="nv">$global:GitPromptSettings</span><span class="p">.</span><span class="n">AfterText</span>  <span class="p">=</span> <span class="s1">'] '</span>
 </pre>
 </div>
 <div class="section" id="color-coding-get-childitem">
@@ -184,12 +184,12 @@ by modifying <code class="docutils literal">prompt()</code> function. For exampl
 </h2>
 <p>To color-code the results of <code class="docutils literal"><span class="pre">Get-ChildItem</span></code>, I use my own
 <a class="reference external" href="https://github.com/joonro/Get-ChildItemColor">Get-ChildItemColor</a>. Once you install it, you can set aliases to the exposed functions:</p>
-<pre class="code powershell"><a name="rest_code_c7113088c114414b8efca2598a786b31-1"></a><span class="k">If</span> <span class="p">(</span><span class="o">-Not</span> <span class="p">(</span><span class="nb">Test-Path</span> <span class="n">Variable</span><span class="err">:</span><span class="n">PSise</span><span class="p">))</span> <span class="p">{</span>  <span class="c"># Only run this in the console and not in the ISE</span>
-<a name="rest_code_c7113088c114414b8efca2598a786b31-2"></a>    <span class="nb">Import-Module</span> <span class="nb">Get-ChildItemColor</span>
-<a name="rest_code_c7113088c114414b8efca2598a786b31-3"></a>
-<a name="rest_code_c7113088c114414b8efca2598a786b31-4"></a>    <span class="nb">Set-Alias</span> <span class="n">l</span> <span class="nb">Get-ChildItemColor</span> <span class="n">-option</span> <span class="n">AllScope</span>
-<a name="rest_code_c7113088c114414b8efca2598a786b31-5"></a>    <span class="nb">Set-Alias</span> <span class="nb">ls Get-ChildItemColorFormatWide</span> <span class="n">-option</span> <span class="n">AllScope</span>
-<a name="rest_code_c7113088c114414b8efca2598a786b31-6"></a><span class="p">}</span>
+<pre class="code powershell"><a name="rest_code_11ac22bcca6a4762889a5bfcf7b59ab4-1"></a><span class="k">If</span> <span class="p">(</span><span class="o">-Not</span> <span class="p">(</span><span class="nb">Test-Path</span> <span class="n">Variable</span><span class="err">:</span><span class="n">PSise</span><span class="p">))</span> <span class="p">{</span>  <span class="c"># Only run this in the console and not in the ISE</span>
+<a name="rest_code_11ac22bcca6a4762889a5bfcf7b59ab4-2"></a>    <span class="nb">Import-Module</span> <span class="nb">Get-ChildItemColor</span>
+<a name="rest_code_11ac22bcca6a4762889a5bfcf7b59ab4-3"></a>
+<a name="rest_code_11ac22bcca6a4762889a5bfcf7b59ab4-4"></a>    <span class="nb">Set-Alias</span> <span class="n">l</span> <span class="nb">Get-ChildItemColor</span> <span class="n">-option</span> <span class="n">AllScope</span>
+<a name="rest_code_11ac22bcca6a4762889a5bfcf7b59ab4-5"></a>    <span class="nb">Set-Alias</span> <span class="nb">ls Get-ChildItemColorFormatWide</span> <span class="n">-option</span> <span class="n">AllScope</span>
+<a name="rest_code_11ac22bcca6a4762889a5bfcf7b59ab4-6"></a><span class="p">}</span>
 </pre>
 <p>so you have colored versions of <code class="docutils literal">l</code> and <code class="docutils literal">ls</code> equivalents.</p>
 </div>
@@ -198,23 +198,23 @@ by modifying <code class="docutils literal">prompt()</code> function. For exampl
 <p><a class="reference external" href="https://github.com/lzybkr/PSReadLine">PSReadLine</a> makes PowerShell to behave like <code class="docutils literal">zsh</code>, which is my favorite shell
 in GNU/Linux. It gives you substring history search, incremental history
 search, and awesome tab-completion. The following is my current setup:</p>
-<pre class="code powershell"><a name="rest_code_6932680119b049f1a29d85e1859bb7db-1"></a><span class="nb">Import-Module</span> <span class="n">PSReadLine</span>
-<a name="rest_code_6932680119b049f1a29d85e1859bb7db-2"></a>
-<a name="rest_code_6932680119b049f1a29d85e1859bb7db-3"></a><span class="nb">Set-PSReadLineOption</span> <span class="n">-HistoryNoDuplicates</span>
-<a name="rest_code_6932680119b049f1a29d85e1859bb7db-4"></a><span class="nb">Set-PSReadLineOption</span> <span class="n">-HistorySearchCursorMovesToEnd</span>
-<a name="rest_code_6932680119b049f1a29d85e1859bb7db-5"></a><span class="nb">Set-PSReadLineOption</span> <span class="n">-HistorySaveStyle</span> <span class="n">SaveIncrementally</span>
-<a name="rest_code_6932680119b049f1a29d85e1859bb7db-6"></a><span class="nb">Set-PSReadLineOption</span> <span class="n">-MaximumHistoryCount</span> <span class="n">4000</span>
-<a name="rest_code_6932680119b049f1a29d85e1859bb7db-7"></a><span class="c"># history substring search</span>
-<a name="rest_code_6932680119b049f1a29d85e1859bb7db-8"></a><span class="nb">Set-PSReadlineKeyHandler</span> <span class="n">-Key</span> <span class="n">UpArrow</span> <span class="n">-Function</span> <span class="n">HistorySearchBackward</span>
-<a name="rest_code_6932680119b049f1a29d85e1859bb7db-9"></a><span class="nb">Set-PSReadlineKeyHandler</span> <span class="n">-Key</span> <span class="n">DownArrow</span> <span class="n">-Function</span> <span class="n">HistorySearchForward</span>
-<a name="rest_code_6932680119b049f1a29d85e1859bb7db-10"></a>
-<a name="rest_code_6932680119b049f1a29d85e1859bb7db-11"></a><span class="c"># Tab completion</span>
-<a name="rest_code_6932680119b049f1a29d85e1859bb7db-12"></a><span class="nb">Set-PSReadlineKeyHandler</span> <span class="n">-Chord</span> <span class="s1">'Shift+Tab'</span> <span class="n">-Function</span> <span class="n">Complete</span>
-<a name="rest_code_6932680119b049f1a29d85e1859bb7db-13"></a><span class="nb">Set-PSReadlineKeyHandler</span> <span class="n">-Key</span> <span class="n">Tab</span> <span class="n">-Function</span> <span class="n">MenuComplete</span>
+<pre class="code powershell"><a name="rest_code_0e2cbe5e75904ecdaeb720f475132508-1"></a><span class="nb">Import-Module</span> <span class="n">PSReadLine</span>
+<a name="rest_code_0e2cbe5e75904ecdaeb720f475132508-2"></a>
+<a name="rest_code_0e2cbe5e75904ecdaeb720f475132508-3"></a><span class="nb">Set-PSReadLineOption</span> <span class="n">-HistoryNoDuplicates</span>
+<a name="rest_code_0e2cbe5e75904ecdaeb720f475132508-4"></a><span class="nb">Set-PSReadLineOption</span> <span class="n">-HistorySearchCursorMovesToEnd</span>
+<a name="rest_code_0e2cbe5e75904ecdaeb720f475132508-5"></a><span class="nb">Set-PSReadLineOption</span> <span class="n">-HistorySaveStyle</span> <span class="n">SaveIncrementally</span>
+<a name="rest_code_0e2cbe5e75904ecdaeb720f475132508-6"></a><span class="nb">Set-PSReadLineOption</span> <span class="n">-MaximumHistoryCount</span> <span class="n">4000</span>
+<a name="rest_code_0e2cbe5e75904ecdaeb720f475132508-7"></a><span class="c"># history substring search</span>
+<a name="rest_code_0e2cbe5e75904ecdaeb720f475132508-8"></a><span class="nb">Set-PSReadlineKeyHandler</span> <span class="n">-Key</span> <span class="n">UpArrow</span> <span class="n">-Function</span> <span class="n">HistorySearchBackward</span>
+<a name="rest_code_0e2cbe5e75904ecdaeb720f475132508-9"></a><span class="nb">Set-PSReadlineKeyHandler</span> <span class="n">-Key</span> <span class="n">DownArrow</span> <span class="n">-Function</span> <span class="n">HistorySearchForward</span>
+<a name="rest_code_0e2cbe5e75904ecdaeb720f475132508-10"></a>
+<a name="rest_code_0e2cbe5e75904ecdaeb720f475132508-11"></a><span class="c"># Tab completion</span>
+<a name="rest_code_0e2cbe5e75904ecdaeb720f475132508-12"></a><span class="nb">Set-PSReadlineKeyHandler</span> <span class="n">-Chord</span> <span class="s1">'Shift+Tab'</span> <span class="n">-Function</span> <span class="n">Complete</span>
+<a name="rest_code_0e2cbe5e75904ecdaeb720f475132508-13"></a><span class="nb">Set-PSReadlineKeyHandler</span> <span class="n">-Key</span> <span class="n">Tab</span> <span class="n">-Function</span> <span class="n">MenuComplete</span>
 </pre>
 <p>With these settings, I can press up and down arrows for history substring
 search, and the tab completion shows me available candidates. For example:</p>
-<img alt="../images/posh_PSReadLine_tab_completion.png" src="../images/posh_PSReadLine_tab_completion.png"><p>You can also use <code class="docutils literal">CTRL + r</code> for incremental history search.</p>
+<img alt="../../images/posh_PSReadLine_tab_completion.png" src="../../images/posh_PSReadLine_tab_completion.png"><p>You can also use <code class="docutils literal">CTRL + r</code> for incremental history search.</p>
 </div>
 <div class="section" id="others">
 <h2>Others</h2>
@@ -223,21 +223,21 @@ search, and the tab completion shows me available candidates. For example:</p>
 <p>You can use the following to have the "dash" functionality - namely, you can go
 back to the previous location by typing <code class="docutils literal">cd -</code>. It is from
 <a class="reference external" href="http://goo.gl/xRbYbk">http://goo.gl/xRbYbk</a>.</p>
-<pre class="code powershell"><a name="rest_code_1ec8344cae924d308022fb7ecd2b4d09-1"></a><span class="k">function</span> <span class="n">cddash</span> <span class="p">{</span>
-<a name="rest_code_1ec8344cae924d308022fb7ecd2b4d09-2"></a>    <span class="k">if</span> <span class="p">(</span><span class="nv">$args</span><span class="p">[</span><span class="n">0</span><span class="p">]</span> <span class="o">-eq</span> <span class="s1">'-'</span><span class="p">)</span> <span class="p">{</span>
-<a name="rest_code_1ec8344cae924d308022fb7ecd2b4d09-3"></a>        <span class="nv">$pwd</span> <span class="p">=</span> <span class="nv">$OLDPWD</span><span class="p">;</span>
-<a name="rest_code_1ec8344cae924d308022fb7ecd2b4d09-4"></a>    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-<a name="rest_code_1ec8344cae924d308022fb7ecd2b4d09-5"></a>        <span class="nv">$pwd</span> <span class="p">=</span> <span class="nv">$args</span><span class="p">[</span><span class="n">0</span><span class="p">];</span>
-<a name="rest_code_1ec8344cae924d308022fb7ecd2b4d09-6"></a>    <span class="p">}</span>
-<a name="rest_code_1ec8344cae924d308022fb7ecd2b4d09-7"></a>    <span class="nv">$tmp</span> <span class="p">=</span> <span class="n">pwd</span><span class="p">;</span>
-<a name="rest_code_1ec8344cae924d308022fb7ecd2b4d09-8"></a>
-<a name="rest_code_1ec8344cae924d308022fb7ecd2b4d09-9"></a>    <span class="k">if</span> <span class="p">(</span><span class="nv">$pwd</span><span class="p">)</span> <span class="p">{</span>
-<a name="rest_code_1ec8344cae924d308022fb7ecd2b4d09-10"></a>        <span class="nb">Set-Location</span> <span class="nv">$pwd</span><span class="p">;</span>
-<a name="rest_code_1ec8344cae924d308022fb7ecd2b4d09-11"></a>    <span class="p">}</span>
-<a name="rest_code_1ec8344cae924d308022fb7ecd2b4d09-12"></a>    <span class="nb">Set-Variable</span> <span class="n">-Name</span> <span class="n">OLDPWD</span> <span class="n">-Value</span> <span class="nv">$tmp</span> <span class="n">-Scope</span> <span class="n">global</span><span class="p">;</span>
-<a name="rest_code_1ec8344cae924d308022fb7ecd2b4d09-13"></a><span class="p">}</span>
-<a name="rest_code_1ec8344cae924d308022fb7ecd2b4d09-14"></a>
-<a name="rest_code_1ec8344cae924d308022fb7ecd2b4d09-15"></a><span class="nb">Set-Alias</span> <span class="n">-Name</span> <span class="nb">cd </span><span class="n">-value</span> <span class="n">cddash</span> <span class="n">-Option</span> <span class="n">AllScope</span>
+<pre class="code powershell"><a name="rest_code_263faeaff61345929d2c3d701e21476e-1"></a><span class="k">function</span> <span class="n">cddash</span> <span class="p">{</span>
+<a name="rest_code_263faeaff61345929d2c3d701e21476e-2"></a>    <span class="k">if</span> <span class="p">(</span><span class="nv">$args</span><span class="p">[</span><span class="n">0</span><span class="p">]</span> <span class="o">-eq</span> <span class="s1">'-'</span><span class="p">)</span> <span class="p">{</span>
+<a name="rest_code_263faeaff61345929d2c3d701e21476e-3"></a>        <span class="nv">$pwd</span> <span class="p">=</span> <span class="nv">$OLDPWD</span><span class="p">;</span>
+<a name="rest_code_263faeaff61345929d2c3d701e21476e-4"></a>    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<a name="rest_code_263faeaff61345929d2c3d701e21476e-5"></a>        <span class="nv">$pwd</span> <span class="p">=</span> <span class="nv">$args</span><span class="p">[</span><span class="n">0</span><span class="p">];</span>
+<a name="rest_code_263faeaff61345929d2c3d701e21476e-6"></a>    <span class="p">}</span>
+<a name="rest_code_263faeaff61345929d2c3d701e21476e-7"></a>    <span class="nv">$tmp</span> <span class="p">=</span> <span class="n">pwd</span><span class="p">;</span>
+<a name="rest_code_263faeaff61345929d2c3d701e21476e-8"></a>
+<a name="rest_code_263faeaff61345929d2c3d701e21476e-9"></a>    <span class="k">if</span> <span class="p">(</span><span class="nv">$pwd</span><span class="p">)</span> <span class="p">{</span>
+<a name="rest_code_263faeaff61345929d2c3d701e21476e-10"></a>        <span class="nb">Set-Location</span> <span class="nv">$pwd</span><span class="p">;</span>
+<a name="rest_code_263faeaff61345929d2c3d701e21476e-11"></a>    <span class="p">}</span>
+<a name="rest_code_263faeaff61345929d2c3d701e21476e-12"></a>    <span class="nb">Set-Variable</span> <span class="n">-Name</span> <span class="n">OLDPWD</span> <span class="n">-Value</span> <span class="nv">$tmp</span> <span class="n">-Scope</span> <span class="n">global</span><span class="p">;</span>
+<a name="rest_code_263faeaff61345929d2c3d701e21476e-13"></a><span class="p">}</span>
+<a name="rest_code_263faeaff61345929d2c3d701e21476e-14"></a>
+<a name="rest_code_263faeaff61345929d2c3d701e21476e-15"></a><span class="nb">Set-Alias</span> <span class="n">-Name</span> <span class="nb">cd </span><span class="n">-value</span> <span class="n">cddash</span> <span class="n">-Option</span> <span class="n">AllScope</span>
 </pre>
 </div>
 <div class="section" id="boost-startup-speed">
@@ -245,13 +245,13 @@ back to the previous location by typing <code class="docutils literal">cd -</cod
 <p>If you feel it takes a lot of time to start a PowerShell session due to your
 profile script, I found running the following (I saved it as <code class="docutils literal">ngen.ps1</code>) in an
 elevated PowerShell helps a lot.</p>
-<pre class="code powershell"><a name="rest_code_e738be7d33844cf5b96ecae391753cfb-1"></a><span class="nv">$env:path</span> <span class="p">=</span> <span class="no">[Runtime.InteropServices.RuntimeEnvironment]</span><span class="p">::</span><span class="n">GetRuntimeDirectory</span><span class="p">()</span>
-<a name="rest_code_e738be7d33844cf5b96ecae391753cfb-2"></a><span class="no">[AppDomain]</span><span class="p">::</span><span class="n">CurrentDomain</span><span class="p">.</span><span class="n">GetAssemblies</span><span class="p">()</span> <span class="p">|</span> <span class="p">%</span> <span class="p">{</span>
-<a name="rest_code_e738be7d33844cf5b96ecae391753cfb-3"></a>  <span class="k">if</span> <span class="p">(!</span> <span class="nv">$_</span><span class="p">.</span><span class="n">location</span><span class="p">)</span> <span class="p">{</span><span class="k">continue</span><span class="p">}</span>
-<a name="rest_code_e738be7d33844cf5b96ecae391753cfb-4"></a>  <span class="nv">$Name</span> <span class="p">=</span> <span class="nb">Split-Path</span> <span class="nv">$_</span><span class="p">.</span><span class="n">location</span> <span class="n">-leaf</span>
-<a name="rest_code_e738be7d33844cf5b96ecae391753cfb-5"></a>  <span class="nb">Write-Host</span> <span class="n">-ForegroundColor</span> <span class="n">Yellow</span> <span class="s2">"NGENing : $Name"</span>
-<a name="rest_code_e738be7d33844cf5b96ecae391753cfb-6"></a>  <span class="n">ngen</span> <span class="n">install</span> <span class="nv">$_</span><span class="p">.</span><span class="n">location</span> <span class="p">|</span> <span class="p">%</span> <span class="p">{</span><span class="s2">"</span><span class="se">`t</span><span class="s2">$_"</span><span class="p">}</span>
-<a name="rest_code_e738be7d33844cf5b96ecae391753cfb-7"></a><span class="p">}</span>
+<pre class="code powershell"><a name="rest_code_33a25e4132b94e18b2d1c26ca2d0f46d-1"></a><span class="nv">$env:path</span> <span class="p">=</span> <span class="no">[Runtime.InteropServices.RuntimeEnvironment]</span><span class="p">::</span><span class="n">GetRuntimeDirectory</span><span class="p">()</span>
+<a name="rest_code_33a25e4132b94e18b2d1c26ca2d0f46d-2"></a><span class="no">[AppDomain]</span><span class="p">::</span><span class="n">CurrentDomain</span><span class="p">.</span><span class="n">GetAssemblies</span><span class="p">()</span> <span class="p">|</span> <span class="p">%</span> <span class="p">{</span>
+<a name="rest_code_33a25e4132b94e18b2d1c26ca2d0f46d-3"></a>  <span class="k">if</span> <span class="p">(!</span> <span class="nv">$_</span><span class="p">.</span><span class="n">location</span><span class="p">)</span> <span class="p">{</span><span class="k">continue</span><span class="p">}</span>
+<a name="rest_code_33a25e4132b94e18b2d1c26ca2d0f46d-4"></a>  <span class="nv">$Name</span> <span class="p">=</span> <span class="nb">Split-Path</span> <span class="nv">$_</span><span class="p">.</span><span class="n">location</span> <span class="n">-leaf</span>
+<a name="rest_code_33a25e4132b94e18b2d1c26ca2d0f46d-5"></a>  <span class="nb">Write-Host</span> <span class="n">-ForegroundColor</span> <span class="n">Yellow</span> <span class="s2">"NGENing : $Name"</span>
+<a name="rest_code_33a25e4132b94e18b2d1c26ca2d0f46d-6"></a>  <span class="n">ngen</span> <span class="n">install</span> <span class="nv">$_</span><span class="p">.</span><span class="n">location</span> <span class="p">|</span> <span class="p">%</span> <span class="p">{</span><span class="s2">"</span><span class="se">`t</span><span class="s2">$_"</span><span class="p">}</span>
+<a name="rest_code_33a25e4132b94e18b2d1c26ca2d0f46d-7"></a><span class="p">}</span>
 </pre>
 <p>Source: <a class="reference external" href="http://stackoverflow.com/questions/4208694/">http://stackoverflow.com/questions/4208694/</a>.</p>
 </div>

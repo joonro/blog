@@ -13,7 +13,7 @@ terminal looks like the following screenshot. Not only these customizations
 make it look great, but also they make me productive in the command line in
 Windows.
 
-.. image:: ../images/posh_prompt.png
+.. image:: ../../images/posh_prompt.png
 
 ConEmu
 ------
@@ -123,7 +123,7 @@ search, and awesome tab-completion. The following is my current setup:
 With these settings, I can press up and down arrows for history substring
 search, and the tab completion shows me available candidates. For example:
 
-.. image:: ../images/posh_PSReadLine_tab_completion.png
+.. image:: ../../images/posh_PSReadLine_tab_completion.png
 
 You can also use ``CTRL + r`` for incremental history search.
 
