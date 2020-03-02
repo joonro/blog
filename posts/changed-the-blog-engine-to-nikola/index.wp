@@ -1,0 +1,191 @@
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgheadline1">1. reStructuredText to org-mode</a></li>
+<li><a href="#orgheadline2">2. nikola</a></li>
+<li><a href="#orgheadline4">3. Setup</a>
+<ul>
+<li><a href="#orgheadline3">3.1. Syntax Highlighting</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline5">4. How to use</a></li>
+</ul>
+</div>
+</div>
+<p>
+It has been a while since the last time I updated my blog. I changed my blogging
+engine to <a href="http://getnikola.com/">nikola</a>. Now my tool chain for writing is more streamlined, hopefully
+I post more frequently.
+</p>
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="orgheadline1"><span class="section-number-2">1</span> reStructuredText to org-mode</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+I do enjoy using one general tool for many tasks - I like having a consistent
+environment for different tasks. For example, I chose Python (a general
+purpose language) instead of domain specific languages such as R and MATLAB
+for my programming needs.
+</p>
+
+<p>
+I have been looking for something like that for my writing as well, and since
+I used Python a lot, reStructuredText was a good candidate. With
+reStructuredText, I could generate output in multiple formats (html, pdf,
+slides), and I like the grammar. 
+</p>
+
+<p>
+With reStructuredText, I started using Emacs more for writing. Emacs'
+<code>rst-mode</code> is very well done, and I have been using <a href="http://orgmode.org/">org-mode</a> for a while as
+well, even though for a while I mainly used it for the TODO list management
+and some outline generation only. 
+</p>
+
+<p>
+Then this year I started teaching, and I had multiple sections, and I started
+looking for ways to minimize the redundancy in course contents files. For
+example, syllabi for all sections of classes share many common parts and if I
+maintain separate files for each class, I have to modify all the files
+every time I make some changes on one of the common parts.
+</p>
+
+<p>
+So I started writing lecture slides in reStructuredText in org-mode, putting
+reStructuredText code in code blocks and using <code>org-babel</code> to tangle the
+source code into output files. In that way, I just write the common parts
+once, and I could include them in multiple files. For slide generation, I used
+<a href="http://docs.hieroglyph.io/en/latest/">hieroglyph</a> package which was great. Also I liked that I can generate
+document-style lecture note for distribution from the same source.
+</p>
+
+<p>
+But quickly I started feeling that putting reStructuredText code inside code
+blocks cumbersome. In addition, I really missed the easy navigation of tree
+structure of org-mode. So I looked for a way to just use org-mode to write
+everything instead of putting reStructuredText code inside code-blocks. 
+</p>
+
+<p>
+Then I learned about <code>org-export</code> which can export an org-mode document to
+multiple output formats. Since then I started using org-mode to write my
+course notes. I had to learn a few tricks and also install org 8.3beta, but
+now the results has been very satisfactory. Now I write lecture note in
+org-mode, , and use <code>ox-beamer</code> to generate beamer slides for presentations,
+and use <code>ox-latex</code> to generate lecture notes from the same source. <code>org-mode</code>
+is just a pleasure to use. Now I believe I found the tool-chain for all my
+writing needs: Emacs and <code>org-mode</code>.
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline2" class="outline-2">
+<h2 id="orgheadline2"><span class="section-number-2">2</span> nikola</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Naturally I started searching for a blogging engine which enables me to use
+org-mode. I have been using <a href="http://tinkerer.me/">tinkerer</a> for a while, and it is great, but there
+are a couple of steps you have to go through to use org-mode to write
+posts. Exporting a subtree to a <code>.rst</code> file is easy, but there are some manual
+steps involved - basically you have to add a new post to the sphinx index file
+either by manually or by using tinkerer.
+</p>
+
+<p>
+Then I found <a href="http://getnikola.com/">nikola</a>. Unlike tinkerer, nikola automatically reads files in the
+designated posts folder and generates index - so you don't have to manually
+add anything to the index. In addition, there is a tool <a href="https://github.com/redguardtoo/org2nikola">org2nikola</a> which
+generates a post from a org subtree, so I can put all my posts into one <code>.org</code>
+file.
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline4" class="outline-2">
+<h2 id="orgheadline4"><span class="section-number-2">3</span> Setup</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+You need to add the <code>.wp</code> file extensions to the <code>POSTS</code> and <code>PAGES</code> tuples,
+and also to markdown compilers in your <code>conf.py</code>:
+</p>
+
+<div class="org-src-container">
+
+
+<pre><code class="lang-python">POSTS = (
+    ("posts/*.rst", "posts", "post.tmpl"),
+    ("posts/*.txt", "posts", "post.tmpl"),
+    ("posts/*.wp", "posts", "post.tmpl"),
+)
+PAGES = (
+    ("stories/*.rst", "stories", "story.tmpl"),
+    ("stories/*.txt", "stories", "story.tmpl"),
+    ("stories/*.wp", "stories", "story.tmpl"),
+)
+</code></pre>
+
+</div>
+
+<div class="org-src-container">
+
+
+<pre><code class="lang-python">COMPILERS = {
+    "rest": ('.rst', '.txt'),
+    "markdown": ('.md', '.mdown', '.markdown', '.wp'),
+    "textile": ('.textile',),
+    "txt2tags": ('.t2t',),
+    "bbcode": ('.bb',),
+    "wiki": ('.wiki',),
+    "ipynb": ('.ipynb',),
+    "html": ('.html', '.htm'),
+    # PHP files are rendered the usual way (i.e. with the full templates).
+    # The resulting files have .php extensions, making it possible to run
+    # them without reconfiguring your server to recognize them.
+    "php": ('.php',),
+    # Pandoc detects the input from the source filename
+    # but is disabled by default as it would conflict
+    # with many of the others.
+    # "pandoc": ('.rst', '.md', '.txt'),
+}
+</code></pre>
+
+</div>
+</div>
+<div id="outline-container-orgheadline3" class="outline-3">
+<h3 id="orgheadline3"><span class="section-number-3">3.1</span> Syntax Highlighting</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+To use <a href="https://highlightjs.org/">highlight.js</a> for syntax highlighting, add a definition of <code>EXTRA_HEAD_DATA</code>:
+</p>
+<div class="org-src-container">
+
+
+<pre><code class="lang-python">EXTRA_HEAD_DATA = """
+&lt;link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/styles/default.min.css"&gt;
+&lt;script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"&gt;&lt;/script&gt;
+
+&lt;script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/languages/lisp.min.js"&gt;&lt;/script&gt;
+&lt;script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/languages/r.min.js"&gt;&lt;/script&gt;
+
+&lt;script&gt;hljs.initHighlightingOnLoad();&lt;/script&gt;
+"""
+</code></pre>
+
+</div>
+
+<p>
+As you can see, I added syntax highlighting for <code>lisp</code> and <code>r</code> in addition to
+the defaults ones. You can change the theme from <code>default</code> to others such as
+<code>solarized_light</code>. 
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline5" class="outline-2">
+<h2 id="orgheadline5"><span class="section-number-2">4</span> How to use</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+Just call <code>org2nikola-export-subtree</code> in the subtree that you want to export
+as a nikola post. It will ask you where is the root directory for your nikola
+blog. It seems it just uses the top level heading.
+</p>
+</div>
+</div>

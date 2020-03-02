@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="org file for my blog">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Native desktop (toast) notifications for org-mode appointments in Windows | Joon's Blog</title>
+<link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
+<link rel="canonical" href="http://joonro.github.io/blog/posts/toast-notifications-org-mode-windows/">
+<!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/styles/github.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/languages/lisp.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/languages/powershell.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/languages/r.min.js"></script><script>hljs.initHighlightingOnLoad();</script><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-38842404-1', 'auto');
+  ga('send', 'pageview');
+
+</script><meta name="author" content="Joon Ro">
+<link rel="prev" href="../inverse-and-forward-search-lyx-windows/" title="How to set up inverse and forward search in LyX for Windows" type="text/html">
+<link rel="next" href="../lenovo-y50-uhd-laptop-driver-troubleshooting/" title="Lenovo Y50 UHD Laptop: Driver Recommendations and Troubleshooting Information" type="text/html">
+<meta property="og:site_name" content="Joon's Blog">
+<meta property="og:title" content="Native desktop (toast) notifications for org-mode appointments in Wind">
+<meta property="og:url" content="http://joonro.github.io/blog/posts/toast-notifications-org-mode-windows/">
+<meta property="og:description" content="org file for my blog">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2015-12-26T00:00:00-06:00">
+<meta property="article:tag" content="emacs">
+<meta property="article:tag" content="howto">
+<meta property="article:tag" content="org-mode">
+<meta property="article:tag" content="setting">
+<meta property="article:tag" content="toast">
+<meta property="article:tag" content="windows">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Header and menu bar -->
+<div class="container">
+      <header class="blog-header py-3"><div class="row nbb-header align-items-center">
+          <div class="col-md-3 col-xs-2 col-sm-2" style="width: auto;">
+            <button class="navbar-toggler navbar-light bg-light nbb-navbar-toggler" type="button" data-toggle="collapse" data-target=".bs-nav-collapsible" aria-controls="bs-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse bs-nav-collapsible bootblog4-search-form-holder">
+                
+            </div>
+        </div>
+          <div class="col-md-6 col-xs-10 col-sm-10 bootblog4-brand" style="width: auto;">
+            <a class="navbar-brand blog-header-logo text-dark" href="http://joonro.github.io/blog/">
+
+            <span id="blog-title">Joon's Blog</span>
+        </a>
+          </div>
+            <div class="col-md-3 justify-content-end align-items-center bs-nav-collapsible collapse flex-collapse bootblog4-right-nav">
+            <nav class="navbar navbar-light bg-white"><ul class="navbar-nav bootblog4-right-nav">
+<li class="nav-item">
+    <a href="index.rst" id="sourcelink" class="nav-link">Source</a>
+    </li>
+
+
+                    
+            </ul></nav>
+</div>
+    </div>
+</header><nav class="navbar navbar-expand-md navbar-light bg-white static-top"><div class="collapse navbar-collapse bs-nav-collapsible" id="bs-navbar">
+            <ul class="navbar-nav nav-fill d-flex w-100">
+<li class="nav-item">
+<a href="../../archive.html" class="nav-link">Archive</a>
+                </li>
+<li class="nav-item">
+<a href="../../categories/index.html" class="nav-link">Tags and Categories</a>
+                </li>
+<li class="nav-item">
+<a href="../../rss.xml" class="nav-link">RSS feed</a>
+
+                
+            </li>
+</ul>
+</div>
+<!-- /.navbar-collapse -->
+</nav>
+</div>
+
+<div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        
+        
+        
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Native desktop (toast) notifications for org-mode appointments in Windows</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard p-author h-card"><span class="byline-name fn p-name" itemprop="author">
+                    Joon Ro
+            </span></p>
+            <p class="dateline">
+            <a href="." rel="bookmark">
+            <time class="published dt-published" datetime="2015-12-26T00:00:00-06:00" itemprop="datePublished" title="2015-12-26 00:00">2015-12-26 00:00</time></a>
+            </p>
+                <p class="commentline">
+        
+    <a href="#disqus_thread" data-disqus-identifier="cache/posts/toast-notifications-org-mode-windows.html">Comments</a>
+
+
+            
+        </p>
+<p class="sourceline"><a href="index.rst" class="sourcelink">Source</a></p>
+
+        </div>
+        
+
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<p>I describe how to set up native desktop notifications (Toast notifications)
+for org-mode appointments in Windows 8+.</p>
+<div class="section" id="install-toast">
+<h2>Install <code class="docutils literal">toast</code>
+</h2>
+<p>I use <code class="docutils literal">toast.exe</code> from toaster project: <a class="reference external" href="https://github.com/nels-o/toaster">https://github.com/nels-o/toaster</a>. You
+can <code class="docutils literal">git clone</code> the whole repo which includes the executable:</p>
+<pre class="code posh"><a name="rest_code_df000de50c9245059d018ef75a71a2cd-1"></a><span class="p">&gt;</span> <span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="err">:</span><span class="p">//</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="p">/</span><span class="n">nels-o</span><span class="p">/</span><span class="n">toaster</span><span class="p">.</span><span class="n">git</span>
+</pre>
+</div>
+<div class="section" id="emacs-settings">
+<h2>Emacs Settings</h2>
+<p>The following is pretty much the same to
+<a class="reference external" href="https://lists.gnu.org/archive/html/emacs-orgmode/2013-02/msg00644.html">https://lists.gnu.org/archive/html/emacs-orgmode/2013-02/msg00644.html</a>. You
+can modify <code class="docutils literal"><span class="pre">appt-message-warning-time</span></code> and <code class="docutils literal"><span class="pre">appt-display-interval</span></code> to your need:</p>
+<pre class="code scheme"><a name="rest_code_6032247ff75d4da09177ebb1713ca127-1"></a><span class="p">(</span><span class="nf">require</span> <span class="ss">'appt</span><span class="p">)</span>
+<a name="rest_code_6032247ff75d4da09177ebb1713ca127-2"></a><span class="p">(</span><span class="nf">setq</span> <span class="nv">appt-time-msg-list</span> <span class="nv">nil</span><span class="p">)</span>    <span class="c1">;; clear existing appt list</span>
+<a name="rest_code_6032247ff75d4da09177ebb1713ca127-3"></a><span class="p">(</span><span class="nf">setq</span> <span class="nv">appt-display-interval</span> <span class="ss">'5</span><span class="p">)</span>  <span class="c1">;; warn every 5 minutes from t - appt-message-warning-time</span>
+<a name="rest_code_6032247ff75d4da09177ebb1713ca127-4"></a><span class="p">(</span><span class="nf">setq</span>
+<a name="rest_code_6032247ff75d4da09177ebb1713ca127-5"></a>  <span class="nv">appt-message-warning-time</span> <span class="ss">'15</span>  <span class="c1">;; send first warning 15 minutes before appointment</span>
+<a name="rest_code_6032247ff75d4da09177ebb1713ca127-6"></a>  <span class="nv">appt-display-mode-line</span> <span class="nv">nil</span>     <span class="c1">;; don't show in the modeline</span>
+<a name="rest_code_6032247ff75d4da09177ebb1713ca127-7"></a>  <span class="nv">appt-display-format</span> <span class="ss">'window</span><span class="p">)</span>   <span class="c1">;; pass warnings to the designated window function</span>
+<a name="rest_code_6032247ff75d4da09177ebb1713ca127-8"></a><span class="p">(</span><span class="nf">appt-activate</span> <span class="mi">1</span><span class="p">)</span>                <span class="c1">;; activate appointment notification</span>
+<a name="rest_code_6032247ff75d4da09177ebb1713ca127-9"></a><span class="p">(</span><span class="nf">display-time</span><span class="p">)</span>                   <span class="c1">;; activate time display</span>
+<a name="rest_code_6032247ff75d4da09177ebb1713ca127-10"></a>
+<a name="rest_code_6032247ff75d4da09177ebb1713ca127-11"></a><span class="p">(</span><span class="nf">org-agenda-to-appt</span><span class="p">)</span>             <span class="c1">;; generate the appt list from org agenda files on emacs launch</span>
+<a name="rest_code_6032247ff75d4da09177ebb1713ca127-12"></a><span class="p">(</span><span class="nf">run-at-time</span> <span class="s">"24:01"</span> <span class="mi">3600</span> <span class="ss">'org-agenda-to-appt</span><span class="p">)</span>           <span class="c1">;; update appt list hourly</span>
+<a name="rest_code_6032247ff75d4da09177ebb1713ca127-13"></a><span class="p">(</span><span class="nf">add-hook</span> <span class="ss">'org-finalize-agenda-hook</span> <span class="ss">'org-agenda-to-appt</span><span class="p">)</span> <span class="c1">;; update appt list on agenda view</span>
+</pre>
+<p>Next, specify the path to your <code class="docutils literal">toast</code> executable (note that I'm using
+UNIX-style path here, seems to be working well):</p>
+<pre class="code scheme"><a name="rest_code_96f21b710f67410d9806396335e1a5b3-1"></a><span class="p">(</span><span class="nf">defvar</span> <span class="nv">toast-notifier-path</span>
+<a name="rest_code_96f21b710f67410d9806396335e1a5b3-2"></a>  <span class="s">"/home/joon/Programs/toast/bin/Release/toast"</span>
+<a name="rest_code_96f21b710f67410d9806396335e1a5b3-3"></a>  <span class="p">)</span>
+</pre>
+<p>Set up the call to <code class="docutils literal">toast</code>:</p>
+<pre class="code scheme"><a name="rest_code_7e95820699794e4fa604134d78a1f88c-1"></a><span class="c1">;; set up the call to the notifier</span>
+<a name="rest_code_7e95820699794e4fa604134d78a1f88c-2"></a><span class="p">(</span><span class="nf">defun</span> <span class="nv">toast-appt-send-notification</span> <span class="p">(</span><span class="nf">title</span> <span class="nv">msg</span><span class="p">)</span>
+<a name="rest_code_7e95820699794e4fa604134d78a1f88c-3"></a>  <span class="p">(</span><span class="nf">shell-command</span> <span class="p">(</span><span class="nf">concat</span> <span class="nv">toast-notifier-path</span>
+<a name="rest_code_7e95820699794e4fa604134d78a1f88c-4"></a>                         <span class="s">" -t \""</span> <span class="nv">title</span> <span class="s">"\""</span>
+<a name="rest_code_7e95820699794e4fa604134d78a1f88c-5"></a>                         <span class="s">" -m \""</span> <span class="nv">msg</span> <span class="s">"\""</span><span class="p">)))</span>
+<a name="rest_code_7e95820699794e4fa604134d78a1f88c-6"></a>
+<a name="rest_code_7e95820699794e4fa604134d78a1f88c-7"></a><span class="c1">;; designate the window function for my-appt-send-notification</span>
+<a name="rest_code_7e95820699794e4fa604134d78a1f88c-8"></a><span class="p">(</span><span class="nf">defun</span> <span class="nv">toast-appt-display</span> <span class="p">(</span><span class="nf">min-to-app</span> <span class="nv">new-time</span> <span class="nv">msg</span><span class="p">)</span>
+<a name="rest_code_7e95820699794e4fa604134d78a1f88c-9"></a>  <span class="p">(</span><span class="nf">toast-appt-send-notification</span>
+<a name="rest_code_7e95820699794e4fa604134d78a1f88c-10"></a>    <span class="p">(</span><span class="nf">format</span> <span class="s">"Appointment in %s minutes"</span> <span class="nv">min-to-app</span><span class="p">)</span>    <span class="c1">;; passed to -t in toast call</span>
+<a name="rest_code_7e95820699794e4fa604134d78a1f88c-11"></a>    <span class="p">(</span><span class="nf">format</span> <span class="s">"%s"</span> <span class="nv">msg</span><span class="p">)))</span>                                <span class="c1">;; passed to -m in toast call</span>
+<a name="rest_code_7e95820699794e4fa604134d78a1f88c-12"></a>
+<a name="rest_code_7e95820699794e4fa604134d78a1f88c-13"></a><span class="p">(</span><span class="nf">setq</span> <span class="nv">appt-disp-window-function</span> <span class="p">(</span><span class="nf">function</span> <span class="nv">toast-appt-display</span><span class="p">))</span>
+</pre>
+<p>Now Emacs will use <code class="docutils literal">toast</code> to notify you of upcoming appointments:</p>
+<img alt="../images/toast_example.png" src="../images/toast_example.png"><p>If you want to be fancier, you can show an icon in the notification as
+well. You can download an icon (from
+<a class="reference external" href="http://www.easyicon.net/language.en/540985-org_mode_icon.html">http://www.easyicon.net/language.en/540985-org_mode_icon.html</a>, for example)
+and modify <code class="docutils literal"><span class="pre">toast-appt-send-notification</span></code> by adding <code class="docutils literal"><span class="pre">-p</span></code> argument (you have
+to use Windows-style path here):</p>
+<pre class="code scheme"><a name="rest_code_96bb8586851b421c8d28c1f1b5d62f1b-1"></a><span class="c1">;; set up the call to the notifier</span>
+<a name="rest_code_96bb8586851b421c8d28c1f1b5d62f1b-2"></a><span class="p">(</span><span class="nf">defun</span> <span class="nv">toast-appt-send-notification</span> <span class="p">(</span><span class="nf">title</span> <span class="nv">msg</span><span class="p">)</span>
+<a name="rest_code_96bb8586851b421c8d28c1f1b5d62f1b-3"></a>  <span class="p">(</span><span class="nf">shell-command</span> <span class="p">(</span><span class="nf">concat</span> <span class="nv">toast-notifier-path</span>
+<a name="rest_code_96bb8586851b421c8d28c1f1b5d62f1b-4"></a>                         <span class="s">" -t \""</span> <span class="nv">title</span> <span class="s">"\""</span>
+<a name="rest_code_96bb8586851b421c8d28c1f1b5d62f1b-5"></a>                         <span class="s">" -m \""</span> <span class="nv">msg</span> <span class="s">"\""</span>
+<a name="rest_code_96bb8586851b421c8d28c1f1b5d62f1b-6"></a>                         <span class="s">" -p C:\\Users\\joon\\Programs\\Assets\\Icons\\org_mode_256px_540985_easyicon.net.png"</span><span class="p">)))</span>
+</pre>
+<p>which makes notifications look very nice:</p>
+<img alt="../images/toast_example_with_icon.png" src="../images/toast_example_with_icon.png">
+</div>
+</div>
+    </div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../categories/emacs/" rel="tag">emacs</a></li>
+            <li><a class="tag p-category" href="../../categories/howto/" rel="tag">howto</a></li>
+            <li><a class="tag p-category" href="../../categories/org-mode/" rel="tag">org-mode</a></li>
+            <li><a class="tag p-category" href="../../categories/setting/" rel="tag">setting</a></li>
+            <li><a class="tag p-category" href="../../categories/toast/" rel="tag">toast</a></li>
+            <li><a class="tag p-category" href="../../categories/windows/" rel="tag">windows</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="../inverse-and-forward-search-lyx-windows/" rel="prev" title="How to set up inverse and forward search in LyX for Windows">Previous post</a>
+            </li>
+            <li class="next">
+                <a href="../lenovo-y50-uhd-laptop-driver-troubleshooting/" rel="next" title="Lenovo Y50 UHD Laptop: Driver Recommendations and Troubleshooting Information">Next post</a>
+            </li>
+        </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
+        
+        
+        <div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="joon-blog",
+            disqus_url="http://joonro.github.io/blog/posts/toast-notifications-org-mode-windows/",
+        disqus_title="Native desktop (toast) notifications for org-mode appointments in Windows",
+        disqus_identifier="cache/posts/toast-notifications-org-mode-windows.html",
+        disqus_config = function () {
+            this.language = "en";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="https://disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+        </section></article><script>var disqus_shortname="joon-blog";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script><!--End of body content--><footer id="footer">
+            Contents © 2020 <a href="mailto:joon.ro@outlook.com">Joon Ro</a> - Powered by <a href="http://getnikola.com" rel="nofollow">Nikola</a> 
+            
+            
+        </footer>
+</div>
+</div>
+
+
+        <script src="../../assets/js/all-nocdn.js"></script><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script>
+</body>
+</html>

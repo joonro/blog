@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Joon's Blog (Posts about setting)</title><link>http://joonro.github.io/blog/</link><description></description><atom:link href="http://joonro.github.io/blog/categories/setting.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><lastBuildDate>Tue, 17 Jul 2018 03:03:43 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Lenovo Y50 UHD Laptop: Driver Recommendations and Troubleshooting Information</title><link>http://joonro.github.io/blog/posts/lenovo-y50-uhd-laptop-driver-troubleshooting.html</link><dc:creator>Joon Ro</dc:creator><description>&lt;div&gt;&lt;p&gt;Lenovo Y50 UHD is a laptop with good specs (especially for the price), as it
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Joon's Blog (Posts about setting)</title><link>http://joonro.github.io/blog/</link><description></description><atom:link href="http://joonro.github.io/blog/categories/setting.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><lastBuildDate>Mon, 02 Mar 2020 00:17:06 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Lenovo Y50 UHD Laptop: Driver Recommendations and Troubleshooting Information</title><link>http://joonro.github.io/blog/posts/lenovo-y50-uhd-laptop-driver-troubleshooting/</link><dc:creator>Joon Ro</dc:creator><description>&lt;div&gt;&lt;p&gt;Lenovo Y50 UHD is a laptop with good specs (especially for the price), as it
 has a high-end quad-core processor (i7-4700HQ, passmark &lt;a class="reference external" href="http://www.cpubenchmark.net/cpu.php?cpu=Intel+Core+i7-4700HQ+%40+2.40GHz"&gt;7750+&lt;/a&gt; ), 16GB Ram,
 256GB SSD, UHD display (3840x2160), Nvidia Geforce GTX 860M GPU, etc. The
 problem is that it suffers from many driver issues, making it unnecessarily
@@ -12,14 +12,14 @@ the Nvidia driver. I will keep this post updated as we get more driver updates.&
 &lt;h2&gt;SSD Lock-up&lt;/h2&gt;
 &lt;p&gt;The system becomes not responsive for 30~ seconds, Task Manager shows 100% disk
 usage, while no process is using the disk.&lt;/p&gt;
-&lt;p&gt;The solution is using &lt;tt class="docutils literal"&gt;Standard SATA AHCI Controller&lt;/tt&gt; instead of intel's for
-&lt;tt class="docutils literal"&gt;IDE ATA/ATAPI controllers&lt;/tt&gt; in &lt;tt class="docutils literal"&gt;Device Manager&lt;/tt&gt;.&lt;/p&gt;
+&lt;p&gt;The solution is using &lt;code class="docutils literal"&gt;Standard SATA AHCI Controller&lt;/code&gt; instead of intel's for
+&lt;code class="docutils literal"&gt;IDE ATA/ATAPI controllers&lt;/code&gt; in &lt;code class="docutils literal"&gt;Device Manager&lt;/code&gt;.&lt;/p&gt;
 &lt;ol class="arabic simple"&gt;
-&lt;li&gt;Right click on the &lt;tt class="docutils literal"&gt;Intel(R) 8 Series Chipset Family SATA AHCI Controller&lt;/tt&gt; and click on  &lt;tt class="docutils literal"&gt;Update Driver Software ..&lt;/tt&gt;&lt;/li&gt;
-&lt;li&gt;Select &lt;tt class="docutils literal"&gt;Browse my computer for driver software&lt;/tt&gt;&lt;/li&gt;
-&lt;li&gt;Select &lt;tt class="docutils literal"&gt;Let me pick from a list of ...&lt;/tt&gt;&lt;/li&gt;
-&lt;li&gt;Choose and install &lt;tt class="docutils literal"&gt;Standard SATA AHCI Controller&lt;/tt&gt;&lt;/li&gt;
-&lt;li&gt;Reboot&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Right click on the &lt;code class="docutils literal"&gt;Intel(R) 8 Series Chipset Family SATA AHCI Controller&lt;/code&gt; and click on  &lt;code class="docutils literal"&gt;Update Driver Software ..&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Select &lt;code class="docutils literal"&gt;Browse my computer for driver software&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Select &lt;code class="docutils literal"&gt;Let me pick from a list of ...&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Choose and install &lt;code class="docutils literal"&gt;Standard SATA AHCI Controller&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Reboot&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;A major Windows 10 update will revert the driver back to the Intel's, so you
 have to manually do this again if it happens.&lt;/p&gt;
@@ -31,14 +31,14 @@ you install a wrong version of the driver, you will suffer from performance
 issues, crashes, and even BOSDs. Please do not update Nvidia driver without
 checking the web and make sure it does not have any problems.&lt;/p&gt;
 &lt;ul class="simple"&gt;
-&lt;li&gt;Current (2015/12/27) recommended driver version is &lt;a class="reference external" href="http://nvidia.custhelp.com/app/answers/detail/a_id/3812/~/geforce-hot-fix-driver-359.12"&gt;GeForce Hot Fix driver 359.12&lt;/a&gt;.
+&lt;li&gt;&lt;p&gt;Current (2015/12/27) recommended driver version is &lt;a class="reference external" href="http://nvidia.custhelp.com/app/answers/detail/a_id/3812/~/geforce-hot-fix-driver-359.12"&gt;GeForce Hot Fix driver 359.12&lt;/a&gt;.
 It is for GTX 860M, but it seems it fixes problems for 960M as
 well. You can read about it at the following Nvidia forum thread:
-&lt;a class="reference external" href="https://forums.geforce.com/default/topic/900924/geforce-drivers/geforce-hotfix-driver-359-12-for-geforce-860m-notebook-gpus-released-12-2-15-"&gt;GeForce Hotfix driver 359.12 for GeForce 860M notebook GPUs (Released 12/2/15)&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;The current version 361.43 seems to have less number of problems, but
-&lt;a class="reference external" href="https://forums.geforce.com/default/topic/904579/geforce-drivers/official-361-43-game-ready-whql-display-driver-feedback-thread-12-21-15-/6/"&gt;people seem to have BOSDs&lt;/a&gt; with &lt;tt class="docutils literal"&gt;Kernal_Security_Check_Failure&lt;/tt&gt; error.&lt;/li&gt;
-&lt;li&gt;The previously working version was 355.98. All drivers in between (358.50,
-358.87, 358.91) will cause problems.&lt;/li&gt;
+&lt;a class="reference external" href="https://forums.geforce.com/default/topic/900924/geforce-drivers/geforce-hotfix-driver-359-12-for-geforce-860m-notebook-gpus-released-12-2-15-"&gt;GeForce Hotfix driver 359.12 for GeForce 860M notebook GPUs (Released 12/2/15)&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;The current version 361.43 seems to have less number of problems, but
+&lt;a class="reference external" href="https://forums.geforce.com/default/topic/904579/geforce-drivers/official-361-43-game-ready-whql-display-driver-feedback-thread-12-21-15-/6/"&gt;people seem to have BOSDs&lt;/a&gt; with &lt;code class="docutils literal"&gt;Kernal_Security_Check_Failure&lt;/code&gt; error.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;The previously working version was 355.98. All drivers in between (358.50,
+358.87, 358.91) will cause problems.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;div class="section" id="touchpad-loses-gestures-after-waking-up"&gt;
@@ -46,98 +46,103 @@ well. You can read about it at the following Nvidia forum thread:
 &lt;p&gt;Sometimes after waking up, the Synaptics touchpad will lose gestures such as
 three-finger swipe. Albeit not a permanent fix, running the following batch file will
 reset the touchpad and bring back gestures. (I saved it as
-&lt;tt class="docutils literal"&gt;synaptics_touchpad_reset.bat&lt;/tt&gt;) and run it whenever it doesn't work.&lt;/p&gt;
-&lt;pre class="code bat"&gt;&lt;a name="rest_code_b7decfce598d482eb095afdc25a9a4ff-1"&gt;&lt;/a&gt;taskkill -f -im syntpenh.exe
-&lt;a name="rest_code_b7decfce598d482eb095afdc25a9a4ff-2"&gt;&lt;/a&gt;&lt;span class="k"&gt;cd&lt;/span&gt; C:\Program Files\Synaptics\SynTP
-&lt;a name="rest_code_b7decfce598d482eb095afdc25a9a4ff-3"&gt;&lt;/a&gt;&lt;span class="k"&gt;start&lt;/span&gt; &lt;span class="s2"&gt;""&lt;/span&gt; &lt;span class="s2"&gt;"syntpenh.exe"&lt;/span&gt;
-&lt;a name="rest_code_b7decfce598d482eb095afdc25a9a4ff-4"&gt;&lt;/a&gt;&lt;span class="k"&gt;exit&lt;/span&gt;
+&lt;code class="docutils literal"&gt;synaptics_touchpad_reset.bat&lt;/code&gt;) and run it whenever it doesn't work.&lt;/p&gt;
+&lt;pre class="code bat"&gt;&lt;a name="rest_code_369b818449224780b94cb35d96fbb6ca-1"&gt;&lt;/a&gt;taskkill -f -im syntpenh.exe
+&lt;a name="rest_code_369b818449224780b94cb35d96fbb6ca-2"&gt;&lt;/a&gt;&lt;span class="k"&gt;cd&lt;/span&gt; C:\Program Files\Synaptics\SynTP
+&lt;a name="rest_code_369b818449224780b94cb35d96fbb6ca-3"&gt;&lt;/a&gt;&lt;span class="k"&gt;start&lt;/span&gt; &lt;span class="s2"&gt;""&lt;/span&gt; &lt;span class="s2"&gt;"syntpenh.exe"&lt;/span&gt;
+&lt;a name="rest_code_369b818449224780b94cb35d96fbb6ca-4"&gt;&lt;/a&gt;&lt;span class="k"&gt;exit&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;div class="section" id="enabling-touchpad-2-and-3-finger-tap"&gt;
 &lt;h2&gt;Enabling Touchpad 2- and 3-finger tap&lt;/h2&gt;
 &lt;p&gt;If you want to enable touchpad 2- and 3-finger tap - for example, 2-finger tap
 for the right-click and 3-finger tap for the middle-click, you can follow the
 instructions at &lt;a class="reference external" href="https://forums.lenovo.com/t5/Lenovo-P-Y-and-Z-series/Y580-touchpad-two-finger-tap-for-right-click-not-working/m-p/1025407#M86254"&gt;this thread&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;In sum, what you need to do is, hit windows key + x, select &lt;tt class="docutils literal"&gt;run&lt;/tt&gt;, enter
-&lt;tt class="docutils literal"&gt;regedit&lt;/tt&gt; then hit enter, and on the left pane browse to the following
+&lt;p&gt;In sum, what you need to do is, hit windows key + x, select &lt;code class="docutils literal"&gt;run&lt;/code&gt;, enter
+&lt;code class="docutils literal"&gt;regedit&lt;/code&gt; then hit enter, and on the left pane browse to the following
 location:&lt;/p&gt;
-&lt;p&gt;&lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;HKEY_USERS\&amp;lt;SID&lt;/span&gt; name for your current &lt;span class="pre"&gt;user&amp;gt;\Software\Synaptics\SynTP\TouchPadPS2&lt;/span&gt;&lt;/tt&gt;&lt;/p&gt;
-&lt;p&gt;Only issue for me was that I had two entries, &lt;tt class="docutils literal"&gt;TouchPadSMB2cTM2334&lt;/tt&gt; and
-&lt;tt class="docutils literal"&gt;TouchPadPS2TM2334&lt;/tt&gt;, and &lt;tt class="docutils literal"&gt;TouchPadSMB2cTM2334&lt;/tt&gt; was the one that worked.&lt;/p&gt;
+&lt;p&gt;&lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;HKEY_USERS\&amp;lt;SID&lt;/span&gt; name for your current &lt;span class="pre"&gt;user&amp;gt;\Software\Synaptics\SynTP\TouchPadPS2&lt;/span&gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Only issue for me was that I had two entries, &lt;code class="docutils literal"&gt;TouchPadSMB2cTM2334&lt;/code&gt; and
+&lt;code class="docutils literal"&gt;TouchPadPS2TM2334&lt;/code&gt;, and &lt;code class="docutils literal"&gt;TouchPadSMB2cTM2334&lt;/code&gt; was the one that worked.&lt;/p&gt;
 &lt;p&gt;Then, in the right pane, change values of according to the following:&lt;/p&gt;
-&lt;dl class="docutils"&gt;
+&lt;dl class="simple"&gt;
 &lt;dt&gt;2FingerTapAction&lt;/dt&gt;
-&lt;dd&gt;&lt;tt class="docutils literal"&gt;2&lt;/tt&gt; for right click, &lt;tt class="docutils literal"&gt;4&lt;/tt&gt; for middle click.&lt;/dd&gt;
+&lt;dd&gt;&lt;p&gt;&lt;code class="docutils literal"&gt;2&lt;/code&gt; for right click, &lt;code class="docutils literal"&gt;4&lt;/code&gt; for middle click.&lt;/p&gt;
+&lt;/dd&gt;
 &lt;dt&gt;2FingerTapPluginID&lt;/dt&gt;
-&lt;dd&gt;clear any value it may have&lt;/dd&gt;
+&lt;dd&gt;&lt;p&gt;clear any value it may have&lt;/p&gt;
+&lt;/dd&gt;
 &lt;dt&gt;3FingerTapAction&lt;/dt&gt;
-&lt;dd&gt;&lt;tt class="docutils literal"&gt;2&lt;/tt&gt; for right click, &lt;tt class="docutils literal"&gt;4&lt;/tt&gt; for middle click.&lt;/dd&gt;
+&lt;dd&gt;&lt;p&gt;&lt;code class="docutils literal"&gt;2&lt;/code&gt; for right click, &lt;code class="docutils literal"&gt;4&lt;/code&gt; for middle click.&lt;/p&gt;
+&lt;/dd&gt;
 &lt;dt&gt;3FingerTapPluginID&lt;/dt&gt;
-&lt;dd&gt;clear any value it may have&lt;/dd&gt;
+&lt;dd&gt;&lt;p&gt;clear any value it may have&lt;/p&gt;
+&lt;/dd&gt;
 &lt;dt&gt;3FingerTapPluginActionID&lt;/dt&gt;
-&lt;dd&gt;&lt;tt class="docutils literal"&gt;0&lt;/tt&gt;&lt;/dd&gt;
+&lt;dd&gt;&lt;p&gt;&lt;code class="docutils literal"&gt;0&lt;/code&gt;&lt;/p&gt;
+&lt;/dd&gt;
 &lt;/dl&gt;
 &lt;p&gt;Reboot and the 2- and 3-finger taps will work.&lt;/p&gt;
-&lt;/div&gt;&lt;/div&gt;</description><category>drivers</category><category>GTX 860M</category><category>lenovo</category><category>setting</category><category>troubleshooting</category><category>UHD</category><category>windows 10</category><category>y50</category><guid>http://joonro.github.io/blog/posts/lenovo-y50-uhd-laptop-driver-troubleshooting.html</guid><pubDate>Sun, 27 Dec 2015 06:00:00 GMT</pubDate></item><item><title>Native desktop (toast) notifications for org-mode appointments in Windows</title><link>http://joonro.github.io/blog/posts/toast-notifications-org-mode-windows.html</link><dc:creator>Joon Ro</dc:creator><description>&lt;div&gt;&lt;p&gt;I describe how to set up native desktop notifications (Toast notifications)
+&lt;/div&gt;&lt;/div&gt;</description><category>drivers</category><category>GTX 860M</category><category>lenovo</category><category>setting</category><category>troubleshooting</category><category>UHD</category><category>windows 10</category><category>y50</category><guid>http://joonro.github.io/blog/posts/lenovo-y50-uhd-laptop-driver-troubleshooting/</guid><pubDate>Sun, 27 Dec 2015 06:00:00 GMT</pubDate></item><item><title>Native desktop (toast) notifications for org-mode appointments in Windows</title><link>http://joonro.github.io/blog/posts/toast-notifications-org-mode-windows/</link><dc:creator>Joon Ro</dc:creator><description>&lt;div&gt;&lt;p&gt;I describe how to set up native desktop notifications (Toast notifications)
 for org-mode appointments in Windows 8+.&lt;/p&gt;
 &lt;div class="section" id="install-toast"&gt;
-&lt;h2&gt;Install &lt;tt class="docutils literal"&gt;toast&lt;/tt&gt;&lt;/h2&gt;
-&lt;p&gt;I use &lt;tt class="docutils literal"&gt;toast.exe&lt;/tt&gt; from toaster project: &lt;a class="reference external" href="https://github.com/nels-o/toaster"&gt;https://github.com/nels-o/toaster&lt;/a&gt;. You
-can &lt;tt class="docutils literal"&gt;git clone&lt;/tt&gt; the whole repo which includes the executable:&lt;/p&gt;
-&lt;pre class="code posh"&gt;&lt;a name="rest_code_09bcf3e309ed4ebeb31bbfbc316073bc-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;clone&lt;/span&gt; &lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt;&lt;span class="p"&gt;//&lt;/span&gt;&lt;span class="n"&gt;github&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="n"&gt;nels-o&lt;/span&gt;&lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="n"&gt;toaster&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;git&lt;/span&gt;
+&lt;h2&gt;Install &lt;code class="docutils literal"&gt;toast&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;I use &lt;code class="docutils literal"&gt;toast.exe&lt;/code&gt; from toaster project: &lt;a class="reference external" href="https://github.com/nels-o/toaster"&gt;https://github.com/nels-o/toaster&lt;/a&gt;. You
+can &lt;code class="docutils literal"&gt;git clone&lt;/code&gt; the whole repo which includes the executable:&lt;/p&gt;
+&lt;pre class="code posh"&gt;&lt;a name="rest_code_df000de50c9245059d018ef75a71a2cd-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;clone&lt;/span&gt; &lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt;&lt;span class="p"&gt;//&lt;/span&gt;&lt;span class="n"&gt;github&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="n"&gt;nels-o&lt;/span&gt;&lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="n"&gt;toaster&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;git&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;div class="section" id="emacs-settings"&gt;
 &lt;h2&gt;Emacs Settings&lt;/h2&gt;
 &lt;p&gt;The following is pretty much the same to
 &lt;a class="reference external" href="https://lists.gnu.org/archive/html/emacs-orgmode/2013-02/msg00644.html"&gt;https://lists.gnu.org/archive/html/emacs-orgmode/2013-02/msg00644.html&lt;/a&gt;. You
-can modify &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;appt-message-warning-time&lt;/span&gt;&lt;/tt&gt; and &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;appt-display-interval&lt;/span&gt;&lt;/tt&gt; to your need:&lt;/p&gt;
-&lt;pre class="code scheme"&gt;&lt;a name="rest_code_d30425f83b8447f892eb4a3a346d4134-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;require&lt;/span&gt; &lt;span class="ss"&gt;'appt&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_d30425f83b8447f892eb4a3a346d4134-2"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;appt-time-msg-list&lt;/span&gt; &lt;span class="nv"&gt;nil&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;    &lt;span class="c1"&gt;;; clear existing appt list&lt;/span&gt;
-&lt;a name="rest_code_d30425f83b8447f892eb4a3a346d4134-3"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;appt-display-interval&lt;/span&gt; &lt;span class="ss"&gt;'5&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c1"&gt;;; warn every 5 minutes from t - appt-message-warning-time&lt;/span&gt;
-&lt;a name="rest_code_d30425f83b8447f892eb4a3a346d4134-4"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;setq&lt;/span&gt;
-&lt;a name="rest_code_d30425f83b8447f892eb4a3a346d4134-5"&gt;&lt;/a&gt;  &lt;span class="nv"&gt;appt-message-warning-time&lt;/span&gt; &lt;span class="ss"&gt;'15&lt;/span&gt;  &lt;span class="c1"&gt;;; send first warning 15 minutes before appointment&lt;/span&gt;
-&lt;a name="rest_code_d30425f83b8447f892eb4a3a346d4134-6"&gt;&lt;/a&gt;  &lt;span class="nv"&gt;appt-display-mode-line&lt;/span&gt; &lt;span class="nv"&gt;nil&lt;/span&gt;     &lt;span class="c1"&gt;;; don't show in the modeline&lt;/span&gt;
-&lt;a name="rest_code_d30425f83b8447f892eb4a3a346d4134-7"&gt;&lt;/a&gt;  &lt;span class="nv"&gt;appt-display-format&lt;/span&gt; &lt;span class="ss"&gt;'window&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;   &lt;span class="c1"&gt;;; pass warnings to the designated window function&lt;/span&gt;
-&lt;a name="rest_code_d30425f83b8447f892eb4a3a346d4134-8"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;appt-activate&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;                &lt;span class="c1"&gt;;; activate appointment notification&lt;/span&gt;
-&lt;a name="rest_code_d30425f83b8447f892eb4a3a346d4134-9"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;display-time&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;                   &lt;span class="c1"&gt;;; activate time display&lt;/span&gt;
-&lt;a name="rest_code_d30425f83b8447f892eb4a3a346d4134-10"&gt;&lt;/a&gt;
-&lt;a name="rest_code_d30425f83b8447f892eb4a3a346d4134-11"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;org-agenda-to-appt&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;             &lt;span class="c1"&gt;;; generate the appt list from org agenda files on emacs launch&lt;/span&gt;
-&lt;a name="rest_code_d30425f83b8447f892eb4a3a346d4134-12"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;run-at-time&lt;/span&gt; &lt;span class="s"&gt;"24:01"&lt;/span&gt; &lt;span class="mi"&gt;3600&lt;/span&gt; &lt;span class="ss"&gt;'org-agenda-to-appt&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;           &lt;span class="c1"&gt;;; update appt list hourly&lt;/span&gt;
-&lt;a name="rest_code_d30425f83b8447f892eb4a3a346d4134-13"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;add-hook&lt;/span&gt; &lt;span class="ss"&gt;'org-finalize-agenda-hook&lt;/span&gt; &lt;span class="ss"&gt;'org-agenda-to-appt&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;;; update appt list on agenda view&lt;/span&gt;
-&lt;/pre&gt;&lt;p&gt;Next, specify the path to your &lt;tt class="docutils literal"&gt;toast&lt;/tt&gt; executable (note that I'm using
+can modify &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;appt-message-warning-time&lt;/span&gt;&lt;/code&gt; and &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;appt-display-interval&lt;/span&gt;&lt;/code&gt; to your need:&lt;/p&gt;
+&lt;pre class="code scheme"&gt;&lt;a name="rest_code_6032247ff75d4da09177ebb1713ca127-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;require&lt;/span&gt; &lt;span class="ss"&gt;'appt&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_6032247ff75d4da09177ebb1713ca127-2"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;appt-time-msg-list&lt;/span&gt; &lt;span class="nv"&gt;nil&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;    &lt;span class="c1"&gt;;; clear existing appt list&lt;/span&gt;
+&lt;a name="rest_code_6032247ff75d4da09177ebb1713ca127-3"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;appt-display-interval&lt;/span&gt; &lt;span class="ss"&gt;'5&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c1"&gt;;; warn every 5 minutes from t - appt-message-warning-time&lt;/span&gt;
+&lt;a name="rest_code_6032247ff75d4da09177ebb1713ca127-4"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;setq&lt;/span&gt;
+&lt;a name="rest_code_6032247ff75d4da09177ebb1713ca127-5"&gt;&lt;/a&gt;  &lt;span class="nv"&gt;appt-message-warning-time&lt;/span&gt; &lt;span class="ss"&gt;'15&lt;/span&gt;  &lt;span class="c1"&gt;;; send first warning 15 minutes before appointment&lt;/span&gt;
+&lt;a name="rest_code_6032247ff75d4da09177ebb1713ca127-6"&gt;&lt;/a&gt;  &lt;span class="nv"&gt;appt-display-mode-line&lt;/span&gt; &lt;span class="nv"&gt;nil&lt;/span&gt;     &lt;span class="c1"&gt;;; don't show in the modeline&lt;/span&gt;
+&lt;a name="rest_code_6032247ff75d4da09177ebb1713ca127-7"&gt;&lt;/a&gt;  &lt;span class="nv"&gt;appt-display-format&lt;/span&gt; &lt;span class="ss"&gt;'window&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;   &lt;span class="c1"&gt;;; pass warnings to the designated window function&lt;/span&gt;
+&lt;a name="rest_code_6032247ff75d4da09177ebb1713ca127-8"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;appt-activate&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;                &lt;span class="c1"&gt;;; activate appointment notification&lt;/span&gt;
+&lt;a name="rest_code_6032247ff75d4da09177ebb1713ca127-9"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;display-time&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;                   &lt;span class="c1"&gt;;; activate time display&lt;/span&gt;
+&lt;a name="rest_code_6032247ff75d4da09177ebb1713ca127-10"&gt;&lt;/a&gt;
+&lt;a name="rest_code_6032247ff75d4da09177ebb1713ca127-11"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;org-agenda-to-appt&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;             &lt;span class="c1"&gt;;; generate the appt list from org agenda files on emacs launch&lt;/span&gt;
+&lt;a name="rest_code_6032247ff75d4da09177ebb1713ca127-12"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;run-at-time&lt;/span&gt; &lt;span class="s"&gt;"24:01"&lt;/span&gt; &lt;span class="mi"&gt;3600&lt;/span&gt; &lt;span class="ss"&gt;'org-agenda-to-appt&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;           &lt;span class="c1"&gt;;; update appt list hourly&lt;/span&gt;
+&lt;a name="rest_code_6032247ff75d4da09177ebb1713ca127-13"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;add-hook&lt;/span&gt; &lt;span class="ss"&gt;'org-finalize-agenda-hook&lt;/span&gt; &lt;span class="ss"&gt;'org-agenda-to-appt&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;;; update appt list on agenda view&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;Next, specify the path to your &lt;code class="docutils literal"&gt;toast&lt;/code&gt; executable (note that I'm using
 UNIX-style path here, seems to be working well):&lt;/p&gt;
-&lt;pre class="code scheme"&gt;&lt;a name="rest_code_937ec06a44aa478b882ae4326c377625-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;defvar&lt;/span&gt; &lt;span class="nv"&gt;toast-notifier-path&lt;/span&gt;
-&lt;a name="rest_code_937ec06a44aa478b882ae4326c377625-2"&gt;&lt;/a&gt;  &lt;span class="s"&gt;"/home/joon/Programs/toast/bin/Release/toast"&lt;/span&gt;
-&lt;a name="rest_code_937ec06a44aa478b882ae4326c377625-3"&gt;&lt;/a&gt;  &lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;p&gt;Set up the call to &lt;tt class="docutils literal"&gt;toast&lt;/tt&gt;:&lt;/p&gt;
-&lt;pre class="code scheme"&gt;&lt;a name="rest_code_2005efbdee6c4868ab769a0b1a1299da-1"&gt;&lt;/a&gt;&lt;span class="c1"&gt;;; set up the call to the notifier&lt;/span&gt;
-&lt;a name="rest_code_2005efbdee6c4868ab769a0b1a1299da-2"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;defun&lt;/span&gt; &lt;span class="nv"&gt;toast-appt-send-notification&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;title&lt;/span&gt; &lt;span class="nv"&gt;msg&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_2005efbdee6c4868ab769a0b1a1299da-3"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;shell-command&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;concat&lt;/span&gt; &lt;span class="nv"&gt;toast-notifier-path&lt;/span&gt;
-&lt;a name="rest_code_2005efbdee6c4868ab769a0b1a1299da-4"&gt;&lt;/a&gt;                         &lt;span class="s"&gt;" -t \""&lt;/span&gt; &lt;span class="nv"&gt;title&lt;/span&gt; &lt;span class="s"&gt;"\""&lt;/span&gt;
-&lt;a name="rest_code_2005efbdee6c4868ab769a0b1a1299da-5"&gt;&lt;/a&gt;                         &lt;span class="s"&gt;" -m \""&lt;/span&gt; &lt;span class="nv"&gt;msg&lt;/span&gt; &lt;span class="s"&gt;"\""&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
-&lt;a name="rest_code_2005efbdee6c4868ab769a0b1a1299da-6"&gt;&lt;/a&gt;
-&lt;a name="rest_code_2005efbdee6c4868ab769a0b1a1299da-7"&gt;&lt;/a&gt;&lt;span class="c1"&gt;;; designate the window function for my-appt-send-notification&lt;/span&gt;
-&lt;a name="rest_code_2005efbdee6c4868ab769a0b1a1299da-8"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;defun&lt;/span&gt; &lt;span class="nv"&gt;toast-appt-display&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;min-to-app&lt;/span&gt; &lt;span class="nv"&gt;new-time&lt;/span&gt; &lt;span class="nv"&gt;msg&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_2005efbdee6c4868ab769a0b1a1299da-9"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;toast-appt-send-notification&lt;/span&gt;
-&lt;a name="rest_code_2005efbdee6c4868ab769a0b1a1299da-10"&gt;&lt;/a&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;format&lt;/span&gt; &lt;span class="s"&gt;"Appointment in %s minutes"&lt;/span&gt; &lt;span class="nv"&gt;min-to-app&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;    &lt;span class="c1"&gt;;; passed to -t in toast call&lt;/span&gt;
-&lt;a name="rest_code_2005efbdee6c4868ab769a0b1a1299da-11"&gt;&lt;/a&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;format&lt;/span&gt; &lt;span class="s"&gt;"%s"&lt;/span&gt; &lt;span class="nv"&gt;msg&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;                                &lt;span class="c1"&gt;;; passed to -m in toast call&lt;/span&gt;
-&lt;a name="rest_code_2005efbdee6c4868ab769a0b1a1299da-12"&gt;&lt;/a&gt;
-&lt;a name="rest_code_2005efbdee6c4868ab769a0b1a1299da-13"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;appt-disp-window-function&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;function&lt;/span&gt; &lt;span class="nv"&gt;toast-appt-display&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-&lt;/pre&gt;&lt;p&gt;Now Emacs will use &lt;tt class="docutils literal"&gt;toast&lt;/tt&gt; to notify you of upcoming appointments:&lt;/p&gt;
-&lt;img alt="../images/toast_example.png" src="http://joonro.github.io/blog/images/toast_example.png"&gt;
+&lt;pre class="code scheme"&gt;&lt;a name="rest_code_96f21b710f67410d9806396335e1a5b3-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;defvar&lt;/span&gt; &lt;span class="nv"&gt;toast-notifier-path&lt;/span&gt;
+&lt;a name="rest_code_96f21b710f67410d9806396335e1a5b3-2"&gt;&lt;/a&gt;  &lt;span class="s"&gt;"/home/joon/Programs/toast/bin/Release/toast"&lt;/span&gt;
+&lt;a name="rest_code_96f21b710f67410d9806396335e1a5b3-3"&gt;&lt;/a&gt;  &lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;Set up the call to &lt;code class="docutils literal"&gt;toast&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class="code scheme"&gt;&lt;a name="rest_code_7e95820699794e4fa604134d78a1f88c-1"&gt;&lt;/a&gt;&lt;span class="c1"&gt;;; set up the call to the notifier&lt;/span&gt;
+&lt;a name="rest_code_7e95820699794e4fa604134d78a1f88c-2"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;defun&lt;/span&gt; &lt;span class="nv"&gt;toast-appt-send-notification&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;title&lt;/span&gt; &lt;span class="nv"&gt;msg&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_7e95820699794e4fa604134d78a1f88c-3"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;shell-command&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;concat&lt;/span&gt; &lt;span class="nv"&gt;toast-notifier-path&lt;/span&gt;
+&lt;a name="rest_code_7e95820699794e4fa604134d78a1f88c-4"&gt;&lt;/a&gt;                         &lt;span class="s"&gt;" -t \""&lt;/span&gt; &lt;span class="nv"&gt;title&lt;/span&gt; &lt;span class="s"&gt;"\""&lt;/span&gt;
+&lt;a name="rest_code_7e95820699794e4fa604134d78a1f88c-5"&gt;&lt;/a&gt;                         &lt;span class="s"&gt;" -m \""&lt;/span&gt; &lt;span class="nv"&gt;msg&lt;/span&gt; &lt;span class="s"&gt;"\""&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;a name="rest_code_7e95820699794e4fa604134d78a1f88c-6"&gt;&lt;/a&gt;
+&lt;a name="rest_code_7e95820699794e4fa604134d78a1f88c-7"&gt;&lt;/a&gt;&lt;span class="c1"&gt;;; designate the window function for my-appt-send-notification&lt;/span&gt;
+&lt;a name="rest_code_7e95820699794e4fa604134d78a1f88c-8"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;defun&lt;/span&gt; &lt;span class="nv"&gt;toast-appt-display&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;min-to-app&lt;/span&gt; &lt;span class="nv"&gt;new-time&lt;/span&gt; &lt;span class="nv"&gt;msg&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_7e95820699794e4fa604134d78a1f88c-9"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;toast-appt-send-notification&lt;/span&gt;
+&lt;a name="rest_code_7e95820699794e4fa604134d78a1f88c-10"&gt;&lt;/a&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;format&lt;/span&gt; &lt;span class="s"&gt;"Appointment in %s minutes"&lt;/span&gt; &lt;span class="nv"&gt;min-to-app&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;    &lt;span class="c1"&gt;;; passed to -t in toast call&lt;/span&gt;
+&lt;a name="rest_code_7e95820699794e4fa604134d78a1f88c-11"&gt;&lt;/a&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;format&lt;/span&gt; &lt;span class="s"&gt;"%s"&lt;/span&gt; &lt;span class="nv"&gt;msg&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;                                &lt;span class="c1"&gt;;; passed to -m in toast call&lt;/span&gt;
+&lt;a name="rest_code_7e95820699794e4fa604134d78a1f88c-12"&gt;&lt;/a&gt;
+&lt;a name="rest_code_7e95820699794e4fa604134d78a1f88c-13"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;appt-disp-window-function&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;function&lt;/span&gt; &lt;span class="nv"&gt;toast-appt-display&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;Now Emacs will use &lt;code class="docutils literal"&gt;toast&lt;/code&gt; to notify you of upcoming appointments:&lt;/p&gt;
+&lt;img alt="../images/toast_example.png" src="http://joonro.github.io/blog/posts/images/toast_example.png"&gt;
 &lt;p&gt;If you want to be fancier, you can show an icon in the notification as
 well. You can download an icon (from
 &lt;a class="reference external" href="http://www.easyicon.net/language.en/540985-org_mode_icon.html"&gt;http://www.easyicon.net/language.en/540985-org_mode_icon.html&lt;/a&gt;, for example)
-and modify &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;toast-appt-send-notification&lt;/span&gt;&lt;/tt&gt; by adding &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;-p&lt;/span&gt;&lt;/tt&gt; argument (you have
+and modify &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;toast-appt-send-notification&lt;/span&gt;&lt;/code&gt; by adding &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;-p&lt;/span&gt;&lt;/code&gt; argument (you have
 to use Windows-style path here):&lt;/p&gt;
-&lt;pre class="code scheme"&gt;&lt;a name="rest_code_796b1c1a99df4617ae9cef64c9c88832-1"&gt;&lt;/a&gt;&lt;span class="c1"&gt;;; set up the call to the notifier&lt;/span&gt;
-&lt;a name="rest_code_796b1c1a99df4617ae9cef64c9c88832-2"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;defun&lt;/span&gt; &lt;span class="nv"&gt;toast-appt-send-notification&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;title&lt;/span&gt; &lt;span class="nv"&gt;msg&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_796b1c1a99df4617ae9cef64c9c88832-3"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;shell-command&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;concat&lt;/span&gt; &lt;span class="nv"&gt;toast-notifier-path&lt;/span&gt;
-&lt;a name="rest_code_796b1c1a99df4617ae9cef64c9c88832-4"&gt;&lt;/a&gt;                         &lt;span class="s"&gt;" -t \""&lt;/span&gt; &lt;span class="nv"&gt;title&lt;/span&gt; &lt;span class="s"&gt;"\""&lt;/span&gt;
-&lt;a name="rest_code_796b1c1a99df4617ae9cef64c9c88832-5"&gt;&lt;/a&gt;                         &lt;span class="s"&gt;" -m \""&lt;/span&gt; &lt;span class="nv"&gt;msg&lt;/span&gt; &lt;span class="s"&gt;"\""&lt;/span&gt;
-&lt;a name="rest_code_796b1c1a99df4617ae9cef64c9c88832-6"&gt;&lt;/a&gt;                         &lt;span class="s"&gt;" -p C:\\Users\\joon\\Programs\\Assets\\Icons\\org_mode_256px_540985_easyicon.net.png"&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;pre class="code scheme"&gt;&lt;a name="rest_code_96bb8586851b421c8d28c1f1b5d62f1b-1"&gt;&lt;/a&gt;&lt;span class="c1"&gt;;; set up the call to the notifier&lt;/span&gt;
+&lt;a name="rest_code_96bb8586851b421c8d28c1f1b5d62f1b-2"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;defun&lt;/span&gt; &lt;span class="nv"&gt;toast-appt-send-notification&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;title&lt;/span&gt; &lt;span class="nv"&gt;msg&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_96bb8586851b421c8d28c1f1b5d62f1b-3"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;shell-command&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;concat&lt;/span&gt; &lt;span class="nv"&gt;toast-notifier-path&lt;/span&gt;
+&lt;a name="rest_code_96bb8586851b421c8d28c1f1b5d62f1b-4"&gt;&lt;/a&gt;                         &lt;span class="s"&gt;" -t \""&lt;/span&gt; &lt;span class="nv"&gt;title&lt;/span&gt; &lt;span class="s"&gt;"\""&lt;/span&gt;
+&lt;a name="rest_code_96bb8586851b421c8d28c1f1b5d62f1b-5"&gt;&lt;/a&gt;                         &lt;span class="s"&gt;" -m \""&lt;/span&gt; &lt;span class="nv"&gt;msg&lt;/span&gt; &lt;span class="s"&gt;"\""&lt;/span&gt;
+&lt;a name="rest_code_96bb8586851b421c8d28c1f1b5d62f1b-6"&gt;&lt;/a&gt;                         &lt;span class="s"&gt;" -p C:\\Users\\joon\\Programs\\Assets\\Icons\\org_mode_256px_540985_easyicon.net.png"&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
 &lt;/pre&gt;&lt;p&gt;which makes notifications look very nice:&lt;/p&gt;
-&lt;img alt="../images/toast_example_with_icon.png" src="http://joonro.github.io/blog/images/toast_example_with_icon.png"&gt;
-&lt;/div&gt;&lt;/div&gt;</description><category>emacs</category><category>howto</category><category>org-mode</category><category>setting</category><category>toast</category><category>windows</category><guid>http://joonro.github.io/blog/posts/toast-notifications-org-mode-windows.html</guid><pubDate>Sat, 26 Dec 2015 06:00:00 GMT</pubDate></item><item><title>How to set up inverse and forward search in LyX for Windows</title><link>http://joonro.github.io/blog/posts/inverse-and-forward-search-lyx-windows.html</link><dc:creator>Joon Ro</dc:creator><description>&lt;div&gt;&lt;p&gt;I describe how to set up &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Inverse_search"&gt;inverse&lt;/a&gt; and forward search in LyX for the Windows
+&lt;img alt="../images/toast_example_with_icon.png" src="http://joonro.github.io/blog/posts/images/toast_example_with_icon.png"&gt;
+&lt;/div&gt;&lt;/div&gt;</description><category>emacs</category><category>howto</category><category>org-mode</category><category>setting</category><category>toast</category><category>windows</category><guid>http://joonro.github.io/blog/posts/toast-notifications-org-mode-windows/</guid><pubDate>Sat, 26 Dec 2015 06:00:00 GMT</pubDate></item><item><title>How to set up inverse and forward search in LyX for Windows</title><link>http://joonro.github.io/blog/posts/inverse-and-forward-search-lyx-windows/</link><dc:creator>Joon Ro</dc:creator><description>&lt;div&gt;&lt;p&gt;I describe how to set up &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Inverse_search"&gt;inverse&lt;/a&gt; and forward search in LyX for the Windows
 environment, with &lt;a class="reference external" href="http://www.sumatrapdfreader.org/free-pdf-reader.html"&gt;SumatraPDF&lt;/a&gt; as the pdf viewer. Inverse search lets you
 quickly move to the corresponding part of a LyX (or LaTeX) source from its pdf
 output, typically by clicking on the text in the pdf viewer. Forward search
@@ -146,4 +151,4 @@ invoke forward search to make the pdf viewer scroll through the pdf document
 so the output counterpart of the source is shown. They are very useful
 especially when you are editing a long document. Most of the instructions
 overlap with those found at &lt;a class="reference external" href="http://wiki.lyx.org/LyX/SyncTeX#toc3"&gt;http://wiki.lyx.org/LyX/SyncTeX#toc3&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://joonro.github.io/blog/posts/inverse-and-forward-search-lyx-windows.html"&gt; click to read the rest of the article …&lt;/a&gt; (2 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><category>autohotkey</category><category>howto</category><category>latex</category><category>lyx</category><category>setting</category><category>windows</category><guid>http://joonro.github.io/blog/posts/inverse-and-forward-search-lyx-windows.html</guid><pubDate>Sat, 10 Oct 2015 05:00:00 GMT</pubDate></item></channel></rss>
+&lt;p&gt;&lt;a href="http://joonro.github.io/blog/posts/inverse-and-forward-search-lyx-windows/"&gt; click to read the rest of the article …&lt;/a&gt; (2 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><category>autohotkey</category><category>howto</category><category>latex</category><category>lyx</category><category>setting</category><category>windows</category><guid>http://joonro.github.io/blog/posts/inverse-and-forward-search-lyx-windows/</guid><pubDate>Sat, 10 Oct 2015 05:00:00 GMT</pubDate></item></channel></rss>

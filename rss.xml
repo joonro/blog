@@ -1,195 +1,207 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Joon's Blog</title><link>http://joonro.github.io/blog/</link><description>Joon's Blog</description><atom:link href="http://joonro.github.io/blog/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><lastBuildDate>Tue, 17 Jul 2018 03:03:43 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>My PowerShell Customizations</title><link>http://joonro.github.io/blog/posts/powershell-customizations.html</link><dc:creator>Joon Ro</dc:creator><description>&lt;div&gt;&lt;p&gt;I describe my customizations for PowerShell. With these, my PowerShell
+<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Joon's Blog</title><link>http://joonro.github.io/blog/</link><description>Joon's Blog</description><atom:link href="http://joonro.github.io/blog/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><lastBuildDate>Mon, 02 Mar 2020 00:18:45 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>My PowerShell Customizations</title><link>http://joonro.github.io/blog/posts/powershell-customizations/</link><dc:creator>Joon Ro</dc:creator><description>&lt;div&gt;&lt;p&gt;I describe my customizations for PowerShell. With these, my PowerShell
 terminal looks like the following screenshot. Not only these customizations
 make it look great, but also they make me productive in the command line in
 Windows.&lt;/p&gt;
-&lt;img alt="../images/posh_prompt.png" src="http://joonro.github.io/blog/images/posh_prompt.png"&gt;
+&lt;img alt="../images/posh_prompt.png" src="http://joonro.github.io/blog/posts/images/posh_prompt.png"&gt;
 &lt;div class="section" id="conemu"&gt;
 &lt;h2&gt;ConEmu&lt;/h2&gt;
 &lt;p&gt;I use ConEmu as my terminal emulator. ConEmu provides tabbed sessions,
 changing color schemes on-the-fly, and many customization options.&lt;/p&gt;
 &lt;div class="section" id="color-themes"&gt;
 &lt;h3&gt;Color Themes&lt;/h3&gt;
-&lt;p&gt;The screenshots are taken with &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;moe-dark&lt;/span&gt; theme&lt;/tt&gt;. ConEmu comes with many color
+&lt;p&gt;The screenshots are taken with &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;moe-dark&lt;/span&gt; theme&lt;/code&gt;. ConEmu comes with many color
 schemes, and I also maintain a github repository which contains my favorite
 color themes for ConEmu. You can check out the &lt;a class="reference external" href="https://github.com/joonro/ConEmu-Color-Themes"&gt;GitHub&lt;/a&gt; repository.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="posh-git-and-prompt-customization"&gt;
-&lt;h2&gt;posh-git and prompt Customization&lt;/h2&gt;
+&lt;h2&gt;posh-git and prompt customization&lt;/h2&gt;
+&lt;div class="admonition note"&gt;
+&lt;p class="admonition-title"&gt;Note&lt;/p&gt;
+&lt;p&gt;The current customization is for posh-git 0.7.x. posh-git 1.0.0 uses
+a different way of customization.&lt;/p&gt;
+&lt;/div&gt;
 &lt;p&gt;To get git-related information on your prompt, you should get &lt;a class="reference external" href="https://github.com/dahlbyk/posh-git"&gt;posh-git&lt;/a&gt;. Then,
-you can show the git-related information along with other useful information by modifying
-&lt;tt class="docutils literal"&gt;prompt()&lt;/tt&gt; function. For example:&lt;/p&gt;
-&lt;pre class="code powershell"&gt;&lt;a name="rest_code_25dd1009b39b4939b594f597770d27cc-1"&gt;&lt;/a&gt;&lt;span class="c"&gt;# http://serverfault.com/questions/95431&lt;/span&gt;
-&lt;a name="rest_code_25dd1009b39b4939b594f597770d27cc-2"&gt;&lt;/a&gt;&lt;span class="k"&gt;function&lt;/span&gt; &lt;span class="nb"&gt;Test-Administrator&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-&lt;a name="rest_code_25dd1009b39b4939b594f597770d27cc-3"&gt;&lt;/a&gt;    &lt;span class="nv"&gt;$user&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="no"&gt;[Security.Principal.WindowsIdentity]&lt;/span&gt;&lt;span class="p"&gt;::&lt;/span&gt;&lt;span class="n"&gt;GetCurrent&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
-&lt;a name="rest_code_25dd1009b39b4939b594f597770d27cc-4"&gt;&lt;/a&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;New-Object&lt;/span&gt; &lt;span class="n"&gt;Security&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Principal&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;WindowsPrincipal&lt;/span&gt; &lt;span class="nv"&gt;$user&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="n"&gt;IsInRole&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="no"&gt;[Security.Principal.WindowsBuiltinRole]&lt;/span&gt;&lt;span class="p"&gt;::&lt;/span&gt;&lt;span class="n"&gt;Administrator&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_25dd1009b39b4939b594f597770d27cc-5"&gt;&lt;/a&gt;&lt;span class="p"&gt;}&lt;/span&gt;
-&lt;a name="rest_code_25dd1009b39b4939b594f597770d27cc-6"&gt;&lt;/a&gt;
-&lt;a name="rest_code_25dd1009b39b4939b594f597770d27cc-7"&gt;&lt;/a&gt;&lt;span class="k"&gt;function&lt;/span&gt; &lt;span class="n"&gt;prompt&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-&lt;a name="rest_code_25dd1009b39b4939b594f597770d27cc-8"&gt;&lt;/a&gt;    &lt;span class="c"&gt;# https://github.com/dahlbyk/posh-git/wiki/Customizing-Your-PowerShell-Prompt&lt;/span&gt;
-&lt;a name="rest_code_25dd1009b39b4939b594f597770d27cc-9"&gt;&lt;/a&gt;    &lt;span class="nv"&gt;$origLastExitCode&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;$LastExitCode&lt;/span&gt;
-&lt;a name="rest_code_25dd1009b39b4939b594f597770d27cc-10"&gt;&lt;/a&gt;    &lt;span class="nb"&gt;Write-VcsStatus&lt;/span&gt;
-&lt;a name="rest_code_25dd1009b39b4939b594f597770d27cc-11"&gt;&lt;/a&gt;
-&lt;a name="rest_code_25dd1009b39b4939b594f597770d27cc-12"&gt;&lt;/a&gt;    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;Test-Administrator&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;  &lt;span class="c"&gt;# if elevated&lt;/span&gt;
-&lt;a name="rest_code_25dd1009b39b4939b594f597770d27cc-13"&gt;&lt;/a&gt;        &lt;span class="nb"&gt;Write-Host&lt;/span&gt; &lt;span class="s2"&gt;"(Elevated) "&lt;/span&gt; &lt;span class="n"&gt;-NoNewline&lt;/span&gt; &lt;span class="n"&gt;-ForegroundColor&lt;/span&gt; &lt;span class="n"&gt;White&lt;/span&gt;
-&lt;a name="rest_code_25dd1009b39b4939b594f597770d27cc-14"&gt;&lt;/a&gt;    &lt;span class="p"&gt;}&lt;/span&gt;
-&lt;a name="rest_code_25dd1009b39b4939b594f597770d27cc-15"&gt;&lt;/a&gt;
-&lt;a name="rest_code_25dd1009b39b4939b594f597770d27cc-16"&gt;&lt;/a&gt;    &lt;span class="nb"&gt;Write-Host&lt;/span&gt; &lt;span class="s2"&gt;"$env:USERNAME@"&lt;/span&gt; &lt;span class="n"&gt;-NoNewline&lt;/span&gt; &lt;span class="n"&gt;-ForegroundColor&lt;/span&gt; &lt;span class="n"&gt;DarkYellow&lt;/span&gt;
-&lt;a name="rest_code_25dd1009b39b4939b594f597770d27cc-17"&gt;&lt;/a&gt;    &lt;span class="nb"&gt;Write-Host&lt;/span&gt; &lt;span class="s2"&gt;"$env:COMPUTERNAME"&lt;/span&gt; &lt;span class="n"&gt;-NoNewline&lt;/span&gt; &lt;span class="n"&gt;-ForegroundColor&lt;/span&gt; &lt;span class="n"&gt;Magenta&lt;/span&gt;
-&lt;a name="rest_code_25dd1009b39b4939b594f597770d27cc-18"&gt;&lt;/a&gt;    &lt;span class="nb"&gt;Write-Host&lt;/span&gt; &lt;span class="s2"&gt;" : "&lt;/span&gt; &lt;span class="n"&gt;-NoNewline&lt;/span&gt; &lt;span class="n"&gt;-ForegroundColor&lt;/span&gt; &lt;span class="n"&gt;DarkGray&lt;/span&gt;
-&lt;a name="rest_code_25dd1009b39b4939b594f597770d27cc-19"&gt;&lt;/a&gt;
-&lt;a name="rest_code_25dd1009b39b4939b594f597770d27cc-20"&gt;&lt;/a&gt;    &lt;span class="nv"&gt;$curPath&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;$ExecutionContext&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;SessionState&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Path&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;CurrentLocation&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Path&lt;/span&gt;
-&lt;a name="rest_code_25dd1009b39b4939b594f597770d27cc-21"&gt;&lt;/a&gt;    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$curPath&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ToLower&lt;/span&gt;&lt;span class="p"&gt;().&lt;/span&gt;&lt;span class="n"&gt;StartsWith&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$Home&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ToLower&lt;/span&gt;&lt;span class="p"&gt;()))&lt;/span&gt;
-&lt;a name="rest_code_25dd1009b39b4939b594f597770d27cc-22"&gt;&lt;/a&gt;    &lt;span class="p"&gt;{&lt;/span&gt;
-&lt;a name="rest_code_25dd1009b39b4939b594f597770d27cc-23"&gt;&lt;/a&gt;        &lt;span class="nv"&gt;$curPath&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"~"&lt;/span&gt; &lt;span class="p"&gt;+&lt;/span&gt; &lt;span class="nv"&gt;$curPath&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;SubString&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$Home&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Length&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_25dd1009b39b4939b594f597770d27cc-24"&gt;&lt;/a&gt;    &lt;span class="p"&gt;}&lt;/span&gt;
-&lt;a name="rest_code_25dd1009b39b4939b594f597770d27cc-25"&gt;&lt;/a&gt;
-&lt;a name="rest_code_25dd1009b39b4939b594f597770d27cc-26"&gt;&lt;/a&gt;    &lt;span class="nb"&gt;Write-Host&lt;/span&gt; &lt;span class="nv"&gt;$curPath&lt;/span&gt; &lt;span class="n"&gt;-NoNewline&lt;/span&gt; &lt;span class="n"&gt;-ForegroundColor&lt;/span&gt; &lt;span class="n"&gt;Blue&lt;/span&gt;
-&lt;a name="rest_code_25dd1009b39b4939b594f597770d27cc-27"&gt;&lt;/a&gt;    &lt;span class="nb"&gt;Write-Host&lt;/span&gt; &lt;span class="s2"&gt;" : "&lt;/span&gt; &lt;span class="n"&gt;-NoNewline&lt;/span&gt; &lt;span class="n"&gt;-ForegroundColor&lt;/span&gt; &lt;span class="n"&gt;DarkGray&lt;/span&gt;
-&lt;a name="rest_code_25dd1009b39b4939b594f597770d27cc-28"&gt;&lt;/a&gt;    &lt;span class="nb"&gt;Write-Host&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;Get-Date&lt;/span&gt; &lt;span class="n"&gt;-Format&lt;/span&gt; &lt;span class="n"&gt;G&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;-NoNewline&lt;/span&gt; &lt;span class="n"&gt;-ForegroundColor&lt;/span&gt; &lt;span class="n"&gt;DarkMagenta&lt;/span&gt;
-&lt;a name="rest_code_25dd1009b39b4939b594f597770d27cc-29"&gt;&lt;/a&gt;    &lt;span class="nb"&gt;Write-Host&lt;/span&gt; &lt;span class="s2"&gt;" : "&lt;/span&gt; &lt;span class="n"&gt;-NoNewline&lt;/span&gt; &lt;span class="n"&gt;-ForegroundColor&lt;/span&gt; &lt;span class="n"&gt;DarkGray&lt;/span&gt;
-&lt;a name="rest_code_25dd1009b39b4939b594f597770d27cc-30"&gt;&lt;/a&gt;    &lt;span class="nv"&gt;$LastExitCode&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;$origLastExitCode&lt;/span&gt;
-&lt;a name="rest_code_25dd1009b39b4939b594f597770d27cc-31"&gt;&lt;/a&gt;    &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="se"&gt;`n&lt;/span&gt;&lt;span class="p"&gt;$(&lt;/span&gt;&lt;span class="s1"&gt;'&amp;gt;'&lt;/span&gt; &lt;span class="p"&gt;*&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$nestedPromptLevel&lt;/span&gt; &lt;span class="p"&gt;+&lt;/span&gt; &lt;span class="n"&gt;1&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="s2"&gt; "&lt;/span&gt;
-&lt;a name="rest_code_25dd1009b39b4939b594f597770d27cc-32"&gt;&lt;/a&gt;&lt;span class="p"&gt;}&lt;/span&gt;
-&lt;a name="rest_code_25dd1009b39b4939b594f597770d27cc-33"&gt;&lt;/a&gt;
-&lt;a name="rest_code_25dd1009b39b4939b594f597770d27cc-34"&gt;&lt;/a&gt;&lt;span class="nb"&gt;Import-Module&lt;/span&gt; &lt;span class="n"&gt;posh-git&lt;/span&gt;
-&lt;a name="rest_code_25dd1009b39b4939b594f597770d27cc-35"&gt;&lt;/a&gt;
-&lt;a name="rest_code_25dd1009b39b4939b594f597770d27cc-36"&gt;&lt;/a&gt;&lt;span class="nv"&gt;$global:GitPromptSettings&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;BeforeText&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'['&lt;/span&gt;
-&lt;a name="rest_code_25dd1009b39b4939b594f597770d27cc-37"&gt;&lt;/a&gt;&lt;span class="nv"&gt;$global:GitPromptSettings&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;AfterText&lt;/span&gt;  &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'] '&lt;/span&gt;
+you can show the git-related information along with other useful information
+by modifying &lt;code class="docutils literal"&gt;prompt()&lt;/code&gt; function. For example:&lt;/p&gt;
+&lt;pre class="code powershell"&gt;&lt;a name="rest_code_f62d432a40f24e29af43fe8f90e5ae23-1"&gt;&lt;/a&gt;&lt;span class="c"&gt;# http://serverfault.com/questions/95431&lt;/span&gt;
+&lt;a name="rest_code_f62d432a40f24e29af43fe8f90e5ae23-2"&gt;&lt;/a&gt;&lt;span class="k"&gt;function&lt;/span&gt; &lt;span class="nb"&gt;Test-Administrator&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;a name="rest_code_f62d432a40f24e29af43fe8f90e5ae23-3"&gt;&lt;/a&gt;    &lt;span class="nv"&gt;$user&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="no"&gt;[Security.Principal.WindowsIdentity]&lt;/span&gt;&lt;span class="p"&gt;::&lt;/span&gt;&lt;span class="n"&gt;GetCurrent&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+&lt;a name="rest_code_f62d432a40f24e29af43fe8f90e5ae23-4"&gt;&lt;/a&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;New-Object&lt;/span&gt; &lt;span class="n"&gt;Security&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Principal&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;WindowsPrincipal&lt;/span&gt; &lt;span class="nv"&gt;$user&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="n"&gt;IsInRole&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="no"&gt;[Security.Principal.WindowsBuiltinRole]&lt;/span&gt;&lt;span class="p"&gt;::&lt;/span&gt;&lt;span class="n"&gt;Administrator&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_f62d432a40f24e29af43fe8f90e5ae23-5"&gt;&lt;/a&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;a name="rest_code_f62d432a40f24e29af43fe8f90e5ae23-6"&gt;&lt;/a&gt;
+&lt;a name="rest_code_f62d432a40f24e29af43fe8f90e5ae23-7"&gt;&lt;/a&gt;&lt;span class="k"&gt;function&lt;/span&gt; &lt;span class="n"&gt;prompt&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;a name="rest_code_f62d432a40f24e29af43fe8f90e5ae23-8"&gt;&lt;/a&gt;    &lt;span class="c"&gt;# https://github.com/dahlbyk/posh-git/wiki/Customizing-Your-PowerShell-Prompt&lt;/span&gt;
+&lt;a name="rest_code_f62d432a40f24e29af43fe8f90e5ae23-9"&gt;&lt;/a&gt;    &lt;span class="nv"&gt;$origLastExitCode&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;$LastExitCode&lt;/span&gt;
+&lt;a name="rest_code_f62d432a40f24e29af43fe8f90e5ae23-10"&gt;&lt;/a&gt;    &lt;span class="nb"&gt;Write-VcsStatus&lt;/span&gt;
+&lt;a name="rest_code_f62d432a40f24e29af43fe8f90e5ae23-11"&gt;&lt;/a&gt;
+&lt;a name="rest_code_f62d432a40f24e29af43fe8f90e5ae23-12"&gt;&lt;/a&gt;    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;Test-Administrator&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;  &lt;span class="c"&gt;# if elevated&lt;/span&gt;
+&lt;a name="rest_code_f62d432a40f24e29af43fe8f90e5ae23-13"&gt;&lt;/a&gt;        &lt;span class="nb"&gt;Write-Host&lt;/span&gt; &lt;span class="s2"&gt;"(Elevated) "&lt;/span&gt; &lt;span class="n"&gt;-NoNewline&lt;/span&gt; &lt;span class="n"&gt;-ForegroundColor&lt;/span&gt; &lt;span class="n"&gt;White&lt;/span&gt;
+&lt;a name="rest_code_f62d432a40f24e29af43fe8f90e5ae23-14"&gt;&lt;/a&gt;    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;a name="rest_code_f62d432a40f24e29af43fe8f90e5ae23-15"&gt;&lt;/a&gt;
+&lt;a name="rest_code_f62d432a40f24e29af43fe8f90e5ae23-16"&gt;&lt;/a&gt;    &lt;span class="nb"&gt;Write-Host&lt;/span&gt; &lt;span class="s2"&gt;"$env:USERNAME@"&lt;/span&gt; &lt;span class="n"&gt;-NoNewline&lt;/span&gt; &lt;span class="n"&gt;-ForegroundColor&lt;/span&gt; &lt;span class="n"&gt;Red&lt;/span&gt;
+&lt;a name="rest_code_f62d432a40f24e29af43fe8f90e5ae23-17"&gt;&lt;/a&gt;    &lt;span class="nb"&gt;Write-Host&lt;/span&gt; &lt;span class="s2"&gt;"$env:COMPUTERNAME"&lt;/span&gt; &lt;span class="n"&gt;-NoNewline&lt;/span&gt; &lt;span class="n"&gt;-ForegroundColor&lt;/span&gt; &lt;span class="n"&gt;Yellow&lt;/span&gt;
+&lt;a name="rest_code_f62d432a40f24e29af43fe8f90e5ae23-18"&gt;&lt;/a&gt;    &lt;span class="nb"&gt;Write-Host&lt;/span&gt; &lt;span class="s2"&gt;" : "&lt;/span&gt; &lt;span class="n"&gt;-NoNewline&lt;/span&gt; &lt;span class="n"&gt;-ForegroundColor&lt;/span&gt; &lt;span class="n"&gt;DarkGray&lt;/span&gt;
+&lt;a name="rest_code_f62d432a40f24e29af43fe8f90e5ae23-19"&gt;&lt;/a&gt;
+&lt;a name="rest_code_f62d432a40f24e29af43fe8f90e5ae23-20"&gt;&lt;/a&gt;    &lt;span class="nv"&gt;$curPath&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;$ExecutionContext&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;SessionState&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Path&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;CurrentLocation&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Path&lt;/span&gt;
+&lt;a name="rest_code_f62d432a40f24e29af43fe8f90e5ae23-21"&gt;&lt;/a&gt;    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$curPath&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ToLower&lt;/span&gt;&lt;span class="p"&gt;().&lt;/span&gt;&lt;span class="n"&gt;StartsWith&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$Home&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ToLower&lt;/span&gt;&lt;span class="p"&gt;()))&lt;/span&gt;
+&lt;a name="rest_code_f62d432a40f24e29af43fe8f90e5ae23-22"&gt;&lt;/a&gt;    &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;a name="rest_code_f62d432a40f24e29af43fe8f90e5ae23-23"&gt;&lt;/a&gt;        &lt;span class="nv"&gt;$curPath&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"~"&lt;/span&gt; &lt;span class="p"&gt;+&lt;/span&gt; &lt;span class="nv"&gt;$curPath&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;SubString&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$Home&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Length&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_f62d432a40f24e29af43fe8f90e5ae23-24"&gt;&lt;/a&gt;    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;a name="rest_code_f62d432a40f24e29af43fe8f90e5ae23-25"&gt;&lt;/a&gt;
+&lt;a name="rest_code_f62d432a40f24e29af43fe8f90e5ae23-26"&gt;&lt;/a&gt;    &lt;span class="nb"&gt;Write-Host&lt;/span&gt; &lt;span class="nv"&gt;$curPath&lt;/span&gt; &lt;span class="n"&gt;-NoNewline&lt;/span&gt; &lt;span class="n"&gt;-ForegroundColor&lt;/span&gt; &lt;span class="n"&gt;Green&lt;/span&gt;
+&lt;a name="rest_code_f62d432a40f24e29af43fe8f90e5ae23-27"&gt;&lt;/a&gt;    &lt;span class="nb"&gt;Write-Host&lt;/span&gt; &lt;span class="s2"&gt;" : "&lt;/span&gt; &lt;span class="n"&gt;-NoNewline&lt;/span&gt; &lt;span class="n"&gt;-ForegroundColor&lt;/span&gt; &lt;span class="n"&gt;DarkGray&lt;/span&gt;
+&lt;a name="rest_code_f62d432a40f24e29af43fe8f90e5ae23-28"&gt;&lt;/a&gt;    &lt;span class="nb"&gt;Write-Host&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;Get-Date&lt;/span&gt; &lt;span class="n"&gt;-Format&lt;/span&gt; &lt;span class="n"&gt;G&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;-NoNewline&lt;/span&gt; &lt;span class="n"&gt;-ForegroundColor&lt;/span&gt; &lt;span class="n"&gt;Blue&lt;/span&gt;
+&lt;a name="rest_code_f62d432a40f24e29af43fe8f90e5ae23-29"&gt;&lt;/a&gt;    &lt;span class="nb"&gt;Write-Host&lt;/span&gt; &lt;span class="s2"&gt;" : "&lt;/span&gt; &lt;span class="n"&gt;-NoNewline&lt;/span&gt; &lt;span class="n"&gt;-ForegroundColor&lt;/span&gt; &lt;span class="n"&gt;DarkGray&lt;/span&gt;
+&lt;a name="rest_code_f62d432a40f24e29af43fe8f90e5ae23-30"&gt;&lt;/a&gt;    &lt;span class="nv"&gt;$LastExitCode&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;$origLastExitCode&lt;/span&gt;
+&lt;a name="rest_code_f62d432a40f24e29af43fe8f90e5ae23-31"&gt;&lt;/a&gt;    &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="se"&gt;`n&lt;/span&gt;&lt;span class="p"&gt;$(&lt;/span&gt;&lt;span class="s1"&gt;'&amp;gt;'&lt;/span&gt; &lt;span class="p"&gt;*&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$nestedPromptLevel&lt;/span&gt; &lt;span class="p"&gt;+&lt;/span&gt; &lt;span class="n"&gt;1&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="s2"&gt; "&lt;/span&gt;
+&lt;a name="rest_code_f62d432a40f24e29af43fe8f90e5ae23-32"&gt;&lt;/a&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;a name="rest_code_f62d432a40f24e29af43fe8f90e5ae23-33"&gt;&lt;/a&gt;
+&lt;a name="rest_code_f62d432a40f24e29af43fe8f90e5ae23-34"&gt;&lt;/a&gt;&lt;span class="nb"&gt;Import-Module&lt;/span&gt; &lt;span class="n"&gt;posh-git&lt;/span&gt;
+&lt;a name="rest_code_f62d432a40f24e29af43fe8f90e5ae23-35"&gt;&lt;/a&gt;
+&lt;a name="rest_code_f62d432a40f24e29af43fe8f90e5ae23-36"&gt;&lt;/a&gt;&lt;span class="nv"&gt;$global:GitPromptSettings&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;BeforeText&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'['&lt;/span&gt;
+&lt;a name="rest_code_f62d432a40f24e29af43fe8f90e5ae23-37"&gt;&lt;/a&gt;&lt;span class="nv"&gt;$global:GitPromptSettings&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;AfterText&lt;/span&gt;  &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'] '&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;div class="section" id="color-coding-get-childitem"&gt;
-&lt;h2&gt;Color coding &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;Get-ChildItem&lt;/span&gt;&lt;/tt&gt;&lt;/h2&gt;
-&lt;p&gt;To color-code the results of &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;Get-ChildItem&lt;/span&gt;&lt;/tt&gt;, I use my own
+&lt;h2&gt;Color coding &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;Get-ChildItem&lt;/span&gt;&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;To color-code the results of &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;Get-ChildItem&lt;/span&gt;&lt;/code&gt;, I use my own
 &lt;a class="reference external" href="https://github.com/joonro/Get-ChildItemColor"&gt;Get-ChildItemColor&lt;/a&gt;. Once you install it, you can set aliases to the exposed functions:&lt;/p&gt;
-&lt;pre class="code powershell"&gt;&lt;a name="rest_code_ef6ece0dd03544baa34dc5f20af490d4-1"&gt;&lt;/a&gt;&lt;span class="nb"&gt;Import-Module&lt;/span&gt; &lt;span class="nb"&gt;Get-ChildItemColor&lt;/span&gt;
-&lt;a name="rest_code_ef6ece0dd03544baa34dc5f20af490d4-2"&gt;&lt;/a&gt;
-&lt;a name="rest_code_ef6ece0dd03544baa34dc5f20af490d4-3"&gt;&lt;/a&gt;&lt;span class="nb"&gt;Set-Alias&lt;/span&gt; &lt;span class="n"&gt;l&lt;/span&gt; &lt;span class="nb"&gt;Get-ChildItemColor&lt;/span&gt; &lt;span class="n"&gt;-option&lt;/span&gt; &lt;span class="n"&gt;AllScope&lt;/span&gt;
-&lt;a name="rest_code_ef6ece0dd03544baa34dc5f20af490d4-4"&gt;&lt;/a&gt;&lt;span class="nb"&gt;Set-Alias&lt;/span&gt; &lt;span class="n"&gt;ls&lt;/span&gt; &lt;span class="nb"&gt;Get-ChildItemColorFormatWide&lt;/span&gt; &lt;span class="n"&gt;-option&lt;/span&gt; &lt;span class="n"&gt;AllScope&lt;/span&gt;
-&lt;/pre&gt;&lt;p&gt;so you have colored versions of &lt;tt class="docutils literal"&gt;l&lt;/tt&gt; and &lt;tt class="docutils literal"&gt;ls&lt;/tt&gt; equivalents.&lt;/p&gt;
+&lt;pre class="code powershell"&gt;&lt;a name="rest_code_c7113088c114414b8efca2598a786b31-1"&gt;&lt;/a&gt;&lt;span class="k"&gt;If&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;-Not&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;Test-Path&lt;/span&gt; &lt;span class="n"&gt;Variable&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt;&lt;span class="n"&gt;PSise&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;  &lt;span class="c"&gt;# Only run this in the console and not in the ISE&lt;/span&gt;
+&lt;a name="rest_code_c7113088c114414b8efca2598a786b31-2"&gt;&lt;/a&gt;    &lt;span class="nb"&gt;Import-Module&lt;/span&gt; &lt;span class="nb"&gt;Get-ChildItemColor&lt;/span&gt;
+&lt;a name="rest_code_c7113088c114414b8efca2598a786b31-3"&gt;&lt;/a&gt;
+&lt;a name="rest_code_c7113088c114414b8efca2598a786b31-4"&gt;&lt;/a&gt;    &lt;span class="nb"&gt;Set-Alias&lt;/span&gt; &lt;span class="n"&gt;l&lt;/span&gt; &lt;span class="nb"&gt;Get-ChildItemColor&lt;/span&gt; &lt;span class="n"&gt;-option&lt;/span&gt; &lt;span class="n"&gt;AllScope&lt;/span&gt;
+&lt;a name="rest_code_c7113088c114414b8efca2598a786b31-5"&gt;&lt;/a&gt;    &lt;span class="nb"&gt;Set-Alias&lt;/span&gt; &lt;span class="nb"&gt;ls Get-ChildItemColorFormatWide&lt;/span&gt; &lt;span class="n"&gt;-option&lt;/span&gt; &lt;span class="n"&gt;AllScope&lt;/span&gt;
+&lt;a name="rest_code_c7113088c114414b8efca2598a786b31-6"&gt;&lt;/a&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;so you have colored versions of &lt;code class="docutils literal"&gt;l&lt;/code&gt; and &lt;code class="docutils literal"&gt;ls&lt;/code&gt; equivalents.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="psreadline"&gt;
 &lt;h2&gt;PSReadLine&lt;/h2&gt;
-&lt;p&gt;&lt;a class="reference external" href="https://github.com/lzybkr/PSReadLine"&gt;PSReadLine&lt;/a&gt; makes PowerShell to behave like &lt;tt class="docutils literal"&gt;zsh&lt;/tt&gt;, which is my favorite shell
+&lt;p&gt;&lt;a class="reference external" href="https://github.com/lzybkr/PSReadLine"&gt;PSReadLine&lt;/a&gt; makes PowerShell to behave like &lt;code class="docutils literal"&gt;zsh&lt;/code&gt;, which is my favorite shell
 in GNU/Linux. It gives you substring history search, incremental history
 search, and awesome tab-completion. The following is my current setup:&lt;/p&gt;
-&lt;pre class="code powershell"&gt;&lt;a name="rest_code_930671354f2e4f4cb375190297630c1d-1"&gt;&lt;/a&gt;&lt;span class="nb"&gt;Import-Module&lt;/span&gt; &lt;span class="n"&gt;PSReadLine&lt;/span&gt;
-&lt;a name="rest_code_930671354f2e4f4cb375190297630c1d-2"&gt;&lt;/a&gt;
-&lt;a name="rest_code_930671354f2e4f4cb375190297630c1d-3"&gt;&lt;/a&gt;&lt;span class="nb"&gt;Set-PSReadLineOption&lt;/span&gt; &lt;span class="n"&gt;-HistoryNoDuplicates&lt;/span&gt;
-&lt;a name="rest_code_930671354f2e4f4cb375190297630c1d-4"&gt;&lt;/a&gt;&lt;span class="nb"&gt;Set-PSReadLineOption&lt;/span&gt; &lt;span class="n"&gt;-HistorySearchCursorMovesToEnd&lt;/span&gt;
-&lt;a name="rest_code_930671354f2e4f4cb375190297630c1d-5"&gt;&lt;/a&gt;&lt;span class="nb"&gt;Set-PSReadLineOption&lt;/span&gt; &lt;span class="n"&gt;-HistorySaveStyle&lt;/span&gt; &lt;span class="n"&gt;SaveIncrementally&lt;/span&gt;
-&lt;a name="rest_code_930671354f2e4f4cb375190297630c1d-6"&gt;&lt;/a&gt;&lt;span class="nb"&gt;Set-PSReadLineOption&lt;/span&gt; &lt;span class="n"&gt;-MaximumHistoryCount&lt;/span&gt; &lt;span class="n"&gt;4000&lt;/span&gt;
-&lt;a name="rest_code_930671354f2e4f4cb375190297630c1d-7"&gt;&lt;/a&gt;&lt;span class="c"&gt;# history substring search&lt;/span&gt;
-&lt;a name="rest_code_930671354f2e4f4cb375190297630c1d-8"&gt;&lt;/a&gt;&lt;span class="nb"&gt;Set-PSReadlineKeyHandler&lt;/span&gt; &lt;span class="n"&gt;-Key&lt;/span&gt; &lt;span class="n"&gt;UpArrow&lt;/span&gt; &lt;span class="n"&gt;-Function&lt;/span&gt; &lt;span class="n"&gt;HistorySearchBackward&lt;/span&gt;
-&lt;a name="rest_code_930671354f2e4f4cb375190297630c1d-9"&gt;&lt;/a&gt;&lt;span class="nb"&gt;Set-PSReadlineKeyHandler&lt;/span&gt; &lt;span class="n"&gt;-Key&lt;/span&gt; &lt;span class="n"&gt;DownArrow&lt;/span&gt; &lt;span class="n"&gt;-Function&lt;/span&gt; &lt;span class="n"&gt;HistorySearchForward&lt;/span&gt;
-&lt;a name="rest_code_930671354f2e4f4cb375190297630c1d-10"&gt;&lt;/a&gt;
-&lt;a name="rest_code_930671354f2e4f4cb375190297630c1d-11"&gt;&lt;/a&gt;&lt;span class="c"&gt;# Tab completion&lt;/span&gt;
-&lt;a name="rest_code_930671354f2e4f4cb375190297630c1d-12"&gt;&lt;/a&gt;&lt;span class="nb"&gt;Set-PSReadlineKeyHandler&lt;/span&gt; &lt;span class="n"&gt;-Chord&lt;/span&gt; &lt;span class="s1"&gt;'Shift+Tab'&lt;/span&gt; &lt;span class="n"&gt;-Function&lt;/span&gt; &lt;span class="n"&gt;Complete&lt;/span&gt;
-&lt;a name="rest_code_930671354f2e4f4cb375190297630c1d-13"&gt;&lt;/a&gt;&lt;span class="nb"&gt;Set-PSReadlineKeyHandler&lt;/span&gt; &lt;span class="n"&gt;-Key&lt;/span&gt; &lt;span class="n"&gt;Tab&lt;/span&gt; &lt;span class="n"&gt;-Function&lt;/span&gt; &lt;span class="n"&gt;MenuComplete&lt;/span&gt;
+&lt;pre class="code powershell"&gt;&lt;a name="rest_code_6932680119b049f1a29d85e1859bb7db-1"&gt;&lt;/a&gt;&lt;span class="nb"&gt;Import-Module&lt;/span&gt; &lt;span class="n"&gt;PSReadLine&lt;/span&gt;
+&lt;a name="rest_code_6932680119b049f1a29d85e1859bb7db-2"&gt;&lt;/a&gt;
+&lt;a name="rest_code_6932680119b049f1a29d85e1859bb7db-3"&gt;&lt;/a&gt;&lt;span class="nb"&gt;Set-PSReadLineOption&lt;/span&gt; &lt;span class="n"&gt;-HistoryNoDuplicates&lt;/span&gt;
+&lt;a name="rest_code_6932680119b049f1a29d85e1859bb7db-4"&gt;&lt;/a&gt;&lt;span class="nb"&gt;Set-PSReadLineOption&lt;/span&gt; &lt;span class="n"&gt;-HistorySearchCursorMovesToEnd&lt;/span&gt;
+&lt;a name="rest_code_6932680119b049f1a29d85e1859bb7db-5"&gt;&lt;/a&gt;&lt;span class="nb"&gt;Set-PSReadLineOption&lt;/span&gt; &lt;span class="n"&gt;-HistorySaveStyle&lt;/span&gt; &lt;span class="n"&gt;SaveIncrementally&lt;/span&gt;
+&lt;a name="rest_code_6932680119b049f1a29d85e1859bb7db-6"&gt;&lt;/a&gt;&lt;span class="nb"&gt;Set-PSReadLineOption&lt;/span&gt; &lt;span class="n"&gt;-MaximumHistoryCount&lt;/span&gt; &lt;span class="n"&gt;4000&lt;/span&gt;
+&lt;a name="rest_code_6932680119b049f1a29d85e1859bb7db-7"&gt;&lt;/a&gt;&lt;span class="c"&gt;# history substring search&lt;/span&gt;
+&lt;a name="rest_code_6932680119b049f1a29d85e1859bb7db-8"&gt;&lt;/a&gt;&lt;span class="nb"&gt;Set-PSReadlineKeyHandler&lt;/span&gt; &lt;span class="n"&gt;-Key&lt;/span&gt; &lt;span class="n"&gt;UpArrow&lt;/span&gt; &lt;span class="n"&gt;-Function&lt;/span&gt; &lt;span class="n"&gt;HistorySearchBackward&lt;/span&gt;
+&lt;a name="rest_code_6932680119b049f1a29d85e1859bb7db-9"&gt;&lt;/a&gt;&lt;span class="nb"&gt;Set-PSReadlineKeyHandler&lt;/span&gt; &lt;span class="n"&gt;-Key&lt;/span&gt; &lt;span class="n"&gt;DownArrow&lt;/span&gt; &lt;span class="n"&gt;-Function&lt;/span&gt; &lt;span class="n"&gt;HistorySearchForward&lt;/span&gt;
+&lt;a name="rest_code_6932680119b049f1a29d85e1859bb7db-10"&gt;&lt;/a&gt;
+&lt;a name="rest_code_6932680119b049f1a29d85e1859bb7db-11"&gt;&lt;/a&gt;&lt;span class="c"&gt;# Tab completion&lt;/span&gt;
+&lt;a name="rest_code_6932680119b049f1a29d85e1859bb7db-12"&gt;&lt;/a&gt;&lt;span class="nb"&gt;Set-PSReadlineKeyHandler&lt;/span&gt; &lt;span class="n"&gt;-Chord&lt;/span&gt; &lt;span class="s1"&gt;'Shift+Tab'&lt;/span&gt; &lt;span class="n"&gt;-Function&lt;/span&gt; &lt;span class="n"&gt;Complete&lt;/span&gt;
+&lt;a name="rest_code_6932680119b049f1a29d85e1859bb7db-13"&gt;&lt;/a&gt;&lt;span class="nb"&gt;Set-PSReadlineKeyHandler&lt;/span&gt; &lt;span class="n"&gt;-Key&lt;/span&gt; &lt;span class="n"&gt;Tab&lt;/span&gt; &lt;span class="n"&gt;-Function&lt;/span&gt; &lt;span class="n"&gt;MenuComplete&lt;/span&gt;
 &lt;/pre&gt;&lt;p&gt;With these settings, I can press up and down arrows for history substring
 search, and the tab completion shows me available candidates. For example:&lt;/p&gt;
-&lt;img alt="../images/posh_PSReadLine_tab_completion.png" src="http://joonro.github.io/blog/images/posh_PSReadLine_tab_completion.png"&gt;
-&lt;p&gt;You can also use &lt;tt class="docutils literal"&gt;CTRL + r&lt;/tt&gt; for incremental history search.&lt;/p&gt;
+&lt;img alt="../images/posh_PSReadLine_tab_completion.png" src="http://joonro.github.io/blog/posts/images/posh_PSReadLine_tab_completion.png"&gt;
+&lt;p&gt;You can also use &lt;code class="docutils literal"&gt;CTRL + r&lt;/code&gt; for incremental history search.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="others"&gt;
 &lt;h2&gt;Others&lt;/h2&gt;
 &lt;div class="section" id="cddash"&gt;
-&lt;h3&gt;&lt;tt class="docutils literal"&gt;cddash&lt;/tt&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;code class="docutils literal"&gt;cddash&lt;/code&gt;&lt;/h3&gt;
 &lt;p&gt;You can use the following to have the "dash" functionality - namely, you can go
-back to the previous location by typing &lt;tt class="docutils literal"&gt;cd -&lt;/tt&gt;. It is from
+back to the previous location by typing &lt;code class="docutils literal"&gt;cd -&lt;/code&gt;. It is from
 &lt;a class="reference external" href="http://goo.gl/xRbYbk"&gt;http://goo.gl/xRbYbk&lt;/a&gt;.&lt;/p&gt;
-&lt;pre class="code powershell"&gt;&lt;a name="rest_code_b52eb687a36a44b2b30458ef93c11d30-1"&gt;&lt;/a&gt;&lt;span class="k"&gt;function&lt;/span&gt; &lt;span class="n"&gt;cddash&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-&lt;a name="rest_code_b52eb687a36a44b2b30458ef93c11d30-2"&gt;&lt;/a&gt;    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$args&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;-eq&lt;/span&gt; &lt;span class="s1"&gt;'-'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-&lt;a name="rest_code_b52eb687a36a44b2b30458ef93c11d30-3"&gt;&lt;/a&gt;        &lt;span class="nv"&gt;$pwd&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;$OLDPWD&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;a name="rest_code_b52eb687a36a44b2b30458ef93c11d30-4"&gt;&lt;/a&gt;    &lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-&lt;a name="rest_code_b52eb687a36a44b2b30458ef93c11d30-5"&gt;&lt;/a&gt;        &lt;span class="nv"&gt;$pwd&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;$args&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;0&lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;
-&lt;a name="rest_code_b52eb687a36a44b2b30458ef93c11d30-6"&gt;&lt;/a&gt;    &lt;span class="p"&gt;}&lt;/span&gt;
-&lt;a name="rest_code_b52eb687a36a44b2b30458ef93c11d30-7"&gt;&lt;/a&gt;    &lt;span class="nv"&gt;$tmp&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pwd&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;a name="rest_code_b52eb687a36a44b2b30458ef93c11d30-8"&gt;&lt;/a&gt;
-&lt;a name="rest_code_b52eb687a36a44b2b30458ef93c11d30-9"&gt;&lt;/a&gt;    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$pwd&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-&lt;a name="rest_code_b52eb687a36a44b2b30458ef93c11d30-10"&gt;&lt;/a&gt;        &lt;span class="nb"&gt;Set-Location&lt;/span&gt; &lt;span class="nv"&gt;$pwd&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;a name="rest_code_b52eb687a36a44b2b30458ef93c11d30-11"&gt;&lt;/a&gt;    &lt;span class="p"&gt;}&lt;/span&gt;
-&lt;a name="rest_code_b52eb687a36a44b2b30458ef93c11d30-12"&gt;&lt;/a&gt;    &lt;span class="nb"&gt;Set-Variable&lt;/span&gt; &lt;span class="n"&gt;-Name&lt;/span&gt; &lt;span class="n"&gt;OLDPWD&lt;/span&gt; &lt;span class="n"&gt;-Value&lt;/span&gt; &lt;span class="nv"&gt;$tmp&lt;/span&gt; &lt;span class="n"&gt;-Scope&lt;/span&gt; &lt;span class="n"&gt;global&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;a name="rest_code_b52eb687a36a44b2b30458ef93c11d30-13"&gt;&lt;/a&gt;&lt;span class="p"&gt;}&lt;/span&gt;
-&lt;a name="rest_code_b52eb687a36a44b2b30458ef93c11d30-14"&gt;&lt;/a&gt;
-&lt;a name="rest_code_b52eb687a36a44b2b30458ef93c11d30-15"&gt;&lt;/a&gt;&lt;span class="nb"&gt;Set-Alias&lt;/span&gt; &lt;span class="n"&gt;-Name&lt;/span&gt; &lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="n"&gt;-value&lt;/span&gt; &lt;span class="n"&gt;cddash&lt;/span&gt; &lt;span class="n"&gt;-Option&lt;/span&gt; &lt;span class="n"&gt;AllScope&lt;/span&gt;
+&lt;pre class="code powershell"&gt;&lt;a name="rest_code_1ec8344cae924d308022fb7ecd2b4d09-1"&gt;&lt;/a&gt;&lt;span class="k"&gt;function&lt;/span&gt; &lt;span class="n"&gt;cddash&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;a name="rest_code_1ec8344cae924d308022fb7ecd2b4d09-2"&gt;&lt;/a&gt;    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$args&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;-eq&lt;/span&gt; &lt;span class="s1"&gt;'-'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;a name="rest_code_1ec8344cae924d308022fb7ecd2b4d09-3"&gt;&lt;/a&gt;        &lt;span class="nv"&gt;$pwd&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;$OLDPWD&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_1ec8344cae924d308022fb7ecd2b4d09-4"&gt;&lt;/a&gt;    &lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;a name="rest_code_1ec8344cae924d308022fb7ecd2b4d09-5"&gt;&lt;/a&gt;        &lt;span class="nv"&gt;$pwd&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;$args&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;0&lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;
+&lt;a name="rest_code_1ec8344cae924d308022fb7ecd2b4d09-6"&gt;&lt;/a&gt;    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;a name="rest_code_1ec8344cae924d308022fb7ecd2b4d09-7"&gt;&lt;/a&gt;    &lt;span class="nv"&gt;$tmp&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pwd&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_1ec8344cae924d308022fb7ecd2b4d09-8"&gt;&lt;/a&gt;
+&lt;a name="rest_code_1ec8344cae924d308022fb7ecd2b4d09-9"&gt;&lt;/a&gt;    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$pwd&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;a name="rest_code_1ec8344cae924d308022fb7ecd2b4d09-10"&gt;&lt;/a&gt;        &lt;span class="nb"&gt;Set-Location&lt;/span&gt; &lt;span class="nv"&gt;$pwd&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_1ec8344cae924d308022fb7ecd2b4d09-11"&gt;&lt;/a&gt;    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;a name="rest_code_1ec8344cae924d308022fb7ecd2b4d09-12"&gt;&lt;/a&gt;    &lt;span class="nb"&gt;Set-Variable&lt;/span&gt; &lt;span class="n"&gt;-Name&lt;/span&gt; &lt;span class="n"&gt;OLDPWD&lt;/span&gt; &lt;span class="n"&gt;-Value&lt;/span&gt; &lt;span class="nv"&gt;$tmp&lt;/span&gt; &lt;span class="n"&gt;-Scope&lt;/span&gt; &lt;span class="n"&gt;global&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;a name="rest_code_1ec8344cae924d308022fb7ecd2b4d09-13"&gt;&lt;/a&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;a name="rest_code_1ec8344cae924d308022fb7ecd2b4d09-14"&gt;&lt;/a&gt;
+&lt;a name="rest_code_1ec8344cae924d308022fb7ecd2b4d09-15"&gt;&lt;/a&gt;&lt;span class="nb"&gt;Set-Alias&lt;/span&gt; &lt;span class="n"&gt;-Name&lt;/span&gt; &lt;span class="nb"&gt;cd &lt;/span&gt;&lt;span class="n"&gt;-value&lt;/span&gt; &lt;span class="n"&gt;cddash&lt;/span&gt; &lt;span class="n"&gt;-Option&lt;/span&gt; &lt;span class="n"&gt;AllScope&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;div class="section" id="boost-startup-speed"&gt;
 &lt;h3&gt;Boost startup speed&lt;/h3&gt;
 &lt;p&gt;If you feel it takes a lot of time to start a PowerShell session due to your
-profile script, I found running the following (I saved it as &lt;tt class="docutils literal"&gt;ngen.ps1&lt;/tt&gt;) in an
+profile script, I found running the following (I saved it as &lt;code class="docutils literal"&gt;ngen.ps1&lt;/code&gt;) in an
 elevated PowerShell helps a lot.&lt;/p&gt;
-&lt;pre class="code powershell"&gt;&lt;a name="rest_code_eb06b17754eb40fea9ae5d673dee3b83-1"&gt;&lt;/a&gt;&lt;span class="nv"&gt;$env:path&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="no"&gt;[Runtime.InteropServices.RuntimeEnvironment]&lt;/span&gt;&lt;span class="p"&gt;::&lt;/span&gt;&lt;span class="n"&gt;GetRuntimeDirectory&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;a name="rest_code_eb06b17754eb40fea9ae5d673dee3b83-2"&gt;&lt;/a&gt;&lt;span class="no"&gt;[AppDomain]&lt;/span&gt;&lt;span class="p"&gt;::&lt;/span&gt;&lt;span class="n"&gt;CurrentDomain&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;GetAssemblies&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="p"&gt;%&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-&lt;a name="rest_code_eb06b17754eb40fea9ae5d673dee3b83-3"&gt;&lt;/a&gt;  &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(!&lt;/span&gt; &lt;span class="nv"&gt;$_&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;location&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="k"&gt;continue&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
-&lt;a name="rest_code_eb06b17754eb40fea9ae5d673dee3b83-4"&gt;&lt;/a&gt;  &lt;span class="nv"&gt;$Name&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;Split-Path&lt;/span&gt; &lt;span class="nv"&gt;$_&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;location&lt;/span&gt; &lt;span class="n"&gt;-leaf&lt;/span&gt;
-&lt;a name="rest_code_eb06b17754eb40fea9ae5d673dee3b83-5"&gt;&lt;/a&gt;  &lt;span class="nb"&gt;Write-Host&lt;/span&gt; &lt;span class="n"&gt;-ForegroundColor&lt;/span&gt; &lt;span class="n"&gt;Yellow&lt;/span&gt; &lt;span class="s2"&gt;"NGENing : $Name"&lt;/span&gt;
-&lt;a name="rest_code_eb06b17754eb40fea9ae5d673dee3b83-6"&gt;&lt;/a&gt;  &lt;span class="n"&gt;ngen&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="nv"&gt;$_&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;location&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="p"&gt;%&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="se"&gt;`t&lt;/span&gt;&lt;span class="s2"&gt;$_"&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
-&lt;a name="rest_code_eb06b17754eb40fea9ae5d673dee3b83-7"&gt;&lt;/a&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;pre class="code powershell"&gt;&lt;a name="rest_code_e738be7d33844cf5b96ecae391753cfb-1"&gt;&lt;/a&gt;&lt;span class="nv"&gt;$env:path&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="no"&gt;[Runtime.InteropServices.RuntimeEnvironment]&lt;/span&gt;&lt;span class="p"&gt;::&lt;/span&gt;&lt;span class="n"&gt;GetRuntimeDirectory&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;a name="rest_code_e738be7d33844cf5b96ecae391753cfb-2"&gt;&lt;/a&gt;&lt;span class="no"&gt;[AppDomain]&lt;/span&gt;&lt;span class="p"&gt;::&lt;/span&gt;&lt;span class="n"&gt;CurrentDomain&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;GetAssemblies&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="p"&gt;%&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;a name="rest_code_e738be7d33844cf5b96ecae391753cfb-3"&gt;&lt;/a&gt;  &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(!&lt;/span&gt; &lt;span class="nv"&gt;$_&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;location&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="k"&gt;continue&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;a name="rest_code_e738be7d33844cf5b96ecae391753cfb-4"&gt;&lt;/a&gt;  &lt;span class="nv"&gt;$Name&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;Split-Path&lt;/span&gt; &lt;span class="nv"&gt;$_&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;location&lt;/span&gt; &lt;span class="n"&gt;-leaf&lt;/span&gt;
+&lt;a name="rest_code_e738be7d33844cf5b96ecae391753cfb-5"&gt;&lt;/a&gt;  &lt;span class="nb"&gt;Write-Host&lt;/span&gt; &lt;span class="n"&gt;-ForegroundColor&lt;/span&gt; &lt;span class="n"&gt;Yellow&lt;/span&gt; &lt;span class="s2"&gt;"NGENing : $Name"&lt;/span&gt;
+&lt;a name="rest_code_e738be7d33844cf5b96ecae391753cfb-6"&gt;&lt;/a&gt;  &lt;span class="n"&gt;ngen&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="nv"&gt;$_&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;location&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="p"&gt;%&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="se"&gt;`t&lt;/span&gt;&lt;span class="s2"&gt;$_"&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;a name="rest_code_e738be7d33844cf5b96ecae391753cfb-7"&gt;&lt;/a&gt;&lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;p&gt;Source: &lt;a class="reference external" href="http://stackoverflow.com/questions/4208694/"&gt;http://stackoverflow.com/questions/4208694/&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="changelog"&gt;
 &lt;h2&gt;Changelog&lt;/h2&gt;
-&lt;dl class="docutils"&gt;
+&lt;dl class="simple"&gt;
+&lt;dt&gt;[2020-03-01 Sun]&lt;/dt&gt;
+&lt;dd&gt;&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;p&gt;Add a note that current prompt customization is for &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;posh-git&lt;/span&gt;&lt;/code&gt; version 0.7.x.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/dd&gt;
 &lt;dt&gt;[2017-04-22 Sat]&lt;/dt&gt;
-&lt;dd&gt;&lt;ul class="first last simple"&gt;
-&lt;li&gt;Updated prompt customization script for the latest version of &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;posh-git&lt;/span&gt;&lt;/tt&gt;
-(0.7.2)&lt;/li&gt;
-&lt;li&gt;Updated &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;Git-ChildItemColor&lt;/span&gt;&lt;/tt&gt; related information&lt;/li&gt;
+&lt;dd&gt;&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;p&gt;Update prompt customization script for the latest version of &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;posh-git&lt;/span&gt;&lt;/code&gt;
+(0.7.2)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Update &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;Git-ChildItemColor&lt;/span&gt;&lt;/code&gt; related information&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/dd&gt;
 &lt;dt&gt;[2017-01-03 Tue]&lt;/dt&gt;
-&lt;dd&gt;&lt;ul class="first last simple"&gt;
-&lt;li&gt;Updated prompt customization script for the latest version of &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;posh-git&lt;/span&gt;&lt;/tt&gt;&lt;/li&gt;
+&lt;dd&gt;&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;p&gt;Update prompt customization script for the latest version of &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;posh-git&lt;/span&gt;&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/dd&gt;
 &lt;/dl&gt;
-&lt;/div&gt;&lt;/div&gt;</description><category>git</category><category>posh</category><category>PowerShell</category><category>settings</category><category>windows</category><guid>http://joonro.github.io/blog/posts/powershell-customizations.html</guid><pubDate>Sat, 22 Apr 2017 21:00:00 GMT</pubDate></item><item><title>Syntax highlighting in LaTeX export in org-mode: specifying outputdir option for minted package</title><link>http://joonro.github.io/blog/posts/org-mode-outputdir-minted-latex-export.html</link><dc:creator>Joon Ro</dc:creator><description>&lt;div&gt;&lt;p&gt;When you do LaTeX export in org-mode, you can get syntax highlighting in pdf
-output using &lt;tt class="docutils literal"&gt;minted&lt;/tt&gt; package, which uses &lt;tt class="docutils literal"&gt;pygments&lt;/tt&gt;. You can add the following
-in your &lt;tt class="docutils literal"&gt;init&lt;/tt&gt; file:&lt;/p&gt;
-&lt;pre class="code common-lisp"&gt;&lt;a name="rest_code_6c74fdbec29f47868ff1e4e8ca2300e8-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;require&lt;/span&gt; &lt;span class="ss"&gt;'ox-latex&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_6c74fdbec29f47868ff1e4e8ca2300e8-2"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;add-to-list&lt;/span&gt; &lt;span class="ss"&gt;'org-latex-packages-alist&lt;/span&gt; &lt;span class="o"&gt;'&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;""&lt;/span&gt; &lt;span class="s"&gt;"minted"&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-&lt;a name="rest_code_6c74fdbec29f47868ff1e4e8ca2300e8-3"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;org-latex-listings&lt;/span&gt; &lt;span class="ss"&gt;'minted&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_6c74fdbec29f47868ff1e4e8ca2300e8-4"&gt;&lt;/a&gt;
-&lt;a name="rest_code_6c74fdbec29f47868ff1e4e8ca2300e8-5"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;org-latex-pdf-process&lt;/span&gt;
-&lt;a name="rest_code_6c74fdbec29f47868ff1e4e8ca2300e8-6"&gt;&lt;/a&gt;      &lt;span class="o"&gt;'&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"&lt;/span&gt;
-&lt;a name="rest_code_6c74fdbec29f47868ff1e4e8ca2300e8-7"&gt;&lt;/a&gt;        &lt;span class="s"&gt;"pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"&lt;/span&gt;
-&lt;a name="rest_code_6c74fdbec29f47868ff1e4e8ca2300e8-8"&gt;&lt;/a&gt;        &lt;span class="s"&gt;"pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/div&gt;&lt;/div&gt;</description><category>git</category><category>posh</category><category>PowerShell</category><category>settings</category><category>windows</category><guid>http://joonro.github.io/blog/posts/powershell-customizations/</guid><pubDate>Sun, 01 Mar 2020 22:00:00 GMT</pubDate></item><item><title>Syntax highlighting in LaTeX export in org-mode: specifying outputdir option for minted package</title><link>http://joonro.github.io/blog/posts/org-mode-outputdir-minted-latex-export/</link><dc:creator>Joon Ro</dc:creator><description>&lt;div&gt;&lt;p&gt;When you do LaTeX export in org-mode, you can get syntax highlighting in pdf
+output using &lt;code class="docutils literal"&gt;minted&lt;/code&gt; package, which uses &lt;code class="docutils literal"&gt;pygments&lt;/code&gt;. You can add the following
+in your &lt;code class="docutils literal"&gt;init&lt;/code&gt; file:&lt;/p&gt;
+&lt;pre class="code common-lisp"&gt;&lt;a name="rest_code_e104301201874b0e9ba44e8b8f64bfaf-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;require&lt;/span&gt; &lt;span class="ss"&gt;'ox-latex&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_e104301201874b0e9ba44e8b8f64bfaf-2"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;add-to-list&lt;/span&gt; &lt;span class="ss"&gt;'org-latex-packages-alist&lt;/span&gt; &lt;span class="o"&gt;'&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;""&lt;/span&gt; &lt;span class="s"&gt;"minted"&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;a name="rest_code_e104301201874b0e9ba44e8b8f64bfaf-3"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;org-latex-listings&lt;/span&gt; &lt;span class="ss"&gt;'minted&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_e104301201874b0e9ba44e8b8f64bfaf-4"&gt;&lt;/a&gt;
+&lt;a name="rest_code_e104301201874b0e9ba44e8b8f64bfaf-5"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;org-latex-pdf-process&lt;/span&gt;
+&lt;a name="rest_code_e104301201874b0e9ba44e8b8f64bfaf-6"&gt;&lt;/a&gt;      &lt;span class="o"&gt;'&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"&lt;/span&gt;
+&lt;a name="rest_code_e104301201874b0e9ba44e8b8f64bfaf-7"&gt;&lt;/a&gt;        &lt;span class="s"&gt;"pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"&lt;/span&gt;
+&lt;a name="rest_code_e104301201874b0e9ba44e8b8f64bfaf-8"&gt;&lt;/a&gt;        &lt;span class="s"&gt;"pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;/pre&gt;&lt;p&gt;The problem with this is that if you want to export the document to a output
-directory, (e.g., using &lt;tt class="docutils literal"&gt;:EXPORT_FILE_NAME: ./Output/File_Name&lt;/tt&gt; property),
+directory, (e.g., using &lt;code class="docutils literal"&gt;:EXPORT_FILE_NAME: ./Output/File_Name&lt;/code&gt; property),
 then you will get the following error:&lt;/p&gt;
-&lt;pre class="code tex"&gt;&lt;a name="rest_code_0c37eab16feb4041ac1691c5efc40911-1"&gt;&lt;/a&gt;! Package minted Error: Missing Pygments output; &lt;span class="k"&gt;\inputminted&lt;/span&gt; was
-&lt;a name="rest_code_0c37eab16feb4041ac1691c5efc40911-2"&gt;&lt;/a&gt;probably given a file that does not exist--otherwise, you may need
-&lt;a name="rest_code_0c37eab16feb4041ac1691c5efc40911-3"&gt;&lt;/a&gt;the outputdir package option, or may be using an incompatible build tool.
-&lt;/pre&gt;&lt;p&gt;because &lt;tt class="docutils literal"&gt;minted&lt;/tt&gt; does not know where to find the intermediate file.&lt;/p&gt;
-&lt;p&gt;My solution is first commenting out the &lt;tt class="docutils literal"&gt;minted&lt;/tt&gt; package part:&lt;/p&gt;
-&lt;pre class="code common-lisp"&gt;&lt;a name="rest_code_2f8714642f3c4041864ac7fd8892e226-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;require&lt;/span&gt; &lt;span class="ss"&gt;'ox-latex&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_2f8714642f3c4041864ac7fd8892e226-2"&gt;&lt;/a&gt;&lt;span class="c1"&gt;;(add-to-list 'org-latex-packages-alist '("" "minted"))&lt;/span&gt;
-&lt;a name="rest_code_2f8714642f3c4041864ac7fd8892e226-3"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;org-latex-listings&lt;/span&gt; &lt;span class="ss"&gt;'minted&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_2f8714642f3c4041864ac7fd8892e226-4"&gt;&lt;/a&gt;
-&lt;a name="rest_code_2f8714642f3c4041864ac7fd8892e226-5"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;org-latex-pdf-process&lt;/span&gt;
-&lt;a name="rest_code_2f8714642f3c4041864ac7fd8892e226-6"&gt;&lt;/a&gt;      &lt;span class="o"&gt;'&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"&lt;/span&gt;
-&lt;a name="rest_code_2f8714642f3c4041864ac7fd8892e226-7"&gt;&lt;/a&gt;        &lt;span class="s"&gt;"pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"&lt;/span&gt;
-&lt;a name="rest_code_2f8714642f3c4041864ac7fd8892e226-8"&gt;&lt;/a&gt;        &lt;span class="s"&gt;"pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-&lt;/pre&gt;&lt;p&gt;and then manually load &lt;tt class="docutils literal"&gt;minted&lt;/tt&gt; package with specifying &lt;tt class="docutils literal"&gt;outputdir&lt;/tt&gt; option in the org file:&lt;/p&gt;
-&lt;pre class="code text"&gt;&lt;a name="rest_code_07587ccb399e429fa4694186f8205b1a-1"&gt;&lt;/a&gt;* Test
-&lt;a name="rest_code_07587ccb399e429fa4694186f8205b1a-2"&gt;&lt;/a&gt;:PROPERTIES:
-&lt;a name="rest_code_07587ccb399e429fa4694186f8205b1a-3"&gt;&lt;/a&gt;:EXPORT_FILE_NAME: Output/File_Name
-&lt;a name="rest_code_07587ccb399e429fa4694186f8205b1a-4"&gt;&lt;/a&gt;:EXPORT_LATEX_HEADER+: \usepackage[outputdir=Output]{minted}
-&lt;a name="rest_code_07587ccb399e429fa4694186f8205b1a-5"&gt;&lt;/a&gt;:END:
+&lt;pre class="code tex"&gt;&lt;a name="rest_code_c24370d54e7643afb9ae5e4f38689ac0-1"&gt;&lt;/a&gt;! Package minted Error: Missing Pygments output; &lt;span class="k"&gt;\inputminted&lt;/span&gt; was
+&lt;a name="rest_code_c24370d54e7643afb9ae5e4f38689ac0-2"&gt;&lt;/a&gt;probably given a file that does not exist--otherwise, you may need
+&lt;a name="rest_code_c24370d54e7643afb9ae5e4f38689ac0-3"&gt;&lt;/a&gt;the outputdir package option, or may be using an incompatible build tool.
+&lt;/pre&gt;&lt;p&gt;because &lt;code class="docutils literal"&gt;minted&lt;/code&gt; does not know where to find the intermediate file.&lt;/p&gt;
+&lt;p&gt;My solution is first commenting out the &lt;code class="docutils literal"&gt;minted&lt;/code&gt; package part:&lt;/p&gt;
+&lt;pre class="code common-lisp"&gt;&lt;a name="rest_code_a071dfd98f1d47f59ba21842866abf10-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;require&lt;/span&gt; &lt;span class="ss"&gt;'ox-latex&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_a071dfd98f1d47f59ba21842866abf10-2"&gt;&lt;/a&gt;&lt;span class="c1"&gt;;(add-to-list 'org-latex-packages-alist '("" "minted"))&lt;/span&gt;
+&lt;a name="rest_code_a071dfd98f1d47f59ba21842866abf10-3"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;org-latex-listings&lt;/span&gt; &lt;span class="ss"&gt;'minted&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_a071dfd98f1d47f59ba21842866abf10-4"&gt;&lt;/a&gt;
+&lt;a name="rest_code_a071dfd98f1d47f59ba21842866abf10-5"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;org-latex-pdf-process&lt;/span&gt;
+&lt;a name="rest_code_a071dfd98f1d47f59ba21842866abf10-6"&gt;&lt;/a&gt;      &lt;span class="o"&gt;'&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"&lt;/span&gt;
+&lt;a name="rest_code_a071dfd98f1d47f59ba21842866abf10-7"&gt;&lt;/a&gt;        &lt;span class="s"&gt;"pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"&lt;/span&gt;
+&lt;a name="rest_code_a071dfd98f1d47f59ba21842866abf10-8"&gt;&lt;/a&gt;        &lt;span class="s"&gt;"pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;and then manually load &lt;code class="docutils literal"&gt;minted&lt;/code&gt; package with specifying &lt;code class="docutils literal"&gt;outputdir&lt;/code&gt; option in the org file:&lt;/p&gt;
+&lt;pre class="code text"&gt;&lt;a name="rest_code_958208ffa9dc43558bd538a8d302de9a-1"&gt;&lt;/a&gt;* Test
+&lt;a name="rest_code_958208ffa9dc43558bd538a8d302de9a-2"&gt;&lt;/a&gt;:PROPERTIES:
+&lt;a name="rest_code_958208ffa9dc43558bd538a8d302de9a-3"&gt;&lt;/a&gt;:EXPORT_FILE_NAME: Output/File_Name
+&lt;a name="rest_code_958208ffa9dc43558bd538a8d302de9a-4"&gt;&lt;/a&gt;:EXPORT_LATEX_HEADER+: \usepackage[outputdir=Output]{minted}
+&lt;a name="rest_code_958208ffa9dc43558bd538a8d302de9a-5"&gt;&lt;/a&gt;:END:
 &lt;/pre&gt;&lt;p&gt;and it should work.&lt;/p&gt;
-&lt;p&gt;Last, if you want to highlight &lt;tt class="docutils literal"&gt;ipython&lt;/tt&gt; block, you can add the following to
-your &lt;tt class="docutils literal"&gt;init&lt;/tt&gt; file:&lt;/p&gt;
-&lt;pre class="code common-lisp"&gt;&lt;a name="rest_code_c0d5f37161cc452088e536171a43a828-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;add-to-list&lt;/span&gt; &lt;span class="ss"&gt;'org-latex-minted-langs&lt;/span&gt; &lt;span class="o"&gt;'&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;ipython&lt;/span&gt; &lt;span class="s"&gt;"python"&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</description><category>export</category><category>latex</category><category>minted</category><category>org-mode</category><category>syntax highlighting</category><guid>http://joonro.github.io/blog/posts/org-mode-outputdir-minted-latex-export.html</guid><pubDate>Sat, 18 Feb 2017 00:00:00 GMT</pubDate></item><item><title>Windows 10: How to Enable Dark mode in PowerShell</title><link>http://joonro.github.io/blog/posts/windows-10-enable-dark-mode-posh.html</link><dc:creator>Joon Ro</dc:creator><description>&lt;div&gt;&lt;p&gt;With &lt;a class="reference external" href="https://blogs.windows.com/windowsexperience/2016/08/02/new-video-series-this-week-on-windows-highlights-windows-10-anniversary-update/"&gt;Windows 10 Anniversary Update&lt;/a&gt;, one can choose between the &lt;a class="reference external" href="https://blogs.windows.com/windowsexperience/2016/08/08/windows-10-tip-personalize-your-pc-by-enabling-the-dark-theme/"&gt;light and dark
+&lt;p&gt;Last, if you want to highlight &lt;code class="docutils literal"&gt;ipython&lt;/code&gt; block, you can add the following to
+your &lt;code class="docutils literal"&gt;init&lt;/code&gt; file:&lt;/p&gt;
+&lt;pre class="code common-lisp"&gt;&lt;a name="rest_code_9bf9322928a649a3bfb9dfcebcb78750-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;add-to-list&lt;/span&gt; &lt;span class="ss"&gt;'org-latex-minted-langs&lt;/span&gt; &lt;span class="o"&gt;'&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;ipython&lt;/span&gt; &lt;span class="s"&gt;"python"&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</description><category>export</category><category>latex</category><category>minted</category><category>org-mode</category><category>syntax highlighting</category><guid>http://joonro.github.io/blog/posts/org-mode-outputdir-minted-latex-export/</guid><pubDate>Sat, 18 Feb 2017 00:00:00 GMT</pubDate></item><item><title>Windows 10: How to Enable Dark mode in PowerShell</title><link>http://joonro.github.io/blog/posts/windows-10-enable-dark-mode-posh/</link><dc:creator>Joon Ro</dc:creator><description>&lt;div&gt;&lt;p&gt;With &lt;a class="reference external" href="https://blogs.windows.com/windowsexperience/2016/08/02/new-video-series-this-week-on-windows-highlights-windows-10-anniversary-update/"&gt;Windows 10 Anniversary Update&lt;/a&gt;, one can choose between the &lt;a class="reference external" href="https://blogs.windows.com/windowsexperience/2016/08/08/windows-10-tip-personalize-your-pc-by-enabling-the-dark-theme/"&gt;light and dark
 modes&lt;/a&gt;. Here is a set of PowerShell commands to set this in case you want to automate
 it. These are slightly modified commands from this &lt;a class="reference external" href="https://www.reddit.com/r/windows/comments/3f0n2u/windows_10_enable_dark_mode/"&gt;reddit&lt;/a&gt; post.&lt;/p&gt;
 &lt;p&gt;To use the dark mode:&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="http://joonro.github.io/blog/posts/windows-10-enable-dark-mode-posh.html#rest_code_f82d9d2c576a4b01953c3a451520ce39-0"&gt;0&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code PowerShell"&gt;&lt;a name="rest_code_f82d9d2c576a4b01953c3a451520ce39-0"&gt;&lt;/a&gt;&lt;span class="nb"&gt;Set-ItemProperty&lt;/span&gt; &lt;span class="n"&gt;-Path&lt;/span&gt; &lt;span class="n"&gt;HKCU&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt;&lt;span class="p"&gt;\&lt;/span&gt;&lt;span class="n"&gt;SOFTWARE&lt;/span&gt;&lt;span class="p"&gt;\&lt;/span&gt;&lt;span class="n"&gt;Microsoft&lt;/span&gt;&lt;span class="p"&gt;\&lt;/span&gt;&lt;span class="n"&gt;Windows&lt;/span&gt;&lt;span class="p"&gt;\&lt;/span&gt;&lt;span class="n"&gt;CurrentVersion&lt;/span&gt;&lt;span class="p"&gt;\&lt;/span&gt;&lt;span class="n"&gt;Themes&lt;/span&gt;&lt;span class="p"&gt;\&lt;/span&gt;&lt;span class="n"&gt;Personalize&lt;/span&gt; &lt;span class="n"&gt;-Name&lt;/span&gt; &lt;span class="n"&gt;AppsUseLightTheme&lt;/span&gt; &lt;span class="n"&gt;-Value&lt;/span&gt; &lt;span class="n"&gt;0&lt;/span&gt;
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="http://joonro.github.io/blog/posts/windows-10-enable-dark-mode-posh/#rest_code_10c42f90201a4d78a97076f0175e5460-0"&gt;0&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code PowerShell"&gt;&lt;a name="rest_code_10c42f90201a4d78a97076f0175e5460-0"&gt;&lt;/a&gt;&lt;span class="nb"&gt;Set-ItemProperty&lt;/span&gt; &lt;span class="n"&gt;-Path&lt;/span&gt; &lt;span class="n"&gt;HKCU&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt;&lt;span class="p"&gt;\&lt;/span&gt;&lt;span class="n"&gt;SOFTWARE&lt;/span&gt;&lt;span class="p"&gt;\&lt;/span&gt;&lt;span class="n"&gt;Microsoft&lt;/span&gt;&lt;span class="p"&gt;\&lt;/span&gt;&lt;span class="n"&gt;Windows&lt;/span&gt;&lt;span class="p"&gt;\&lt;/span&gt;&lt;span class="n"&gt;CurrentVersion&lt;/span&gt;&lt;span class="p"&gt;\&lt;/span&gt;&lt;span class="n"&gt;Themes&lt;/span&gt;&lt;span class="p"&gt;\&lt;/span&gt;&lt;span class="n"&gt;Personalize&lt;/span&gt; &lt;span class="n"&gt;-Name&lt;/span&gt; &lt;span class="n"&gt;AppsUseLightTheme&lt;/span&gt; &lt;span class="n"&gt;-Value&lt;/span&gt; &lt;span class="n"&gt;0&lt;/span&gt;
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;To use the light mode:&lt;/p&gt;
-&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="http://joonro.github.io/blog/posts/windows-10-enable-dark-mode-posh.html#rest_code_6e64d68aa53a43d1b51bd2eae1f50c36-0"&gt;0&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code PowerShell"&gt;&lt;a name="rest_code_6e64d68aa53a43d1b51bd2eae1f50c36-0"&gt;&lt;/a&gt;&lt;span class="nb"&gt;Set-ItemProperty&lt;/span&gt; &lt;span class="n"&gt;-Path&lt;/span&gt; &lt;span class="n"&gt;HKCU&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt;&lt;span class="p"&gt;\&lt;/span&gt;&lt;span class="n"&gt;SOFTWARE&lt;/span&gt;&lt;span class="p"&gt;\&lt;/span&gt;&lt;span class="n"&gt;Microsoft&lt;/span&gt;&lt;span class="p"&gt;\&lt;/span&gt;&lt;span class="n"&gt;Windows&lt;/span&gt;&lt;span class="p"&gt;\&lt;/span&gt;&lt;span class="n"&gt;CurrentVersion&lt;/span&gt;&lt;span class="p"&gt;\&lt;/span&gt;&lt;span class="n"&gt;Themes&lt;/span&gt;&lt;span class="p"&gt;\&lt;/span&gt;&lt;span class="n"&gt;Personalize&lt;/span&gt; &lt;span class="n"&gt;-Name&lt;/span&gt; &lt;span class="n"&gt;AppsUseLightTheme&lt;/span&gt; &lt;span class="n"&gt;-Value&lt;/span&gt; &lt;span class="n"&gt;1&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;</description><category>dark</category><category>posh</category><category>PowerShell</category><category>settings</category><category>theme</category><category>windows</category><guid>http://joonro.github.io/blog/posts/windows-10-enable-dark-mode-posh.html</guid><pubDate>Wed, 10 Feb 2016 22:00:00 GMT</pubDate></item><item><title>Lenovo Y50 UHD Laptop: Driver Recommendations and Troubleshooting Information</title><link>http://joonro.github.io/blog/posts/lenovo-y50-uhd-laptop-driver-troubleshooting.html</link><dc:creator>Joon Ro</dc:creator><description>&lt;div&gt;&lt;p&gt;Lenovo Y50 UHD is a laptop with good specs (especially for the price), as it
+&lt;table class="codetable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;a href="http://joonro.github.io/blog/posts/windows-10-enable-dark-mode-posh/#rest_code_c5f53b485ba3466d871d772248ae2f66-0"&gt;0&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre class="code PowerShell"&gt;&lt;a name="rest_code_c5f53b485ba3466d871d772248ae2f66-0"&gt;&lt;/a&gt;&lt;span class="nb"&gt;Set-ItemProperty&lt;/span&gt; &lt;span class="n"&gt;-Path&lt;/span&gt; &lt;span class="n"&gt;HKCU&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt;&lt;span class="p"&gt;\&lt;/span&gt;&lt;span class="n"&gt;SOFTWARE&lt;/span&gt;&lt;span class="p"&gt;\&lt;/span&gt;&lt;span class="n"&gt;Microsoft&lt;/span&gt;&lt;span class="p"&gt;\&lt;/span&gt;&lt;span class="n"&gt;Windows&lt;/span&gt;&lt;span class="p"&gt;\&lt;/span&gt;&lt;span class="n"&gt;CurrentVersion&lt;/span&gt;&lt;span class="p"&gt;\&lt;/span&gt;&lt;span class="n"&gt;Themes&lt;/span&gt;&lt;span class="p"&gt;\&lt;/span&gt;&lt;span class="n"&gt;Personalize&lt;/span&gt; &lt;span class="n"&gt;-Name&lt;/span&gt; &lt;span class="n"&gt;AppsUseLightTheme&lt;/span&gt; &lt;span class="n"&gt;-Value&lt;/span&gt; &lt;span class="n"&gt;1&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;</description><category>dark</category><category>posh</category><category>PowerShell</category><category>settings</category><category>theme</category><category>windows</category><guid>http://joonro.github.io/blog/posts/windows-10-enable-dark-mode-posh/</guid><pubDate>Wed, 10 Feb 2016 22:00:00 GMT</pubDate></item><item><title>Lenovo Y50 UHD Laptop: Driver Recommendations and Troubleshooting Information</title><link>http://joonro.github.io/blog/posts/lenovo-y50-uhd-laptop-driver-troubleshooting/</link><dc:creator>Joon Ro</dc:creator><description>&lt;div&gt;&lt;p&gt;Lenovo Y50 UHD is a laptop with good specs (especially for the price), as it
 has a high-end quad-core processor (i7-4700HQ, passmark &lt;a class="reference external" href="http://www.cpubenchmark.net/cpu.php?cpu=Intel+Core+i7-4700HQ+%40+2.40GHz"&gt;7750+&lt;/a&gt; ), 16GB Ram,
 256GB SSD, UHD display (3840x2160), Nvidia Geforce GTX 860M GPU, etc. The
 problem is that it suffers from many driver issues, making it unnecessarily
@@ -202,14 +214,14 @@ the Nvidia driver. I will keep this post updated as we get more driver updates.&
 &lt;h2&gt;SSD Lock-up&lt;/h2&gt;
 &lt;p&gt;The system becomes not responsive for 30~ seconds, Task Manager shows 100% disk
 usage, while no process is using the disk.&lt;/p&gt;
-&lt;p&gt;The solution is using &lt;tt class="docutils literal"&gt;Standard SATA AHCI Controller&lt;/tt&gt; instead of intel's for
-&lt;tt class="docutils literal"&gt;IDE ATA/ATAPI controllers&lt;/tt&gt; in &lt;tt class="docutils literal"&gt;Device Manager&lt;/tt&gt;.&lt;/p&gt;
+&lt;p&gt;The solution is using &lt;code class="docutils literal"&gt;Standard SATA AHCI Controller&lt;/code&gt; instead of intel's for
+&lt;code class="docutils literal"&gt;IDE ATA/ATAPI controllers&lt;/code&gt; in &lt;code class="docutils literal"&gt;Device Manager&lt;/code&gt;.&lt;/p&gt;
 &lt;ol class="arabic simple"&gt;
-&lt;li&gt;Right click on the &lt;tt class="docutils literal"&gt;Intel(R) 8 Series Chipset Family SATA AHCI Controller&lt;/tt&gt; and click on  &lt;tt class="docutils literal"&gt;Update Driver Software ..&lt;/tt&gt;&lt;/li&gt;
-&lt;li&gt;Select &lt;tt class="docutils literal"&gt;Browse my computer for driver software&lt;/tt&gt;&lt;/li&gt;
-&lt;li&gt;Select &lt;tt class="docutils literal"&gt;Let me pick from a list of ...&lt;/tt&gt;&lt;/li&gt;
-&lt;li&gt;Choose and install &lt;tt class="docutils literal"&gt;Standard SATA AHCI Controller&lt;/tt&gt;&lt;/li&gt;
-&lt;li&gt;Reboot&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Right click on the &lt;code class="docutils literal"&gt;Intel(R) 8 Series Chipset Family SATA AHCI Controller&lt;/code&gt; and click on  &lt;code class="docutils literal"&gt;Update Driver Software ..&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Select &lt;code class="docutils literal"&gt;Browse my computer for driver software&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Select &lt;code class="docutils literal"&gt;Let me pick from a list of ...&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Choose and install &lt;code class="docutils literal"&gt;Standard SATA AHCI Controller&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Reboot&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;A major Windows 10 update will revert the driver back to the Intel's, so you
 have to manually do this again if it happens.&lt;/p&gt;
@@ -221,14 +233,14 @@ you install a wrong version of the driver, you will suffer from performance
 issues, crashes, and even BOSDs. Please do not update Nvidia driver without
 checking the web and make sure it does not have any problems.&lt;/p&gt;
 &lt;ul class="simple"&gt;
-&lt;li&gt;Current (2015/12/27) recommended driver version is &lt;a class="reference external" href="http://nvidia.custhelp.com/app/answers/detail/a_id/3812/~/geforce-hot-fix-driver-359.12"&gt;GeForce Hot Fix driver 359.12&lt;/a&gt;.
+&lt;li&gt;&lt;p&gt;Current (2015/12/27) recommended driver version is &lt;a class="reference external" href="http://nvidia.custhelp.com/app/answers/detail/a_id/3812/~/geforce-hot-fix-driver-359.12"&gt;GeForce Hot Fix driver 359.12&lt;/a&gt;.
 It is for GTX 860M, but it seems it fixes problems for 960M as
 well. You can read about it at the following Nvidia forum thread:
-&lt;a class="reference external" href="https://forums.geforce.com/default/topic/900924/geforce-drivers/geforce-hotfix-driver-359-12-for-geforce-860m-notebook-gpus-released-12-2-15-"&gt;GeForce Hotfix driver 359.12 for GeForce 860M notebook GPUs (Released 12/2/15)&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;The current version 361.43 seems to have less number of problems, but
-&lt;a class="reference external" href="https://forums.geforce.com/default/topic/904579/geforce-drivers/official-361-43-game-ready-whql-display-driver-feedback-thread-12-21-15-/6/"&gt;people seem to have BOSDs&lt;/a&gt; with &lt;tt class="docutils literal"&gt;Kernal_Security_Check_Failure&lt;/tt&gt; error.&lt;/li&gt;
-&lt;li&gt;The previously working version was 355.98. All drivers in between (358.50,
-358.87, 358.91) will cause problems.&lt;/li&gt;
+&lt;a class="reference external" href="https://forums.geforce.com/default/topic/900924/geforce-drivers/geforce-hotfix-driver-359-12-for-geforce-860m-notebook-gpus-released-12-2-15-"&gt;GeForce Hotfix driver 359.12 for GeForce 860M notebook GPUs (Released 12/2/15)&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;The current version 361.43 seems to have less number of problems, but
+&lt;a class="reference external" href="https://forums.geforce.com/default/topic/904579/geforce-drivers/official-361-43-game-ready-whql-display-driver-feedback-thread-12-21-15-/6/"&gt;people seem to have BOSDs&lt;/a&gt; with &lt;code class="docutils literal"&gt;Kernal_Security_Check_Failure&lt;/code&gt; error.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;The previously working version was 355.98. All drivers in between (358.50,
+358.87, 358.91) will cause problems.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;div class="section" id="touchpad-loses-gestures-after-waking-up"&gt;
@@ -236,98 +248,103 @@ well. You can read about it at the following Nvidia forum thread:
 &lt;p&gt;Sometimes after waking up, the Synaptics touchpad will lose gestures such as
 three-finger swipe. Albeit not a permanent fix, running the following batch file will
 reset the touchpad and bring back gestures. (I saved it as
-&lt;tt class="docutils literal"&gt;synaptics_touchpad_reset.bat&lt;/tt&gt;) and run it whenever it doesn't work.&lt;/p&gt;
-&lt;pre class="code bat"&gt;&lt;a name="rest_code_b7decfce598d482eb095afdc25a9a4ff-1"&gt;&lt;/a&gt;taskkill -f -im syntpenh.exe
-&lt;a name="rest_code_b7decfce598d482eb095afdc25a9a4ff-2"&gt;&lt;/a&gt;&lt;span class="k"&gt;cd&lt;/span&gt; C:\Program Files\Synaptics\SynTP
-&lt;a name="rest_code_b7decfce598d482eb095afdc25a9a4ff-3"&gt;&lt;/a&gt;&lt;span class="k"&gt;start&lt;/span&gt; &lt;span class="s2"&gt;""&lt;/span&gt; &lt;span class="s2"&gt;"syntpenh.exe"&lt;/span&gt;
-&lt;a name="rest_code_b7decfce598d482eb095afdc25a9a4ff-4"&gt;&lt;/a&gt;&lt;span class="k"&gt;exit&lt;/span&gt;
+&lt;code class="docutils literal"&gt;synaptics_touchpad_reset.bat&lt;/code&gt;) and run it whenever it doesn't work.&lt;/p&gt;
+&lt;pre class="code bat"&gt;&lt;a name="rest_code_369b818449224780b94cb35d96fbb6ca-1"&gt;&lt;/a&gt;taskkill -f -im syntpenh.exe
+&lt;a name="rest_code_369b818449224780b94cb35d96fbb6ca-2"&gt;&lt;/a&gt;&lt;span class="k"&gt;cd&lt;/span&gt; C:\Program Files\Synaptics\SynTP
+&lt;a name="rest_code_369b818449224780b94cb35d96fbb6ca-3"&gt;&lt;/a&gt;&lt;span class="k"&gt;start&lt;/span&gt; &lt;span class="s2"&gt;""&lt;/span&gt; &lt;span class="s2"&gt;"syntpenh.exe"&lt;/span&gt;
+&lt;a name="rest_code_369b818449224780b94cb35d96fbb6ca-4"&gt;&lt;/a&gt;&lt;span class="k"&gt;exit&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;div class="section" id="enabling-touchpad-2-and-3-finger-tap"&gt;
 &lt;h2&gt;Enabling Touchpad 2- and 3-finger tap&lt;/h2&gt;
 &lt;p&gt;If you want to enable touchpad 2- and 3-finger tap - for example, 2-finger tap
 for the right-click and 3-finger tap for the middle-click, you can follow the
 instructions at &lt;a class="reference external" href="https://forums.lenovo.com/t5/Lenovo-P-Y-and-Z-series/Y580-touchpad-two-finger-tap-for-right-click-not-working/m-p/1025407#M86254"&gt;this thread&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;In sum, what you need to do is, hit windows key + x, select &lt;tt class="docutils literal"&gt;run&lt;/tt&gt;, enter
-&lt;tt class="docutils literal"&gt;regedit&lt;/tt&gt; then hit enter, and on the left pane browse to the following
+&lt;p&gt;In sum, what you need to do is, hit windows key + x, select &lt;code class="docutils literal"&gt;run&lt;/code&gt;, enter
+&lt;code class="docutils literal"&gt;regedit&lt;/code&gt; then hit enter, and on the left pane browse to the following
 location:&lt;/p&gt;
-&lt;p&gt;&lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;HKEY_USERS\&amp;lt;SID&lt;/span&gt; name for your current &lt;span class="pre"&gt;user&amp;gt;\Software\Synaptics\SynTP\TouchPadPS2&lt;/span&gt;&lt;/tt&gt;&lt;/p&gt;
-&lt;p&gt;Only issue for me was that I had two entries, &lt;tt class="docutils literal"&gt;TouchPadSMB2cTM2334&lt;/tt&gt; and
-&lt;tt class="docutils literal"&gt;TouchPadPS2TM2334&lt;/tt&gt;, and &lt;tt class="docutils literal"&gt;TouchPadSMB2cTM2334&lt;/tt&gt; was the one that worked.&lt;/p&gt;
+&lt;p&gt;&lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;HKEY_USERS\&amp;lt;SID&lt;/span&gt; name for your current &lt;span class="pre"&gt;user&amp;gt;\Software\Synaptics\SynTP\TouchPadPS2&lt;/span&gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Only issue for me was that I had two entries, &lt;code class="docutils literal"&gt;TouchPadSMB2cTM2334&lt;/code&gt; and
+&lt;code class="docutils literal"&gt;TouchPadPS2TM2334&lt;/code&gt;, and &lt;code class="docutils literal"&gt;TouchPadSMB2cTM2334&lt;/code&gt; was the one that worked.&lt;/p&gt;
 &lt;p&gt;Then, in the right pane, change values of according to the following:&lt;/p&gt;
-&lt;dl class="docutils"&gt;
+&lt;dl class="simple"&gt;
 &lt;dt&gt;2FingerTapAction&lt;/dt&gt;
-&lt;dd&gt;&lt;tt class="docutils literal"&gt;2&lt;/tt&gt; for right click, &lt;tt class="docutils literal"&gt;4&lt;/tt&gt; for middle click.&lt;/dd&gt;
+&lt;dd&gt;&lt;p&gt;&lt;code class="docutils literal"&gt;2&lt;/code&gt; for right click, &lt;code class="docutils literal"&gt;4&lt;/code&gt; for middle click.&lt;/p&gt;
+&lt;/dd&gt;
 &lt;dt&gt;2FingerTapPluginID&lt;/dt&gt;
-&lt;dd&gt;clear any value it may have&lt;/dd&gt;
+&lt;dd&gt;&lt;p&gt;clear any value it may have&lt;/p&gt;
+&lt;/dd&gt;
 &lt;dt&gt;3FingerTapAction&lt;/dt&gt;
-&lt;dd&gt;&lt;tt class="docutils literal"&gt;2&lt;/tt&gt; for right click, &lt;tt class="docutils literal"&gt;4&lt;/tt&gt; for middle click.&lt;/dd&gt;
+&lt;dd&gt;&lt;p&gt;&lt;code class="docutils literal"&gt;2&lt;/code&gt; for right click, &lt;code class="docutils literal"&gt;4&lt;/code&gt; for middle click.&lt;/p&gt;
+&lt;/dd&gt;
 &lt;dt&gt;3FingerTapPluginID&lt;/dt&gt;
-&lt;dd&gt;clear any value it may have&lt;/dd&gt;
+&lt;dd&gt;&lt;p&gt;clear any value it may have&lt;/p&gt;
+&lt;/dd&gt;
 &lt;dt&gt;3FingerTapPluginActionID&lt;/dt&gt;
-&lt;dd&gt;&lt;tt class="docutils literal"&gt;0&lt;/tt&gt;&lt;/dd&gt;
+&lt;dd&gt;&lt;p&gt;&lt;code class="docutils literal"&gt;0&lt;/code&gt;&lt;/p&gt;
+&lt;/dd&gt;
 &lt;/dl&gt;
 &lt;p&gt;Reboot and the 2- and 3-finger taps will work.&lt;/p&gt;
-&lt;/div&gt;&lt;/div&gt;</description><category>drivers</category><category>GTX 860M</category><category>lenovo</category><category>setting</category><category>troubleshooting</category><category>UHD</category><category>windows 10</category><category>y50</category><guid>http://joonro.github.io/blog/posts/lenovo-y50-uhd-laptop-driver-troubleshooting.html</guid><pubDate>Sun, 27 Dec 2015 06:00:00 GMT</pubDate></item><item><title>Native desktop (toast) notifications for org-mode appointments in Windows</title><link>http://joonro.github.io/blog/posts/toast-notifications-org-mode-windows.html</link><dc:creator>Joon Ro</dc:creator><description>&lt;div&gt;&lt;p&gt;I describe how to set up native desktop notifications (Toast notifications)
+&lt;/div&gt;&lt;/div&gt;</description><category>drivers</category><category>GTX 860M</category><category>lenovo</category><category>setting</category><category>troubleshooting</category><category>UHD</category><category>windows 10</category><category>y50</category><guid>http://joonro.github.io/blog/posts/lenovo-y50-uhd-laptop-driver-troubleshooting/</guid><pubDate>Sun, 27 Dec 2015 06:00:00 GMT</pubDate></item><item><title>Native desktop (toast) notifications for org-mode appointments in Windows</title><link>http://joonro.github.io/blog/posts/toast-notifications-org-mode-windows/</link><dc:creator>Joon Ro</dc:creator><description>&lt;div&gt;&lt;p&gt;I describe how to set up native desktop notifications (Toast notifications)
 for org-mode appointments in Windows 8+.&lt;/p&gt;
 &lt;div class="section" id="install-toast"&gt;
-&lt;h2&gt;Install &lt;tt class="docutils literal"&gt;toast&lt;/tt&gt;&lt;/h2&gt;
-&lt;p&gt;I use &lt;tt class="docutils literal"&gt;toast.exe&lt;/tt&gt; from toaster project: &lt;a class="reference external" href="https://github.com/nels-o/toaster"&gt;https://github.com/nels-o/toaster&lt;/a&gt;. You
-can &lt;tt class="docutils literal"&gt;git clone&lt;/tt&gt; the whole repo which includes the executable:&lt;/p&gt;
-&lt;pre class="code posh"&gt;&lt;a name="rest_code_09bcf3e309ed4ebeb31bbfbc316073bc-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;clone&lt;/span&gt; &lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt;&lt;span class="p"&gt;//&lt;/span&gt;&lt;span class="n"&gt;github&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="n"&gt;nels-o&lt;/span&gt;&lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="n"&gt;toaster&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;git&lt;/span&gt;
+&lt;h2&gt;Install &lt;code class="docutils literal"&gt;toast&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;I use &lt;code class="docutils literal"&gt;toast.exe&lt;/code&gt; from toaster project: &lt;a class="reference external" href="https://github.com/nels-o/toaster"&gt;https://github.com/nels-o/toaster&lt;/a&gt;. You
+can &lt;code class="docutils literal"&gt;git clone&lt;/code&gt; the whole repo which includes the executable:&lt;/p&gt;
+&lt;pre class="code posh"&gt;&lt;a name="rest_code_df000de50c9245059d018ef75a71a2cd-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;clone&lt;/span&gt; &lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt;&lt;span class="p"&gt;//&lt;/span&gt;&lt;span class="n"&gt;github&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="n"&gt;nels-o&lt;/span&gt;&lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="n"&gt;toaster&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;git&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;div class="section" id="emacs-settings"&gt;
 &lt;h2&gt;Emacs Settings&lt;/h2&gt;
 &lt;p&gt;The following is pretty much the same to
 &lt;a class="reference external" href="https://lists.gnu.org/archive/html/emacs-orgmode/2013-02/msg00644.html"&gt;https://lists.gnu.org/archive/html/emacs-orgmode/2013-02/msg00644.html&lt;/a&gt;. You
-can modify &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;appt-message-warning-time&lt;/span&gt;&lt;/tt&gt; and &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;appt-display-interval&lt;/span&gt;&lt;/tt&gt; to your need:&lt;/p&gt;
-&lt;pre class="code scheme"&gt;&lt;a name="rest_code_d30425f83b8447f892eb4a3a346d4134-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;require&lt;/span&gt; &lt;span class="ss"&gt;'appt&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_d30425f83b8447f892eb4a3a346d4134-2"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;appt-time-msg-list&lt;/span&gt; &lt;span class="nv"&gt;nil&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;    &lt;span class="c1"&gt;;; clear existing appt list&lt;/span&gt;
-&lt;a name="rest_code_d30425f83b8447f892eb4a3a346d4134-3"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;appt-display-interval&lt;/span&gt; &lt;span class="ss"&gt;'5&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c1"&gt;;; warn every 5 minutes from t - appt-message-warning-time&lt;/span&gt;
-&lt;a name="rest_code_d30425f83b8447f892eb4a3a346d4134-4"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;setq&lt;/span&gt;
-&lt;a name="rest_code_d30425f83b8447f892eb4a3a346d4134-5"&gt;&lt;/a&gt;  &lt;span class="nv"&gt;appt-message-warning-time&lt;/span&gt; &lt;span class="ss"&gt;'15&lt;/span&gt;  &lt;span class="c1"&gt;;; send first warning 15 minutes before appointment&lt;/span&gt;
-&lt;a name="rest_code_d30425f83b8447f892eb4a3a346d4134-6"&gt;&lt;/a&gt;  &lt;span class="nv"&gt;appt-display-mode-line&lt;/span&gt; &lt;span class="nv"&gt;nil&lt;/span&gt;     &lt;span class="c1"&gt;;; don't show in the modeline&lt;/span&gt;
-&lt;a name="rest_code_d30425f83b8447f892eb4a3a346d4134-7"&gt;&lt;/a&gt;  &lt;span class="nv"&gt;appt-display-format&lt;/span&gt; &lt;span class="ss"&gt;'window&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;   &lt;span class="c1"&gt;;; pass warnings to the designated window function&lt;/span&gt;
-&lt;a name="rest_code_d30425f83b8447f892eb4a3a346d4134-8"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;appt-activate&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;                &lt;span class="c1"&gt;;; activate appointment notification&lt;/span&gt;
-&lt;a name="rest_code_d30425f83b8447f892eb4a3a346d4134-9"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;display-time&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;                   &lt;span class="c1"&gt;;; activate time display&lt;/span&gt;
-&lt;a name="rest_code_d30425f83b8447f892eb4a3a346d4134-10"&gt;&lt;/a&gt;
-&lt;a name="rest_code_d30425f83b8447f892eb4a3a346d4134-11"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;org-agenda-to-appt&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;             &lt;span class="c1"&gt;;; generate the appt list from org agenda files on emacs launch&lt;/span&gt;
-&lt;a name="rest_code_d30425f83b8447f892eb4a3a346d4134-12"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;run-at-time&lt;/span&gt; &lt;span class="s"&gt;"24:01"&lt;/span&gt; &lt;span class="mi"&gt;3600&lt;/span&gt; &lt;span class="ss"&gt;'org-agenda-to-appt&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;           &lt;span class="c1"&gt;;; update appt list hourly&lt;/span&gt;
-&lt;a name="rest_code_d30425f83b8447f892eb4a3a346d4134-13"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;add-hook&lt;/span&gt; &lt;span class="ss"&gt;'org-finalize-agenda-hook&lt;/span&gt; &lt;span class="ss"&gt;'org-agenda-to-appt&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;;; update appt list on agenda view&lt;/span&gt;
-&lt;/pre&gt;&lt;p&gt;Next, specify the path to your &lt;tt class="docutils literal"&gt;toast&lt;/tt&gt; executable (note that I'm using
+can modify &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;appt-message-warning-time&lt;/span&gt;&lt;/code&gt; and &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;appt-display-interval&lt;/span&gt;&lt;/code&gt; to your need:&lt;/p&gt;
+&lt;pre class="code scheme"&gt;&lt;a name="rest_code_6032247ff75d4da09177ebb1713ca127-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;require&lt;/span&gt; &lt;span class="ss"&gt;'appt&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_6032247ff75d4da09177ebb1713ca127-2"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;appt-time-msg-list&lt;/span&gt; &lt;span class="nv"&gt;nil&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;    &lt;span class="c1"&gt;;; clear existing appt list&lt;/span&gt;
+&lt;a name="rest_code_6032247ff75d4da09177ebb1713ca127-3"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;appt-display-interval&lt;/span&gt; &lt;span class="ss"&gt;'5&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c1"&gt;;; warn every 5 minutes from t - appt-message-warning-time&lt;/span&gt;
+&lt;a name="rest_code_6032247ff75d4da09177ebb1713ca127-4"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;setq&lt;/span&gt;
+&lt;a name="rest_code_6032247ff75d4da09177ebb1713ca127-5"&gt;&lt;/a&gt;  &lt;span class="nv"&gt;appt-message-warning-time&lt;/span&gt; &lt;span class="ss"&gt;'15&lt;/span&gt;  &lt;span class="c1"&gt;;; send first warning 15 minutes before appointment&lt;/span&gt;
+&lt;a name="rest_code_6032247ff75d4da09177ebb1713ca127-6"&gt;&lt;/a&gt;  &lt;span class="nv"&gt;appt-display-mode-line&lt;/span&gt; &lt;span class="nv"&gt;nil&lt;/span&gt;     &lt;span class="c1"&gt;;; don't show in the modeline&lt;/span&gt;
+&lt;a name="rest_code_6032247ff75d4da09177ebb1713ca127-7"&gt;&lt;/a&gt;  &lt;span class="nv"&gt;appt-display-format&lt;/span&gt; &lt;span class="ss"&gt;'window&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;   &lt;span class="c1"&gt;;; pass warnings to the designated window function&lt;/span&gt;
+&lt;a name="rest_code_6032247ff75d4da09177ebb1713ca127-8"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;appt-activate&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;                &lt;span class="c1"&gt;;; activate appointment notification&lt;/span&gt;
+&lt;a name="rest_code_6032247ff75d4da09177ebb1713ca127-9"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;display-time&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;                   &lt;span class="c1"&gt;;; activate time display&lt;/span&gt;
+&lt;a name="rest_code_6032247ff75d4da09177ebb1713ca127-10"&gt;&lt;/a&gt;
+&lt;a name="rest_code_6032247ff75d4da09177ebb1713ca127-11"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;org-agenda-to-appt&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;             &lt;span class="c1"&gt;;; generate the appt list from org agenda files on emacs launch&lt;/span&gt;
+&lt;a name="rest_code_6032247ff75d4da09177ebb1713ca127-12"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;run-at-time&lt;/span&gt; &lt;span class="s"&gt;"24:01"&lt;/span&gt; &lt;span class="mi"&gt;3600&lt;/span&gt; &lt;span class="ss"&gt;'org-agenda-to-appt&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;           &lt;span class="c1"&gt;;; update appt list hourly&lt;/span&gt;
+&lt;a name="rest_code_6032247ff75d4da09177ebb1713ca127-13"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;add-hook&lt;/span&gt; &lt;span class="ss"&gt;'org-finalize-agenda-hook&lt;/span&gt; &lt;span class="ss"&gt;'org-agenda-to-appt&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;;; update appt list on agenda view&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;Next, specify the path to your &lt;code class="docutils literal"&gt;toast&lt;/code&gt; executable (note that I'm using
 UNIX-style path here, seems to be working well):&lt;/p&gt;
-&lt;pre class="code scheme"&gt;&lt;a name="rest_code_937ec06a44aa478b882ae4326c377625-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;defvar&lt;/span&gt; &lt;span class="nv"&gt;toast-notifier-path&lt;/span&gt;
-&lt;a name="rest_code_937ec06a44aa478b882ae4326c377625-2"&gt;&lt;/a&gt;  &lt;span class="s"&gt;"/home/joon/Programs/toast/bin/Release/toast"&lt;/span&gt;
-&lt;a name="rest_code_937ec06a44aa478b882ae4326c377625-3"&gt;&lt;/a&gt;  &lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;p&gt;Set up the call to &lt;tt class="docutils literal"&gt;toast&lt;/tt&gt;:&lt;/p&gt;
-&lt;pre class="code scheme"&gt;&lt;a name="rest_code_2005efbdee6c4868ab769a0b1a1299da-1"&gt;&lt;/a&gt;&lt;span class="c1"&gt;;; set up the call to the notifier&lt;/span&gt;
-&lt;a name="rest_code_2005efbdee6c4868ab769a0b1a1299da-2"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;defun&lt;/span&gt; &lt;span class="nv"&gt;toast-appt-send-notification&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;title&lt;/span&gt; &lt;span class="nv"&gt;msg&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_2005efbdee6c4868ab769a0b1a1299da-3"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;shell-command&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;concat&lt;/span&gt; &lt;span class="nv"&gt;toast-notifier-path&lt;/span&gt;
-&lt;a name="rest_code_2005efbdee6c4868ab769a0b1a1299da-4"&gt;&lt;/a&gt;                         &lt;span class="s"&gt;" -t \""&lt;/span&gt; &lt;span class="nv"&gt;title&lt;/span&gt; &lt;span class="s"&gt;"\""&lt;/span&gt;
-&lt;a name="rest_code_2005efbdee6c4868ab769a0b1a1299da-5"&gt;&lt;/a&gt;                         &lt;span class="s"&gt;" -m \""&lt;/span&gt; &lt;span class="nv"&gt;msg&lt;/span&gt; &lt;span class="s"&gt;"\""&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
-&lt;a name="rest_code_2005efbdee6c4868ab769a0b1a1299da-6"&gt;&lt;/a&gt;
-&lt;a name="rest_code_2005efbdee6c4868ab769a0b1a1299da-7"&gt;&lt;/a&gt;&lt;span class="c1"&gt;;; designate the window function for my-appt-send-notification&lt;/span&gt;
-&lt;a name="rest_code_2005efbdee6c4868ab769a0b1a1299da-8"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;defun&lt;/span&gt; &lt;span class="nv"&gt;toast-appt-display&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;min-to-app&lt;/span&gt; &lt;span class="nv"&gt;new-time&lt;/span&gt; &lt;span class="nv"&gt;msg&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_2005efbdee6c4868ab769a0b1a1299da-9"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;toast-appt-send-notification&lt;/span&gt;
-&lt;a name="rest_code_2005efbdee6c4868ab769a0b1a1299da-10"&gt;&lt;/a&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;format&lt;/span&gt; &lt;span class="s"&gt;"Appointment in %s minutes"&lt;/span&gt; &lt;span class="nv"&gt;min-to-app&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;    &lt;span class="c1"&gt;;; passed to -t in toast call&lt;/span&gt;
-&lt;a name="rest_code_2005efbdee6c4868ab769a0b1a1299da-11"&gt;&lt;/a&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;format&lt;/span&gt; &lt;span class="s"&gt;"%s"&lt;/span&gt; &lt;span class="nv"&gt;msg&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;                                &lt;span class="c1"&gt;;; passed to -m in toast call&lt;/span&gt;
-&lt;a name="rest_code_2005efbdee6c4868ab769a0b1a1299da-12"&gt;&lt;/a&gt;
-&lt;a name="rest_code_2005efbdee6c4868ab769a0b1a1299da-13"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;appt-disp-window-function&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;function&lt;/span&gt; &lt;span class="nv"&gt;toast-appt-display&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-&lt;/pre&gt;&lt;p&gt;Now Emacs will use &lt;tt class="docutils literal"&gt;toast&lt;/tt&gt; to notify you of upcoming appointments:&lt;/p&gt;
-&lt;img alt="../images/toast_example.png" src="http://joonro.github.io/blog/images/toast_example.png"&gt;
+&lt;pre class="code scheme"&gt;&lt;a name="rest_code_96f21b710f67410d9806396335e1a5b3-1"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;defvar&lt;/span&gt; &lt;span class="nv"&gt;toast-notifier-path&lt;/span&gt;
+&lt;a name="rest_code_96f21b710f67410d9806396335e1a5b3-2"&gt;&lt;/a&gt;  &lt;span class="s"&gt;"/home/joon/Programs/toast/bin/Release/toast"&lt;/span&gt;
+&lt;a name="rest_code_96f21b710f67410d9806396335e1a5b3-3"&gt;&lt;/a&gt;  &lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;Set up the call to &lt;code class="docutils literal"&gt;toast&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class="code scheme"&gt;&lt;a name="rest_code_7e95820699794e4fa604134d78a1f88c-1"&gt;&lt;/a&gt;&lt;span class="c1"&gt;;; set up the call to the notifier&lt;/span&gt;
+&lt;a name="rest_code_7e95820699794e4fa604134d78a1f88c-2"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;defun&lt;/span&gt; &lt;span class="nv"&gt;toast-appt-send-notification&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;title&lt;/span&gt; &lt;span class="nv"&gt;msg&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_7e95820699794e4fa604134d78a1f88c-3"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;shell-command&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;concat&lt;/span&gt; &lt;span class="nv"&gt;toast-notifier-path&lt;/span&gt;
+&lt;a name="rest_code_7e95820699794e4fa604134d78a1f88c-4"&gt;&lt;/a&gt;                         &lt;span class="s"&gt;" -t \""&lt;/span&gt; &lt;span class="nv"&gt;title&lt;/span&gt; &lt;span class="s"&gt;"\""&lt;/span&gt;
+&lt;a name="rest_code_7e95820699794e4fa604134d78a1f88c-5"&gt;&lt;/a&gt;                         &lt;span class="s"&gt;" -m \""&lt;/span&gt; &lt;span class="nv"&gt;msg&lt;/span&gt; &lt;span class="s"&gt;"\""&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;a name="rest_code_7e95820699794e4fa604134d78a1f88c-6"&gt;&lt;/a&gt;
+&lt;a name="rest_code_7e95820699794e4fa604134d78a1f88c-7"&gt;&lt;/a&gt;&lt;span class="c1"&gt;;; designate the window function for my-appt-send-notification&lt;/span&gt;
+&lt;a name="rest_code_7e95820699794e4fa604134d78a1f88c-8"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;defun&lt;/span&gt; &lt;span class="nv"&gt;toast-appt-display&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;min-to-app&lt;/span&gt; &lt;span class="nv"&gt;new-time&lt;/span&gt; &lt;span class="nv"&gt;msg&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_7e95820699794e4fa604134d78a1f88c-9"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;toast-appt-send-notification&lt;/span&gt;
+&lt;a name="rest_code_7e95820699794e4fa604134d78a1f88c-10"&gt;&lt;/a&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;format&lt;/span&gt; &lt;span class="s"&gt;"Appointment in %s minutes"&lt;/span&gt; &lt;span class="nv"&gt;min-to-app&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;    &lt;span class="c1"&gt;;; passed to -t in toast call&lt;/span&gt;
+&lt;a name="rest_code_7e95820699794e4fa604134d78a1f88c-11"&gt;&lt;/a&gt;    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;format&lt;/span&gt; &lt;span class="s"&gt;"%s"&lt;/span&gt; &lt;span class="nv"&gt;msg&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;                                &lt;span class="c1"&gt;;; passed to -m in toast call&lt;/span&gt;
+&lt;a name="rest_code_7e95820699794e4fa604134d78a1f88c-12"&gt;&lt;/a&gt;
+&lt;a name="rest_code_7e95820699794e4fa604134d78a1f88c-13"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;appt-disp-window-function&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;function&lt;/span&gt; &lt;span class="nv"&gt;toast-appt-display&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;Now Emacs will use &lt;code class="docutils literal"&gt;toast&lt;/code&gt; to notify you of upcoming appointments:&lt;/p&gt;
+&lt;img alt="../images/toast_example.png" src="http://joonro.github.io/blog/posts/images/toast_example.png"&gt;
 &lt;p&gt;If you want to be fancier, you can show an icon in the notification as
 well. You can download an icon (from
 &lt;a class="reference external" href="http://www.easyicon.net/language.en/540985-org_mode_icon.html"&gt;http://www.easyicon.net/language.en/540985-org_mode_icon.html&lt;/a&gt;, for example)
-and modify &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;toast-appt-send-notification&lt;/span&gt;&lt;/tt&gt; by adding &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;-p&lt;/span&gt;&lt;/tt&gt; argument (you have
+and modify &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;toast-appt-send-notification&lt;/span&gt;&lt;/code&gt; by adding &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;-p&lt;/span&gt;&lt;/code&gt; argument (you have
 to use Windows-style path here):&lt;/p&gt;
-&lt;pre class="code scheme"&gt;&lt;a name="rest_code_796b1c1a99df4617ae9cef64c9c88832-1"&gt;&lt;/a&gt;&lt;span class="c1"&gt;;; set up the call to the notifier&lt;/span&gt;
-&lt;a name="rest_code_796b1c1a99df4617ae9cef64c9c88832-2"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;defun&lt;/span&gt; &lt;span class="nv"&gt;toast-appt-send-notification&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;title&lt;/span&gt; &lt;span class="nv"&gt;msg&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_796b1c1a99df4617ae9cef64c9c88832-3"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;shell-command&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;concat&lt;/span&gt; &lt;span class="nv"&gt;toast-notifier-path&lt;/span&gt;
-&lt;a name="rest_code_796b1c1a99df4617ae9cef64c9c88832-4"&gt;&lt;/a&gt;                         &lt;span class="s"&gt;" -t \""&lt;/span&gt; &lt;span class="nv"&gt;title&lt;/span&gt; &lt;span class="s"&gt;"\""&lt;/span&gt;
-&lt;a name="rest_code_796b1c1a99df4617ae9cef64c9c88832-5"&gt;&lt;/a&gt;                         &lt;span class="s"&gt;" -m \""&lt;/span&gt; &lt;span class="nv"&gt;msg&lt;/span&gt; &lt;span class="s"&gt;"\""&lt;/span&gt;
-&lt;a name="rest_code_796b1c1a99df4617ae9cef64c9c88832-6"&gt;&lt;/a&gt;                         &lt;span class="s"&gt;" -p C:\\Users\\joon\\Programs\\Assets\\Icons\\org_mode_256px_540985_easyicon.net.png"&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;pre class="code scheme"&gt;&lt;a name="rest_code_96bb8586851b421c8d28c1f1b5d62f1b-1"&gt;&lt;/a&gt;&lt;span class="c1"&gt;;; set up the call to the notifier&lt;/span&gt;
+&lt;a name="rest_code_96bb8586851b421c8d28c1f1b5d62f1b-2"&gt;&lt;/a&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;defun&lt;/span&gt; &lt;span class="nv"&gt;toast-appt-send-notification&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;title&lt;/span&gt; &lt;span class="nv"&gt;msg&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_96bb8586851b421c8d28c1f1b5d62f1b-3"&gt;&lt;/a&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;shell-command&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;concat&lt;/span&gt; &lt;span class="nv"&gt;toast-notifier-path&lt;/span&gt;
+&lt;a name="rest_code_96bb8586851b421c8d28c1f1b5d62f1b-4"&gt;&lt;/a&gt;                         &lt;span class="s"&gt;" -t \""&lt;/span&gt; &lt;span class="nv"&gt;title&lt;/span&gt; &lt;span class="s"&gt;"\""&lt;/span&gt;
+&lt;a name="rest_code_96bb8586851b421c8d28c1f1b5d62f1b-5"&gt;&lt;/a&gt;                         &lt;span class="s"&gt;" -m \""&lt;/span&gt; &lt;span class="nv"&gt;msg&lt;/span&gt; &lt;span class="s"&gt;"\""&lt;/span&gt;
+&lt;a name="rest_code_96bb8586851b421c8d28c1f1b5d62f1b-6"&gt;&lt;/a&gt;                         &lt;span class="s"&gt;" -p C:\\Users\\joon\\Programs\\Assets\\Icons\\org_mode_256px_540985_easyicon.net.png"&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
 &lt;/pre&gt;&lt;p&gt;which makes notifications look very nice:&lt;/p&gt;
-&lt;img alt="../images/toast_example_with_icon.png" src="http://joonro.github.io/blog/images/toast_example_with_icon.png"&gt;
-&lt;/div&gt;&lt;/div&gt;</description><category>emacs</category><category>howto</category><category>org-mode</category><category>setting</category><category>toast</category><category>windows</category><guid>http://joonro.github.io/blog/posts/toast-notifications-org-mode-windows.html</guid><pubDate>Sat, 26 Dec 2015 06:00:00 GMT</pubDate></item><item><title>How to set up inverse and forward search in LyX for Windows</title><link>http://joonro.github.io/blog/posts/inverse-and-forward-search-lyx-windows.html</link><dc:creator>Joon Ro</dc:creator><description>&lt;div&gt;&lt;p&gt;I describe how to set up &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Inverse_search"&gt;inverse&lt;/a&gt; and forward search in LyX for the Windows
+&lt;img alt="../images/toast_example_with_icon.png" src="http://joonro.github.io/blog/posts/images/toast_example_with_icon.png"&gt;
+&lt;/div&gt;&lt;/div&gt;</description><category>emacs</category><category>howto</category><category>org-mode</category><category>setting</category><category>toast</category><category>windows</category><guid>http://joonro.github.io/blog/posts/toast-notifications-org-mode-windows/</guid><pubDate>Sat, 26 Dec 2015 06:00:00 GMT</pubDate></item><item><title>How to set up inverse and forward search in LyX for Windows</title><link>http://joonro.github.io/blog/posts/inverse-and-forward-search-lyx-windows/</link><dc:creator>Joon Ro</dc:creator><description>&lt;div&gt;&lt;p&gt;I describe how to set up &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Inverse_search"&gt;inverse&lt;/a&gt; and forward search in LyX for the Windows
 environment, with &lt;a class="reference external" href="http://www.sumatrapdfreader.org/free-pdf-reader.html"&gt;SumatraPDF&lt;/a&gt; as the pdf viewer. Inverse search lets you
 quickly move to the corresponding part of a LyX (or LaTeX) source from its pdf
 output, typically by clicking on the text in the pdf viewer. Forward search
@@ -336,24 +353,24 @@ invoke forward search to make the pdf viewer scroll through the pdf document
 so the output counterpart of the source is shown. They are very useful
 especially when you are editing a long document. Most of the instructions
 overlap with those found at &lt;a class="reference external" href="http://wiki.lyx.org/LyX/SyncTeX#toc3"&gt;http://wiki.lyx.org/LyX/SyncTeX#toc3&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://joonro.github.io/blog/posts/inverse-and-forward-search-lyx-windows.html"&gt; click to read the rest of the article …&lt;/a&gt; (2 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><category>autohotkey</category><category>howto</category><category>latex</category><category>lyx</category><category>setting</category><category>windows</category><guid>http://joonro.github.io/blog/posts/inverse-and-forward-search-lyx-windows.html</guid><pubDate>Sat, 10 Oct 2015 05:00:00 GMT</pubDate></item><item><title>Installing GNU Scientific Library (GSL) and CythonGSL in Windows</title><link>http://joonro.github.io/blog/posts/installing-gsl-and-cythongsl-in-windows.html</link><dc:creator>Joon Ro</dc:creator><description>&lt;div&gt;&lt;div id="table-of-contents"&gt;
+&lt;p&gt;&lt;a href="http://joonro.github.io/blog/posts/inverse-and-forward-search-lyx-windows/"&gt; click to read the rest of the article …&lt;/a&gt; (2 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><category>autohotkey</category><category>howto</category><category>latex</category><category>lyx</category><category>setting</category><category>windows</category><guid>http://joonro.github.io/blog/posts/inverse-and-forward-search-lyx-windows/</guid><pubDate>Sat, 10 Oct 2015 05:00:00 GMT</pubDate></item><item><title>Installing GNU Scientific Library (GSL) and CythonGSL in Windows</title><link>http://joonro.github.io/blog/posts/installing-gsl-and-cythongsl-in-windows/</link><dc:creator>Joon Ro</dc:creator><description>&lt;div&gt;&lt;div id="table-of-contents"&gt;
 &lt;h3&gt;Table of Contents&lt;/h3&gt;
 &lt;div id="text-table-of-contents"&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href="http://joonro.github.io/blog/posts/installing-gsl-and-cythongsl-in-windows.html#orgheadline3"&gt;1. Download&lt;/a&gt;
+&lt;li&gt;&lt;a href="http://joonro.github.io/blog/posts/installing-gsl-and-cythongsl-in-windows/#orgheadline3"&gt;1. Download&lt;/a&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href="http://joonro.github.io/blog/posts/installing-gsl-and-cythongsl-in-windows.html#orgheadline1"&gt;1.1. GSL&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="http://joonro.github.io/blog/posts/installing-gsl-and-cythongsl-in-windows.html#orgheadline2"&gt;1.2. CythonGSL&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://joonro.github.io/blog/posts/installing-gsl-and-cythongsl-in-windows/#orgheadline1"&gt;1.1. GSL&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://joonro.github.io/blog/posts/installing-gsl-and-cythongsl-in-windows/#orgheadline2"&gt;1.2. CythonGSL&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;a href="http://joonro.github.io/blog/posts/installing-gsl-and-cythongsl-in-windows.html#orgheadline4"&gt;2. Installing GSL&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="http://joonro.github.io/blog/posts/installing-gsl-and-cythongsl-in-windows.html#orgheadline7"&gt;3. Environmental Variables&lt;/a&gt;
+&lt;li&gt;&lt;a href="http://joonro.github.io/blog/posts/installing-gsl-and-cythongsl-in-windows/#orgheadline4"&gt;2. Installing GSL&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://joonro.github.io/blog/posts/installing-gsl-and-cythongsl-in-windows/#orgheadline7"&gt;3. Environmental Variables&lt;/a&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href="http://joonro.github.io/blog/posts/installing-gsl-and-cythongsl-in-windows.html#orgheadline5"&gt;3.1. &lt;code&gt;LIB_GSL&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="http://joonro.github.io/blog/posts/installing-gsl-and-cythongsl-in-windows.html#orgheadline6"&gt;3.2. &lt;code&gt;PATH&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://joonro.github.io/blog/posts/installing-gsl-and-cythongsl-in-windows/#orgheadline5"&gt;3.1. &lt;code&gt;LIB_GSL&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://joonro.github.io/blog/posts/installing-gsl-and-cythongsl-in-windows/#orgheadline6"&gt;3.2. &lt;code&gt;PATH&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;a href="http://joonro.github.io/blog/posts/installing-gsl-and-cythongsl-in-windows.html#orgheadline8"&gt;4. Installing CythonGSL&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://joonro.github.io/blog/posts/installing-gsl-and-cythongsl-in-windows/#orgheadline8"&gt;4. Installing CythonGSL&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -500,18 +517,18 @@ python setup.py install
 
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;/div&gt;</description><category>cython</category><category>gsl</category><category>python</category><category>windows</category><guid>http://joonro.github.io/blog/posts/installing-gsl-and-cythongsl-in-windows.html</guid><pubDate>Mon, 25 May 2015 05:50:11 GMT</pubDate></item><item><title>org-mode Google calendar sync in Windows</title><link>http://joonro.github.io/blog/posts/org-mode-google-calendar-sync-in-windows.html</link><dc:creator>Joon Ro</dc:creator><description>&lt;div&gt;&lt;div id="table-of-contents"&gt;
+&lt;/div&gt;&lt;/div&gt;</description><category>cython</category><category>gsl</category><category>python</category><category>windows</category><guid>http://joonro.github.io/blog/posts/installing-gsl-and-cythongsl-in-windows/</guid><pubDate>Mon, 25 May 2015 05:50:11 GMT</pubDate></item><item><title>org-mode Google calendar sync in Windows</title><link>http://joonro.github.io/blog/posts/org-mode-google-calendar-sync-in-windows/</link><dc:creator>Joon Ro</dc:creator><description>&lt;div&gt;&lt;div id="table-of-contents"&gt;
 &lt;h3&gt;Table of Contents&lt;/h3&gt;
 &lt;div id="text-table-of-contents"&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href="http://joonro.github.io/blog/posts/org-mode-google-calendar-sync-in-windows.html#orgheadline3"&gt;1. Dependencies&lt;/a&gt;
+&lt;li&gt;&lt;a href="http://joonro.github.io/blog/posts/org-mode-google-calendar-sync-in-windows/#orgheadline3"&gt;1. Dependencies&lt;/a&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href="http://joonro.github.io/blog/posts/org-mode-google-calendar-sync-in-windows.html#orgheadline1"&gt;1.1. &lt;code&gt;ical2org.py&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="http://joonro.github.io/blog/posts/org-mode-google-calendar-sync-in-windows.html#orgheadline2"&gt;1.2. Find your private URL for your calendar&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://joonro.github.io/blog/posts/org-mode-google-calendar-sync-in-windows/#orgheadline1"&gt;1.1. &lt;code&gt;ical2org.py&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://joonro.github.io/blog/posts/org-mode-google-calendar-sync-in-windows/#orgheadline2"&gt;1.2. Find your private URL for your calendar&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;a href="http://joonro.github.io/blog/posts/org-mode-google-calendar-sync-in-windows.html#orgheadline4"&gt;2. PowerShell script&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="http://joonro.github.io/blog/posts/org-mode-google-calendar-sync-in-windows.html#orgheadline5"&gt;3. Install cron&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://joonro.github.io/blog/posts/org-mode-google-calendar-sync-in-windows/#orgheadline4"&gt;2. PowerShell script&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://joonro.github.io/blog/posts/org-mode-google-calendar-sync-in-windows/#orgheadline5"&gt;3. Install cron&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -658,18 +675,18 @@ For example:
 &lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;/div&gt;</description><category>emacs</category><category>org</category><category>posh</category><category>windows</category><guid>http://joonro.github.io/blog/posts/org-mode-google-calendar-sync-in-windows.html</guid><pubDate>Sat, 09 May 2015 20:27:18 GMT</pubDate></item><item><title>Changed the blog engine to nikola</title><link>http://joonro.github.io/blog/posts/changed-the-blog-engine-to-nikola.html</link><dc:creator>Joon Ro</dc:creator><description>&lt;div&gt;&lt;div id="table-of-contents"&gt;
+&lt;/div&gt;&lt;/div&gt;</description><category>emacs</category><category>org</category><category>posh</category><category>windows</category><guid>http://joonro.github.io/blog/posts/org-mode-google-calendar-sync-in-windows/</guid><pubDate>Sat, 09 May 2015 20:27:18 GMT</pubDate></item><item><title>Changed the blog engine to nikola</title><link>http://joonro.github.io/blog/posts/changed-the-blog-engine-to-nikola/</link><dc:creator>Joon Ro</dc:creator><description>&lt;div&gt;&lt;div id="table-of-contents"&gt;
 &lt;h3&gt;Table of Contents&lt;/h3&gt;
 &lt;div id="text-table-of-contents"&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href="http://joonro.github.io/blog/posts/changed-the-blog-engine-to-nikola.html#orgheadline1"&gt;1. reStructuredText to org-mode&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="http://joonro.github.io/blog/posts/changed-the-blog-engine-to-nikola.html#orgheadline2"&gt;2. nikola&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="http://joonro.github.io/blog/posts/changed-the-blog-engine-to-nikola.html#orgheadline4"&gt;3. Setup&lt;/a&gt;
+&lt;li&gt;&lt;a href="http://joonro.github.io/blog/posts/changed-the-blog-engine-to-nikola/#orgheadline1"&gt;1. reStructuredText to org-mode&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://joonro.github.io/blog/posts/changed-the-blog-engine-to-nikola/#orgheadline2"&gt;2. nikola&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://joonro.github.io/blog/posts/changed-the-blog-engine-to-nikola/#orgheadline4"&gt;3. Setup&lt;/a&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href="http://joonro.github.io/blog/posts/changed-the-blog-engine-to-nikola.html#orgheadline3"&gt;3.1. Syntax Highlighting&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://joonro.github.io/blog/posts/changed-the-blog-engine-to-nikola/#orgheadline3"&gt;3.1. Syntax Highlighting&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;a href="http://joonro.github.io/blog/posts/changed-the-blog-engine-to-nikola.html#orgheadline5"&gt;4. How to use&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://joonro.github.io/blog/posts/changed-the-blog-engine-to-nikola/#orgheadline5"&gt;4. How to use&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -853,4 +870,4 @@ as a nikola post. It will ask you where is the root directory for your nikola
 blog. It seems it just uses the top level heading.
 &lt;/p&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;/div&gt;</description><category>blogging</category><category>emacs</category><category>nikola</category><category>org</category><guid>http://joonro.github.io/blog/posts/changed-the-blog-engine-to-nikola.html</guid><pubDate>Sun, 03 May 2015 04:49:55 GMT</pubDate></item></channel></rss>
+&lt;/div&gt;&lt;/div&gt;</description><category>blogging</category><category>emacs</category><category>nikola</category><category>org</category><guid>http://joonro.github.io/blog/posts/changed-the-blog-engine-to-nikola/</guid><pubDate>Sun, 03 May 2015 04:49:55 GMT</pubDate></item></channel></rss>
