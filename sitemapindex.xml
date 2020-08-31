@@ -43,7 +43,7 @@
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/categories/cat_windows.xml</loc>
-  <lastmod>2020-03-02T05:05:00Z</lastmod>
+  <lastmod>2020-08-31T15:46:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/categories/cython.xml</loc>
@@ -67,7 +67,7 @@
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/categories/git.xml</loc>
-  <lastmod>2020-03-02T05:05:00Z</lastmod>
+  <lastmod>2020-03-02T05:15:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/categories/gsl.xml</loc>
@@ -80,6 +80,10 @@
  <sitemap>
   <loc>http://joonro.github.io/blog/categories/howto.xml</loc>
   <lastmod>2020-03-02T00:17:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>http://joonro.github.io/blog/categories/installation.xml</loc>
+  <lastmod>2020-08-31T15:46:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/categories/latex.xml</loc>
@@ -111,15 +115,23 @@
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/categories/posh.xml</loc>
-  <lastmod>2020-03-02T05:05:00Z</lastmod>
+  <lastmod>2020-03-02T05:15:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/categories/powershell.xml</loc>
-  <lastmod>2020-03-02T05:05:00Z</lastmod>
+  <lastmod>2020-03-02T05:15:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/categories/python.xml</loc>
-  <lastmod>2020-03-02T00:17:00Z</lastmod>
+  <lastmod>2020-08-31T15:46:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>http://joonro.github.io/blog/categories/r.xml</loc>
+  <lastmod>2020-08-31T15:46:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>http://joonro.github.io/blog/categories/rpy2.xml</loc>
+  <lastmod>2020-08-31T15:46:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/categories/setting.xml</loc>
@@ -127,7 +139,7 @@
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/categories/settings.xml</loc>
-  <lastmod>2020-03-02T05:05:00Z</lastmod>
+  <lastmod>2020-03-02T05:15:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/categories/syntax-highlighting.xml</loc>
@@ -155,7 +167,7 @@
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/categories/windows.xml</loc>
-  <lastmod>2020-03-02T05:05:00Z</lastmod>
+  <lastmod>2020-08-31T15:46:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/categories/y50.xml</loc>
@@ -163,14 +175,14 @@
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/galleries/rss.xml</loc>
-  <lastmod>2020-03-02T00:17:00Z</lastmod>
+  <lastmod>2020-08-31T15:46:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/rss.xml</loc>
-  <lastmod>2020-03-02T05:05:00Z</lastmod>
+  <lastmod>2020-08-31T15:46:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://joonro.github.io/blog/sitemap.xml</loc>
-  <lastmod>2020-03-02T05:05:00Z</lastmod>
+  <lastmod>2020-08-31T15:46:00Z</lastmod>
  </sitemap>
 </sitemapindex>
